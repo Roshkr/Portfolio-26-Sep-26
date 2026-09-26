@@ -1,5 +1,7 @@
 import { CaseStudy, Testimonial, ExperienceItem, EducationItem, ToolItem } from '../types';
-import designerPortrait from '../assets/images/designer_profile_photo_1790248668488.jpg';
+import designerPortrait from '../assets/images/Roushan Picture.jpg';
+import roushaniInvoiceVideo from '../assets/video/Roushani Final Invoice Video.mp4';
+import bridge2BusinessVideo from '../assets/video/Bridge2business.mp4';
 
 export const DESIGNER_INFO = {
   name: "Roushan Kumar",
@@ -98,6 +100,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     category: "B2B SaaS Product Design",
     tags: ["Concept to Market", "Product Design", "Interaction Design", "Mobile UX"],
     heroImage: "https://framerusercontent.com/images/xX41ciGUu12ACL5vkbPmnv8L2xM.png",
+    heroVideo: roushaniInvoiceVideo,
     company: "Roushani Invoicing",
     status: "Production MVP",
     overview:
@@ -357,6 +360,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     category: "UX Strategy & Web",
     tags: ["Information Hierarchy", "UX Strategy", "Responsive Design"],
     heroImage: "https://framerusercontent.com/images/jq007KeZnDmvkFGcup4Y8OEXlw.png",
+    heroVideo: bridge2BusinessVideo,
     company: "Freelance Website Redesign",
     status: "Shipped & Live",
     overview:
@@ -795,7 +799,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     year: "Feb 2021 - Sep 2021",
     company: "SEEKMY",
     role: "UI/UX Designer",
-    workMode: "Remote/Onsite (Thalassery, KR)",
+    workMode: "Remote/Onsite (Thalassery, KL)",
     logoUrl: "https://framerusercontent.com/images/HdopiU5CNvnYltKa9BUuB3VdQM.jpg",
     websiteUrl: "https://www.linkedin.com/search/results/all/?keywords=SEEKMY%20Healthcare",
     description:

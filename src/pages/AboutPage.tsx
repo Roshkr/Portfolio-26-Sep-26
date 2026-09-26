@@ -10,7 +10,6 @@ import {
   Send,
   Sparkles,
   ExternalLink,
-  Camera,
   Loader2,
 } from 'lucide-react';
 import {
@@ -28,32 +27,6 @@ export const AboutPage: React.FC = () => {
   const [contactName, setContactName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactMessage, setContactMessage] = useState('');
-  const [customPhoto, setCustomPhoto] = useState<string | null>(() => {
-    try {
-      return localStorage.getItem('portfolio_user_portrait');
-    } catch {
-      return null;
-    }
-  });
-
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const dataUrl = event.target?.result as string;
-        if (dataUrl) {
-          setCustomPhoto(dataUrl);
-          try {
-            localStorage.setItem('portfolio_user_portrait', dataUrl);
-          } catch {
-            // ignore storage quota
-          }
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(DESIGNER_INFO.email);
@@ -149,30 +122,11 @@ export const AboutPage: React.FC = () => {
           <div className="md:col-span-5 flex flex-col items-center md:items-end">
             <div className="w-full max-w-sm aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-200 shadow-xl border border-black/5 relative group">
               <img
-                src={customPhoto || DESIGNER_INFO.portraitImage}
+                src={DESIGNER_INFO.portraitImage}
                 alt={DESIGNER_INFO.name}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.src = DESIGNER_INFO.portraitImage;
-                }}
               />
-
-              {/* Photo Upload Trigger Button */}
-              <label
-                className="absolute top-4 right-4 z-10 px-3.5 py-1.5 bg-black/65 hover:bg-black/85 backdrop-blur-md text-white rounded-full text-xs font-medium cursor-pointer transition-all opacity-0 group-hover:opacity-100 flex items-center gap-1.5 shadow-lg active:scale-95"
-                title="Upload original profile photo"
-              >
-                <Camera className="w-3.5 h-3.5" />
-                <span>Upload Photo</span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handlePhotoUpload}
-                />
-              </label>
 
               <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white pointer-events-none">
                 <span className="text-xs uppercase tracking-wider text-slate-300">Roushan Kumar</span>
@@ -428,6 +382,7 @@ export const AboutPage: React.FC = () => {
                   onClick={handleCopyEmail}
                   className="p-1.5 text-slate-400 hover:text-black rounded-lg transition-colors cursor-pointer"
                   title="Copy email"
+                  aria-label="Copy email address"
                 >
                   {copied ? (
                     <Check className="w-4 h-4 text-emerald-500" />

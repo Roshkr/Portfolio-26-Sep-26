@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ArrowUpRight, Copy, Check, FileText, Download } from 'lucide-react';
+import { Mail, ArrowUpRight, Copy, Check, FileText } from 'lucide-react';
 import { DESIGNER_INFO } from '../data/portfolioData';
 
 interface FooterProps {
@@ -36,6 +36,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               <span>Download Resume</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
+
+            {/* Copy Email Button */}
+            <button
+              onClick={handleCopyEmail}
+              aria-label="Copy email address"
+              className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white rounded-full font-medium text-sm transition-all flex items-center gap-2 cursor-pointer border border-white/10 active:scale-95"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-4 h-4 text-emerald-400" />
+                  <span className="text-emerald-300">Email Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 text-white/70" />
+                  <span>Copy Email</span>
+                </>
+              )}
+            </button>
           </div>
         </div>
 

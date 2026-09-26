@@ -27,10 +27,13 @@ export const LazyVideo: React.FC<{
   poster?: string;
   className?: string;
   ariaLabel?: string;
-}> = ({ src, poster, className = '', ariaLabel = 'Product video preview' }) => {
+  objectFit?: 'cover' | 'contain';
+  frameClassName?: string;
+}> = ({ src, poster, className = '', ariaLabel = 'Product video preview', objectFit = 'cover', frameClassName = 'bg-slate-900' }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const objectFitClass = objectFit === 'contain' ? 'object-contain' : 'object-cover';
 
   useEffect(() => {
     const el = videoRef.current;
@@ -38,20 +41,7 @@ export const LazyVideo: React.FC<{
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          const playPromise = el.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(() => {
-              // Browser autoplay policy / low power mode handled gracefully
-            });
-          }
-        } else {
-          // Pause when offscreen to conserve memory, battery, and GPU resources
-          if (!el.paused) {
-            el.pause();
-          }
-        }
+        setInView(entry.isIntersecting);
       },
       { rootMargin: '250px 0px' }
     );
@@ -60,8 +50,24 @@ export const LazyVideo: React.FC<{
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    if (inView) {
+      const playPromise = el.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Browser autoplay policy / low power mode handled gracefully
+        });
+      }
+    } else if (!el.paused) {
+      el.pause();
+    }
+  }, [inView]);
+
   return (
-    <div className="relative w-full h-full bg-slate-900 overflow-hidden">
+    <div className={`relative w-full h-full overflow-hidden ${frameClassName}`}>
       {/* Poster background displayed while video is idle or buffering */}
       {poster && !isReady && (
         <img
@@ -81,7 +87,7 @@ export const LazyVideo: React.FC<{
         playsInline
         aria-label={ariaLabel}
         onCanPlay={() => setIsReady(true)}
-        className={`w-full h-full object-cover transition-opacity duration-300 ${
+        className={`w-full h-full ${objectFitClass} transition-opacity duration-300 ${
           isReady ? 'opacity-100' : 'opacity-0'
         } ${className}`}
       />

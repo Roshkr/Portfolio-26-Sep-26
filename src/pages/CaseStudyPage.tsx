@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, ArrowRight, ExternalLink } from 'lucide-react';
 import { CaseStudy } from '../types';
-import { PhoneMockup } from '../components/PhoneMockup';
+import { LazyVideo, PhoneMockup } from '../components/PhoneMockup';
 
 interface CaseStudyPageProps {
   caseStudy: CaseStudy;
@@ -17,7 +17,6 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   onBack,
 }) => {
   const [activeDesignSlide, setActiveDesignSlide] = useState(0);
-  const [wireframeMode, setWireframeMode] = useState(false);
 
   const designScreens = caseStudy.designScreens || [
     { title: 'Screen 1', image: caseStudy.heroImage, note: 'Default screen' },
@@ -54,32 +53,6 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           <span>Back to projects</span>
         </button>
 
-        {/* Interactive Mode Switcher */}
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-slate-400 hidden sm:inline">Preview Mode:</span>
-          <div className="flex items-center bg-[#eaedf1] p-1 rounded-xl text-xs font-medium text-slate-700">
-            <button
-              onClick={() => setWireframeMode(false)}
-              className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                !wireframeMode
-                  ? 'bg-white text-black shadow-xs font-semibold'
-                  : 'text-slate-500 hover:text-black'
-              }`}
-            >
-              Hi-Fi UI
-            </button>
-            <button
-              onClick={() => setWireframeMode(true)}
-              className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                wireframeMode
-                  ? 'bg-white text-black shadow-xs font-semibold'
-                  : 'text-slate-500 hover:text-black'
-              }`}
-            >
-              Reference Wireframe
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* Hero Section */}
@@ -109,11 +82,25 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           </div>
 
           <div className="md:col-span-5 flex justify-center md:justify-end">
-            <PhoneMockup
-              imageSrc={caseStudy.heroImage}
-              wireframe={wireframeMode}
-              className="w-full max-w-[280px]"
-            />
+            {caseStudy.heroVideo ? (
+              <div className="w-full max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] aspect-video">
+                <LazyVideo
+                  src={caseStudy.heroVideo}
+                  poster={caseStudy.heroImage}
+                  ariaLabel={`${caseStudy.title} preview`}
+                  objectFit="contain"
+                  frameClassName="rounded-xl sm:rounded-2xl shadow-sm sm:shadow-md border border-slate-200/80"
+                />
+              </div>
+            ) : (
+              <img
+                src={caseStudy.heroImage}
+                alt={caseStudy.title}
+                referrerPolicy="no-referrer"
+                className="max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-sm sm:shadow-md border border-slate-200/80"
+                loading="lazy"
+              />
+            )}
           </div>
         </div>
       </section>
@@ -173,7 +160,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center min-h-[500px]">
             <PhoneMockup
               imageSrc={caseStudy.beforeScreen}
-              wireframe={wireframeMode}
+              videoSrc={caseStudy.beforeVideo}
               label={caseStudy.beforeLabel || 'Before'}
               className="w-full max-w-[240px]"
             />
@@ -183,7 +170,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center min-h-[500px]">
             <PhoneMockup
               imageSrc={caseStudy.afterScreen}
-              wireframe={wireframeMode}
+              videoSrc={caseStudy.afterVideo}
               label={caseStudy.afterLabel || 'After'}
               className="w-full max-w-[240px]"
             />
@@ -281,7 +268,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             <div className="w-full max-w-[260px] py-4">
               <PhoneMockup
                 imageSrc={designScreens[activeDesignSlide]?.image}
-                wireframe={wireframeMode}
+                videoSrc={designScreens[activeDesignSlide]?.videoSrc}
                 className="w-full"
               />
             </div>
@@ -337,7 +324,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex items-center justify-center min-h-[460px]">
               <PhoneMockup
                 imageSrc={caseStudy.problem1.screen}
-                wireframe={wireframeMode}
+                videoSrc={caseStudy.problem1.videoSrc}
                 className="w-full max-w-[240px]"
               />
             </div>
@@ -356,7 +343,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex items-center justify-center min-h-[460px]">
               <PhoneMockup
                 imageSrc={caseStudy.solution1.screen}
-                wireframe={wireframeMode}
+                videoSrc={caseStudy.solution1.videoSrc}
                 className="w-full max-w-[240px]"
               />
             </div>
@@ -478,7 +465,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             <div key={idx} className="flex flex-col items-center">
               <PhoneMockup
                 imageSrc={screen.image}
-                wireframe={wireframeMode}
+                videoSrc={screen.videoSrc}
                 className="w-full max-w-[200px]"
               />
               <span className="mt-3 text-xs text-slate-500 font-medium">
