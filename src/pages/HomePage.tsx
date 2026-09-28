@@ -82,7 +82,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div
               key={study.id}
               onClick={() => onSelectCaseStudy(study)}
-              style={{ '--stack-offset': `${index * 12}px`, zIndex: index + 1 } as React.CSSProperties}
+              style={{ '--stack-offset': `${index * 44}px`, zIndex: index + 1 } as React.CSSProperties}
               className={`project-stack-card group cursor-pointer bg-white rounded-3xl border border-slate-200/80 hover:border-slate-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col lg:flex-row overflow-hidden items-stretch ${study.heroVideo || ['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'lg:h-auto lg:max-h-none' : 'lg:h-[min(80vh,540px)] lg:max-h-[80vh]'}`}
             >
               {/* Visual Mockup Container - Uncropped High-Resolution Showcase */}
