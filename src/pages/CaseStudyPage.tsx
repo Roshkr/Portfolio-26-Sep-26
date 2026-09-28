@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { ArrowLeft, ChevronLeft, ChevronRight, ArrowRight, ExternalLink } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { CaseStudy } from '../types';
 import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
+import { ProjectCard } from '../components/ProjectCard';
 
 interface CaseStudyPageProps {
   caseStudy: CaseStudy;
@@ -34,12 +35,15 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
     );
   };
 
+  useEffect(() => {
+    setActiveDesignSlide(0);
+  }, [caseStudy.id]);
+
   // Find next project
   const currentIndex = allCaseStudies.findIndex((s) => s.id === caseStudy.id);
-  const nextStudy =
-    allCaseStudies.length > 1
-      ? allCaseStudies[(currentIndex + 1) % allCaseStudies.length]
-      : null;
+  const nextStudy = allCaseStudies.length > 1
+    ? allCaseStudies[(Math.max(currentIndex, -1) + 1) % allCaseStudies.length]
+    : null;
 
   return (
     <div className="w-full bg-[#fbfbfb]">
@@ -586,27 +590,15 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Next Project Teaser Footer (from Framer) */}
       {nextStudy && onSelectCaseStudy && (
-        <section className="py-16 bg-[#eef0f3] border-t border-black/[0.04]">
-          <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div className="space-y-1 text-center sm:text-left">
-              <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
-                Next Project
-              </span>
-              <h4 className="text-2xl font-normal text-slate-950">
-                {nextStudy.title}
-              </h4>
-              <p className="text-xs text-slate-500 max-w-md">
-                {nextStudy.subtitle}
-              </p>
-            </div>
-
-            <button
-              onClick={() => onSelectCaseStudy(nextStudy)}
-              className="px-6 py-3 bg-black hover:bg-neutral-800 text-white rounded-2xl text-sm font-medium inline-flex items-center gap-2 transition-all cursor-pointer shadow-sm active:scale-95"
-            >
-              <span>Explore {nextStudy.title}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+        <section className="py-16 md:py-20 bg-[#fbfbfb] border-t border-black/[0.04]">
+          <div className="max-w-6xl mx-auto px-6 next-project-content">
+            <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
+              Next Project
+            </span>
+            <ProjectCard
+              study={nextStudy}
+              onSelectCaseStudy={onSelectCaseStudy}
+            />
           </div>
         </section>
       )}

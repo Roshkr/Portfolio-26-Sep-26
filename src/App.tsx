@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ContactSection } from './components/ContactSection';
 import { ContactModal } from './components/ContactModal';
 import { AddCaseStudyModal } from './components/AddCaseStudyModal';
 import { HomePage } from './pages/HomePage';
@@ -137,31 +138,35 @@ export default function App() {
         onNavigate={navigateTo}
       />
 
-      {/* Main Content View */}
-      <main className="flex-1">
-        {currentPage === 'home' && (
-          <HomePage
-            caseStudies={caseStudies}
-            onSelectCaseStudy={handleSelectCaseStudy}
-            onOpenAddModal={() => setIsAddStudyOpen(true)}
-            onNavigate={navigateTo}
-          />
-        )}
+      <div className="flex-1">
+        {/* Main Content View */}
+        <main>
+          {currentPage === 'home' && (
+            <HomePage
+              caseStudies={caseStudies}
+              onSelectCaseStudy={handleSelectCaseStudy}
+              onOpenAddModal={() => setIsAddStudyOpen(true)}
+              onNavigate={navigateTo}
+            />
+          )}
 
-        {currentPage === 'about' && <AboutPage />}
+          {currentPage === 'about' && <AboutPage />}
 
-        {currentPage === 'case-study' && (
-          <CaseStudyPage
-            caseStudy={selectedCaseStudy}
-            allCaseStudies={caseStudies}
-            onSelectCaseStudy={handleSelectCaseStudy}
-            onBack={() => navigateTo('home')}
-          />
-        )}
-      </main>
+          {currentPage === 'case-study' && (
+            <CaseStudyPage
+              caseStudy={selectedCaseStudy}
+              allCaseStudies={caseStudies}
+              onSelectCaseStudy={handleSelectCaseStudy}
+              onBack={() => navigateTo('home')}
+            />
+          )}
+        </main>
 
-      {/* Dark Footer with Social Links & Resume */}
-      <Footer onOpenContact={() => setIsContactOpen(true)} />
+        <ContactSection />
+
+        {/* Dark Footer with Social Links & Resume */}
+        <Footer />
+      </div>
 
       {/* Modals */}
       <ContactModal

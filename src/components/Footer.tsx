@@ -2,13 +2,9 @@ import React from 'react';
 import { ArrowUpRight, FileText } from 'lucide-react';
 import { DESIGNER_INFO } from '../data/portfolioData';
 
-interface FooterProps {
-  onOpenContact?: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
+export const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-[#030303] text-white pt-24 pb-16 px-6 relative overflow-hidden rounded-t-[32px] sm:rounded-t-[40px] md:rounded-t-[48px] shadow-[0_-10px_30px_rgba(0,0,0,0.06)]">
+    <footer className="w-full bg-[#030303] text-white pt-24 pb-16 px-6 relative z-20 overflow-hidden rounded-t-[32px] sm:rounded-t-[40px] md:rounded-t-[48px] shadow-[0_-10px_30px_rgba(0,0,0,0.06)]">
       <div className="max-w-6xl mx-auto flex flex-col justify-between min-h-[380px]">
         {/* Main CTA Heading */}
         <div className="max-w-3xl space-y-8">
