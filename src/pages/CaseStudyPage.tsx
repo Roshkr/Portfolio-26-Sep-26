@@ -44,6 +44,10 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   const nextStudy = allCaseStudies.length > 1
     ? allCaseStudies[(Math.max(currentIndex, -1) + 1) % allCaseStudies.length]
     : null;
+  const processSteps = caseStudy.processSteps?.length
+    ? caseStudy.processSteps
+    : ['Discover', 'Define', 'Design', 'Validate', 'Deliver'];
+  const processTickerItems = [...processSteps, ...processSteps, ...processSteps, ...processSteps];
 
   return (
     <div className="w-full bg-[#fbfbfb]">
@@ -64,18 +68,18 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-7 space-y-6">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3 py-1 bg-black text-white text-xs font-medium rounded-full">
+              <span className="px-3 py-1 bg-[#e8eaff] text-[#2b35ee] text-xs font-medium rounded-full">
                 {caseStudy.category}
               </span>
               {caseStudy.status && (
-                <span className="px-3 py-1 bg-[#e8eaff] text-[#2b35ee] text-xs font-medium rounded-full">
+                <span className="px-3 py-1 bg-[#eef0f3] text-slate-700 text-xs font-medium rounded-full">
                   {caseStudy.status}
                 </span>
               )}
               {caseStudy.tags?.map((tag, tIdx) => (
                 <span
                   key={tIdx}
-                  className="px-2.5 py-1 bg-[#eef0f3] text-slate-700 text-xs font-medium rounded-full"
+                  className="px-3 py-1 bg-[#eef0f3] text-slate-700 text-xs font-medium rounded-full"
                 >
                   {tag}
                 </span>
@@ -116,74 +120,43 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Overview & Meta Section */}
       <section className="py-16 md:py-20 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-          {/* Left: Overview Story */}
-          <div className="md:col-span-7 space-y-4">
+        <div className="space-y-4">
             <h2 className="text-2xl font-normal tracking-tight text-slate-950">
               Overview
             </h2>
-            <div className="text-sm md:text-base text-slate-500 font-normal leading-relaxed whitespace-pre-line space-y-4">
+            <div className="max-w-4xl text-sm md:text-base text-slate-500 font-normal leading-relaxed whitespace-pre-line space-y-4">
               {caseStudy.overview}
             </div>
-          </div>
-
-          {/* Right: Project Meta Details */}
-          <div className="md:col-span-5 space-y-6 md:pl-8">
-            <div>
-              <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
-                Role
-              </span>
-              <p className="text-base font-normal text-slate-900">{caseStudy.role}</p>
-            </div>
-
-            <div>
-              <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
-                Team
-              </span>
-              <p className="text-base font-normal text-slate-900">{caseStudy.team}</p>
-            </div>
-
-            <div>
-              <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
-                Timeline
-              </span>
-              <p className="text-base font-normal text-slate-900">{caseStudy.timeline}</p>
-            </div>
-
-            {caseStudy.company && (
-              <div>
-                <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
-                  Company / Client
-                </span>
-                <p className="text-base font-normal text-slate-900">{caseStudy.company}</p>
-              </div>
-            )}
-          </div>
         </div>
       </section>
 
       {/* Source Portfolio Details */}
       {(caseStudy.projectDetails || caseStudy.contributionAreas) && (
         <section className="py-16 md:py-20 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="space-y-12">
             {caseStudy.projectDetails && (
-              <div className={`${caseStudy.contributionAreas ? 'lg:col-span-4' : 'lg:col-span-12'} grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8 self-start`}>
-                {caseStudy.projectDetails.map((detail) => (
-                  <div key={detail.label}>
-                    <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
-                      {detail.label}
-                    </span>
-                    <p className="text-sm md:text-base text-slate-900 leading-relaxed">
-                      {detail.value}
-                    </p>
-                  </div>
-                ))}
+              <div>
+                <h2 className="text-xs uppercase tracking-wider text-slate-400">
+                  Project details
+                </h2>
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
+                  {caseStudy.projectDetails.map((detail) => (
+                    <div key={detail.label} className="border-b border-black/[0.06] pb-4">
+                      <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
+                        {detail.label}
+                      </span>
+                      <p className="text-sm md:text-base text-slate-900 leading-relaxed">
+                        {detail.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
                 {caseStudy.liveUrl && (
                   <a
                     href={caseStudy.liveUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="col-span-2 inline-flex items-center gap-2 text-sm font-medium text-slate-950 underline underline-offset-4 hover:text-[#2b35ee] transition-colors"
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-slate-950 underline underline-offset-4 hover:text-[#2b35ee] transition-colors"
                   >
                     View live product
                     <ExternalLink className="w-4 h-4" />
@@ -193,7 +166,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             )}
 
             {caseStudy.contributionAreas && (
-              <div className="lg:col-span-8">
+              <div>
                 <span className="text-xs uppercase tracking-wider text-slate-400">
                   My contribution
                 </span>
@@ -245,22 +218,16 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       {/* Process Ticker Divider */}
       <div className="w-full overflow-hidden py-5 bg-transparent border-y border-black/[0.06] select-none">
         <div className="animate-marquee flex items-center gap-12 text-slate-800 text-xl md:text-2xl font-normal">
-          <span>Process</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Process</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Process</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Process</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Process</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Process</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Process</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Process</span>
-          <span className="text-slate-400 text-base">◆</span>
+          {processTickerItems.map((step, index) => (
+            <React.Fragment key={`${index}-${step}`}>
+              <span className="whitespace-nowrap">{step}</span>
+              {index < processTickerItems.length - 1 && (
+                <span aria-hidden="true" className="px-2 text-slate-400 text-base">
+                  {(index + 1) % processSteps.length === 0 ? '*' : '|'}
+                </span>
+              )}
+            </React.Fragment>
+          ))}
         </div>
       </div>
 

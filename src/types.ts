@@ -45,6 +45,7 @@ export interface CaseStudy {
   nextSteps: string[];
   projectDetails?: Array<{ label: string; value: string }>;
   contributionAreas?: Array<{ title: string; desc: string }>;
+  processSteps?: string[];
   storySections?: Array<{
     eyebrow?: string;
     title: string;
