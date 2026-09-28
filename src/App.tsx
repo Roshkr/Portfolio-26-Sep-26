@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ContactSection } from './components/ContactSection';
@@ -179,6 +180,9 @@ export default function App() {
         onClose={() => setIsAddStudyOpen(false)}
         onAddCaseStudy={handleAddCaseStudy}
       />
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
