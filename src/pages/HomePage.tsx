@@ -1,7 +1,7 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Linkedin, Plus } from 'lucide-react';
+import { ArrowRight, Sparkles, Plus } from 'lucide-react';
 import { CaseStudy } from '../types';
-import { DESIGNER_INFO, TESTIMONIALS } from '../data/portfolioData';
+import { DESIGNER_INFO } from '../data/portfolioData';
 import { LazyVideo } from '../components/PhoneMockup';
 
 interface HomePageProps {
@@ -20,7 +20,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   return (
     <div className="w-full">
       {/* Hero Section with Viewport Presence & Subtle UXfolio Dot Grid Background */}
-      <section className="relative w-full min-h-[calc(100vh-5rem)] min-h-[calc(100dvh-5rem)] flex items-center justify-center overflow-hidden py-16 md:py-24">
+      <section className="relative w-full min-h-0 md:min-h-[calc(100vh-5rem)] md:min-h-[calc(100dvh-5rem)] flex items-center justify-center overflow-hidden py-10 md:py-24">
         {/* Subtle UXfolio Background: Micro Dot Pattern & Ambient Lighting */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           {/* Dot Grid */}
@@ -82,7 +82,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div
               key={study.id}
               onClick={() => onSelectCaseStudy(study)}
-              className={`group cursor-pointer bg-white rounded-3xl border border-slate-200/80 hover:border-slate-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col lg:flex-row overflow-hidden items-stretch ${study.heroVideo || study.id === 'umbrella' ? 'lg:h-auto lg:max-h-none' : 'lg:h-[min(80vh,540px)] lg:max-h-[80vh]'}`}
+              className={`group cursor-pointer bg-white rounded-3xl border border-slate-200/80 hover:border-slate-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col lg:flex-row overflow-hidden items-stretch ${study.heroVideo || ['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'lg:h-auto lg:max-h-none' : 'lg:h-[min(80vh,540px)] lg:max-h-[80vh]'}`}
             >
               {/* Visual Mockup Container - Uncropped High-Resolution Showcase */}
               <div className="w-full lg:w-7/12 bg-gradient-to-b from-[#f8f9fb] to-[#edf0f5] p-4 sm:p-6 lg:p-7 border-b lg:border-b-0 lg:border-r border-slate-200/70 relative overflow-hidden flex items-center justify-center shrink-0 lg:h-full">
@@ -118,7 +118,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
 
               {/* UXfolio Content Section */}
-              <div className={`w-full lg:w-5/12 p-5 sm:p-6 lg:p-8 flex flex-col ${study.id === 'umbrella' ? 'justify-start' : 'justify-between'} space-y-4 lg:h-full`}>
+              <div className={`w-full lg:w-5/12 p-5 sm:p-6 lg:p-8 flex flex-col ${['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'justify-start' : 'justify-between'} space-y-4 lg:h-full`}>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-semibold uppercase tracking-wider text-[#2b35ee]">
@@ -162,51 +162,6 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* What Others Said (Testimonials) */}
-      <section className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
-        <div className="mb-12 space-y-2">
-          <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-slate-950">
-            What others said
-          </h2>
-          <p className="text-sm md:text-base text-slate-500 max-w-xl">
-            Read insights and praises from mentors, engineering leads, and peers who have worked with Roushan.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map((t, idx) => (
-            <div
-              key={idx}
-              className="bg-[#eef0f3] rounded-[28px] p-8 flex flex-col justify-between space-y-6"
-            >
-              <p className="text-base md:text-lg font-normal text-slate-800 leading-relaxed">
-                "{t.quote}"
-              </p>
-              <div>
-                {t.linkedinUrl ? (
-                  <a
-                    href={t.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 hover:text-blue-600 transition-colors group"
-                    title={`View ${t.author} on LinkedIn`}
-                  >
-                    <span className="group-hover:underline underline-offset-2">{t.author}</span>
-                    <Linkedin className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors" />
-                  </a>
-                ) : (
-                  <p className="text-sm font-semibold text-slate-900">
-                    {t.author}
-                  </p>
-                )}
-                <p className="text-xs text-slate-500 mt-0.5">
-                  {t.role} • {t.company}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 };

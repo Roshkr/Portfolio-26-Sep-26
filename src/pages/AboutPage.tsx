@@ -11,12 +11,14 @@ import {
   Sparkles,
   ExternalLink,
   Loader2,
+  Linkedin,
 } from 'lucide-react';
 import {
   DESIGNER_INFO,
   CREATIVE_TOOLKIT,
   EXPERIENCES,
   EDUCATIONS,
+  TESTIMONIALS,
 } from '../data/portfolioData';
 import { CompanyLogoMark } from '../components/CompanyLogoMarks';
 
@@ -192,7 +194,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Experience & Education Section */}
-      <section className="py-20 md:py-24 max-w-5xl mx-auto px-6 border-t border-black/[0.04] space-y-20">
+      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04] space-y-20">
         {/* Experience Section */}
         <div className="space-y-8">
           <div className="space-y-2">
@@ -208,11 +210,11 @@ export const AboutPage: React.FC = () => {
             {EXPERIENCES.map((exp, idx) => (
               <div
                 key={idx}
-                className="bg-[#eef0f3] rounded-[22px] overflow-hidden p-3.5 sm:p-4 md:p-4.5 flex flex-col sm:flex-row items-center sm:items-center gap-3.5 sm:gap-4 md:gap-5 hover:bg-[#e7eaf0] transition-colors group/card"
+                className={`bg-[#eef0f3] rounded-[22px] overflow-hidden p-3.5 sm:p-4 md:p-4.5 flex flex-col sm:flex-row items-center sm:items-center gap-3.5 sm:gap-4 md:gap-5 hover:bg-[#e7eaf0] transition-colors group/card ${exp.company === 'UID' ? 'min-h-[180px]' : ''}`}
               >
                 {/* Left side: Logo/Image with compact reduced height */}
                 {exp.logoUrl && (
-                  <div className="w-full sm:w-36 md:w-40 h-24 sm:h-28 md:h-28 shrink-0 self-center">
+                  <div className={`w-full sm:w-36 md:w-40 ${exp.company === 'UID' ? 'h-36' : 'h-24 sm:h-28 md:h-28'} shrink-0 self-center`}>
                     <CompanyLogoMark
                       company={exp.company}
                       logoUrl={exp.logoUrl}
@@ -341,6 +343,50 @@ export const AboutPage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* What Others Said (Testimonials) */}
+      <section className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+        <div className="mb-12 space-y-2">
+          <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-slate-950">
+            What others said
+          </h2>
+          <p className="text-sm md:text-base text-slate-500 max-w-xl">
+            Read insights and praises from mentors, engineering leads, and peers who have worked with Roushan.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {TESTIMONIALS.map((t, idx) => (
+            <div
+              key={idx}
+              className="bg-[#eef0f3] rounded-[28px] p-8 flex flex-col justify-between space-y-6"
+            >
+              <p className="text-base md:text-lg font-normal text-slate-800 leading-relaxed">
+                "{t.quote}"
+              </p>
+              <div>
+                {t.linkedinUrl ? (
+                  <a
+                    href={t.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-900 hover:text-blue-600 transition-colors group"
+                    title={`View ${t.author} on LinkedIn`}
+                  >
+                    <span className="group-hover:underline underline-offset-2">{t.author}</span>
+                    <Linkedin className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-colors" />
+                  </a>
+                ) : (
+                  <p className="text-sm font-semibold text-slate-900">{t.author}</p>
+                )}
+                <p className="text-xs text-slate-500 mt-0.5">
+                  {t.role} · {t.company}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

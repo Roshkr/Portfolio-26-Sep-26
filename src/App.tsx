@@ -9,12 +9,58 @@ import { CaseStudyPage } from './pages/CaseStudyPage';
 import { DEFAULT_CASE_STUDIES } from './data/portfolioData';
 import { CaseStudy } from './types';
 
+declare global {
+  interface Window {
+    dataLayer?: unknown[][];
+    gtag?: (...args: unknown[]) => void;
+    gaInitialized?: boolean;
+  }
+}
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'case-study'>('home');
   const [caseStudies, setCaseStudies] = useState<CaseStudy[]>(DEFAULT_CASE_STUDIES);
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy>(DEFAULT_CASE_STUDIES[0]);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isAddStudyOpen, setIsAddStudyOpen] = useState(false);
+  const lastTrackedPage = useRef('');
+
+  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+
+  useEffect(() => {
+    if (!measurementId || window.gaInitialized) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId, { send_page_view: false });
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+    document.head.appendChild(script);
+    window.gaInitialized = true;
+  }, [measurementId]);
+
+  useEffect(() => {
+    if (!measurementId || !window.gtag) return;
+
+    const pagePath = `${window.location.pathname}${window.location.hash}`;
+    if (lastTrackedPage.current === pagePath) return;
+    lastTrackedPage.current = pagePath;
+
+    const pageTitle = currentPage === 'case-study'
+      ? `${selectedCaseStudy.title} | Roushan Kumar`
+      : currentPage === 'about'
+        ? 'About | Roushan Kumar'
+        : 'Home | Roushan Kumar';
+
+    window.gtag('event', 'page_view', {
+      page_path: pagePath,
+      page_title: pageTitle,
+      page_location: window.location.href,
+    });
+  }, [currentPage, measurementId, selectedCaseStudy.id, selectedCaseStudy.title]);
 
   const caseStudiesRef = useRef(caseStudies);
   caseStudiesRef.current = caseStudies;

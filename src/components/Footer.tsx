@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ArrowUpRight, Copy, Check, FileText } from 'lucide-react';
+import { ArrowUpRight, FileText } from 'lucide-react';
 import { DESIGNER_INFO } from '../data/portfolioData';
 
 interface FooterProps {
@@ -7,14 +7,6 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
-  const [copied, setCopied] = React.useState(false);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(DESIGNER_INFO.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <footer className="w-full bg-[#030303] text-white pt-24 pb-16 px-6 relative overflow-hidden rounded-t-[32px] sm:rounded-t-[40px] md:rounded-t-[48px] shadow-[0_-10px_30px_rgba(0,0,0,0.06)]">
       <div className="max-w-6xl mx-auto flex flex-col justify-between min-h-[380px]">
@@ -37,24 +29,19 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
-            {/* Copy Email Button */}
-            <button
-              onClick={handleCopyEmail}
-              aria-label="Copy email address"
-              className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white rounded-full font-medium text-sm transition-all flex items-center gap-2 cursor-pointer border border-white/10 active:scale-95"
+            {/* Compact WhatsApp link */}
+            <a
+              href="https://wa.me/918349933768?text=Hi%20Roushan!%0AI%20am%20reaching%20you%20out%20after%20revewing%20your%20portfolio.%0AI%20will%20share%20the%20details%20soon."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              title="Chat on WhatsApp"
+              className="group h-[52px] w-10 bg-white/10 text-white rounded-full transition-all flex items-center justify-center border border-white/10 active:scale-95"
             >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <span className="text-emerald-300">Email Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-white/70" />
-                  <span>Copy Email</span>
-                </>
-              )}
-            </button>
+              <svg viewBox="0 0 24 24" className="w-5 h-5 transition-colors group-hover:text-[#25D366]" fill="currentColor" aria-hidden="true">
+                <path d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.52 0 .18 5.33.18 11.9c0 2.1.55 4.16 1.6 5.98L.08 24l6.27-1.64a11.9 11.9 0 0 0 5.72 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.44ZM12.08 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98.99-3.63-.24-.37a9.86 9.86 0 0 1-1.52-5.29c0-5.47 4.45-9.92 9.92-9.92a9.86 9.86 0 0 1 7.02 2.91 9.86 9.86 0 0 1 2.9 7.03c0 5.47-4.45 9.92-9.94 9.92Zm5.45-7.43c-.3-.15-1.77-.88-2.04-.98-.28-.1-.48-.15-.68.15-.2.3-.78.98-.96 1.18-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.53.08-.8.38-.28.3-1.06 1.03-1.06 2.5s1.09 2.9 1.24 3.1c.15.2 2.14 3.27 5.18 4.59.73.32 1.3.51 1.74.65.73.23 1.4.2 1.92.12.59-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35Z" />
+              </svg>
+            </a>
           </div>
         </div>
 

@@ -2,6 +2,8 @@ import { CaseStudy, Testimonial, ExperienceItem, EducationItem, ToolItem } from 
 import designerPortrait from '../assets/images/Roushan Picture.jpg';
 import roushaniInvoiceVideo from '../assets/video/Roushani Final Invoice Video.mp4';
 import bridge2BusinessVideo from '../assets/video/Bridge2business.mp4';
+import maxlenceVideo from '../assets/video/Maxlence.mp4';
+import naieVideo from '../assets/video/NAIE.mp4';
 
 export const DESIGNER_INFO = {
   name: "Roushan Kumar",
@@ -488,6 +490,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     category: "HR & Enterprise SaaS",
     tags: ["Onboarding Experience", "Interaction Design", "User Flows"],
     heroImage: "https://framerusercontent.com/images/mjVeVyTpIxBkX4PqovMB92wwao0.png",
+    heroVideo: maxlenceVideo,
     company: "Maxlence Consulting",
     status: "Product Released",
     overview:
@@ -615,6 +618,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     category: "Mobile Consumer & Operations",
     tags: ["Concept to Market", "Mobile UX", "Design System"],
     heroImage: "https://framerusercontent.com/images/9GDVkG0hUQjn0PrWmDa7kszBwI.png",
+    heroVideo: naieVideo,
     company: "Concept Project",
     status: "Validated Prototype",
     overview:
