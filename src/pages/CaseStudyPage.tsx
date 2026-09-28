@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, ArrowRight, ExternalLink } from 'lucide-react';
 import { CaseStudy } from '../types';
-import { LazyVideo, PhoneMockup } from '../components/PhoneMockup';
+import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 
 interface CaseStudyPageProps {
   caseStudy: CaseStudy;
@@ -63,6 +63,11 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
               <span className="px-3 py-1 bg-black text-white text-xs font-medium rounded-full">
                 {caseStudy.category}
               </span>
+              {caseStudy.status && (
+                <span className="px-3 py-1 bg-[#e8eaff] text-[#2b35ee] text-xs font-medium rounded-full">
+                  {caseStudy.status}
+                </span>
+              )}
               {caseStudy.tags?.map((tag, tIdx) => (
                 <span
                   key={tIdx}
@@ -153,26 +158,81 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </div>
       </section>
 
+      {/* Source Portfolio Details */}
+      {(caseStudy.projectDetails || caseStudy.contributionAreas) && (
+        <section className="py-16 md:py-20 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {caseStudy.projectDetails && (
+              <div className={`${caseStudy.contributionAreas ? 'lg:col-span-4' : 'lg:col-span-12'} grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8 self-start`}>
+                {caseStudy.projectDetails.map((detail) => (
+                  <div key={detail.label}>
+                    <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
+                      {detail.label}
+                    </span>
+                    <p className="text-sm md:text-base text-slate-900 leading-relaxed">
+                      {detail.value}
+                    </p>
+                  </div>
+                ))}
+                {caseStudy.liveUrl && (
+                  <a
+                    href={caseStudy.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="col-span-2 inline-flex items-center gap-2 text-sm font-medium text-slate-950 underline underline-offset-4 hover:text-[#2b35ee] transition-colors"
+                  >
+                    View live product
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            )}
+
+            {caseStudy.contributionAreas && (
+              <div className="lg:col-span-8">
+                <span className="text-xs uppercase tracking-wider text-slate-400">
+                  My contribution
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 mt-6">
+                  {caseStudy.contributionAreas.map((area) => (
+                    <div key={area.title} className="space-y-2">
+                      <h3 className="text-lg font-medium tracking-tight text-slate-950">
+                        {area.title}
+                      </h3>
+                      <p className="text-sm text-slate-500 leading-relaxed">
+                        {area.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* Before & After Section */}
       <section className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Before Mockup Card */}
           <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center min-h-[500px]">
-            <PhoneMockup
+            <ProjectMockup
               imageSrc={caseStudy.beforeScreen}
               videoSrc={caseStudy.beforeVideo}
-              label={caseStudy.beforeLabel || 'Before'}
-              className="w-full max-w-[240px]"
+              device={caseStudy.beforeDevice}
+              ariaLabel={caseStudy.beforeLabel || 'Before project screen'}
+              className={`w-full ${caseStudy.beforeDevice === 'phone' ? 'max-w-[240px]' : 'max-w-[640px]'}`}
             />
           </div>
 
           {/* After Mockup Card */}
           <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center min-h-[500px]">
-            <PhoneMockup
+            <ProjectMockup
               imageSrc={caseStudy.afterScreen}
               videoSrc={caseStudy.afterVideo}
-              label={caseStudy.afterLabel || 'After'}
-              className="w-full max-w-[240px]"
+              device={caseStudy.afterDevice}
+              ariaLabel={caseStudy.afterLabel || 'After project screen'}
+              className={`w-full ${caseStudy.afterDevice === 'phone' ? 'max-w-[240px]' : 'max-w-[640px]'}`}
             />
           </div>
         </div>
@@ -254,7 +314,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
         {/* Carousel Showcase Container */}
         <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-16 flex flex-col items-center justify-center relative">
-          <div className="relative w-full max-w-md flex items-center justify-center">
+          <div className="relative w-full max-w-3xl flex items-center justify-center">
             {/* Left Nav Arrow */}
             <button
               onClick={handlePrevSlide}
@@ -265,11 +325,13 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             </button>
 
             {/* Phone Display */}
-            <div className="w-full max-w-[260px] py-4">
-              <PhoneMockup
+            <div className="w-full py-4 flex justify-center">
+              <ProjectMockup
                 imageSrc={designScreens[activeDesignSlide]?.image}
                 videoSrc={designScreens[activeDesignSlide]?.videoSrc}
-                className="w-full"
+                device={designScreens[activeDesignSlide]?.device}
+                ariaLabel={designScreens[activeDesignSlide]?.title || 'Design screen'}
+                className={`w-full ${designScreens[activeDesignSlide]?.device === 'phone' ? 'max-w-[260px]' : 'max-w-[720px]'}`}
               />
             </div>
 
@@ -322,10 +384,12 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           {/* Problem Card */}
           <div className="space-y-6">
             <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex items-center justify-center min-h-[460px]">
-              <PhoneMockup
+              <ProjectMockup
                 imageSrc={caseStudy.problem1.screen}
                 videoSrc={caseStudy.problem1.videoSrc}
-                className="w-full max-w-[240px]"
+                device={caseStudy.problem1.device}
+                ariaLabel={caseStudy.problem1.title}
+                className={`w-full ${caseStudy.problem1.device === 'phone' ? 'max-w-[240px]' : 'max-w-[640px]'}`}
               />
             </div>
             <div className="space-y-2">
@@ -341,10 +405,12 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           {/* Solution Card */}
           <div className="space-y-6">
             <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex items-center justify-center min-h-[460px]">
-              <PhoneMockup
+              <ProjectMockup
                 imageSrc={caseStudy.solution1.screen}
                 videoSrc={caseStudy.solution1.videoSrc}
-                className="w-full max-w-[240px]"
+                device={caseStudy.solution1.device}
+                ariaLabel={caseStudy.solution1.title}
+                className={`w-full ${caseStudy.solution1.device === 'phone' ? 'max-w-[240px]' : 'max-w-[640px]'}`}
               />
             </div>
             <div className="space-y-2">
@@ -358,6 +424,46 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           </div>
         </div>
       </section>
+
+      {caseStudy.storySections && (
+        <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+          <div className="max-w-3xl space-y-6 mb-12">
+            <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
+              Project narrative
+            </span>
+            <h2 className="text-3xl font-normal tracking-tight text-slate-950">
+              From problem to product
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+            {caseStudy.storySections.map((section) => (
+              <article key={section.title} className="space-y-4">
+                {section.eyebrow && (
+                  <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
+                    {section.eyebrow}
+                  </span>
+                )}
+                <h3 className="text-xl font-medium tracking-tight text-slate-950">
+                  {section.title}
+                </h3>
+                {section.body && (
+                  <p className="text-sm md:text-base text-slate-600 leading-relaxed whitespace-pre-line">
+                    {section.body}
+                  </p>
+                )}
+                {section.bullets && (
+                  <ul className="space-y-2 text-sm md:text-base text-slate-600 pl-4 list-disc marker:text-slate-400">
+                    {section.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Outcome Ticker Divider */}
       <div className="w-full overflow-hidden py-5 bg-transparent border-y border-black/[0.06] select-none">
@@ -460,13 +566,15 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </div>
 
         {/* 5 Phone Screens Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 items-end justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start justify-center">
           {caseStudy.finalScreens.map((screen, idx) => (
             <div key={idx} className="flex flex-col items-center">
-              <PhoneMockup
+              <ProjectMockup
                 imageSrc={screen.image}
                 videoSrc={screen.videoSrc}
-                className="w-full max-w-[200px]"
+                device={screen.device}
+                ariaLabel={screen.title}
+                className={`w-full ${screen.device === 'phone' ? 'max-w-[200px]' : 'max-w-[520px]'}`}
               />
               <span className="mt-3 text-xs text-slate-500 font-medium">
                 {screen.title}

@@ -79,11 +79,13 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Project Cards - UXfolio Single Project Showcase Style (Adjusted to 80% Viewport on Desktop) */}
         <div className="flex flex-col gap-8 md:gap-12">
           {caseStudies.map((study, index) => (
-            <div
+            <a
               key={study.id}
+              href={`#case-study-${study.id}`}
               onClick={() => onSelectCaseStudy(study)}
               style={{ '--stack-offset': `${index * 44}px`, zIndex: index + 1 } as React.CSSProperties}
-              className={`project-stack-card group cursor-pointer bg-white rounded-3xl border border-slate-200/80 hover:border-slate-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col lg:flex-row overflow-hidden items-stretch ${study.heroVideo || ['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'lg:h-auto lg:max-h-none' : 'lg:h-[min(80vh,540px)] lg:max-h-[80vh]'}`}
+              aria-label={`Read the ${study.title} case study`}
+              className={`project-stack-card group cursor-pointer bg-white rounded-3xl border border-slate-200/80 hover:border-slate-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col lg:flex-row overflow-hidden items-stretch no-underline ${study.heroVideo || ['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'lg:h-auto lg:max-h-none' : 'lg:h-[min(80vh,540px)] lg:max-h-[80vh]'}`}
             >
               {/* Visual Mockup Container - Uncropped High-Resolution Showcase */}
               <div className="w-full lg:w-7/12 bg-gradient-to-b from-[#f8f9fb] to-[#edf0f5] p-4 sm:p-6 lg:p-7 border-b lg:border-b-0 lg:border-r border-slate-200/70 relative overflow-hidden flex items-center justify-center shrink-0 lg:h-full">
@@ -158,7 +160,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>

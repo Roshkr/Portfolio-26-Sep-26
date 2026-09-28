@@ -28,6 +28,26 @@ export default function App() {
   const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
   useEffect(() => {
+    const pageTitle = currentPage === 'case-study'
+      ? `${selectedCaseStudy.title} Case Study | Roushan Kumar`
+      : currentPage === 'about'
+        ? 'About Roushan Kumar | UX/UI Designer'
+        : 'Roushan Kumar | UX/UI & Product Designer';
+    const description = currentPage === 'case-study'
+      ? selectedCaseStudy.subtitle
+      : currentPage === 'about'
+        ? 'Learn about Roushan Kumar, a UX/UI and product designer based in Ahmedabad, India.'
+        : 'UX/UI and product design portfolio of Roushan Kumar, focused on SaaS, B2B, fintech, enterprise workflows, and mobile experiences.';
+
+    document.title = pageTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', pageTitle);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', pageTitle);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
+  }, [currentPage, selectedCaseStudy.id, selectedCaseStudy.subtitle, selectedCaseStudy.title]);
+
+  useEffect(() => {
     if (!measurementId || window.gaInitialized) return;
 
     window.dataLayer = window.dataLayer || [];

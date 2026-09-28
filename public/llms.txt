@@ -1,0 +1,19 @@
+# Roushan Kumar - UX/UI and Product Designer
+
+> Portfolio of Roushan Kumar, based in Ahmedabad, Gujarat, India. Focus areas include SaaS, B2B, fintech, enterprise workflows, user research, interaction design, and mobile experiences.
+
+## Portfolio content
+
+- [Text portfolio with selected project summaries](/portfolio.md)
+- [Home page and project cards](/)
+- [About page](/#about)
+
+## Selected case studies
+
+- [Roushani - mobile-first invoicing product](/#case-study-roushani)
+- [Umbrella - third-party onboarding experience](/#case-study-umbrella)
+- [Bridge2Business - B2B website redesign](/#case-study-bridge2business)
+- [Maxlence - HR and project management SaaS](/#case-study-maxlence)
+- [Naie - salon appointment and discovery platform](/#case-study-naie)
+
+Contact: [roushan.ux@gmail.com](mailto:roushan.ux@gmail.com)

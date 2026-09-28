@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { ProjectDevice } from '../types';
 
 interface PhoneMockupProps {
   imageSrc?: string;
@@ -10,6 +11,14 @@ interface PhoneMockupProps {
   wireframe?: boolean;
   wireframeType?: 'search' | 'card' | 'detail' | 'grid';
   label?: string;
+}
+
+interface ProjectMockupProps {
+  imageSrc?: string;
+  videoSrc?: string;
+  device?: ProjectDevice;
+  className?: string;
+  ariaLabel?: string;
 }
 
 /**
@@ -34,7 +43,6 @@ export const LazyVideo: React.FC<{
   const [inView, setInView] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const objectFitClass = objectFit === 'contain' ? 'object-contain' : 'object-cover';
-
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
@@ -91,6 +99,52 @@ export const LazyVideo: React.FC<{
           isReady ? 'opacity-100' : 'opacity-0'
         } ${className}`}
       />
+    </div>
+  );
+};
+
+export const ProjectMockup: React.FC<ProjectMockupProps> = ({
+  imageSrc,
+  videoSrc,
+  device = 'desktop',
+  className = '',
+  ariaLabel = 'Project interface preview',
+}) => {
+  if (device === 'phone') {
+    return (
+      <PhoneMockup
+        imageSrc={imageSrc}
+        videoSrc={videoSrc}
+        className={className}
+      />
+    );
+  }
+
+  return (
+    <div className={`relative w-full max-w-[720px] aspect-[16/10] rounded-2xl bg-slate-950 p-1.5 shadow-2xl ring-1 ring-black/10 overflow-hidden ${className}`}>
+      <div className="relative h-full w-full overflow-hidden rounded-xl bg-[#f4f5f7]">
+        {videoSrc ? (
+          <LazyVideo
+            src={videoSrc}
+            poster={imageSrc}
+            ariaLabel={ariaLabel}
+            objectFit="contain"
+            frameClassName="h-full w-full bg-[#f4f5f7]"
+          />
+        ) : imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={ariaLabel}
+            referrerPolicy="no-referrer"
+            className="h-full w-full object-contain"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center text-xs uppercase tracking-widest text-slate-400">
+            Desktop interface preview
+          </div>
+        )}
+      </div>
     </div>
   );
 };

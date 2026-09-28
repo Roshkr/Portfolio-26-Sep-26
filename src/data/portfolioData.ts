@@ -110,6 +110,91 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     role: "Product Designer + AI-Assisted Builder",
     team: "Solo Ownership (Design + AI Code)",
     timeline: "4 Weeks (Concept to Live MVP)",
+    projectDetails: [
+      { label: "Role", value: "UI/UX Designer" },
+      { label: "Duration", value: "200 Hours" },
+      { label: "Platform", value: "Mobile-first PWA" },
+      { label: "Industry", value: "B2B SaaS" },
+    ],
+    liveUrl: "https://roushani.vercel.app/",
+    contributionAreas: [
+      {
+        title: "Product Strategy",
+        desc: "Defined product goals, prioritized features, and shaped the overall direction of the invoicing platform.",
+      },
+      {
+        title: "UX Research",
+        desc: "Observed real user workflows, identified friction in existing tools, and validated solutions through iterative testing.",
+      },
+      {
+        title: "Information Architecture",
+        desc: "Designed the complete structure of workflows, navigation, and data relationships for customers, services, and invoices.",
+      },
+      {
+        title: "AI-Assisted Design & Development",
+        desc: "Built and refined the interface and product logic with Figma Make, Stitch, Antigravity, and VS Code.",
+      },
+      {
+        title: "Design System & Consistency",
+        desc: "Established reusable visual rules for spacing, typography, and interaction patterns across the product.",
+      },
+      {
+        title: "Full-Stack Ownership",
+        desc: "Managed the Supabase database structure, authentication, data logic, PDF generation, and product stability.",
+      },
+    ],
+    storySections: [
+      {
+        eyebrow: "Problem statement",
+        title: "Why this product was needed",
+        body: "Many service-based businesses still rely on Excel sheets or outdated invoicing tools, making the process slow, repetitive, and unprofessional.",
+        bullets: [
+          "Users repeatedly entered the same customer and service details.",
+          "Invoices looked inconsistent and lacked proper branding.",
+          "Existing tools felt too complicated for simple invoicing needs.",
+        ],
+      },
+      {
+        eyebrow: "Business goals",
+        title: "Make professional invoicing feel effortless",
+        bullets: [
+          "Speed up invoice creation and reduce manual effort.",
+          "Let users save customers and services for instant reuse.",
+          "Make branding simple for people without design skills.",
+          "Create a clean experience for non-technical users.",
+        ],
+      },
+      {
+        eyebrow: "Research insight",
+        title: "The opportunity was removing friction",
+        body: "I observed freelancers and small business owners using Excel, Google Sheets, and existing invoicing tools. The biggest opportunity was not adding more features; it was removing repetitive work and making the output feel professional.",
+        bullets: [
+          "Manual work was repeated for every invoice.",
+          "Branding support was limited or missing.",
+          "Users had no reliable place to manage invoice history.",
+        ],
+      },
+      {
+        eyebrow: "Core features",
+        title: "Design decisions that reduced daily effort",
+        bullets: [
+          "Progressive invoice creation with saved customers and services.",
+          "Simple logo upload and brand color controls.",
+          "A focused dashboard for invoices, customers, services, and history.",
+          "Reliable PDF export, direct sharing, and print support.",
+        ],
+      },
+      {
+        eyebrow: "Accessibility",
+        title: "Designed for non-technical users",
+        body: "The product uses familiar labels, large click targets, strong contrast, predictable layouts, and clear validation feedback so users can create and save invoices without a learning curve.",
+      },
+      {
+        eyebrow: "Reflection",
+        title: "Simplicity matters more than features",
+        body: "Building Roushani end-to-end showed how closely interface decisions and backend behavior are connected. AI-assisted tools accelerated iteration, but product quality still depended on clear decisions, real workflow testing, and careful refinement.",
+      },
+    ],
     beforeScreen: "https://framerusercontent.com/images/obftsqMxDUXgDe57R2UsMuKmg.png",
     afterScreen: "https://framerusercontent.com/images/KTnRqrAiyWhbzM1PQbsH6Koggcg.jpeg",
     beforeLabel: "Cluttered Spreadsheet Tooling",
@@ -159,6 +244,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
         title: "03. Mobile Responsive View",
         image: "https://framerusercontent.com/images/KTnRqrAiyWhbzM1PQbsH6Koggcg.jpeg",
         note: "Send PDFs and download invoices directly from any smartphone browser.",
+        device: "phone",
       },
     ],
     usabilityText:
@@ -214,6 +300,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         title: "Mobile View",
         image: "https://framerusercontent.com/images/KTnRqrAiyWhbzM1PQbsH6Koggcg.jpeg",
+        device: "phone",
       },
       {
         title: "Export & Share",
@@ -234,102 +321,158 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     tags: ["Usability Testing", "Enterprise UX", "Workflow Design", "User Research"],
     heroImage: "https://framerusercontent.com/images/ODQSiBSOgvzxpJFnv9I2iPjjc7s.png",
     company: "Confidential Client (NDA)",
-    status: "Enterprise Rollout",
+    status: "Final Implementation",
     overview:
-      "The onboarding experience suffered from inconsistent UI patterns, unclear hierarchy, weak validation logic, and poor error handling, creating confusion during the client onboarding process. Users struggled to understand required actions, leading to mistakes, friction, and an overall unreliable onboarding experience.\n\nThe onboarding form had grown without a consistent UX structure. I conducted deep user research, task mapping, and restructured the workflow into an intuitive progressive journey.",
+      "This project focused on improving an NDA onboarding form used to add a new third party. The work explored whether users could understand the fields, identify required information, and complete the form without unnecessary confusion.\n\nI tested the existing flow with five participants, used their feedback to map pain points, and refined the form through implementation and a documented before-and-after redesign.",
     role: "UX/UI Designer",
     team: "Design + Development Team",
     timeline: "1 Month",
+    projectDetails: [
+      { label: "Role", value: "UX/UI Designer" },
+      { label: "Team", value: "Design + Development Team" },
+      { label: "Duration", value: "1 Month" },
+      { label: "Company", value: "Confidential Client (NDA)" },
+    ],
+    storySections: [
+      {
+        eyebrow: "Problem",
+        title: "A fragmented onboarding experience",
+        body: "People needed to add a third party through a detailed NDA form. The project tested whether the fields and required steps were easy to understand, and where the form caused hesitation.",
+      },
+      {
+        eyebrow: "What I did",
+        title: "Map and refine the onboarding flow",
+        bullets: [
+          "Created a mind map for the onboarding process.",
+          "Tested the existing form with five participants.",
+          "Used feedback to identify confusing rows and visual hierarchy issues.",
+          "Documented the final implementation and before-and-after design.",
+        ],
+      },
+      {
+        eyebrow: "Research process",
+        title: "Testing the moments where users hesitated",
+        body: "Five participants took part in 20-minute sessions. They tried the onboarding flow and answered questions about their familiarity with onboarding tools, field meaning, required fields, and the overall form experience.",
+        bullets: [
+          "80% had used an onboarding tool before; 20% had not.",
+          "All participants said they understood the meaning of the fields.",
+          "Participants were asked whether they noticed the mandatory fields.",
+          "The average experience rating was 3.5 out of 5.",
+        ],
+      },
+      {
+        eyebrow: "Participant feedback",
+        title: "Make the form clearer and lighter",
+        bullets: [
+          "A company or individual row was confusing.",
+          "Some companies may not have many details to provide.",
+          "The form should look modern and clean.",
+          "The form should ask for fewer fields.",
+        ],
+      },
+      {
+        eyebrow: "Outcome",
+        title: "A more organized onboarding form",
+        body: "The final implementation shows a reworked third-party form with clearer grouping and field relationships, informed by the participant feedback and documented in the before-and-after screens.",
+      },
+      {
+        eyebrow: "Reflection",
+        title: "Keep detailed forms focused",
+        body: "The sessions showed that users could understand individual fields while still finding the overall form confusing. The experience needs both clear wording and a manageable amount of information.",
+      },
+    ],
     beforeScreen: "https://framerusercontent.com/images/w65HWuxvZCSjNrQan5ezd20SHQ.png",
     afterScreen: "https://framerusercontent.com/images/LXKJtGnGM3fv5qdOkDcpSRlbxqE.png",
     beforeLabel: "Fragmented Form Layout",
     afterLabel: "Structured Step-by-Step Flow",
     interviewsText:
-      "Recruited corporate compliance officers, operations leads, and clients who had recently completed or abandoned the legacy onboarding system. Analyzed drop-off logs and observed users live during task execution.",
+      "The central research question was whether the third-party onboarding design felt user-friendly and whether adding a new user could be done without frustration or confusion. Five participants took part in 20-minute sessions.",
     interviewBullets: [
       "Have you used any onboarding tool before?",
-      "Where did you feel most uncertain when submitting business verification docs?",
-      "How did ambiguous error alerts affect your willingness to finish?",
-      "What information should always remain visible throughout the sequence?",
+      "Do you understand what the fields mean?",
+      "Do you notice which fields are mandatory?",
+      "How would you rate the form experience from 0 to 5?",
     ],
     keyInsights: [
       {
-        title: "Cognitive Overload",
-        desc: "Unfolding 30+ form inputs in a single long scroll intimidated users and led to high abandonment.",
+        title: "Most participants knew onboarding tools",
+        desc: "80% said they had used an onboarding tool before; 20% had not.",
       },
       {
-        title: "Vague Error Messaging",
-        desc: "Generic 'Submission failed' banners gave no guidance on which specific field was non-compliant.",
+        title: "Fields were understood",
+        desc: "All participants said they understood what the form fields meant.",
       },
       {
-        title: "Lack of Save & Resume",
-        desc: "Enterprise users frequently needed to gather documents from colleagues, requiring safe draft preservation.",
+        title: "The form still felt confusing",
+        desc: "Feedback called out confusing rows, a dated visual style, and a form with too many fields. The average experience rating was 3.5 out of 5.",
       },
     ],
     designText:
-      "Re-engineered the onboarding architecture into clear thematic milestones: Company Profile, Stakeholder KYC, Compliance Checklist, and Final Sign-Off with inline autosave.",
+      "I used a mind map to organize the onboarding flow, then refined the form based on participant feedback. The implementation work focused on clarifying row labels and field relationships, making required information easier to spot, and presenting the revised form as a more orderly experience.",
     designBullets: [
-      "Created persistent progress tracker with estimated completion time",
-      "Implemented smart real-time input validation with contextual helper tooltips",
-      "Designed instant document drag-and-drop verification with file preview",
-      "Standardized design tokens across enterprise form controls",
+      "Mapped the onboarding process and its information architecture",
+      "Reviewed company and individual rows that participants found confusing",
+      "Clarified required fields and form labels",
+      "Documented the final implementation and before-and-after form",
     ],
     designScreens: [
       {
-        title: "01. Onboarding Stepper",
+        title: "01. Onboarding Form",
         image: "https://framerusercontent.com/images/ODQSiBSOgvzxpJFnv9I2iPjjc7s.png",
-        note: "Progressive milestone structure with clear visual completion states.",
+        note: "Third-party onboarding flow and form structure.",
       },
       {
-        title: "02. Validation & Error Handling",
+        title: "02. Existing Form",
         image: "https://framerusercontent.com/images/w65HWuxvZCSjNrQan5ezd20SHQ.png",
-        note: "Inline contextual alerts indicating exact fixes required before submission.",
+        note: "Before state of the onboarding form.",
       },
       {
-        title: "03. Review & Authorization",
+        title: "03. Refined Form",
         image: "https://framerusercontent.com/images/LXKJtGnGM3fv5qdOkDcpSRlbxqE.png",
-        note: "Clean summary sheet enabling one-click digital signing and instant PDF receipt.",
+        note: "Redesigned form with clearer organization.",
       },
     ],
     usabilityText:
-      "Conducted usability testing sessions with 10 enterprise users. Benchmarked time-to-complete, error rates, and System Usability Scale (SUS) scores before and after the redesign.",
+      "Five participants reviewed the third-party onboarding flow in 20-minute sessions. The study asked about tool familiarity, field comprehension, mandatory fields, and the overall experience. Participants rated the form an average of 3.5 out of 5 and shared feedback on confusing rows, visual style, and the number of fields.",
     problem1: {
-      title: "Problem: Unclear Document Upload Specs",
-      desc: "Users frequently uploaded unsupported file formats or invalid resolutions, only finding out at the very end.",
+      title: "Before: Dense third-party form",
+      desc: "Participants called out confusing rows, a dated appearance, and too many fields to complete.",
       screen: "https://framerusercontent.com/images/w65HWuxvZCSjNrQan5ezd20SHQ.png",
+      device: "desktop",
     },
     solution1: {
-      title: "Solution: Live Pre-Flight Validation",
-      desc: "Added instant format checking, file size indicators, and visual preview upon drop.",
+      title: "After: Refined onboarding form",
+      desc: "The final implementation reorganizes the form and clarifies the information users need to add a new third party.",
       screen: "https://framerusercontent.com/images/LXKJtGnGM3fv5qdOkDcpSRlbxqE.png",
+      device: "desktop",
     },
     impactText:
-      "The revamped onboarding pipeline drove a significant drop in support tickets and slashed onboarding turnaround time for new enterprise clients.",
+      "The research identified clear opportunities to improve the form: simplify confusing rows, use a more modern visual style, reduce the number of fields where possible, and make required information easier to find. The documented final implementation shows the redesigned onboarding experience.",
     metrics: [
       {
-        value: "45%",
-        label: "Faster Completion Time",
-        context: "Reduced enterprise onboarding time from 35m to 19m",
+        value: "5",
+        label: "Research participants",
+        context: "20-minute sessions",
       },
       {
-        value: "-62%",
-        label: "Reduction in Support Tickets",
-        context: "Fewer escalation requests for stuck onboarding forms",
+        value: "80%",
+        label: "Had used an onboarding tool before",
+        context: "20% had not",
       },
       {
-        value: "92%",
-        label: "First-Time Success Rate",
-        context: "Up from 54% in legacy baseline audit",
+        value: "3.5 / 5",
+        label: "Average form experience rating",
+        context: "Participant feedback",
       },
     ],
     learnings: [
-      "Progressive disclosure reduces anxiety in dense enterprise flows.",
-      "Clear feedback loops create trust and confidence during sensitive compliance steps.",
-      "Building modular components allows easy maintenance across global client tiers.",
+      "Field comprehension alone does not guarantee a smooth form experience; users can understand fields and still find the layout confusing.",
+      "A clearer visual hierarchy and fewer unnecessary fields can make detailed onboarding feel more manageable.",
+      "Participant feedback helped surface specific issues in the company and individual rows.",
     ],
     nextSteps: [
-      "Implementing AI autofill from corporate tax filings and domain records.",
-      "Expanding multi-language localization for APAC and EMEA teams.",
+      "Review the number of fields and remove information that is not essential to onboarding.",
+      "Make required fields and the company or individual choices easier to scan.",
     ],
     finalScreens: [
       {
@@ -370,6 +513,52 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     role: "IC UX/UI Designer",
     team: "1 Designer, 1 Developer",
     timeline: "15 Days",
+    projectDetails: [
+      { label: "Role", value: "IC UX/UI Designer" },
+      { label: "Team", value: "1 Designer, 1 Developer" },
+      { label: "Duration", value: "15 Days" },
+      { label: "Company", value: "Bridge2Business" },
+      { label: "Project type", value: "Freelance Website Redesign" },
+    ],
+    storySections: [
+      {
+        eyebrow: "Client problem",
+        title: "An outdated structure made the business hard to understand",
+        body: "Bridge2Business had a cluttered website with weak hierarchy, excessive text, inconsistent visuals, and navigation friction. The experience made the company feel less credible and harder to explore.",
+      },
+      {
+        eyebrow: "What I did",
+        title: "Turn dense information into a clearer path",
+        bullets: [
+          "Audited the website for usability, hierarchy, and navigation issues.",
+          "Restructured the information architecture and content flow.",
+          "Simplified navigation and grouped content into modular cards.",
+          "Introduced a consistent typography, spacing, and visual system.",
+          "Improved CTA hierarchy and designed responsive desktop and mobile layouts.",
+        ],
+      },
+      {
+        eyebrow: "Research",
+        title: "Users wanted clarity, credibility, and speed",
+        body: "User research focused on how people found services, what built trust, which areas felt confusing, and what would help them engage with a digital marketing agency.",
+        bullets: [
+          "Users preferred intuitive layouts and easy-to-find information.",
+          "Professional visual design increased confidence in the business.",
+          "Testimonials, case studies, and evidence of expertise supported trust.",
+          "Fast, responsive performance was essential on mobile.",
+        ],
+      },
+      {
+        eyebrow: "Concept to final design",
+        title: "A modular system for exploration",
+        body: "The concept grouped services into clear sections with a stronger visual hierarchy, helping visitors understand digital transformation offerings and take the next step with confidence.",
+      },
+      {
+        eyebrow: "Reflection",
+        title: "Responsive behavior belongs in the first concept",
+        body: "Early work focused too heavily on desktop information architecture. Revisiting navigation and layout for smaller screens reinforced that information architecture, responsiveness, and usability need to evolve together.",
+      },
+    ],
     beforeScreen: "https://framerusercontent.com/images/NvwCzpue7KQaYCXTYTFo3MbBtdE.png",
     afterScreen: "https://framerusercontent.com/images/yzTTlSl6mf0PIHUI7qPAPbJVU.png",
     beforeLabel: "Legacy Unresponsive Site",
@@ -498,6 +687,52 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     role: "UX Designer",
     team: "1 Designer, 1 Lead Developer",
     timeline: "15 Days",
+    projectDetails: [
+      { label: "Role", value: "IC UX/UI Designer" },
+      { label: "Team", value: "1 Designer, 2 React Developers" },
+      { label: "Duration", value: "15 Days" },
+      { label: "Company", value: "Maxlence Consulting" },
+    ],
+    storySections: [
+      {
+        eyebrow: "Problem",
+        title: "Onboarding had to work for different roles",
+        body: "Users had to answer too many questions before reaching their dashboard. Long forms, unclear steps, and irrelevant options created confusion and made the first impression of the platform feel heavy.",
+      },
+      {
+        eyebrow: "What I did",
+        title: "Guide people to a useful dashboard faster",
+        bullets: [
+          "Designed the onboarding architecture from scratch.",
+          "Created a step-by-step flow with grouped questions.",
+          "Used conditional logic to personalize each path.",
+          "Added progress indicators and clearer question hierarchy.",
+          "Structured onboarding around dashboard customization goals.",
+          "Optimized layouts for mobile responsiveness.",
+        ],
+      },
+      {
+        eyebrow: "Research process",
+        title: "From competitive review to HR interviews",
+        body: "I reviewed BambooHR, Keka, and Zendesk to understand how comparable products approached onboarding, then interviewed HR professionals to identify recurring pain points and missing functionality.",
+        bullets: [
+          "HR teams were bridging gaps with multiple tools.",
+          "Users wanted click-based choices instead of long text input.",
+          "Templates, suggestions, autocomplete, and skip options were missing.",
+          "Teams needed more control over the dashboard experience.",
+        ],
+      },
+      {
+        eyebrow: "Outcome",
+        title: "A scalable foundation for role-based onboarding",
+        body: "The final structure introduced progressive questions, role-aware paths, and dashboard personalization. It gave the platform a foundation that could support different team sizes and future workflows without overwhelming new users.",
+      },
+      {
+        eyebrow: "Reflection",
+        title: "Onboarding should match the real product scope",
+        body: "The product scope evolved while the flow was being designed. That made it clear that onboarding content must be validated against the confirmed MVP before adding future functionality, especially in an early-stage SaaS product.",
+      },
+    ],
     beforeScreen: "https://framerusercontent.com/images/AD2obtND6Ll0w2gTlP6Kmocvcs.png",
     afterScreen: "https://framerusercontent.com/images/qmu2Y0W4uwUIGMxyJ9xliGA284.png",
     beforeLabel: "Fragmented Spreadsheets & Emails",
@@ -626,8 +861,61 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     role: "UX/UI Designer",
     team: "Concept Project (Sole Designer)",
     timeline: "3 Months",
+    projectDetails: [
+      { label: "Role", value: "UX/UI Designer" },
+      { label: "Team", value: "Concept Project" },
+      { label: "Duration", value: "3 Months" },
+      { label: "Company", value: "Naie" },
+    ],
+    storySections: [
+      {
+        eyebrow: "Problem",
+        title: "Salon appointments were fragmented and unpredictable",
+        body: "Customers often had to message salons manually, wait for responses, or arrive without knowing the real availability. Salon owners managed bookings through calls, spreadsheets, and chats, making schedules difficult to organize and scale.",
+      },
+      {
+        eyebrow: "What I did",
+        title: "Design one connected experience for both sides",
+        bullets: [
+          "Defined the complete customer and salon-owner booking workflows.",
+          "Created hyperlocal salon discovery and live slot booking.",
+          "Designed real-time availability, queue tracking, and reminders.",
+          "Built service and staff selection experiences.",
+          "Designed an owner dashboard for appointments and staff management.",
+          "Created modern onboarding flows for customers and salon owners.",
+        ],
+      },
+      {
+        eyebrow: "Project brief",
+        title: "Reduce waiting while improving salon operations",
+        body: "The goal was to help customers schedule appointments more easily while giving salons better visibility into availability, overbooking, customer flow, and retention.",
+      },
+      {
+        eyebrow: "Research",
+        title: "Two audiences, one shared service experience",
+        body: "I studied salon scheduling products and worked with salon owners and staff to understand daily operations. The research was shaped around two groups: customers looking for a time-efficient booking experience and owners who needed clearer appointment management.",
+        bullets: [
+          "Explored existing salon scheduling and service platforms.",
+          "Mapped customer discovery, booking, and reminder needs.",
+          "Studied owner workflows for appointments, staff, and customer history.",
+          "Used competitor research to explore loyalty and engagement opportunities.",
+        ],
+      },
+      {
+        eyebrow: "Reflection",
+        title: "Waiting time is also a trust problem",
+        body: "The project showed that appointment products need flexible real-time communication, not only fixed schedules. Late arrivals, service delays, and changing queues all affect confidence, so the experience must balance business efficiency with customer convenience.",
+      },
+      {
+        eyebrow: "Future state",
+        title: "A scalable local-service ecosystem",
+        body: "Naie can grow beyond salons into other appointment-based businesses with smart scheduling, AI recommendations, loyalty systems, analytics, and deeper business management tools.",
+      },
+    ],
     beforeScreen: "https://framerusercontent.com/images/Zs90adwddfrJZVjvvO6DMwYIsX0.png",
+    beforeDevice: "phone",
     afterScreen: "https://framerusercontent.com/images/LCinjzvZZsansVCf8FEbNXAKHs.png",
+    afterDevice: "phone",
     beforeLabel: "Manual WhatsApp / Call Chaos",
     afterLabel: "Live Slot Booking & Queue Tracking",
     interviewsText:
@@ -665,16 +953,19 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
         title: "01. Hyperlocal Discovery",
         image: "https://framerusercontent.com/images/9GDVkG0hUQjn0PrWmDa7kszBwI.png",
         note: "Explore nearby studios with transparent pricing and real-time open slots.",
+        device: "phone",
       },
       {
         title: "02. Stylist & Slot Selection",
         image: "https://framerusercontent.com/images/Zs90adwddfrJZVjvvO6DMwYIsX0.png",
         note: "Choose your preferred professional and lock in a 15-minute window.",
+        device: "phone",
       },
       {
         title: "03. Live Queue & Tracker",
         image: "https://framerusercontent.com/images/LCinjzvZZsansVCf8FEbNXAKHs.png",
         note: "Real-time updates allowing clients to arrive exactly when their chair is ready.",
+        device: "phone",
       },
     ],
     usabilityText:
@@ -683,11 +974,13 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       title: "Problem: Unpredictable Service Durations",
       desc: "Hair coloring or complex treatments frequently ran over, throwing off subsequent appointments.",
       screen: "https://framerusercontent.com/images/Zs90adwddfrJZVjvvO6DMwYIsX0.png",
+      device: "phone",
     },
     solution1: {
       title: "Solution: Dynamic Buffer Time & Live Delay Alerts",
       desc: "Algorithm automatically prompts upcoming clients if a stylist runs 10 minutes behind schedule.",
       screen: "https://framerusercontent.com/images/LCinjzvZZsansVCf8FEbNXAKHs.png",
+      device: "phone",
     },
     impactText:
       "Naie validated a scalable business framework that reduces customer idle waiting time by up to 70% while improving salon chair occupancy throughout the workweek.",
@@ -720,14 +1013,17 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         title: "Discovery Screen",
         image: "https://framerusercontent.com/images/9GDVkG0hUQjn0PrWmDa7kszBwI.png",
+        device: "phone",
       },
       {
         title: "Salon Details",
         image: "https://framerusercontent.com/images/Zs90adwddfrJZVjvvO6DMwYIsX0.png",
+        device: "phone",
       },
       {
         title: "Service Selector",
         image: "https://framerusercontent.com/images/LCinjzvZZsansVCf8FEbNXAKHs.png",
+        device: "phone",
       },
       {
         title: "Live Queue",

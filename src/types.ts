@@ -1,3 +1,5 @@
+export type ProjectDevice = 'phone' | 'desktop';
+
 export interface CaseStudy {
   id: string;
   title: string;
@@ -14,7 +16,9 @@ export interface CaseStudy {
   company?: string;
   status?: string;
   beforeScreen: string;
+  beforeDevice?: ProjectDevice;
   afterScreen: string;
+  afterDevice?: ProjectDevice;
   beforeVideo?: string;
   afterVideo?: string;
   beforeLabel?: string;
@@ -28,19 +32,30 @@ export interface CaseStudy {
     title: string;
     image: string;
     note: string;
+    device?: ProjectDevice;
     /** Optional video that replaces image in the carousel slide */
     videoSrc?: string;
   }>;
   usabilityText: string;
-  problem1: { title: string; desc: string; screen?: string; videoSrc?: string };
-  solution1: { title: string; desc: string; screen?: string; videoSrc?: string };
+  problem1: { title: string; desc: string; screen?: string; videoSrc?: string; device?: ProjectDevice };
+  solution1: { title: string; desc: string; screen?: string; videoSrc?: string; device?: ProjectDevice };
   impactText: string;
   metrics: Array<{ value: string; label: string; context?: string }>;
   learnings: string[];
   nextSteps: string[];
+  projectDetails?: Array<{ label: string; value: string }>;
+  contributionAreas?: Array<{ title: string; desc: string }>;
+  storySections?: Array<{
+    eyebrow?: string;
+    title: string;
+    body?: string;
+    bullets?: string[];
+  }>;
+  liveUrl?: string;
   finalScreens: Array<{
     title: string;
     image: string;
+    device?: ProjectDevice;
     /** Optional video shown in the final screens gallery */
     videoSrc?: string;
   }>;
