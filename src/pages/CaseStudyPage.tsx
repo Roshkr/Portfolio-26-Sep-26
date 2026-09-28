@@ -253,12 +253,12 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           {caseStudy.keyInsights.map((insight, idx) => (
             <div
               key={idx}
-              className="bg-[#eef0f3] rounded-[24px] p-6 md:p-8 space-y-3"
+              className="bg-[#eef0f3] rounded-[24px] p-6 md:p-8 space-y-4 sm:space-y-5"
             >
-              <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
+              <span className="block text-xs uppercase tracking-wider text-slate-400 font-medium">
                 {insight.title}
               </span>
-              <p className="text-sm md:text-base text-slate-800 font-normal leading-snug">
+              <p className="text-sm md:text-base text-slate-800 font-normal leading-relaxed">
                 {insight.desc}
               </p>
             </div>
