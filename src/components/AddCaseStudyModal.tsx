@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { X, Plus, Sparkles } from 'lucide-react';
 import { CaseStudy } from '../types';
+import fintechCryptoScreen from '../assets/images/fintech_crypto_screen_1790138033018.jpg';
+import onboardingBeforeScreen from '../assets/images/fintech_onboarding_before_1790138045696.jpg';
+import onboardingAfterScreen from '../assets/images/fintech_onboarding_after_1790138058707.jpg';
 
 interface AddCaseStudyModalProps {
   isOpen: boolean;
@@ -32,15 +35,15 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
       title: title.trim(),
       subtitle: subtitle.trim() || 'A transformative mobile experience engineered for growth.',
       category: category.trim() || 'Product Design',
-      heroImage: '/src/assets/images/fintech_crypto_screen_1790138033018.jpg',
+      heroImage: fintechCryptoScreen,
       overview:
         overview.trim() ||
         'Comprehensive mobile redesign focused on user onboarding velocity, high retention, and data-driven iterations.',
       role: role.trim() || 'Lead Product Designer',
       team: '1 Lead Designer, 2 Engineers, 1 PM',
       timeline: '12 weeks',
-      beforeScreen: '/src/assets/images/fintech_onboarding_before_1790138045696.jpg',
-      afterScreen: '/src/assets/images/fintech_onboarding_after_1790138058707.jpg',
+      beforeScreen: onboardingBeforeScreen,
+      afterScreen: onboardingAfterScreen,
       beforeLabel: 'Legacy Architecture',
       afterLabel: 'Streamlined Flow',
       interviewsText:
@@ -74,7 +77,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
       designScreens: [
         {
           title: '01. Dashboard Overview',
-          image: '/src/assets/images/fintech_crypto_screen_1790138033018.jpg',
+          image: fintechCryptoScreen,
           note: 'Real-time performance tracking with instant asset swapping.',
         },
       ],
@@ -83,12 +86,12 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
       problem1: {
         title: 'Initial Hesitation',
         desc: 'Users questioned hidden gas and slippage rates.',
-        screen: '/src/assets/images/fintech_onboarding_before_1790138045696.jpg',
+        screen: onboardingBeforeScreen,
       },
       solution1: {
         title: 'Locked Rate Badge',
         desc: 'Implemented a 30s rate lock guarantee with immediate countdown.',
-        screen: '/src/assets/images/fintech_onboarding_after_1790138058707.jpg',
+        screen: onboardingAfterScreen,
       },
       impactText:
         'Achieved significant lift in key cohort retention and customer satisfaction metrics post rollout.',
@@ -106,8 +109,8 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
         'Extending design tokens to desktop web companion app.',
       ],
       finalScreens: [
-        { title: 'Screen 1', image: '/src/assets/images/fintech_onboarding_after_1790138058707.jpg' },
-        { title: 'Screen 2', image: '/src/assets/images/fintech_crypto_screen_1790138033018.jpg' },
+        { title: 'Screen 1', image: onboardingAfterScreen },
+        { title: 'Screen 2', image: fintechCryptoScreen },
       ],
     };
 

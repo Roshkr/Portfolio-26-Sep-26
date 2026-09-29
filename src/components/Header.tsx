@@ -4,7 +4,7 @@ import { DESIGNER_INFO } from '../data/portfolioData';
 
 interface HeaderProps {
   currentPage: 'home' | 'about' | 'case-study';
-  onNavigate: (page: 'home' | 'about' | 'case-study') => void;
+  onNavigate: (page: 'home' | 'about') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({

@@ -6,6 +6,89 @@
   }
 }
 
+.portfolio-protected {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.portfolio-protected input,
+.portfolio-protected textarea,
+.portfolio-protected select,
+.portfolio-protected [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.portfolio-protected img,
+.portfolio-protected video {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.hero-gradient-pointer {
+  width: min(90vw, 900px);
+  height: min(64vw, 560px);
+  pointer-events: none;
+  transform: translate3d(
+    calc(-50% + var(--hero-pointer-x, 0px)),
+    calc(-50% + var(--hero-pointer-y, 0px)),
+    0
+  );
+  transition: transform 700ms cubic-bezier(0.2, 0.65, 0.3, 1);
+  will-change: transform;
+}
+
+.hero-gradient-float {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(100, 116, 139, 0.12) 0%,
+    rgba(148, 163, 184, 0.065) 42%,
+    rgba(148, 163, 184, 0) 72%
+  );
+  filter: blur(24px);
+  opacity: 0.92;
+  animation: hero-gradient-drift 8s ease-in-out infinite alternate;
+}
+
+@keyframes hero-gradient-drift {
+  from {
+    opacity: 0.78;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient-pointer {
+    transition: none;
+  }
+
+  .hero-gradient-float {
+    animation: none;
+  }
+
+}
+
+@media print {
+  body > #root {
+    display: none !important;
+  }
+
+  body::after {
+    content: 'Printing is disabled for this portfolio.';
+    display: block;
+    padding: 2rem;
+    color: #111;
+    font: 14pt system-ui, sans-serif;
+  }
+}
+
 .project-stack-card {
   position: sticky;
   top: calc(5rem + var(--stack-offset, 0px));

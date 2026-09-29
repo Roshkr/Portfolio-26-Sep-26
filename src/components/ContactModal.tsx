@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { X, Send, Mail, Check, Copy, Loader2, ExternalLink } from 'lucide-react';
 import { DESIGNER_INFO } from '../data/portfolioData';
+import {
+  copyTextToClipboard,
+  createContactGmailUrl,
+  createContactMailto,
+  submitContactInquiry,
+} from '../lib/contactService';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -14,53 +20,33 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState(false);
+  const inquiry = { name, email, message };
 
   if (!isOpen) return null;
-
-  const triggerMailto = () => {
-    const subject = encodeURIComponent(`Project Inquiry from ${name}`);
-    const body = encodeURIComponent(`Hi Roushan,\n\n${message}\n\nFrom: ${name} (${email})`);
-    window.location.href = `mailto:roushan.ux@gmail.com?subject=${subject}&body=${body}`;
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/roushan.ux@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-          _subject: `New Project Inquiry from ${name}`,
-          _template: 'table',
-        }),
-      });
-
-      if (response.ok) {
-        setSent(true);
-      } else {
-        triggerMailto();
-        setSent(true);
-      }
+      await submitContactInquiry(inquiry, `New Project Inquiry from ${name}`);
+      setSent(true);
     } catch {
-      triggerMailto();
+      window.location.href = createContactMailto(inquiry, `Project Inquiry from ${name}`);
       setSent(true);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(DESIGNER_INFO.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopyEmail = async () => {
+    try {
+      await copyTextToClipboard(DESIGNER_INFO.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
@@ -127,7 +113,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </p>
             <div className="flex items-center gap-2 pt-2">
               <a
-                href={`https://mail.google.com/mail/?view=cm&fs=1&to=roushan.ux@gmail.com&su=${encodeURIComponent(`Project Inquiry from ${name}`)}&body=${encodeURIComponent(message)}`}
+                href={createContactGmailUrl(inquiry, `Project Inquiry from ${name}`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl transition-colors inline-flex items-center gap-1.5"

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import {
-  ArrowUpRight, Mail, MapPin, Check, Copy, Send, ExternalLink, Loader2,
+  ArrowUpRight, Mail, MapPin, Check, Copy, Send, Loader2,
 } from 'lucide-react';
 import { DESIGNER_INFO } from '../data/portfolioData';
+import {
+  copyTextToClipboard,
+  createContactMailto,
+  submitContactInquiry,
+} from '../lib/contactService';
 
 export const ContactSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -12,48 +17,26 @@ export const ContactSection: React.FC = () => {
   const [contactEmail, setContactEmail] = useState('');
   const [contactMessage, setContactMessage] = useState('');
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(DESIGNER_INFO.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const triggerDirectMail = () => {
-    const subject = encodeURIComponent(`Project Inquiry from ${contactName}`);
-    const body = encodeURIComponent(
-      `Hi Roushan,\n\n${contactMessage}\n\nFrom: ${contactName}\nEmail: ${contactEmail}`
-    );
-    window.location.href = `mailto:roushan.ux@gmail.com?subject=${subject}&body=${body}`;
+  const handleCopyEmail = async () => {
+    try {
+      await copyTextToClipboard(DESIGNER_INFO.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
   };
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    const inquiry = { name: contactName, email: contactEmail, message: contactMessage };
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/roushan.ux@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          name: contactName,
-          email: contactEmail,
-          message: contactMessage,
-          _subject: `New Portfolio Inquiry from ${contactName}`,
-          _template: 'table',
-        }),
-      });
-
-      if (response.ok) {
-        setFormSent(true);
-      } else {
-        triggerDirectMail();
-        setFormSent(true);
-      }
+      await submitContactInquiry(inquiry, `New Portfolio Inquiry from ${contactName}`);
+      setFormSent(true);
     } catch {
-      triggerDirectMail();
+      window.location.href = createContactMailto(inquiry, `Project Inquiry from ${contactName}`);
       setFormSent(true);
     } finally {
       setIsSubmitting(false);
@@ -174,17 +157,7 @@ export const ContactSection: React.FC = () => {
                   Thank you for reaching out, <span className="font-medium text-slate-900">{contactName || 'there'}</span>. Your message has been sent directly to <strong className="text-slate-950 font-semibold">roushan.ux@gmail.com</strong>. I'll get back to you shortly.
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                  <a
-                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=roushan.ux@gmail.com&su=${encodeURIComponent(`Project Inquiry from ${contactName}`)}&body=${encodeURIComponent(contactMessage)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 text-xs font-medium bg-white hover:bg-slate-50 text-slate-800 rounded-xl border border-slate-200 transition-colors inline-flex items-center gap-1.5 cursor-pointer shadow-xs"
-                  >
-                    <span>Also open in Gmail</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-                  </a>
-
+                <div className="flex items-center justify-center pt-2">
                   <button
                     onClick={() => {
                       setFormSent(false);

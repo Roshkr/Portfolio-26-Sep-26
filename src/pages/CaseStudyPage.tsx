@@ -11,6 +11,9 @@ interface CaseStudyPageProps {
   onBack: () => void;
 }
 
+const PROCESS_TICKER_GROUP_SIZE = 5;
+const PROCESS_TICKER_COPY_COUNT = 4;
+
 export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   caseStudy,
   allCaseStudies = [],
@@ -19,7 +22,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 }) => {
   const [activeDesignSlide, setActiveDesignSlide] = useState(0);
 
-  const designScreens = caseStudy.designScreens || [
+  const designScreens = caseStudy.designScreens?.length ? caseStudy.designScreens : [
     { title: 'Screen 1', image: caseStudy.heroImage, note: 'Default screen' },
   ];
 
@@ -41,13 +44,13 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
   // Find next project
   const currentIndex = allCaseStudies.findIndex((s) => s.id === caseStudy.id);
-  const nextStudy = allCaseStudies.length > 1
-    ? allCaseStudies[(Math.max(currentIndex, -1) + 1) % allCaseStudies.length]
+  const nextStudy = currentIndex >= 0 && allCaseStudies.length > 1
+    ? allCaseStudies[(currentIndex + 1) % allCaseStudies.length]
     : null;
-  const processSteps = caseStudy.processSteps?.length
-    ? caseStudy.processSteps
-    : ['Discover', 'Define', 'Design', 'Validate', 'Deliver'];
-  const processTickerItems = [...processSteps, ...processSteps, ...processSteps, ...processSteps];
+  const processTickerItems = Array.from(
+    { length: PROCESS_TICKER_GROUP_SIZE * PROCESS_TICKER_COPY_COUNT },
+    () => 'Process',
+  );
 
   return (
     <div className="w-full bg-[#fbfbfb]">
@@ -223,7 +226,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
               <span className="whitespace-nowrap">{step}</span>
               {index < processTickerItems.length - 1 && (
                 <span aria-hidden="true" className="px-2 text-slate-400 text-base">
-                  {(index + 1) % processSteps.length === 0 ? '*' : '|'}
+                  {(index + 1) % PROCESS_TICKER_GROUP_SIZE === 0 ? '*' : '|'}
                 </span>
               )}
             </React.Fragment>

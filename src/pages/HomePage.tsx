@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Sparkles, Plus } from 'lucide-react';
 import { CaseStudy } from '../types';
 import { DESIGNER_INFO } from '../data/portfolioData';
@@ -8,26 +8,52 @@ interface HomePageProps {
   caseStudies: CaseStudy[];
   onSelectCaseStudy: (caseStudy: CaseStudy) => void;
   onOpenAddModal: () => void;
-  onNavigate: (page: 'home' | 'about' | 'case-study') => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
   caseStudies,
   onSelectCaseStudy,
   onOpenAddModal,
-  onNavigate,
 }) => {
+  const heroGradientRef = useRef<HTMLDivElement>(null);
+
+  const handleHeroPointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    if (event.pointerType !== 'mouse' || !heroGradientRef.current) return;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const offsetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 48;
+    const offsetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 34;
+
+    heroGradientRef.current.style.setProperty('--hero-pointer-x', `${offsetX}px`);
+    heroGradientRef.current.style.setProperty('--hero-pointer-y', `${offsetY}px`);
+  };
+
+  const resetHeroPointer = () => {
+    heroGradientRef.current?.style.setProperty('--hero-pointer-x', '0px');
+    heroGradientRef.current?.style.setProperty('--hero-pointer-y', '0px');
+  };
+
   return (
     <div className="w-full">
       {/* Hero Section with Viewport Presence & Subtle UXfolio Dot Grid Background */}
-      <section className="relative w-full min-h-0 md:min-h-[calc(100vh-5rem)] md:min-h-[calc(100dvh-5rem)] flex items-center justify-center overflow-hidden py-10 md:py-24">
+      <section
+        className="relative w-full min-h-0 md:min-h-[calc(100vh-5rem)] md:min-h-[calc(100dvh-5rem)] flex items-center justify-center overflow-hidden py-10 md:py-24"
+        onPointerMove={handleHeroPointerMove}
+        onPointerLeave={resetHeroPointer}
+      >
         {/* Subtle UXfolio Background: Micro Dot Pattern & Ambient Lighting */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           {/* Dot Grid */}
           <div className="absolute inset-0 bg-dot-pattern opacity-40" />
 
-          {/* Soft Radial Center Ambient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(43,53,238,0.035),transparent_70%)] rounded-full blur-2xl" />
+          {/* Subtle pointer-responsive gradient */}
+          <div
+            ref={heroGradientRef}
+            aria-hidden="true"
+            className="hero-gradient-pointer absolute top-1/2 left-1/2"
+          >
+            <div className="hero-gradient-float" />
+          </div>
 
           {/* Vertical Architectural Guide Lines */}
           <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-6xl px-6">

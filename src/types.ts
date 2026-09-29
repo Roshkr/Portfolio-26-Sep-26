@@ -45,7 +45,6 @@ export interface CaseStudy {
   nextSteps: string[];
   projectDetails?: Array<{ label: string; value: string }>;
   contributionAreas?: Array<{ title: string; desc: string }>;
-  processSteps?: string[];
   storySections?: Array<{
     eyebrow?: string;
     title: string;
@@ -62,6 +61,11 @@ export interface CaseStudy {
   }>;
   coreFeatures?: Array<{ title: string; desc: string }>;
 }
+
+export type PortfolioRoute =
+  | { page: 'home' }
+  | { page: 'about' }
+  | { page: 'case-study'; caseStudy: CaseStudy };
 
 export interface Testimonial {
   quote: string;

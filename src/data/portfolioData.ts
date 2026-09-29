@@ -143,7 +143,6 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
         desc: "Managed the Supabase database structure, authentication, data logic, PDF generation, and product stability.",
       },
     ],
-    processSteps: ["Workflow discovery", "Invoice strategy", "Experience design", "Product build", "Launch & iteration"],
     storySections: [
       {
         eyebrow: "Problem statement",
@@ -334,7 +333,6 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       { label: "Duration", value: "1 Month" },
       { label: "Company", value: "Confidential Client (NDA)" },
     ],
-    processSteps: ["Map onboarding", "Test the current form", "Find friction", "Refine the workflow", "Document implementation"],
     storySections: [
       {
         eyebrow: "Problem",
@@ -522,7 +520,6 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       { label: "Company", value: "Bridge2Business" },
       { label: "Project type", value: "Freelance Website Redesign" },
     ],
-    processSteps: ["Audit the website", "Clarify the content", "Restructure navigation", "Design responsively", "Prepare handoff"],
     storySections: [
       {
         eyebrow: "Client problem",
@@ -696,7 +693,6 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       { label: "Duration", value: "15 Days" },
       { label: "Company", value: "Maxlence Consulting" },
     ],
-    processSteps: ["Map user journeys", "Shape onboarding", "Prototype workflows", "Build design system", "Prepare for development"],
     storySections: [
       {
         eyebrow: "Problem",
@@ -871,7 +867,6 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       { label: "Duration", value: "3 Months" },
       { label: "Company", value: "Naie" },
     ],
-    processSteps: ["Explore user needs", "Map booking journeys", "Design salon discovery", "Prototype appointments", "Validate the concept"],
     storySections: [
       {
         eyebrow: "Problem",
