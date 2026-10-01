@@ -111,7 +111,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     team: "Solo Ownership (Design + AI Code)",
     timeline: "4 Weeks (Concept to Live MVP)",
     projectDetails: [
-      { label: "Role", value: "UI/UX Designer" },
+      { label: "Role", value: "UI/UX Designer & AI Assisted Developer" },
       { label: "Duration", value: "200 Hours" },
       { label: "Platform", value: "Mobile-first PWA" },
       { label: "Industry", value: "B2B SaaS" },

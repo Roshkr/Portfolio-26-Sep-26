@@ -195,7 +195,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       <section className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Before Mockup Card */}
-          <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center min-h-[500px]">
+          <div className={`${caseStudy.beforeDevice === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[500px]' : 'p-8 md:p-12 min-h-[500px]'} bg-[#eef0f3] rounded-[32px] flex flex-col items-center justify-center`}>
             <ProjectMockup
               imageSrc={caseStudy.beforeScreen}
               videoSrc={caseStudy.beforeVideo}
@@ -206,7 +206,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           </div>
 
           {/* After Mockup Card */}
-          <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex flex-col items-center justify-center min-h-[500px]">
+          <div className={`${caseStudy.afterDevice === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[500px]' : 'p-8 md:p-12 min-h-[500px]'} bg-[#eef0f3] rounded-[32px] flex flex-col items-center justify-center`}>
             <ProjectMockup
               imageSrc={caseStudy.afterScreen}
               videoSrc={caseStudy.afterVideo}
@@ -357,7 +357,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Problem Card */}
           <div className="space-y-6">
-            <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex items-center justify-center min-h-[460px]">
+            <div className={`${caseStudy.problem1.device === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[460px]' : 'p-8 md:p-12 min-h-[460px]'} bg-[#eef0f3] rounded-[32px] flex items-center justify-center`}>
               <ProjectMockup
                 imageSrc={caseStudy.problem1.screen}
                 videoSrc={caseStudy.problem1.videoSrc}
@@ -378,7 +378,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
           {/* Solution Card */}
           <div className="space-y-6">
-            <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-12 flex items-center justify-center min-h-[460px]">
+            <div className={`${caseStudy.solution1.device === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[460px]' : 'p-8 md:p-12 min-h-[460px]'} bg-[#eef0f3] rounded-[32px] flex items-center justify-center`}>
               <ProjectMockup
                 imageSrc={caseStudy.solution1.screen}
                 videoSrc={caseStudy.solution1.videoSrc}

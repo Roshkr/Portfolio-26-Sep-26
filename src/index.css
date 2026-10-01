@@ -112,8 +112,27 @@
 
 @media (max-width: 1023px), (max-height: 700px) {
   .about-contact-sticky {
+    position: relative;
+    top: auto;
     min-height: 0;
-    align-items: flex-start;
+    display: block;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .about-contact-info {
+    position: sticky;
+    top: 5rem;
+    z-index: 15;
+    margin-inline: -0.5rem;
+    padding: 1rem 0.5rem;
+    background: #fbfbfb;
+    border-radius: 1.25rem;
+  }
+
+  .about-contact-form {
+    position: relative;
+    z-index: 16;
   }
 }
 

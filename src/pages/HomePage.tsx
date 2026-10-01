@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { Sparkles, Plus } from 'lucide-react';
 import { CaseStudy } from '../types';
 import { DESIGNER_INFO } from '../data/portfolioData';
 import { ProjectCard } from '../components/ProjectCard';
@@ -7,13 +6,11 @@ import { ProjectCard } from '../components/ProjectCard';
 interface HomePageProps {
   caseStudies: CaseStudy[];
   onSelectCaseStudy: (caseStudy: CaseStudy) => void;
-  onOpenAddModal: () => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
   caseStudies,
   onSelectCaseStudy,
-  onOpenAddModal,
 }) => {
   const heroGradientRef = useRef<HTMLDivElement>(null);
 
@@ -71,9 +68,9 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-normal tracking-tight text-slate-950 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-semibold tracking-tight text-slate-950 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]">
               {DESIGNER_INFO.headlineHero}{' '}
-              <span className="text-[#2b35ee] font-medium">
+              <span className="text-[#2b35ee] font-bold">
                 {DESIGNER_INFO.headlineHighlight}
               </span>
               {DESIGNER_INFO.headlineSuffix}
@@ -92,14 +89,6 @@ export const HomePage: React.FC<HomePageProps> = ({
           <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-slate-950">
             Work
           </h2>
-          <button
-            onClick={onOpenAddModal}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium text-slate-600 hover:text-black bg-slate-100 hover:bg-slate-200/80 rounded-xl transition-colors cursor-pointer"
-            title="Add a custom case study"
-          >
-            <Plus className="w-3.5 h-3.5 text-slate-500" />
-            <span>Add Project</span>
-          </button>
         </div>
 
         {/* Project Cards - UXfolio Single Project Showcase Style (Adjusted to 80% Viewport on Desktop) */}

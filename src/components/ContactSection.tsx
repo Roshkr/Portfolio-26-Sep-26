@@ -50,7 +50,7 @@ export const ContactSection: React.FC = () => {
       >
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left: Contact Info & Availability */}
-          <div className="lg:col-span-5 space-y-8">
+          <div className="about-contact-info lg:col-span-5 space-y-8">
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-wider text-[#2b35ee] font-semibold">
                 Contact & Collaboration
@@ -144,7 +144,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Right: Interactive Message Form */}
-          <div className="lg:col-span-7 bg-[#eef0f3] rounded-[32px] p-5 sm:p-8 md:p-10">
+          <div className="about-contact-form lg:col-span-7 bg-[#eef0f3] rounded-[32px] p-5 sm:p-8 md:p-10">
             {formSent ? (
               <div className="py-12 flex flex-col items-center text-center space-y-4">
                 <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center">
