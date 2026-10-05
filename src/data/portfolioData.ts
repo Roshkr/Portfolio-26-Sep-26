@@ -12,7 +12,7 @@ export const DESIGNER_INFO = {
   location: "Ahmedabad, Gujarat, India",
   headlineGreeting: "Hi! I'm Roushan a UX/UI Designer based in Ahmedabad, IND",
   headlineHero: "Focused on",
-  headlineHighlight: "SaaS, B2B, and Fintech",
+  headlineHighlight: "SaaS, B2B, & Fintech",
   headlineSuffix: ", simplifying complex workflows through research, collaboration, and AI.",
   aboutHeroSubtitle: "UX/UI Designer • based in Ahmedabad, India",
   bioShort:

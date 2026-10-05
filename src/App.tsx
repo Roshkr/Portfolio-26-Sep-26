@@ -34,7 +34,7 @@ export default function App() {
   useContentProtection();
 
   return (
-    <div className="portfolio-protected min-h-screen flex flex-col bg-[#fbfbfb] text-[#111111]">
+    <div className="portfolio-protected relative isolate min-h-screen flex flex-col bg-[#fbfbfb] text-[#111111]">
       {/* 3-Zone Top Bar with Functional Resume Button */}
       <Header
         currentPage={route.page}

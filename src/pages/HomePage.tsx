@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { CaseStudy } from '../types';
 import { DESIGNER_INFO } from '../data/portfolioData';
+import { CharacterRevealText } from '../components/CharacterRevealText';
 import { ProjectCard } from '../components/ProjectCard';
 
 interface HomePageProps {
@@ -13,6 +15,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectCaseStudy,
 }) => {
   const heroGradientRef = useRef<HTMLDivElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const heroHeadline = `${DESIGNER_INFO.headlineHero} ${DESIGNER_INFO.headlineHighlight}${DESIGNER_INFO.headlineSuffix}`;
 
   const handleHeroPointerMove = (event: React.PointerEvent<HTMLElement>) => {
     if (event.pointerType !== 'mouse' || !heroGradientRef.current) return;
@@ -52,10 +56,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="hero-gradient-float" />
           </div>
 
-          {/* Vertical Architectural Guide Lines */}
-          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-6xl px-6">
-            <div className="w-full h-full border-x border-slate-200/50" />
-          </div>
         </div>
 
         {/* Hero Content (Centered within Viewport) */}
@@ -68,13 +68,24 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-normal tracking-tight text-slate-500 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]">
-              {DESIGNER_INFO.headlineHero}{' '}
-              <span className="text-[#2b35ee] font-bold">
-                {DESIGNER_INFO.headlineHighlight}
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-normal tracking-tight text-slate-500 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]"
+              initial={shouldReduceMotion ? false : 'hidden'}
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.007, delayChildren: 0.05 } },
+              }}
+            >
+              <span className="sr-only">{heroHeadline}</span>
+              <span aria-hidden="true">
+                <CharacterRevealText text={`${DESIGNER_INFO.headlineHero} `} />
+                <span className="text-[#2b35ee] font-bold">
+                  <CharacterRevealText text={DESIGNER_INFO.headlineHighlight} />
+                </span>
+                <CharacterRevealText text={DESIGNER_INFO.headlineSuffix} />
               </span>
-              {DESIGNER_INFO.headlineSuffix}
-            </h1>
+            </motion.h1>
           </div>
         </div>
       </section>

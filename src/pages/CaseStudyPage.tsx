@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { CaseStudy } from '../types';
+import { CharacterRevealText } from '../components/CharacterRevealText';
 import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
 
@@ -13,6 +15,38 @@ interface CaseStudyPageProps {
 
 const PROCESS_TICKER_GROUP_SIZE = 5;
 const PROCESS_TICKER_COPY_COUNT = 4;
+
+const OverviewReveal: React.FC<{ text: string }> = ({ text }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const paragraphs = text.split(/\n\s*\n/);
+  const firstParagraphDuration = (paragraphs[0]?.length ?? 0) * 0.004 + 0.25;
+
+  return (
+    <motion.div
+      className="max-w-4xl space-y-5 text-xl md:text-2xl text-slate-700 font-normal leading-relaxed"
+      initial={shouldReduceMotion ? false : 'hidden'}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{
+        hidden: {},
+        visible: { transition: { staggerChildren: firstParagraphDuration } },
+      }}
+    >
+      {paragraphs.map((paragraph, paragraphIndex) => (
+        <motion.p
+          key={paragraphIndex}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.004, delayChildren: 0.05 } },
+          }}
+        >
+          <span className="sr-only">{paragraph}</span>
+          <CharacterRevealText text={paragraph} />
+        </motion.p>
+      ))}
+    </motion.div>
+  );
+};
 
 export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   caseStudy,
@@ -122,14 +156,24 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Overview & Meta Section */}
-      <section className="py-16 md:py-20 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
-        <div className="space-y-4">
-            <h2 className="text-2xl font-normal tracking-tight text-slate-950">
+      <section className={caseStudy.id === 'roushani'
+        ? 'py-20 md:py-24 border-y border-[#2b35ee]/15'
+        : 'py-16 md:py-20 max-w-6xl mx-auto px-6 border-t border-black/[0.04]'}>
+        <div className={caseStudy.id === 'roushani' ? 'max-w-6xl mx-auto px-6' : ''}>
+          <div className={caseStudy.id === 'roushani' ? 'space-y-6' : 'space-y-4'}>
+            <h2 className={caseStudy.id === 'roushani'
+              ? 'text-3xl md:text-4xl font-medium tracking-tight text-slate-950'
+              : 'text-2xl font-normal tracking-tight text-slate-950'}>
               Overview
             </h2>
-            <div className="max-w-4xl text-sm md:text-base text-slate-500 font-normal leading-relaxed whitespace-pre-line space-y-4">
-              {caseStudy.overview}
-            </div>
+            {caseStudy.id === 'roushani' ? (
+              <OverviewReveal text={caseStudy.overview} />
+            ) : (
+              <div className="max-w-4xl text-sm md:text-base text-slate-500 font-normal leading-relaxed whitespace-pre-line space-y-4">
+                {caseStudy.overview}
+              </div>
+            )}
+          </div>
         </div>
       </section>
 

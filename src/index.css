@@ -11,6 +11,33 @@
   user-select: none;
 }
 
+.portfolio-protected::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: max(12px, calc(50% - 36rem + 12px));
+  right: max(12px, calc(50% - 36rem + 12px));
+  z-index: 19;
+  border-inline: 1px solid rgba(226, 232, 240, 0.5);
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: page-guide-draw 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
+}
+
+@keyframes page-guide-draw {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-protected::before {
+    animation: none;
+    transform: none;
+  }
+}
+
 .portfolio-protected input,
 .portfolio-protected textarea,
 .portfolio-protected select,
