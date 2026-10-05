@@ -103,7 +103,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
 
         {/* Project Cards - UXfolio Single Project Showcase Style (Adjusted to 80% Viewport on Desktop) */}
-        <div className="flex flex-col gap-8 md:gap-12">
+        <div className="flex flex-col gap-8 px-3 sm:px-5 md:px-8">
           {caseStudies.map((study, index) => (
             <ProjectCard
               key={study.id}
