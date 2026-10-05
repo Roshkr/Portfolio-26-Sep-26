@@ -168,7 +168,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
               </div>
             )}
 
-            {caseStudy.contributionAreas && (
+            {caseStudy.id !== 'roushani' && caseStudy.contributionAreas && (
               <div>
                 <span className="text-xs uppercase tracking-wider text-slate-400">
                   My contribution

@@ -68,7 +68,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-semibold tracking-tight text-slate-500 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-normal tracking-tight text-slate-500 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]">
               {DESIGNER_INFO.headlineHero}{' '}
               <span className="text-[#2b35ee] font-bold">
                 {DESIGNER_INFO.headlineHighlight}

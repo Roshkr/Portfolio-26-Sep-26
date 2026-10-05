@@ -135,11 +135,10 @@
     z-index: 16;
   }
 
-  .about-contact-submit {
-    position: sticky;
-    bottom: max(1rem, env(safe-area-inset-bottom));
-    z-index: 20;
+  .about-footer {
+    margin-top: -2rem;
   }
+
 }
 
 .next-project-content {
