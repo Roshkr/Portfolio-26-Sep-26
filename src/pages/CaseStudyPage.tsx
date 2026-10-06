@@ -5,6 +5,7 @@ import { CaseStudy } from '../types';
 import { CharacterRevealText } from '../components/CharacterRevealText';
 import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
+import { RoushaniCaseStudy } from './RoushaniCaseStudy';
 
 interface CaseStudyPageProps {
   caseStudy: CaseStudy;
@@ -76,11 +77,22 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
     setActiveDesignSlide(0);
   }, [caseStudy.id]);
 
-  // Find next project
   const currentIndex = allCaseStudies.findIndex((s) => s.id === caseStudy.id);
   const nextStudy = currentIndex >= 0 && allCaseStudies.length > 1
     ? allCaseStudies[(currentIndex + 1) % allCaseStudies.length]
     : null;
+
+  if (caseStudy.id === 'roushani') {
+    return (
+      <RoushaniCaseStudy
+        caseStudy={caseStudy}
+        onBack={onBack}
+        nextStudy={nextStudy}
+        onSelectCaseStudy={onSelectCaseStudy}
+      />
+    );
+  }
+
   const processTickerItems = Array.from(
     { length: PROCESS_TICKER_GROUP_SIZE * PROCESS_TICKER_COPY_COUNT },
     () => 'Process',
@@ -573,7 +585,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Final Screens Gallery Showcase (5 phone mockups row) */}
-      <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-20 md:py-28 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
             Final Flow Showcase

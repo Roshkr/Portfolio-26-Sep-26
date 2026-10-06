@@ -1,5 +1,5 @@
 import { CaseStudy, Testimonial, ExperienceItem, EducationItem, ToolItem } from '../types';
-import designerPortrait from '../assets/images/Roushan Picture.jpg';
+import designerPortrait from '../assets/images/Roushan Picture.png';
 import roushaniInvoiceVideo from '../assets/video/Roushani Final Invoice Video.mp4';
 import bridge2BusinessVideo from '../assets/video/Bridge2business.mp4';
 import maxlenceVideo from '../assets/video/Maxlence.mp4';

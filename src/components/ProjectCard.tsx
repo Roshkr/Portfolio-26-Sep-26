@@ -91,7 +91,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
 
           <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-900 group-hover:text-[#2b35ee] group-hover:translate-x-1 transition-all shrink-0">
-            <span>Read case study</span>
+            <span>View details</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </div>
         </div>

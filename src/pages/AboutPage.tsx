@@ -15,6 +15,21 @@ import {
 } from '../data/portfolioData';
 import { CompanyLogoMark } from '../components/CompanyLogoMarks';
 
+const ProfilePortrait: React.FC<{ className?: string }> = ({ className = '' }) => (
+  <div className={`w-full max-w-sm aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-200 shadow-xl border border-black/5 relative group ${className}`}>
+    <img
+      src={DESIGNER_INFO.portraitImage}
+      alt={DESIGNER_INFO.name}
+      referrerPolicy="no-referrer"
+      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white pointer-events-none">
+      <span className="text-xs uppercase tracking-wider text-slate-300">Roushan Kumar</span>
+      <p className="text-sm font-medium">UX/UI Designer · Researcher</p>
+    </div>
+  </div>
+);
+
 export const AboutPage: React.FC = () => {
   return (
     <div className="about-page w-full">
@@ -58,21 +73,9 @@ export const AboutPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Image Column */}
-          <div className="md:col-span-5 flex flex-col items-center md:items-end">
-            <div className="w-full max-w-sm aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-200 shadow-xl border border-black/5 relative group">
-              <img
-                src={DESIGNER_INFO.portraitImage}
-                alt={DESIGNER_INFO.name}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-
-              <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white pointer-events-none">
-                <span className="text-xs uppercase tracking-wider text-slate-300">Roushan Kumar</span>
-                <p className="text-sm font-medium">UX/UI Designer • Researcher</p>
-              </div>
-            </div>
+          {/* Portrait stays sticky only while the hero section is in view */}
+          <div className="md:col-span-5 md:self-stretch flex flex-col items-center md:items-end">
+            <ProfilePortrait className="md:sticky md:top-24" />
           </div>
         </div>
       </section>
@@ -109,23 +112,29 @@ export const AboutPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="space-y-3.5 sm:space-y-4">
           {CREATIVE_TOOLKIT.map((tool, idx) => (
             <div
               key={idx}
-              className="bg-[#eef0f3] rounded-[24px] p-6 flex flex-col justify-between hover:bg-[#e6e9ef] transition-colors group"
+              style={{
+                '--stack-offset': `${idx * 40}px`,
+                '--stack-offset-sm': `${idx * 40}px`,
+                '--stack-offset-md': `${idx * 40}px`,
+                zIndex: idx + 1,
+              } as React.CSSProperties}
+              className="about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-2.5 sm:p-3 md:p-3.5 flex flex-col justify-center hover:bg-[#e7eaf0] transition-colors group/card"
             >
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                   {tool.category}
                 </span>
-                <h3 className="text-lg font-medium text-slate-950 group-hover:text-[#2b35ee] transition-colors">
+                <h3 className="text-base sm:text-lg md:text-xl font-medium text-slate-950 group-hover/card:text-[#2b35ee] transition-colors">
                   {tool.name}
                 </h3>
+                <p className="text-xs md:text-sm text-slate-600 font-normal leading-relaxed">
+                  {tool.desc}
+                </p>
               </div>
-              <p className="text-xs md:text-sm text-slate-500 mt-4">
-                {tool.desc}
-              </p>
             </div>
           ))}
         </div>
@@ -339,7 +348,6 @@ export const AboutPage: React.FC = () => {
           ))}
         </div>
       </section>
-
 
     </div>
   );
