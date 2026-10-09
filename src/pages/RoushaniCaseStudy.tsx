@@ -93,7 +93,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
           </div>
           {caseStudy.liveUrl && (
             <a href={caseStudy.liveUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#2b35ee] hover:underline">
-              Visit the live product <ExternalLink className="h-4 w-4" />
+              View MVP <ExternalLink className="h-4 w-4" />
             </a>
           )}
         </div>
