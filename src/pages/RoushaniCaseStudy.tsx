@@ -33,8 +33,8 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         <ArrowLeft className="h-4 w-4" />
         Back to work
       </button>
-      <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
-        Case study / 01
+      <span className="rounded-full bg-[#eef0f3] px-3 py-1 text-xs font-medium text-slate-600">
+        {caseStudy.status || caseStudy.category}
       </span>
     </div>
 
@@ -169,21 +169,19 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
       </div>
     </section>
 
-    <section className="bg-slate-950 text-white">
+    <section className="bg-[#eef0f3] text-slate-950">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:grid-cols-2 md:px-10 md:py-20">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">Looking back</span>
-          <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl">What I learned</h2>
-          <ul className="mt-7 space-y-4">{caseStudy.learnings.slice(0, 3).map((item) => <li key={item} className="border-t border-white/15 pt-4 text-sm leading-relaxed text-white/75">{item}</li>)}</ul>
+          <h2 className="mb-7 text-3xl font-semibold tracking-tight md:text-4xl">What I learned</h2>
+          <ul className="space-y-4">{caseStudy.learnings.slice(0, 3).map((item) => <li key={item} className="border-t border-slate-300 pt-4 text-sm leading-relaxed text-slate-600">{item}</li>)}</ul>
         </div>
         <div>
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">Next on the roadmap</span>
-          <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl">Where it goes next</h2>
-          <ul className="mt-7 space-y-4">{caseStudy.nextSteps.slice(0, 3).map((item) => <li key={item} className="border-t border-white/15 pt-4 text-sm leading-relaxed text-white/75">{item}</li>)}</ul>
+          <h2 className="text-3xl font-medium tracking-tight md:text-4xl">Where it goes next</h2>
+          <ul className="mt-7 space-y-4">{caseStudy.nextSteps.slice(0, 3).map((item) => <li key={item} className="border-t border-slate-300 pt-4 text-sm leading-relaxed text-slate-600">{item}</li>)}</ul>
         </div>
-        <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-5 border-t border-white/15 pt-8">
+        <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-5 border-t border-slate-300 pt-8">
           <p className="text-xl font-medium md:text-2xl">Have a workflow that could feel this simple?</p>
-          <a href={caseStudy.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-blue-100">
+          <a href={caseStudy.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800">
             Explore Roushani <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>

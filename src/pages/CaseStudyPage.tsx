@@ -6,6 +6,7 @@ import { CharacterRevealText } from '../components/CharacterRevealText';
 import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
 import { RoushaniCaseStudy } from './RoushaniCaseStudy';
+import { Bridge2BusinessCaseStudy } from './Bridge2BusinessCaseStudy';
 
 interface CaseStudyPageProps {
   caseStudy: CaseStudy;
@@ -88,6 +89,17 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         caseStudy={caseStudy}
         onBack={onBack}
         nextStudy={nextStudy}
+        onSelectCaseStudy={onSelectCaseStudy}
+      />
+    );
+  }
+
+  if (caseStudy.id === 'bridge2business') {
+    return (
+      <Bridge2BusinessCaseStudy
+        caseStudy={caseStudy}
+        nextStudy={nextStudy}
+        onBack={onBack}
         onSelectCaseStudy={onSelectCaseStudy}
       />
     );

@@ -31,7 +31,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className="w-full lg:w-7/12 bg-gradient-to-b from-[#f8f9fb] to-[#edf0f5] p-4 sm:p-6 lg:p-7 border-b lg:border-b-0 lg:border-r border-slate-200/70 relative overflow-hidden flex items-center justify-center shrink-0 lg:h-full">
         <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2">
           <span className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-white/95 text-slate-700 shadow-2xs border border-slate-200/70 backdrop-blur-xs">
-            {study.status || 'Case Study'}
+            {study.id === 'bridge2business'
+              ? 'Redesign Proposal'
+              : study.status || 'Case Study'}
           </span>
         </div>
 
