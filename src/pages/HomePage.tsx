@@ -90,26 +90,27 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* Selected Projects Section - UXfolio Showcase Style */}
+      {/* Selected Projects Section */}
       <section
         id="projects"
         className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200/60"
       >
-        {/* Section Header */}
-        <div className="mb-10 md:mb-12 flex items-center justify-between">
-          <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-slate-950">
-            Work
-          </h2>
+        <div className="mb-12 md:mb-16">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-slate-950">
+              Designed around real work.
+            </h2>
+          </div>
         </div>
 
-        {/* Project Cards - UXfolio Single Project Showcase Style (Adjusted to 80% Viewport on Desktop) */}
-        <div className="flex flex-col gap-8 px-3 sm:px-5 md:px-8">
+        <div className="flex flex-col gap-12 md:gap-16">
           {caseStudies.map((study, index) => (
             <ProjectCard
               key={study.id}
               study={study}
               onSelectCaseStudy={onSelectCaseStudy}
               stackIndex={index}
+              variant="editorial"
             />
           ))}
         </div>
