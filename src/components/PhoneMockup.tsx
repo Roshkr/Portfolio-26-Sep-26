@@ -84,13 +84,13 @@ export const LazyVideo: React.FC<{
   }, [inView]);
 
   return (
-    <div className={`relative w-full h-full overflow-hidden ${frameClassName}`}>
+    <div className={`relative w-full h-full overflow-hidden rounded-[18px] sm:rounded-[22px] ${frameClassName}`}>
       {/* Poster background displayed while video is idle or buffering */}
       {poster && !isReady && (
         <img
           src={poster}
           alt="Video thumbnail placeholder"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover rounded-[18px] sm:rounded-[22px]"
           loading="lazy"
         />
       )}
@@ -104,7 +104,7 @@ export const LazyVideo: React.FC<{
         playsInline
         aria-label={ariaLabel}
         onCanPlay={() => setIsReady(true)}
-        className={`w-full h-full ${objectFitClass} transition-opacity duration-300 ${
+        className={`w-full h-full ${objectFitClass} rounded-[18px] sm:rounded-[22px] transition-opacity duration-300 ${
           isReady ? 'opacity-100' : 'opacity-0'
         } ${className}`}
       />
@@ -130,22 +130,22 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({
   }
 
   return (
-    <div className={`relative w-full max-w-[720px] aspect-[16/10] rounded-2xl bg-slate-950 p-1.5 shadow-2xl ring-1 ring-black/10 overflow-hidden ${className}`}>
-      <div className="relative h-full w-full overflow-hidden rounded-xl bg-[#f4f5f7]">
+    <div className={`relative w-full max-w-[720px] aspect-[16/10] rounded-[22px] bg-slate-950 p-1.5 shadow-2xl ring-1 ring-black/10 overflow-hidden ${className}`}>
+      <div className="relative h-full w-full overflow-hidden rounded-[18px] bg-[#f4f5f7]">
         {videoSrc ? (
           <LazyVideo
             src={videoSrc}
             poster={imageSrc}
             ariaLabel={ariaLabel}
             objectFit="contain"
-            frameClassName="h-full w-full bg-[#f4f5f7]"
+            frameClassName="h-full w-full bg-[#f4f5f7] rounded-[18px]"
           />
         ) : imageSrc ? (
           <img
             src={imageSrc}
             alt={ariaLabel}
             referrerPolicy="no-referrer"
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain rounded-[18px]"
             loading="lazy"
           />
         ) : (
@@ -182,15 +182,15 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
         <div className="relative w-full h-full bg-[#f4f5f7] rounded-[36px] overflow-hidden flex flex-col justify-between select-none">
           {!wireframe && (videoSrc || imageSrc) ? (
             /* High Fidelity Rendered Screen — prefers video over image */
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full rounded-[30px] overflow-hidden">
               {videoSrc ? (
-                <LazyVideo src={videoSrc} poster={activePoster} />
+                <LazyVideo src={videoSrc} poster={activePoster} className="rounded-[30px]" />
               ) : (
                 <img
                   src={imageSrc}
                   alt="Mobile UI Screen"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-[30px]"
                   loading="lazy"
                   onError={(e) => {
                     const target = e.currentTarget;

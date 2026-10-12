@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ContactSection } from './components/ContactSection';
@@ -17,6 +18,8 @@ export default function App() {
   const [caseStudies, setCaseStudies] = useState<CaseStudy[]>(DEFAULT_CASE_STUDIES);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const { route, navigateTo, selectCaseStudy } = usePortfolioNavigation(caseStudies);
+  const shouldReduceMotion = useReducedMotion();
+  const pageKey = route.page === 'case-study' ? `case-study-${route.caseStudy.id}` : route.page;
   const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
   const metadataTitle = route.page === 'case-study'
     ? `${route.caseStudy.title} | Roushan Kumar`
@@ -43,25 +46,33 @@ export default function App() {
 
       <div className="flex-1">
         {/* Main Content View */}
-        <main>
-          {route.page === 'home' && (
-            <HomePage
-              caseStudies={caseStudies}
-              onSelectCaseStudy={selectCaseStudy}
-            />
-          )}
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.main
+            key={pageKey}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -8 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.24, ease: 'easeOut' }}
+          >
+            {route.page === 'home' && (
+              <HomePage
+                caseStudies={caseStudies}
+                onSelectCaseStudy={selectCaseStudy}
+              />
+            )}
 
-          {route.page === 'about' && <AboutPage />}
+            {route.page === 'about' && <AboutPage />}
 
-          {route.page === 'case-study' && (
-            <CaseStudyPage
-              caseStudy={route.caseStudy}
-              allCaseStudies={caseStudies}
-              onSelectCaseStudy={selectCaseStudy}
-              onBack={() => navigateTo('home')}
-            />
-          )}
-        </main>
+            {route.page === 'case-study' && (
+              <CaseStudyPage
+                caseStudy={route.caseStudy}
+                allCaseStudies={caseStudies}
+                onSelectCaseStudy={selectCaseStudy}
+                onBack={() => navigateTo('home')}
+              />
+            )}
+          </motion.main>
+        </AnimatePresence>
 
         <ContactSection />
 

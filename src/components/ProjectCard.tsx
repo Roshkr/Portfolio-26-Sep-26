@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
 import { CaseStudy } from '../types';
 import { LazyVideo } from './PhoneMockup';
 
@@ -18,6 +19,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   stackIndex,
   variant = 'default',
 }) => {
+  const shouldReduceMotion = useReducedMotion();
   const isStacked = stackIndex !== undefined;
   const stackPosition = stackIndex ?? 0;
   const handleSelect = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -37,27 +39,35 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     return (
       <a href={`#case-study-${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="group block cursor-pointer text-left text-slate-950 no-underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#2b35ee]">
         <div className="grid min-w-0 items-center gap-8 border-b border-slate-200 pb-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-10 lg:pb-14 xl:gap-16">
-          <div className="relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-sm bg-transparent sm:aspect-[1.45/1] lg:aspect-[1.16/1]">
+          <div className="relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-[18px] bg-transparent sm:aspect-[1.45/1] sm:rounded-[24px] lg:aspect-[1.16/1] lg:rounded-[28px]">
             {study.heroVideo ? (
-              <LazyVideo src={study.heroVideo} poster={study.heroImage} ariaLabel={`${study.title} project preview`} objectFit="contain" frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
+              <LazyVideo src={study.heroVideo} poster={study.heroImage} ariaLabel={`${study.title} project preview`} objectFit="contain" frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-[18px] sm:rounded-[24px] lg:rounded-[28px]" />
             ) : (
-              <img src={study.heroImage} alt={`${study.title} project preview`} referrerPolicy="no-referrer" loading="lazy" className="h-full w-full object-contain transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
+              <img src={study.heroImage} alt={`${study.title} project preview`} referrerPolicy="no-referrer" loading="lazy" className="h-full w-full object-contain rounded-[18px] transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] sm:rounded-[24px] lg:rounded-[28px]" />
             )}
-            <span className="absolute bottom-3 right-3 rounded-full bg-slate-950/75 px-3 py-1.5 text-[10px] font-medium text-white backdrop-blur-sm">{String(stackPosition + 1).padStart(2, '0')}</span>
           </div>
-          <div className="min-w-0 lg:py-5">
-            <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-[#2b35ee]">{study.category}</p>
-            <h3 className="max-w-xl text-4xl font-bold leading-[0.98] tracking-[-0.055em] text-slate-950 transition-colors duration-300 group-hover:text-[#2b35ee] sm:text-5xl lg:text-[clamp(2.25rem,3.1vw,3.35rem)]">{story.headline}</h3>
+          <motion.div
+            className="min-w-0 lg:py-5"
+            initial={shouldReduceMotion ? false : 'hidden'}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+            }}
+          >
+            <motion.p variants={appearTextVariants} className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-600">{study.category}</motion.p>
+            <motion.h3 variants={appearTextVariants} className="max-w-xl text-4xl font-bold leading-[0.98] tracking-[-0.055em] text-slate-950 transition-colors duration-300 group-hover:text-slate-700 sm:text-5xl lg:text-[clamp(2.25rem,3.1vw,3.35rem)]">{story.headline}</motion.h3>
             <div className="mt-6 divide-y divide-slate-200 border-t border-slate-200">
               {([['The person', story.person], ['The decision', story.decision], ['What shipped', story.shipped]] as const).map(([label, copy]) => (
-                <div key={label} className="grid min-w-0 gap-2 py-4 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-4">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.11em] text-[#2b35ee]">{label}</span>
+                <motion.div key={label} variants={appearTextVariants} className="grid min-w-0 gap-2 py-4 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-4">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.11em] text-slate-600">{label}</span>
                   <p className="min-w-0 text-sm font-medium leading-[1.45] text-slate-700">{copy}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
-            <span className="mt-4 inline-flex items-center gap-2 border-b border-slate-400 pb-1.5 text-sm font-bold text-slate-900 transition-all duration-300 group-hover:gap-3 group-hover:border-[#2b35ee] group-hover:text-[#2b35ee] motion-reduce:transition-none">View<ArrowRight className="h-4 w-4" aria-hidden="true" /></span>
-          </div>
+            <motion.span variants={appearTextVariants} className="mt-4 inline-flex items-center gap-2 border-b border-slate-400 pb-1.5 text-sm font-bold text-slate-900 transition-all duration-300 group-hover:gap-3 group-hover:border-slate-500 group-hover:text-slate-700 motion-reduce:transition-none">View<ArrowRight className="h-4 w-4" aria-hidden="true" /></motion.span>
+          </motion.div>
         </div>
       </a>
     );
@@ -81,13 +91,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
         <div className={`w-full h-full ${study.heroVideo ? '' : 'min-h-[220px] sm:min-h-[280px]'} flex items-center justify-center relative p-1 sm:p-2`}>
           {study.heroVideo ? (
-            <div className="w-full max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] aspect-video">
+            <div className="w-full max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] aspect-video overflow-hidden rounded-[20px] sm:rounded-[28px]">
               <LazyVideo
                 src={study.heroVideo}
                 poster={study.heroImage}
                 ariaLabel={`${study.title} preview`}
                 objectFit="contain"
-                frameClassName="rounded-xl sm:rounded-2xl shadow-sm sm:shadow-md border border-slate-200/80 group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300"
+                frameClassName="rounded-[20px] sm:rounded-[28px] shadow-sm sm:shadow-md border border-slate-200/80 group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300"
               />
             </div>
           ) : (
@@ -95,7 +105,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               src={study.heroImage}
               alt={study.title}
               referrerPolicy="no-referrer"
-              className="max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-sm sm:shadow-md border border-slate-200/80 group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300"
+              className="max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] w-auto h-auto object-contain rounded-[20px] sm:rounded-[28px] shadow-sm sm:shadow-md border border-slate-200/80 group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300"
               loading="lazy"
             />
           )}
@@ -142,4 +152,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       </div>
     </a>
   );
+};
+
+const appearTextVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
