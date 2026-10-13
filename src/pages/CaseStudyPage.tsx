@@ -111,7 +111,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   );
 
   return (
-    <div className="w-full bg-[#fbfbfb]">
+    <div className="case-study-page w-full bg-[#fbfbfb]">
       {/* Top Floating Action Bar / Breadcrumb */}
       <div className="max-w-6xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between border-b border-black/[0.04]">
         <button

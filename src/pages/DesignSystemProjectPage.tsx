@@ -55,7 +55,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
   const activeChapter = galleryChapters.find((chapter) => chapter.id === activeGalleryChapter) ?? galleryChapters[0];
 
   return (
-  <div id="top" className="w-full bg-[#fbfbfb] text-slate-950">
+  <div id="top" className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
     <div className="mx-auto flex max-w-6xl items-center justify-between border-b border-black/[0.06] px-6 py-5">
       <button onClick={onBack} className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950">
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />

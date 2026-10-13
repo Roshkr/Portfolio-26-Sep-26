@@ -12,7 +12,7 @@ interface Bridge2BusinessCaseStudyProps {
 }
 
 const eyebrowClass =
-  'text-xs font-semibold uppercase tracking-[0.18em] text-[#2b35ee]';
+  'case-study-accent text-xs font-semibold uppercase tracking-[0.18em] text-[#2b35ee]';
 
 export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> = ({
   caseStudy,
@@ -64,7 +64,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
   }, []);
 
   return (
-    <article ref={articleRef} className="w-full bg-[#fbfbfb] text-slate-950">
+    <article ref={articleRef} className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
       <div
         className="fixed left-0 top-0 z-50 h-1 w-full bg-slate-950/10"
         role="progressbar"

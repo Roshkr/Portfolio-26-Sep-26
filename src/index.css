@@ -6,6 +6,21 @@
   }
 }
 
+.case-study-page :is(h1, h2, h3, h4):not([class*="text-white"]) {
+  color: #0f172a;
+}
+
+.case-study-page :is(p, li, dd):not(.case-study-accent)[class*="text-slate-500"],
+.case-study-page :is(p, li, dd):not(.case-study-accent)[class*="text-slate-600"],
+.case-study-page :is(p, li, dd):not(.case-study-accent)[class*="text-slate-700"],
+.case-study-page :is(p, li, dd):not(.case-study-accent):not([class*="text-slate-400"]):not([class*="text-slate-800"]):not([class*="text-slate-900"]) {
+  color: #475569;
+}
+
+.case-study-page .case-study-accent {
+  color: #2b35ee;
+}
+
 .portfolio-protected::before {
   content: '';
   position: absolute;

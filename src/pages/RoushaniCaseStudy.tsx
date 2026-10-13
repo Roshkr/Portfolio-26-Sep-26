@@ -1,8 +1,10 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
 import { CaseStudy } from '../types';
 import { LazyVideo } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
+import { CharacterRevealText } from '../components/CharacterRevealText';
 
 interface RoushaniCaseStudyProps {
   caseStudy: CaseStudy;
@@ -24,7 +26,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
   nextStudy,
   onSelectCaseStudy,
 }) => (
-  <article className="w-full bg-[#fbfbfb] text-slate-950">
+  <article className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
     <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10">
       <button
         onClick={onBack}
@@ -40,15 +42,13 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
     <header className="mx-auto max-w-6xl px-6 pb-12 pt-12 md:px-10 md:pb-16 md:pt-20">
       <div className="mx-auto max-w-5xl text-center">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2b35ee]">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
           {caseStudy.category}
         </span>
         <h1 className="mt-5 text-5xl font-medium tracking-[-0.055em] text-slate-950 sm:text-6xl md:text-8xl">
           {caseStudy.title}
         </h1>
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-2xl">
-          {caseStudy.subtitle}
-        </p>
+        <HeroSubtitle text={caseStudy.subtitle} />
         <div className="mt-8 flex flex-wrap justify-center gap-2">
           {caseStudy.tags?.slice(0, 4).map((tag) => (
             <span key={tag} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-600">
@@ -58,7 +58,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </div>
 
-      <div className="mt-12 overflow-hidden rounded-[28px] border border-slate-200 bg-[#f2f3f6] p-3 shadow-[0_24px_80px_-44px_rgba(15,23,42,.35)] md:mt-16 md:rounded-[36px] md:p-6">
+      <div className="mt-12 overflow-hidden rounded-xl border border-slate-200 bg-[#f2f3f6] p-3 shadow-[0_24px_80px_-44px_rgba(15,23,42,.35)] md:mt-16 md:rounded-xl md:p-6">
         {caseStudy.heroVideo ? (
           <div className="mx-auto aspect-video w-full max-w-6xl max-h-[720px]">
             <LazyVideo
@@ -66,11 +66,11 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
               poster={caseStudy.heroImage}
               ariaLabel={`${caseStudy.title} product preview`}
               objectFit="contain"
-              frameClassName="overflow-hidden rounded-2xl bg-white md:rounded-[28px]"
+              frameClassName="overflow-hidden rounded-xl bg-white"
             />
           </div>
         ) : (
-          <img src={caseStudy.heroImage} alt={`${caseStudy.title} product`} className="mx-auto max-h-[720px] w-full rounded-2xl object-contain md:rounded-[28px]" />
+          <img src={caseStudy.heroImage} alt={`${caseStudy.title} product`} className="mx-auto max-h-[720px] w-full rounded-xl object-contain" />
         )}
       </div>
     </header>
@@ -78,11 +78,11 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
     <section id="about" className="border-y border-slate-200 bg-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-12 md:px-10 md:py-20">
         <div className="md:col-span-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2b35ee]">About the project</span>
-          <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl">A calmer way to get paid.</h2>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">About the project</span>
+          <CharacterRevealHeading text="A calmer way to get paid." />
         </div>
         <div className="md:col-span-8">
-          <p className="whitespace-pre-line text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.overview}</p>
+          <CharacterRevealBlock text={caseStudy.overview} />
           <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-7 border-t border-slate-200 pt-8 md:grid-cols-4">
             {projectFacts(caseStudy).map((fact) => (
               <div key={fact.label}>
@@ -103,15 +103,16 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
       <div className="grid gap-10 md:grid-cols-12 md:gap-16">
         <div className="md:col-span-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2b35ee]">The opportunity</span>
-          <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl">Make invoicing feel less like admin.</h2>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">The opportunity</span>
+          <CharacterRevealHeading text="Make invoicing feel less like admin." />
         </div>
         <div className="space-y-6 md:col-span-7 md:col-start-6">
-          <p className="text-lg leading-relaxed text-slate-600">{caseStudy.interviewsText}</p>
+          <CharacterRevealBlock text={caseStudy.interviewsText} className="text-lg leading-relaxed text-slate-600" />
           <ul className="space-y-3">
             {caseStudy.interviewBullets.slice(0, 3).map((item) => (
               <li key={item} className="flex gap-3 text-base leading-relaxed text-slate-700">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2b35ee]" />{item}
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
+                <CharacterRevealInline text={item} />
               </li>
             ))}
           </ul>
@@ -120,9 +121,9 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       <div className="mt-16 grid gap-4 md:mt-24 md:grid-cols-3">
         {caseStudy.keyInsights.map((insight, index) => (
-          <div key={insight.title} className="rounded-3xl border border-slate-200 bg-white p-7 md:p-8">
+          <div key={insight.title} className="rounded-xl border border-slate-200 bg-white p-7 md:p-8">
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">0{index + 1} / {insight.title}</span>
-            <p className="mt-5 text-lg leading-relaxed text-slate-700">{insight.desc}</p>
+            <CharacterRevealBlock text={insight.desc} className="mt-5 text-lg leading-relaxed text-slate-700" />
           </div>
         ))}
       </div>
@@ -130,17 +131,23 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
     {caseStudy.storySections?.slice(0, 4).map((section, index) => {
       const screen = caseStudy.designScreens[index % caseStudy.designScreens.length];
+      const isProblemStatement = section.eyebrow === 'Problem statement';
+      const isBusinessGoals = section.eyebrow === 'Business goals';
+      const isResearchInsight = section.eyebrow === 'Research insight';
+      const isCoreFeatures = section.eyebrow === 'Core features';
+      const hasStickyScreen = isProblemStatement || isBusinessGoals || isResearchInsight || isCoreFeatures;
+      const textOnFirstColumn = isProblemStatement || isResearchInsight;
       return (
         <section key={section.title} className={`${index % 2 === 0 ? 'bg-white' : 'bg-[#f3f4f7]'} border-y border-slate-200/70`}>
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-14 md:grid-cols-2 md:gap-16 md:px-10 md:py-24">
-            <div className={`${index % 2 === 1 ? 'md:order-2' : ''} space-y-5`}>
-              {section.eyebrow && <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2b35ee]">{section.eyebrow}</span>}
-              <h2 className="text-3xl font-medium tracking-tight md:text-5xl">{section.title}</h2>
-              {section.body && <p className="whitespace-pre-line text-base leading-relaxed text-slate-600 md:text-lg">{section.body}</p>}
-              {section.bullets && <ul className="space-y-3 pt-1">{section.bullets.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-700 md:text-base"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#2b35ee]" />{item}</li>)}</ul>}
+            <div className={`${hasStickyScreen ? `order-last ${textOnFirstColumn ? 'md:order-first' : 'md:order-2'}` : `${index % 2 === 1 ? 'md:order-2 ' : ''}`}`}>
+              {section.eyebrow && <span className={`text-xs font-semibold uppercase tracking-[0.2em] ${hasStickyScreen ? 'text-slate-600' : 'text-[#2b35ee]'}`}>{section.eyebrow}</span>}
+              <CharacterRevealHeading text={section.title} className="mt-8 text-3xl font-medium tracking-tight md:text-5xl" />
+              {section.body && <CharacterRevealBlock text={section.body} className="mt-5 text-base leading-relaxed text-slate-600 md:text-lg" />}
+              {section.bullets && <ul className="mt-5 space-y-3">{section.bullets.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-700 md:text-base"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" /><CharacterRevealInline text={item} /></li>)}</ul>}
             </div>
-            <figure className={`${index % 2 === 1 ? 'md:order-1' : ''} overflow-hidden rounded-[28px] border border-slate-200 bg-white p-3 md:rounded-[36px] md:p-5`}>
-              {screen ? <img src={screen.image} alt={screen.title} loading="lazy" className="max-h-[560px] w-full rounded-2xl object-contain md:rounded-[26px]" /> : <div className="flex min-h-72 items-center justify-center rounded-2xl bg-slate-100 text-sm text-slate-400">Product screen placeholder</div>}
+            <figure className={`${hasStickyScreen ? `order-first sticky top-4 z-10 self-start md:top-24 ${textOnFirstColumn ? 'md:order-none' : 'md:order-1'}` : index % 2 === 1 ? 'md:order-1' : ''} overflow-hidden rounded-xl border border-slate-200 bg-white p-3 md:rounded-xl md:p-5`}>
+              {screen ? <img src={screen.image} alt={screen.title} loading="lazy" className={`w-full rounded-xl object-contain ${hasStickyScreen ? 'max-h-[32svh] md:max-h-[560px]' : 'max-h-[560px]'}`} /> : <div className="flex min-h-72 items-center justify-center rounded-xl bg-slate-100 text-sm text-slate-400">Product screen placeholder</div>}
               {screen && <figcaption className="px-2 pb-1 pt-4 text-xs text-slate-500">{screen.note}</figcaption>}
             </figure>
           </div>
@@ -151,14 +158,14 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
       <div className="grid gap-10 md:grid-cols-12 md:gap-16">
         <div className="md:col-span-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2b35ee]">What changed</span>
-          <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl">Less time making invoices. More time running a business.</h2>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">What changed</span>
+          <CharacterRevealHeading text="Less time making invoices. More time running a business." />
         </div>
         <div className="md:col-span-8">
-          <p className="text-lg leading-relaxed text-slate-600">{caseStudy.impactText}</p>
+          <CharacterRevealBlock text={caseStudy.impactText} className="text-lg leading-relaxed text-slate-600" />
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {caseStudy.metrics.map((metric) => (
-              <div key={metric.label} className="rounded-3xl bg-[#eef0f3] p-6 md:p-7">
+              <div key={metric.label} className="rounded-xl bg-[#eef0f3] p-6 md:p-7">
                 <span className="text-3xl font-medium tracking-tight text-slate-950 md:text-4xl">{metric.value}</span>
                 <p className="mt-3 text-sm font-semibold text-slate-700">{metric.label}</p>
                 {metric.context && <p className="mt-2 text-xs leading-relaxed text-slate-500">{metric.context}</p>}
@@ -197,9 +204,89 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
           <ProjectCard
             study={nextStudy}
             onSelectCaseStudy={onSelectCaseStudy}
+            compactCorners
           />
         </div>
       </section>
     )}
   </article>
 );
+
+const HeroSubtitle: React.FC<{ text: string }> = ({ text }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.p
+      data-text-reveal
+      className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-2xl"
+      initial={shouldReduceMotion ? false : 'hidden'}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.004, delayChildren: 0.05 } },
+      }}
+    >
+      <span className="sr-only">{text}</span>
+      <CharacterRevealText text={text} />
+    </motion.p>
+  );
+};
+
+const CharacterRevealBlock: React.FC<{ text: string; className?: string }> = ({
+  text,
+  className = 'text-lg leading-relaxed text-slate-600 md:text-xl',
+}) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      className={`whitespace-pre-line ${className}`}
+      initial={shouldReduceMotion ? false : 'hidden'}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.004, delayChildren: 0.05 } } }}
+    >
+      <span className="sr-only">{text}</span>
+      <CharacterRevealText text={text} />
+    </motion.div>
+  );
+};
+
+const CharacterRevealInline: React.FC<{ text: string }> = ({ text }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.span
+      data-text-reveal
+      initial={shouldReduceMotion ? false : 'hidden'}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.004, delayChildren: 0.05 } } }}
+    >
+      <span className="sr-only">{text}</span>
+      <CharacterRevealText text={text} />
+    </motion.span>
+  );
+};
+
+const CharacterRevealHeading: React.FC<{ text: string; className?: string }> = ({
+  text,
+  className = 'mt-8 text-3xl font-medium tracking-tight md:text-4xl',
+}) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.h2
+      data-text-reveal
+      className={className}
+      initial={shouldReduceMotion ? false : 'hidden'}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.004, delayChildren: 0.05 } } }}
+    >
+      <span className="sr-only">{text}</span>
+      <CharacterRevealText text={text} />
+    </motion.h2>
+  );
+};
