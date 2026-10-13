@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
-import { CaseStudy } from '../types';
+import type { CaseStudy } from '../types';
 import { LazyVideo } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
 import { CharacterRevealText } from '../components/CharacterRevealText';
@@ -13,203 +13,259 @@ interface RoushaniCaseStudyProps {
   onSelectCaseStudy?: (study: CaseStudy) => void;
 }
 
-const projectFacts = (caseStudy: CaseStudy) => [
-  { label: 'Role', value: caseStudy.role },
-  { label: 'Team', value: caseStudy.team },
-  { label: 'Timeline', value: caseStudy.timeline },
-  { label: 'Platform', value: 'Mobile-first web app' },
-];
+const RevealSection: React.FC<React.PropsWithChildren<{ className?: string }>> = ({ className = '', children }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.section
+      className={className}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: shouldReduceMotion ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.section>
+  );
+};
 
 export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
   caseStudy,
   onBack,
   nextStudy,
   onSelectCaseStudy,
-}) => (
-  <article className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
-    <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10">
-      <button
-        onClick={onBack}
-        className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Back to work
-      </button>
-      <span className="rounded-full bg-[#eef0f3] px-3 py-1 text-xs font-medium text-slate-600">
-        {caseStudy.status || caseStudy.category}
-      </span>
-    </div>
+}) => {
+  const challenge = caseStudy.storySections?.find((section) => section.eyebrow === 'Problem statement');
+  const approachSections = caseStudy.storySections?.filter((section) =>
+    ['Business goals', 'Research insight', 'Core features', 'Accessibility'].includes(section.eyebrow ?? ''),
+  ) ?? [];
+  const reflection = caseStudy.storySections?.find((section) => section.eyebrow === 'Reflection');
 
-    <header className="mx-auto max-w-6xl px-6 pb-12 pt-12 md:px-10 md:pb-16 md:pt-20">
-      <div className="mx-auto max-w-5xl text-center">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-          {caseStudy.category}
+  return (
+    <article className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10">
+        <button
+          onClick={onBack}
+          className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950"
+        >
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          Back to work
+        </button>
+        <span className="rounded-full bg-[#eef0f3] px-3 py-1 text-xs font-medium text-slate-600">
+          {caseStudy.status || caseStudy.category}
         </span>
-        <h1 className="mt-5 text-5xl font-medium tracking-[-0.055em] text-slate-950 sm:text-6xl md:text-8xl">
-          {caseStudy.title}
-        </h1>
-        <HeroSubtitle text={caseStudy.subtitle} />
-        <div className="mt-8 flex flex-wrap justify-center gap-2">
-          {caseStudy.tags?.slice(0, 4).map((tag) => (
-            <span key={tag} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-600">
-              {tag}
-            </span>
-          ))}
-        </div>
       </div>
 
-      <div className="mt-12 overflow-hidden rounded-xl border border-slate-200 bg-[#f2f3f6] p-3 shadow-[0_24px_80px_-44px_rgba(15,23,42,.35)] md:mt-16 md:rounded-xl md:p-6">
-        {caseStudy.heroVideo ? (
-          <div className="mx-auto aspect-video w-full max-w-6xl max-h-[720px]">
-            <LazyVideo
-              src={caseStudy.heroVideo}
-              poster={caseStudy.heroImage}
-              ariaLabel={`${caseStudy.title} product preview`}
-              objectFit="contain"
-              frameClassName="overflow-hidden rounded-xl bg-white"
-            />
-          </div>
-        ) : (
-          <img src={caseStudy.heroImage} alt={`${caseStudy.title} product`} className="mx-auto max-h-[720px] w-full rounded-xl object-contain" />
-        )}
-      </div>
-    </header>
-
-    <section id="about" className="border-y border-slate-200 bg-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-12 md:px-10 md:py-20">
-        <div className="md:col-span-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">About the project</span>
-          <CharacterRevealHeading text="A calmer way to get paid." />
-        </div>
-        <div className="md:col-span-8">
-          <CharacterRevealBlock text={caseStudy.overview} />
-          <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-7 border-t border-slate-200 pt-8 md:grid-cols-4">
-            {projectFacts(caseStudy).map((fact) => (
+      <header className="mx-auto max-w-6xl px-6 pb-12 pt-12 md:px-10 md:pb-16 md:pt-20">
+        <div className="max-w-5xl">
+          <h1 className="mt-5 max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-slate-950 sm:text-6xl md:text-8xl">
+            {caseStudy.title}
+          </h1>
+          <HeroSubtitle text={caseStudy.subtitle} />
+          <div className="mt-10 grid gap-x-8 gap-y-6 border-y border-slate-200 py-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { label: 'My role', value: caseStudy.role },
+              { label: 'In collaboration', value: caseStudy.team },
+              { label: 'Timeframe', value: caseStudy.timeline },
+              { label: 'Focus', value: caseStudy.tags?.slice(0, 3).join(' · ') || 'Mobile-first web app' },
+            ].map((fact) => (
               <div key={fact.label}>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.17em] text-slate-400">{fact.label}</span>
-                <p className="mt-2 text-sm leading-relaxed text-slate-800">{fact.value}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">{fact.label}</p>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-slate-800">{fact.value}</p>
               </div>
             ))}
           </div>
-          {caseStudy.liveUrl && (
-            <a href={caseStudy.liveUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#2b35ee] hover:underline">
-              View MVP <ExternalLink className="h-4 w-4" />
-            </a>
-          )}
         </div>
-      </div>
-    </section>
 
-    <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-      <div className="grid gap-10 md:grid-cols-12 md:gap-16">
-        <div className="md:col-span-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">The opportunity</span>
-          <CharacterRevealHeading text="Make invoicing feel less like admin." />
-        </div>
-        <div className="space-y-6 md:col-span-7 md:col-start-6">
-          <CharacterRevealBlock text={caseStudy.interviewsText} className="text-lg leading-relaxed text-slate-600" />
-          <ul className="space-y-3">
-            {caseStudy.interviewBullets.slice(0, 3).map((item) => (
-              <li key={item} className="flex gap-3 text-base leading-relaxed text-slate-700">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-                <CharacterRevealInline text={item} />
+        <MediaFrame caseStudy={caseStudy} />
+      </header>
+
+      <RevealSection className="border-y border-slate-200 bg-white py-14 md:py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
+          <SectionHeading eyebrow="The short version" title="Five lines. The full story follows." />
+          <ol className="divide-y divide-slate-200">
+            {[
+              { label: 'Problem', text: 'Service businesses repeated invoice work in spreadsheets and outdated tools.' },
+              { label: 'Approach', text: 'Research-led workflows, saved customer details, and simple branding controls.' },
+              { label: 'What changed', text: 'Invoice creation became a faster, clearer workflow.' },
+              { label: 'Outcomes', text: 'A live MVP with branded invoices, PDF export, and reusable customer and service details.' },
+              { label: 'What I carry forward', text: 'Simplicity matters more than features.' },
+            ].map(({ label, text }, index) => (
+              <li key={label} className="grid gap-2 py-4 sm:grid-cols-[3rem_1fr] sm:gap-5">
+                <span className="text-xs font-medium text-slate-400">0{index + 1}</span>
+                <div className="text-sm leading-relaxed text-slate-600">
+                  <p className="mb-1 inline-flex rounded-md border border-slate-200 bg-white px-2 py-1 text-xs font-bold uppercase tracking-[0.12em] text-slate-900">{label}</p>
+                  <div className="mt-1 text-sm leading-relaxed text-slate-600">
+                    <CharacterRevealInline text={text} />
+                  </div>
+                </div>
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
-      </div>
+      </RevealSection>
 
-      <div className="mt-16 grid gap-4 md:mt-24 md:grid-cols-3">
-        {caseStudy.keyInsights.map((insight, index) => (
-          <div key={insight.title} className="rounded-xl border border-slate-200 bg-white p-7 md:p-8">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">0{index + 1} / {insight.title}</span>
-            <CharacterRevealBlock text={insight.desc} className="mt-5 text-lg leading-relaxed text-slate-700" />
-          </div>
-        ))}
-      </div>
-    </section>
-
-    {caseStudy.storySections?.slice(0, 4).map((section, index) => {
-      const screen = caseStudy.designScreens[index % caseStudy.designScreens.length];
-      const isProblemStatement = section.eyebrow === 'Problem statement';
-      const isBusinessGoals = section.eyebrow === 'Business goals';
-      const isResearchInsight = section.eyebrow === 'Research insight';
-      const isCoreFeatures = section.eyebrow === 'Core features';
-      const hasStickyScreen = isProblemStatement || isBusinessGoals || isResearchInsight || isCoreFeatures;
-      const textOnFirstColumn = isProblemStatement || isResearchInsight;
-      return (
-        <section key={section.title} className={`${index % 2 === 0 ? 'bg-white' : 'bg-[#f3f4f7]'} border-y border-slate-200/70`}>
-          <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-14 md:grid-cols-2 md:gap-16 md:px-10 md:py-24">
-            <div className={`${hasStickyScreen ? `order-last ${textOnFirstColumn ? 'md:order-first' : 'md:order-2'}` : `${index % 2 === 1 ? 'md:order-2 ' : ''}`}`}>
-              {section.eyebrow && <span className={`text-xs font-semibold uppercase tracking-[0.2em] ${hasStickyScreen ? 'text-slate-600' : 'text-[#2b35ee]'}`}>{section.eyebrow}</span>}
-              <CharacterRevealHeading text={section.title} className="mt-8 text-3xl font-medium tracking-tight md:text-5xl" />
-              {section.body && <CharacterRevealBlock text={section.body} className="mt-5 text-base leading-relaxed text-slate-600 md:text-lg" />}
-              {section.bullets && <ul className="mt-5 space-y-3">{section.bullets.map((item) => <li key={item} className="flex gap-3 text-sm leading-relaxed text-slate-700 md:text-base"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" /><CharacterRevealInline text={item} /></li>)}</ul>}
+      <RevealSection className="border-y border-slate-200 bg-white py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
+          <SectionHeading eyebrow="The challenge" title={challenge?.title || 'Why this product was needed'} />
+          <div className="space-y-6">
+            {challenge?.body && <CharacterRevealBlock text={challenge.body} className="text-lg leading-relaxed text-slate-600 md:text-xl" />}
+            <CharacterRevealBlock text={caseStudy.overview} className="text-base leading-relaxed text-slate-600 md:text-lg" />
+            {challenge?.bullets?.length ? (
+              <ul className="space-y-3">
+                {challenge.bullets.map((item) => <RevealListItem key={item} text={item} />)}
+              </ul>
+            ) : null}
+            <CharacterRevealBlock text={caseStudy.interviewsText} className="pt-2 text-base leading-relaxed text-slate-600 md:text-lg" />
+            <div className="space-y-3">
+              {caseStudy.interviewBullets.slice(0, 3).map((item) => <RevealListItem key={item} text={item} />)}
             </div>
-            <figure className={`${hasStickyScreen ? `order-first sticky top-4 z-10 self-start md:top-24 ${textOnFirstColumn ? 'md:order-none' : 'md:order-1'}` : index % 2 === 1 ? 'md:order-1' : ''} overflow-hidden rounded-xl border border-slate-200 bg-white p-3 md:rounded-xl md:p-5`}>
-              {screen ? <img src={screen.image} alt={screen.title} loading="lazy" className={`w-full rounded-xl object-contain ${hasStickyScreen ? 'max-h-[32svh] md:max-h-[560px]' : 'max-h-[560px]'}`} /> : <div className="flex min-h-72 items-center justify-center rounded-xl bg-slate-100 text-sm text-slate-400">Product screen placeholder</div>}
-              {screen && <figcaption className="px-2 pb-1 pt-4 text-xs text-slate-500">{screen.note}</figcaption>}
-            </figure>
+            {caseStudy.keyInsights.length > 0 && (
+              <div className="grid gap-3 pt-2 sm:grid-cols-3">
+                {caseStudy.keyInsights.map((insight, index) => (
+                  <article key={insight.title} className="rounded-xl border border-slate-200 bg-[#fbfbfb] p-5">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">0{index + 1} / {insight.title}</p>
+                    <CharacterRevealBlock text={insight.desc} className="mt-3 text-sm leading-relaxed text-slate-600" />
+                  </article>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </RevealSection>
+
+      <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
+        <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
+          <SectionHeading eyebrow="The approach" title="From research to a simpler workflow." />
+          <div>
+            <CharacterRevealBlock text={caseStudy.designText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
+            <div className="divide-y divide-slate-200 border-y border-slate-200">
+              {approachSections.map((section, index) => (
+                <article key={section.eyebrow} className="grid gap-3 py-6 sm:grid-cols-[3rem_1fr] sm:gap-5">
+                  <span className="text-xs font-medium text-slate-400">0{index + 1}</span>
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{section.eyebrow}</p>
+                    <h3 className="mt-2 text-lg font-semibold tracking-tight text-slate-900">{section.title}</h3>
+                    {section.body && <CharacterRevealBlock text={section.body} className="mt-3 text-sm leading-relaxed text-slate-600" />}
+                    {section.bullets?.length ? (
+                      <ul className="mt-4 space-y-2">
+                        {section.bullets.map((item) => <RevealListItem key={item} text={item} />)}
+                      </ul>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+              {caseStudy.designBullets.map((item, index) => (
+                <article key={item} className="grid gap-3 py-5 sm:grid-cols-[3rem_1fr] sm:gap-5">
+                  <span className="text-xs font-medium text-slate-400">{String(approachSections.length + index + 1).padStart(2, '0')}</span>
+                  <div className="flex gap-3 text-sm leading-relaxed text-slate-700 md:text-base">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />
+                    <CharacterRevealInline text={item} />
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </RevealSection>
+
+      <RevealSection className="border-y border-slate-200 bg-white py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
+          <SectionHeading eyebrow="What changed" title="Less time making invoices. More time running a business." />
+          <div className="space-y-6">
+            <CharacterRevealBlock text={caseStudy.impactText} className="text-lg leading-relaxed text-slate-600 md:text-xl" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <BeforeAfterMedia label={caseStudy.beforeLabel || 'Before'} src={caseStudy.beforeScreen} />
+              <BeforeAfterMedia label={caseStudy.afterLabel || 'After'} src={caseStudy.afterScreen} />
+            </div>
+          </div>
+        </div>
+      </RevealSection>
+
+      <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
+        <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
+          <SectionHeading eyebrow="Outcomes" title="What changed after the work shipped." />
+          <div>
+            <CharacterRevealBlock text={caseStudy.usabilityText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
+            <div className="grid gap-4 sm:grid-cols-3">
+              {caseStudy.metrics.map((metric) => (
+                <article key={metric.label} className="rounded-xl bg-[#eef0f3] p-6 md:p-7">
+                  <p className="text-3xl font-medium tracking-tight text-slate-950 md:text-4xl">{metric.value}</p>
+                  <h3 className="mt-3 text-sm font-semibold text-slate-700">{metric.label}</h3>
+                  {metric.context && <p className="mt-2 text-xs leading-relaxed text-slate-500">{metric.context}</p>}
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </RevealSection>
+
+      <RevealSection className="border-t border-slate-200 bg-[#eef0f3] py-16 text-slate-950 md:py-24">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2 md:gap-16 md:px-10">
+          <div>
+            <SectionHeading eyebrow="What’s next" title="Keep making the everyday feel easier." />
+            {reflection?.body && <CharacterRevealBlock text={reflection.body} className="mt-6 text-base leading-relaxed text-slate-600 md:text-lg" />}
+            <div className="mt-8 border-t border-slate-300 pt-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">The principle I carry forward</p>
+              <CharacterRevealBlock text={caseStudy.learnings[0] || 'Simplicity matters more than features.'} className="mt-3 text-xl font-medium leading-snug tracking-tight text-slate-900 md:text-2xl" />
+            </div>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Next steps</p>
+            <ul className="mt-4 space-y-4">
+              {caseStudy.nextSteps.slice(0, 3).map((item) => <RevealListItem key={item} text={item} />)}
+            </ul>
+            {caseStudy.liveUrl && (
+              <a href={caseStudy.liveUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
+                Explore Roushani <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              </a>
+            )}
+          </div>
+        </div>
+      </RevealSection>
+
+      {nextStudy && onSelectCaseStudy && (
+        <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-16 md:py-20">
+          <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span>
+            <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners />
           </div>
         </section>
-      );
-    })}
+      )}
+    </article>
+  );
+};
 
-    <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-      <div className="grid gap-10 md:grid-cols-12 md:gap-16">
-        <div className="md:col-span-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">What changed</span>
-          <CharacterRevealHeading text="Less time making invoices. More time running a business." />
-        </div>
-        <div className="md:col-span-8">
-          <CharacterRevealBlock text={caseStudy.impactText} className="text-lg leading-relaxed text-slate-600" />
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {caseStudy.metrics.map((metric) => (
-              <div key={metric.label} className="rounded-xl bg-[#eef0f3] p-6 md:p-7">
-                <span className="text-3xl font-medium tracking-tight text-slate-950 md:text-4xl">{metric.value}</span>
-                <p className="mt-3 text-sm font-semibold text-slate-700">{metric.label}</p>
-                {metric.context && <p className="mt-2 text-xs leading-relaxed text-slate-500">{metric.context}</p>}
-              </div>
-            ))}
-          </div>
-        </div>
+const MediaFrame: React.FC<{ caseStudy: CaseStudy }> = ({ caseStudy }) => (
+  <div className="mt-12 overflow-hidden rounded-xl border border-slate-200 bg-[#f2f3f6] p-3 shadow-[0_24px_80px_-44px_rgba(15,23,42,.35)] md:mt-16 md:p-6">
+    {caseStudy.heroVideo ? (
+      <div className="mx-auto aspect-video w-full max-w-6xl max-h-[720px]">
+        <LazyVideo
+          src={caseStudy.heroVideo}
+          poster={caseStudy.heroImage}
+          ariaLabel={`${caseStudy.title} product preview`}
+          objectFit="contain"
+          frameClassName="overflow-hidden rounded-xl bg-white"
+        />
       </div>
-    </section>
-
-    <section className="bg-[#eef0f3] text-slate-950">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:grid-cols-2 md:px-10 md:py-20">
-        <div>
-          <h2 className="mb-7 text-3xl font-semibold tracking-tight md:text-4xl">What I learned</h2>
-          <ul className="space-y-4">{caseStudy.learnings.slice(0, 3).map((item) => <li key={item} className="border-t border-slate-300 pt-4 text-sm leading-relaxed text-slate-600">{item}</li>)}</ul>
-        </div>
-        <div>
-          <h2 className="text-3xl font-medium tracking-tight md:text-4xl">Where it goes next</h2>
-          <ul className="mt-7 space-y-4">{caseStudy.nextSteps.slice(0, 3).map((item) => <li key={item} className="border-t border-slate-300 pt-4 text-sm leading-relaxed text-slate-600">{item}</li>)}</ul>
-        </div>
-        <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-5 border-t border-slate-300 pt-8">
-          <p className="text-xl font-medium md:text-2xl">Have a workflow that could feel this simple?</p>
-          <a href={caseStudy.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800">
-            Explore Roushani <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </div>
-      </div>
-    </section>
-
-    {nextStudy && onSelectCaseStudy && (
-      <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-16 md:py-20">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            Next Project
-          </span>
-          <ProjectCard
-            study={nextStudy}
-            onSelectCaseStudy={onSelectCaseStudy}
-            compactCorners
-          />
-        </div>
-      </section>
+    ) : (
+      <img src={caseStudy.heroImage} alt={`${caseStudy.title} product`} className="mx-auto max-h-[720px] w-full rounded-xl object-contain" />
     )}
-  </article>
+  </div>
+);
+
+const SectionHeading: React.FC<{ eyebrow: string; title: string }> = ({ eyebrow, title }) => (
+  <div>
+    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{eyebrow}</p>
+    <CharacterRevealHeading text={title} className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl" />
+  </div>
+);
+
+const BeforeAfterMedia: React.FC<{ label: string; src: string }> = ({ label, src }) => (
+  <figure className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3">
+    <img src={src} alt={label} loading="lazy" className="max-h-80 w-full rounded-lg object-contain" />
+    <figcaption className="px-2 pb-1 pt-3 text-xs font-medium text-slate-500">{label}</figcaption>
+  </figure>
 );
 
 const HeroSubtitle: React.FC<{ text: string }> = ({ text }) => {
@@ -218,14 +274,11 @@ const HeroSubtitle: React.FC<{ text: string }> = ({ text }) => {
   return (
     <motion.p
       data-text-reveal
-      className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-2xl"
+      className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-2xl"
       initial={shouldReduceMotion ? false : 'hidden'}
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: 0.004, delayChildren: 0.05 } },
-      }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.004, delayChildren: 0.05 } } }}
     >
       <span className="sr-only">{text}</span>
       <CharacterRevealText text={text} />
@@ -233,10 +286,7 @@ const HeroSubtitle: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-const CharacterRevealBlock: React.FC<{ text: string; className?: string }> = ({
-  text,
-  className = 'text-lg leading-relaxed text-slate-600 md:text-xl',
-}) => {
+const CharacterRevealBlock: React.FC<{ text: string; className?: string }> = ({ text, className = '' }) => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -252,6 +302,13 @@ const CharacterRevealBlock: React.FC<{ text: string; className?: string }> = ({
     </motion.div>
   );
 };
+
+const RevealListItem: React.FC<{ text: string }> = ({ text }) => (
+  <li className="flex gap-3 text-sm leading-relaxed text-slate-700 md:text-base">
+    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />
+    <CharacterRevealInline text={text} />
+  </li>
+);
 
 const CharacterRevealInline: React.FC<{ text: string }> = ({ text }) => {
   const shouldReduceMotion = useReducedMotion();
@@ -270,10 +327,7 @@ const CharacterRevealInline: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-const CharacterRevealHeading: React.FC<{ text: string; className?: string }> = ({
-  text,
-  className = 'mt-8 text-3xl font-medium tracking-tight md:text-4xl',
-}) => {
+const CharacterRevealHeading: React.FC<{ text: string; className?: string }> = ({ text, className = '' }) => {
   const shouldReduceMotion = useReducedMotion();
 
   return (

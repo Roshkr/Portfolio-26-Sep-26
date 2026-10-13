@@ -68,7 +68,11 @@ export default function App() {
             {route.page === 'case-study' && (
               <ProjectDetailTextMotion>
                 {route.caseStudy.id === 'design-system-icons' ? (
-                  <DesignSystemProjectPage onBack={() => navigateTo('home')} />
+                  <DesignSystemProjectPage
+                    onBack={() => navigateTo('home')}
+                    nextStudy={caseStudies.find((study) => study.id === 'umbrella') ?? null}
+                    onSelectCaseStudy={selectCaseStudy}
+                  />
                 ) : (
                   <CaseStudyPage
                     caseStudy={route.caseStudy}
