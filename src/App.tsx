@@ -7,6 +7,7 @@ import { ContactModal } from './components/ContactModal';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { CaseStudyPage } from './pages/CaseStudyPage';
+import { DesignSystemProjectPage } from './pages/DesignSystemProjectPage';
 import { DEFAULT_CASE_STUDIES } from './data/portfolioData';
 import type { CaseStudy } from './types';
 import { usePortfolioNavigation } from './hooks/usePortfolioNavigation';
@@ -64,12 +65,16 @@ export default function App() {
             {route.page === 'about' && <AboutPage />}
 
             {route.page === 'case-study' && (
-              <CaseStudyPage
-                caseStudy={route.caseStudy}
-                allCaseStudies={caseStudies}
-                onSelectCaseStudy={selectCaseStudy}
-                onBack={() => navigateTo('home')}
-              />
+              route.caseStudy.id === 'design-system-icons' ? (
+                <DesignSystemProjectPage onBack={() => navigateTo('home')} />
+              ) : (
+                <CaseStudyPage
+                  caseStudy={route.caseStudy}
+                  allCaseStudies={caseStudies}
+                  onSelectCaseStudy={selectCaseStudy}
+                  onBack={() => navigateTo('home')}
+                />
+              )
             )}
           </motion.main>
         </AnimatePresence>
