@@ -82,7 +82,11 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       <RevealSection className="border-y border-slate-200 bg-white py-14 md:py-20">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
-          <SectionHeading eyebrow="The short version" title="Five lines. The full story follows." />
+          <div className="lg:sticky lg:top-24 lg:self-start">
+          <div className="roushani-summary-sticky">
+            <SectionHeading eyebrow="The short version" title="Five lines. The full story follows." />
+          </div>
+          </div>
           <ol className="divide-y divide-slate-200">
             {[
               { label: 'Problem', text: 'Service businesses repeated invoice work in spreadsheets and outdated tools.' },
@@ -107,7 +111,9 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       <RevealSection className="border-y border-slate-200 bg-white py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
-          <SectionHeading eyebrow="The challenge" title={challenge?.title || 'Why this product was needed'} />
+          <div className="roushani-summary-sticky">
+            <SectionHeading eyebrow="The challenge" title={challenge?.title || 'Why this product was needed'} />
+          </div>
           <div className="space-y-6">
             {challenge?.body && <CharacterRevealBlock text={challenge.body} className="text-lg leading-relaxed text-slate-600 md:text-xl" />}
             <CharacterRevealBlock text={caseStudy.overview} className="text-base leading-relaxed text-slate-600 md:text-lg" />
@@ -136,7 +142,9 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
-          <SectionHeading eyebrow="The approach" title="From research to a simpler workflow." />
+          <div className="roushani-summary-sticky">
+            <SectionHeading eyebrow="The approach" title="From research to a simpler workflow." />
+          </div>
           <div>
             <CharacterRevealBlock text={caseStudy.designText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
             <div className="divide-y divide-slate-200 border-y border-slate-200">
@@ -171,7 +179,9 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       <RevealSection className="border-y border-slate-200 bg-white py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
-          <SectionHeading eyebrow="What changed" title="Less time making invoices. More time running a business." />
+          <div className="roushani-summary-sticky">
+            <SectionHeading eyebrow="What changed" title="Less time making invoices. More time running a business." />
+          </div>
           <div className="space-y-6">
             <CharacterRevealBlock text={caseStudy.impactText} className="text-lg leading-relaxed text-slate-600 md:text-xl" />
             <div className="grid gap-4 sm:grid-cols-2">
@@ -184,7 +194,9 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
-          <SectionHeading eyebrow="Outcomes" title="What changed after the work shipped." />
+          <div className="roushani-summary-sticky">
+            <SectionHeading eyebrow="Outcomes" title="What changed after the work shipped." />
+          </div>
           <div>
             <CharacterRevealBlock text={caseStudy.usabilityText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
             <div className="grid gap-4 sm:grid-cols-3">

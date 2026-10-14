@@ -111,7 +111,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
 
     <SectionReveal id="challenge" className="border-y border-slate-200 bg-white py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
-        <div>
+        <div className="project-section-sticky">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">The challenge</p>
           <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">One clear language for components and icons.</h2>
         </div>
@@ -126,7 +126,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
 
     <SectionReveal id="approach" className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
       <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
-        <div>
+        <div className="project-section-sticky">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">The approach</p>
           <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">Build the foundations, then make them usable.</h2>
         </div>
@@ -152,7 +152,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
 
     <SectionReveal id="what-changed" className="border-y border-slate-200 bg-white py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
-        <div>
+        <div className="project-section-sticky">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">What changed</p>
           <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">A shared foundation for consistent product work.</h2>
         </div>
@@ -167,7 +167,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
 
     <SectionReveal id="outcomes" className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
       <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
-        <div>
+        <div className="project-section-sticky">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Outcomes</p>
           <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">What the system made reusable.</h2>
         </div>

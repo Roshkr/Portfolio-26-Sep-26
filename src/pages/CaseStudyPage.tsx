@@ -6,6 +6,7 @@ import { CharacterRevealText } from '../components/CharacterRevealText';
 import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
 import { RoushaniCaseStudy } from './RoushaniCaseStudy';
+import { UmbrellaCaseStudy } from './UmbrellaCaseStudy';
 import { Bridge2BusinessCaseStudy } from './Bridge2BusinessCaseStudy';
 
 interface CaseStudyPageProps {
@@ -86,6 +87,17 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   if (caseStudy.id === 'roushani') {
     return (
       <RoushaniCaseStudy
+        caseStudy={caseStudy}
+        onBack={onBack}
+        nextStudy={nextStudy}
+        onSelectCaseStudy={onSelectCaseStudy}
+      />
+    );
+  }
+
+  if (caseStudy.id === 'umbrella') {
+    return (
+      <UmbrellaCaseStudy
         caseStudy={caseStudy}
         onBack={onBack}
         nextStudy={nextStudy}
@@ -339,7 +351,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* 02 - Design Section with Interactive Device Carousel */}
       <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
-        <div className="max-w-3xl space-y-6 mb-12">
+        <div className="project-section-sticky max-w-3xl space-y-6 mb-12 bg-[#fbfbfb] py-4">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             02 - Design Architecture
           </h2>

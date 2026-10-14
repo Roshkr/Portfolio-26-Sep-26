@@ -41,8 +41,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     const story = stories[study.id] ?? { headline: study.title, person: study.subtitle, decision: study.role, shipped: [study.company, study.timeline].filter(Boolean).join(' / ') };
     return (
       <a href={`#case-study-${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="group block cursor-pointer text-left text-slate-950 no-underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#2b35ee]">
-        <div className="grid min-w-0 items-center gap-8 border-b border-slate-200 pb-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-10 lg:pb-14 xl:gap-16">
-          <div className="relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-[1.16/1]">
+        <div className="grid min-w-0 items-start gap-8 border-b border-slate-200 pb-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-10 lg:pb-14 xl:gap-16">
+          <div className="relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:sticky lg:top-20 lg:self-start lg:aspect-[1.16/1]">
             {study.id === 'design-system-icons' ? (
               <div className="flex h-full w-full flex-col justify-center gap-5 rounded-xl border border-slate-200 bg-[#f1f2f4] p-5 sm:gap-7 sm:p-8" aria-label="Project preview coming soon">
                 <div className="flex items-center justify-between">
@@ -77,7 +77,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
           </div>
           <motion.div
-            className="min-w-0 lg:py-5"
+            className="min-w-0"
             initial={shouldReduceMotion ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}

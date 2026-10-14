@@ -135,7 +135,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
 
       <section className="border-b border-black/[0.06]">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-12 md:gap-16 md:py-20">
-          <div className="md:col-span-4">
+          <div className="md:col-span-4 project-section-sticky">
             <p className={eyebrowClass}>The project</p>
             <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl">
               Make a complex offer easier to understand.
@@ -165,7 +165,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
 
       <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="grid gap-10 md:grid-cols-12 md:gap-16">
-          <div className="md:col-span-4">
+          <div className="md:col-span-4 project-section-sticky">
             <p className={eyebrowClass}>The challenge</p>
             <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl">
               {clientProblem?.title ?? 'A clearer story for a complex business'}
@@ -280,7 +280,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
       <section className="border-y border-black/[0.06] bg-white py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-10 md:grid-cols-12 md:gap-16">
-            <div className="md:col-span-4">
+            <div className="md:col-span-4 project-section-sticky">
               <p className={eyebrowClass}>The design response</p>
               <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-4xl">
                 {concept?.title ?? 'A modular system for exploration'}
@@ -414,7 +414,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
       <section className="bg-[#eef0f3] py-16 text-slate-950 md:py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-10 md:grid-cols-12 md:gap-16">
-            <div className="md:col-span-4">
+            <div className="md:col-span-4 project-section-sticky">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300">The outcome</p>
               <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-5xl">
                 A clearer path from first visit to conversation.
