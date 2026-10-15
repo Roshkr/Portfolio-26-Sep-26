@@ -90,28 +90,31 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
           <div className="roushani-summary-sticky"><SectionHeading eyebrow="The approach" title="Map, test, and refine the onboarding flow." /></div>
-          <div><p className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.designText}</p><div className="divide-y divide-slate-200 border-y border-slate-200">{caseStudy.designBullets.map((item, index) => <div key={item} className="grid gap-3 py-5 sm:grid-cols-[3rem_1fr] sm:gap-5"><span className="text-xs font-medium text-slate-400">0{index + 1}</span><p className="text-sm leading-relaxed text-slate-700 md:text-base">{item}</p></div>)}</div><div className="mt-10 grid gap-5">{caseStudy.designScreens.map((screen) => <figure key={screen.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3"><ProjectMockup imageSrc={screen.image} device={screen.device || 'desktop'} ariaLabel={screen.title} className="mx-auto w-full" /><figcaption className="px-2 pb-1 pt-3"><span className="text-sm font-semibold text-slate-900">{screen.title}</span><p className="mt-1 text-sm text-slate-500">{screen.note}</p></figcaption></figure>)}</div></div>
+          <div><p className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.designText}</p><div className="divide-y divide-slate-200 border-y border-slate-200">{caseStudy.designBullets.map((item, index) => <div key={item} className="grid gap-3 py-5 sm:grid-cols-[3rem_1fr] sm:gap-5"><span className="text-xs font-medium text-slate-400">0{index + 1}</span><p className="text-sm leading-relaxed text-slate-700 md:text-base">{item}</p></div>)}</div><div className="mt-10 grid gap-5">{caseStudy.designScreens.map((screen) => <figure key={screen.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3">{screen.fit === 'natural' ? <img src={screen.image} alt={screen.title} className="block h-auto w-full rounded-lg" loading="lazy" /> : <ProjectMockup imageSrc={screen.image} device={screen.device || 'desktop'} ariaLabel={screen.title} className="mx-auto w-full" />}<figcaption className="px-2 pb-1 pt-3"><span className="text-sm font-semibold text-slate-900">{screen.title}</span><p className="mt-1 text-sm text-slate-500">{screen.note}</p></figcaption></figure>)}</div></div>
         </div>
       </section>
 
       <section className="border-y border-slate-200 bg-white py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="roushani-summary-sticky"><SectionHeading eyebrow="What changed" title="A more organized onboarding form." /></div>
-          <div className="space-y-6"><p className="text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.impactText}</p><div className="grid gap-4 sm:grid-cols-2"><BeforeAfter label={caseStudy.beforeLabel || 'Before'} src={caseStudy.beforeScreen} /><BeforeAfter label={caseStudy.afterLabel || 'After'} src={caseStudy.afterScreen} /></div></div>
+          <div className="space-y-6"><p className="text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.impactText}</p><figure className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3"><img src="/projects/umbrella-changes.png" alt="Form improvements: clearer tab and checkbox identification, required field markers, consistent dropdowns, icons, typography, input fields, and button placement." loading="lazy" className="block h-auto w-full rounded-lg" /></figure></div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
           <div className="roushani-summary-sticky"><SectionHeading eyebrow="Outcomes" title="What the research and redesign clarified." /></div>
-          <div><p className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.usabilityText}</p><div className="grid gap-4 sm:grid-cols-3">{caseStudy.metrics.map((metric) => <article key={metric.label} className="rounded-xl bg-[#eef0f3] p-6 md:p-7"><p className="text-3xl font-medium tracking-tight text-slate-950 md:text-4xl">{metric.value}</p><h3 className="mt-3 text-sm font-semibold text-slate-700">{metric.label}</h3>{metric.context && <p className="mt-2 text-xs leading-relaxed text-slate-500">{metric.context}</p>}</article>)}</div></div>
+          <div><p className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.usabilityText}</p><div className="grid gap-4">{caseStudy.metrics.map((metric) => <article key={metric.label} className="rounded-xl bg-[#eef0f3] p-6 md:p-7"><p className="text-3xl font-medium tracking-tight text-slate-950 md:text-4xl">{metric.value}</p><h3 className="mt-3 text-sm font-semibold text-slate-700">{metric.label}</h3>{metric.context && <p className="mt-2 text-xs leading-relaxed text-slate-500">{metric.context}</p>}</article>)}</div></div>
         </div>
       </section>
 
       <section className="border-t border-slate-200 bg-[#eef0f3] py-16 md:py-24">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2 md:gap-16 md:px-10">
-          <div><SectionHeading eyebrow="Reflection" title={reflection?.title ?? 'Keep detailed forms focused'} /><p className="mt-6 text-base leading-relaxed text-slate-600 md:text-lg">{reflection?.body}</p><div className="mt-8 border-t border-slate-300 pt-5"><p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">What I learned</p><ul className="mt-4 space-y-4">{caseStudy.learnings.map((item) => <Bullet key={item} text={item} />)}</ul></div></div>
-          <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Next steps</p><ul className="mt-4 space-y-4">{caseStudy.nextSteps.map((item) => <Bullet key={item} text={item} />)}</ul><div className="mt-8 grid gap-4">{caseStudy.finalScreens.map((screen) => <figure key={screen.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3"><ProjectMockup imageSrc={screen.image} device={screen.device || 'desktop'} ariaLabel={screen.title} className="mx-auto w-full" /><figcaption className="px-2 pb-1 pt-3 text-xs font-medium text-slate-500">{screen.title}</figcaption></figure>)}</div></div>
+        <div className="mx-auto max-w-5xl px-6 md:px-10">
+          <div className="max-w-3xl"><SectionHeading eyebrow="Reflection" title={reflection?.title ?? 'Keep detailed forms focused'} /><p className="mt-6 text-base leading-relaxed text-slate-600 md:text-lg">{reflection?.body}</p></div>
+          <div className="mt-10 grid gap-8 border-t border-slate-300 pt-6 md:grid-cols-2 md:gap-12">
+            <div><p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">What I learned</p><ul className="mt-4 space-y-4">{caseStudy.learnings.map((item) => <Bullet key={item} text={item} />)}</ul></div>
+            <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Next steps</p><ul className="mt-4 space-y-4">{caseStudy.nextSteps.map((item) => <Bullet key={item} text={item} />)}</ul></div>
+          </div>
         </div>
       </section>
 
@@ -122,4 +125,3 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
 
 const SectionHeading: React.FC<{ eyebrow: string; title: string }> = ({ eyebrow, title }) => <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{eyebrow}</p><h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">{title}</h2></div>;
 const Bullet: React.FC<{ text: string }> = ({ text }) => <li className="flex gap-3 text-sm leading-relaxed text-slate-700 md:text-base"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />{text}</li>;
-const BeforeAfter: React.FC<{ label: string; src: string }> = ({ label, src }) => <figure className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3"><img src={src} alt={label} loading="lazy" className="max-h-80 w-full rounded-lg object-contain" /><figcaption className="px-2 pb-1 pt-3 text-xs font-medium text-slate-500">{label}</figcaption></figure>;

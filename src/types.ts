@@ -33,6 +33,7 @@ export interface CaseStudy {
     image: string;
     note: string;
     device?: ProjectDevice;
+    fit?: 'natural';
     /** Optional video that replaces image in the carousel slide */
     videoSrc?: string;
   }>;

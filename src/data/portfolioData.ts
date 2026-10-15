@@ -418,18 +418,20 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     designScreens: [
       {
         title: "01. Onboarding Form",
-        image: "https://framerusercontent.com/images/ODQSiBSOgvzxpJFnv9I2iPjjc7s.png",
-        note: "Third-party onboarding flow and form structure.",
+        image: "/projects/umbrella-onboarding-flow.png",
+        note: "Step-by-step onboarding flow, including service selection, action, success, and error paths.",
       },
       {
         title: "02. Existing Form",
-        image: "https://framerusercontent.com/images/w65HWuxvZCSjNrQan5ezd20SHQ.png",
-        note: "Before state of the onboarding form.",
+        image: "/projects/umbrella-existing-form.png",
+        note: "Original third-party form before the redesign.",
+        fit: "natural",
       },
       {
         title: "03. Refined Form",
-        image: "https://framerusercontent.com/images/LXKJtGnGM3fv5qdOkDcpSRlbxqE.png",
-        note: "Redesigned form with clearer organization.",
+        image: "/projects/umbrella-refined-form.png",
+        note: "Third-party form, shown at full height for review.",
+        fit: "natural",
       },
     ],
     usabilityText:
