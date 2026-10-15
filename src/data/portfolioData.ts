@@ -195,10 +195,11 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
         body: "Building Roushani end-to-end showed how closely interface decisions and backend behavior are connected. AI-assisted tools accelerated iteration, but product quality still depended on clear decisions, real workflow testing, and careful refinement.",
       },
     ],
-    beforeScreen: "https://framerusercontent.com/images/obftsqMxDUXgDe57R2UsMuKmg.png",
+    beforeScreen: "/projects/roushani-before-spreadsheet.svg",
     afterScreen: "https://framerusercontent.com/images/KTnRqrAiyWhbzM1PQbsH6Koggcg.jpeg",
+    afterVideo: "/projects/roushani-invoice-demo.mp4",
     beforeLabel: "Cluttered Spreadsheet Tooling",
-    afterLabel: "One-Click Branded Invoicing",
+    afterLabel: "Setup your business and create invoice in less than 2 minutes",
     interviewsText:
       "I interviewed freelance consultants, agency founders, and local studio owners who handle weekly billing. Nearly all reported extreme frustration with spreadsheet formulas breaking, inconsistent branding, and the time wasted repeatedly typing client details.",
     interviewBullets: [

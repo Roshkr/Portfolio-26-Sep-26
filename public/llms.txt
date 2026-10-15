@@ -14,9 +14,7 @@ Roushan works end-to-end, from understanding user problems through research and 
 
 - [Roushani - mobile-first B2B invoicing SaaS](https://portfolio26sep26.vercel.app/#case-study-roushani): Production MVP delivered in four weeks; product strategy, research, invoicing flows, customer and service reuse, branding, and PDF export.
 - [Umbrella - enterprise third-party onboarding](https://portfolio26sep26.vercel.app/#case-study-umbrella): NDA onboarding redesign informed by five usability sessions; clearer structure, validation, visual hierarchy, and user flow.
-- [Bridge2Business - B2B website redesign](https://portfolio26sep26.vercel.app/#case-study-bridge2business): Freelance design concept focused on information architecture, responsive design, and communicating services. Not developed or launched.
-- [Maxlence - HR and project management SaaS](https://portfolio26sep26.vercel.app/#case-study-maxlence): End-to-end UX for onboarding, role-aware workflows, project tracking, attendance, and customizable dashboards.
-- [Naie - hyperlocal salon appointment and discovery platform](https://portfolio26sep26.vercel.app/#case-study-naie): Validated prototype for customer discovery and booking with salon-side operations, appointment availability, queue transparency, and staff selection.
+- [Design system, components, and icons](https://portfolio26sep26.vercel.app/#case-study-design-system-icons): A dedicated project page for reusable components and icon work.
 
 ## Contact and profiles
 

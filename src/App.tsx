@@ -17,7 +17,9 @@ import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
 import { useContentProtection } from './hooks/useContentProtection';
 
 export default function App() {
-  const [caseStudies, setCaseStudies] = useState<CaseStudy[]>(DEFAULT_CASE_STUDIES);
+  const [caseStudies, setCaseStudies] = useState<CaseStudy[]>(() =>
+    DEFAULT_CASE_STUDIES.filter(({ id }) => ['roushani', 'umbrella', 'design-system-icons'].includes(id)),
+  );
   const [isContactOpen, setIsContactOpen] = useState(false);
   const { route, navigateTo, selectCaseStudy } = usePortfolioNavigation(caseStudies);
   const shouldReduceMotion = useReducedMotion();

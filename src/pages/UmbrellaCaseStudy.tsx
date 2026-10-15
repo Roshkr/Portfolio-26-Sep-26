@@ -1,8 +1,10 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
 import type { CaseStudy } from '../types';
 import { ProjectCard } from '../components/ProjectCard';
 import { ProjectMockup } from '../components/PhoneMockup';
+import { CharacterRevealText } from '../components/CharacterRevealText';
 
 interface UmbrellaCaseStudyProps {
   caseStudy: CaseStudy;
@@ -80,7 +82,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
           <div className="space-y-6">
             <p className="text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.interviewsText}</p>
             <ul className="space-y-3">{caseStudy.interviewBullets.map((item) => <Bullet key={item} text={item} />)}</ul>
-            <div className="grid gap-3 pt-2 sm:grid-cols-3">{caseStudy.keyInsights.map((insight) => <article key={insight.title} className="rounded-xl border border-slate-200 bg-white p-5"><p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{insight.title}</p><p className="mt-3 text-sm leading-relaxed text-slate-600">{insight.desc}</p></article>)}</div>
+            <div className="grid gap-3 pt-2">{caseStudy.keyInsights.map((insight) => <article key={insight.title} className="rounded-xl border border-slate-200 bg-white p-5"><RevealCopy text={insight.title} className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500" /><RevealCopy text={insight.desc} className="mt-3 text-sm leading-relaxed text-slate-600" /></article>)}</div>
             {research?.bullets?.length ? <ul className="space-y-3 border-t border-slate-200 pt-5">{research.bullets.map((item) => <Bullet key={item} text={item} />)}</ul> : null}
             {feedback && <div className="border-t border-slate-200 pt-5"><h3 className="text-lg font-semibold tracking-tight">{feedback.title}</h3><ul className="mt-4 space-y-3">{feedback.bullets?.map((item) => <Bullet key={item} text={item} />)}</ul></div>}
           </div>
@@ -125,3 +127,19 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
 
 const SectionHeading: React.FC<{ eyebrow: string; title: string }> = ({ eyebrow, title }) => <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{eyebrow}</p><h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">{title}</h2></div>;
 const Bullet: React.FC<{ text: string }> = ({ text }) => <li className="flex gap-3 text-sm leading-relaxed text-slate-700 md:text-base"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />{text}</li>;
+const RevealCopy: React.FC<{ text: string; className?: string }> = ({ text, className = '' }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.p
+      className={className}
+      initial={shouldReduceMotion ? false : 'hidden'}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.004, delayChildren: 0.05 } } }}
+    >
+      <span className="sr-only">{text}</span>
+      <CharacterRevealText text={text} />
+    </motion.p>
+  );
+};

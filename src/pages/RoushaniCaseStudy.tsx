@@ -127,7 +127,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
               {caseStudy.interviewBullets.slice(0, 3).map((item) => <RevealListItem key={item} text={item} />)}
             </div>
             {caseStudy.keyInsights.length > 0 && (
-              <div className="grid gap-3 pt-2 sm:grid-cols-3">
+              <div className="grid gap-3 pt-2">
                 {caseStudy.keyInsights.map((insight, index) => (
                   <article key={insight.title} className="rounded-xl border border-slate-200 bg-[#fbfbfb] p-5">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">0{index + 1} / {insight.title}</p>
@@ -184,9 +184,9 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
           </div>
           <div className="space-y-6">
             <CharacterRevealBlock text={caseStudy.impactText} className="text-lg leading-relaxed text-slate-600 md:text-xl" />
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4">
               <BeforeAfterMedia label={caseStudy.beforeLabel || 'Before'} src={caseStudy.beforeScreen} />
-              <BeforeAfterMedia label={caseStudy.afterLabel || 'After'} src={caseStudy.afterScreen} />
+              <BeforeAfterMedia label={caseStudy.afterLabel || 'After'} src={caseStudy.afterScreen} videoSrc={caseStudy.afterVideo} />
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
           </div>
           <div>
             <CharacterRevealBlock text={caseStudy.usabilityText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4">
               {caseStudy.metrics.map((metric) => (
                 <article key={metric.label} className="rounded-xl bg-[#eef0f3] p-6 md:p-7">
                   <p className="text-3xl font-medium tracking-tight text-slate-950 md:text-4xl">{metric.value}</p>
@@ -213,18 +213,18 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
       </RevealSection>
 
       <RevealSection className="border-t border-slate-200 bg-[#eef0f3] py-16 text-slate-950 md:py-24">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2 md:gap-16 md:px-10">
-          <div>
+        <div className="mx-auto max-w-4xl space-y-8 px-6 md:px-10">
+          <div className="max-w-3xl">
             <SectionHeading eyebrow="What’s next" title="Keep making the everyday feel easier." />
             {reflection?.body && <CharacterRevealBlock text={reflection.body} className="mt-6 text-base leading-relaxed text-slate-600 md:text-lg" />}
-            <div className="mt-8 border-t border-slate-300 pt-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">The principle I carry forward</p>
-              <CharacterRevealBlock text={caseStudy.learnings[0] || 'Simplicity matters more than features.'} className="mt-3 text-xl font-medium leading-snug tracking-tight text-slate-900 md:text-2xl" />
-            </div>
           </div>
-          <div>
+          <div className="border-t border-slate-300 pt-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">The principle I carry forward</p>
+            <CharacterRevealBlock text={caseStudy.learnings[0] || 'Simplicity matters more than features.'} className="mt-3 max-w-3xl text-xl font-medium leading-snug tracking-tight text-slate-900 md:text-2xl" />
+          </div>
+          <div className="border-t border-slate-300 pt-6">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Next steps</p>
-            <ul className="mt-4 space-y-4">
+            <ul className="mt-4 max-w-3xl space-y-4">
               {caseStudy.nextSteps.slice(0, 3).map((item) => <RevealListItem key={item} text={item} />)}
             </ul>
             {caseStudy.liveUrl && (
@@ -273,9 +273,17 @@ const SectionHeading: React.FC<{ eyebrow: string; title: string }> = ({ eyebrow,
   </div>
 );
 
-const BeforeAfterMedia: React.FC<{ label: string; src: string }> = ({ label, src }) => (
+const BeforeAfterMedia: React.FC<{ label: string; src: string; videoSrc?: string }> = ({ label, src, videoSrc }) => (
   <figure className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3">
-    <img src={src} alt={label} loading="lazy" className="max-h-80 w-full rounded-lg object-contain" />
+    {videoSrc ? (
+      <div className="mx-auto aspect-[9/16] w-full max-w-[420px] rounded-[2.5rem] bg-black p-3 shadow-xl ring-1 ring-black/15 sm:p-4">
+        <div className="h-full w-full overflow-hidden rounded-[2rem] bg-slate-950">
+          <LazyVideo src={videoSrc} poster={src} ariaLabel={`${label} product demo`} objectFit="contain" frameClassName="bg-slate-950" />
+        </div>
+      </div>
+    ) : (
+      <img src={src} alt={label} loading="lazy" className="max-h-80 w-full rounded-lg object-contain" />
+    )}
     <figcaption className="px-2 pb-1 pt-3 text-xs font-medium text-slate-500">{label}</figcaption>
   </figure>
 );
