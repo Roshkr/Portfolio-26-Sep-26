@@ -32,4 +32,4 @@ Allow: /
 User-agent: xAI-Bot
 Allow: /
 
-Sitemap: https://portfolio26sep26.vercel.app/sitemap.xml
+Sitemap: https://roushan.in/sitemap.xml

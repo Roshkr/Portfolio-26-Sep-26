@@ -1,4 +1,6 @@
-# Roushan Kumar â€“ UX/UI & Product Designer
+# Roushan Kumar - UX/UI & Product Designer
+
+**Official portfolio:** https://roushan.in/
 
 **Location:** Ahmedabad, India  
 **Focus Areas:** SaaS, B2B, Fintech, Enterprise Workflows, Mobile Experiences  
@@ -12,13 +14,13 @@
 
 ## About
 
-I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in simplifying complex workflows in SaaS, B2B, and Fintech products through research, clear information architecture, and thoughtful interaction design. I enjoy working end-to-end â€” from understanding user problems to delivering production-ready designs and design systems.
+I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in simplifying complex workflows in SaaS, B2B, and fintech products through research, clear information architecture, and thoughtful interaction design. I enjoy working end-to-end, from understanding user problems to delivering production-ready designs and design systems.
 
 ---
 
 ## Selected Projects
 
-### 1. Roushani â€“ Mobile-first B2B Invoicing SaaS
+### 1. Roushani - Mobile-first B2B Invoicing SaaS
 - **Status:** Production MVP (Live)
 - **Duration:** 4 weeks (Concept to Live MVP)
 - **Role:** Product Design, Interaction Design, End-to-end ownership
@@ -28,7 +30,7 @@ I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in sim
 - **Key Contributions:** Product strategy, user research, information architecture, invoice creation flow, customer & service reuse, branding system, and PDF export experience.
 - **Outcome:** Successfully delivered from concept to live MVP in 4 weeks.
 
-### 2. Umbrella â€“ Enterprise Third-party Onboarding
+### 2. Umbrella - Enterprise Third-party Onboarding
 - **Status:** Final Implementation
 - **Duration:** 1 month
 - **Role:** Enterprise UX & Workflow Design

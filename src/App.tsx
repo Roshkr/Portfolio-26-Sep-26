@@ -24,7 +24,7 @@ export default function App() {
   const { route, navigateTo, selectCaseStudy } = usePortfolioNavigation(caseStudies);
   const shouldReduceMotion = useReducedMotion();
   const pageKey = route.page === 'case-study' ? `case-study-${route.caseStudy.id}` : route.page;
-  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-7C2RXRRJ82';
+  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-MSFP7ZP4H7';
   const metadataTitle = route.page === 'case-study'
     ? `${route.caseStudy.title} | Roushan Kumar`
     : route.page === 'about'
