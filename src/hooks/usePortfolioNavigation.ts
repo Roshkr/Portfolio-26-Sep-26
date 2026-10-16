@@ -3,13 +3,19 @@ import type { CaseStudy, PortfolioRoute } from '../types';
 
 const CASE_STUDY_HASH_PREFIX = 'case-study-';
 
-const getRouteFromHash = (hash: string, caseStudies: CaseStudy[]): PortfolioRoute => {
+const getRouteFromLocation = (pathname: string, hash: string, caseStudies: CaseStudy[]): PortfolioRoute => {
   const routeHash = hash.replace(/^#/, '');
 
-  if (routeHash === 'about') return { page: 'about' };
+  if (pathname === '/about' || routeHash === 'about') return { page: 'about' };
 
-  if (routeHash.startsWith(CASE_STUDY_HASH_PREFIX)) {
-    const studyId = routeHash.slice(CASE_STUDY_HASH_PREFIX.length);
+  const pathMatch = pathname.match(/^\/case-studies\/([^/]+)\/?$/);
+  const pathStudyId = pathMatch?.[1];
+  const hashStudyId = routeHash.startsWith(CASE_STUDY_HASH_PREFIX)
+    ? routeHash.slice(CASE_STUDY_HASH_PREFIX.length)
+    : undefined;
+  const studyId = pathStudyId || hashStudyId;
+
+  if (studyId) {
     const caseStudy = caseStudies.find((study) => study.id === studyId);
     if (caseStudy) return { page: 'case-study', caseStudy };
   }
@@ -21,31 +27,39 @@ export const usePortfolioNavigation = (caseStudies: CaseStudy[]) => {
   const [route, setRoute] = useState<PortfolioRoute>(() =>
     typeof window === 'undefined'
       ? { page: 'home' }
-      : getRouteFromHash(window.location.hash, caseStudies)
+      : getRouteFromLocation(window.location.pathname, window.location.hash, caseStudies)
   );
 
   useEffect(() => {
     const syncRoute = () => {
-      setRoute(getRouteFromHash(window.location.hash, caseStudies));
+      setRoute(getRouteFromLocation(window.location.pathname, window.location.hash, caseStudies));
     };
 
     syncRoute();
     window.addEventListener('hashchange', syncRoute);
-    return () => window.removeEventListener('hashchange', syncRoute);
+    window.addEventListener('popstate', syncRoute);
+    return () => {
+      window.removeEventListener('hashchange', syncRoute);
+      window.removeEventListener('popstate', syncRoute);
+    };
   }, [caseStudies]);
 
   const navigateTo = useCallback((page: 'home' | 'about') => {
     setRoute({ page });
-    const nextHash = page === 'home' ? '' : `#${page}`;
-    if (window.location.hash !== nextHash) window.location.hash = nextHash;
+    const nextPath = page === 'home' ? '/' : '/about';
+    if (window.location.pathname !== nextPath || window.location.hash) {
+      window.history.pushState({}, '', nextPath);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const selectCaseStudy = useCallback((study: CaseStudy) => {
     const selectedStudy = caseStudies.find((candidate) => candidate.id === study.id) ?? study;
     setRoute({ page: 'case-study', caseStudy: selectedStudy });
-    const nextHash = `#${CASE_STUDY_HASH_PREFIX}${selectedStudy.id}`;
-    if (window.location.hash !== nextHash) window.location.hash = nextHash;
+    const nextPath = `/case-studies/${selectedStudy.id}`;
+    if (window.location.pathname !== nextPath || window.location.hash) {
+      window.history.pushState({}, '', nextPath);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [caseStudies]);
 

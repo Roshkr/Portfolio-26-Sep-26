@@ -30,14 +30,14 @@ export default function App() {
     : route.page === 'about'
       ? 'About | Roushan Kumar'
       : 'Home | Roushan Kumar';
-  const routeHash = route.page === 'home'
-    ? ''
+  const routePath = route.page === 'home'
+    ? '/'
     : route.page === 'about'
-      ? '#about'
-      : `#case-study-${route.caseStudy.id}`;
+      ? '/about'
+      : `/case-studies/${route.caseStudy.id}`;
 
   usePageMetadata(route);
-  useGoogleAnalytics(measurementId, routeHash, metadataTitle);
+  useGoogleAnalytics(measurementId, routePath, metadataTitle);
   useContentProtection();
 
   return (

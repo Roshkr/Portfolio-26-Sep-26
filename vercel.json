@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "portfolio26sep26.vercel.app" }],
+      "destination": "https://roushan.in/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/case-studies/roushani", "destination": "/case-studies/roushani.html" },
+    { "source": "/case-studies/umbrella", "destination": "/case-studies/umbrella.html" },
+    { "source": "/case-studies/design-system-icons", "destination": "/case-studies/design-system-icons.html" }
+  ]
+}

@@ -21,6 +21,8 @@ I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in sim
 ## Selected Projects
 
 ### 1. Roushani - Mobile-first B2B Invoicing SaaS
+**Case study:** https://roushan.in/case-studies/roushani
+
 - **Status:** Production MVP (Live)
 - **Duration:** 4 weeks (Concept to Live MVP)
 - **Role:** Product Design, Interaction Design, End-to-end ownership
@@ -31,6 +33,8 @@ I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in sim
 - **Outcome:** Successfully delivered from concept to live MVP in 4 weeks.
 
 ### 2. Umbrella - Enterprise Third-party Onboarding
+**Case study:** https://roushan.in/case-studies/umbrella
+
 - **Status:** Final Implementation
 - **Duration:** 1 month
 - **Role:** Enterprise UX & Workflow Design
@@ -42,6 +46,8 @@ I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in sim
 - **Outcome:** Delivered a cleaner and more efficient enterprise onboarding experience.
 
 ### 3. Design System, Components & Iconography
+**Case study:** https://roushan.in/case-studies/design-system-icons
+
 - **Status:** In progress
 - **Focus:** Reusable components, visual consistency, and iconography
 - **Overview:** A dedicated project page for design system and icon work. Additional project details and media are coming soon.
@@ -49,7 +55,7 @@ I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in sim
 
 ## Contact
 
-Iâ€™m open to full-time roles, freelance projects, and interesting product challenges in SaaS, B2B, and Fintech.
+I'm open to full-time roles, freelance projects, and interesting product challenges in SaaS, B2B, and fintech.
 
 **Email:** roushan.ux@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/roushankuma/

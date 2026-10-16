@@ -8,13 +8,13 @@ Roushan works end-to-end, from understanding user problems through research and 
 
 - [Full text portfolio and profile](https://roushan.in/portfolio.md): authoritative profile, contact details, and selected project descriptions.
 - [Portfolio home page](https://roushan.in/): visual portfolio and project overview.
-- [About section](https://roushan.in/#about)
+- [About Roushan](https://roushan.in/about)
 
 ## Selected projects
 
-- [Roushani - mobile-first B2B invoicing SaaS](https://roushan.in/#case-study-roushani): Production MVP delivered in four weeks; product strategy, research, invoicing flows, customer and service reuse, branding, and PDF export.
-- [Umbrella - enterprise third-party onboarding](https://roushan.in/#case-study-umbrella): NDA onboarding redesign informed by five usability sessions; clearer structure, validation, visual hierarchy, and user flow.
-- [Design system, components, and icons](https://roushan.in/#case-study-design-system-icons): A dedicated project page for reusable components and icon work.
+- [Roushani - mobile-first B2B invoicing SaaS](https://roushan.in/case-studies/roushani): Production MVP delivered in four weeks; product strategy, research, invoicing flows, customer and service reuse, branding, and PDF export.
+- [Umbrella - enterprise third-party onboarding](https://roushan.in/case-studies/umbrella): NDA onboarding redesign informed by five usability sessions; clearer structure, validation, visual hierarchy, and user flow.
+- [Design system, components, and icons](https://roushan.in/case-studies/design-system-icons): A dedicated project page for reusable components and icon work.
 
 ## Contact and profiles
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export const useGoogleAnalytics = (measurementId: string | undefined, routeHash: string, pageTitle: string) => {
+export const useGoogleAnalytics = (measurementId: string | undefined, routePath: string, pageTitle: string) => {
   const lastTrackedPage = useRef('');
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export const useGoogleAnalytics = (measurementId: string | undefined, routeHash:
 
   useEffect(() => {
     if (!measurementId || !window.gtag) return;
-    const pagePath = `${window.location.pathname}${routeHash}`;
+    const pagePath = routePath;
     if (lastTrackedPage.current === pagePath) return;
     lastTrackedPage.current = pagePath;
 
@@ -29,5 +29,5 @@ export const useGoogleAnalytics = (measurementId: string | undefined, routeHash:
       page_title: pageTitle,
       page_location: window.location.href,
     });
-  }, [measurementId, routeHash, pageTitle]);
+  }, [measurementId, routePath, pageTitle]);
 };

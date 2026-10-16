@@ -40,7 +40,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     };
     const story = stories[study.id] ?? { headline: study.title, person: study.subtitle, decision: study.role, shipped: [study.company, study.timeline].filter(Boolean).join(' / ') };
     return (
-      <a href={`#case-study-${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="group block cursor-pointer text-left text-slate-950 no-underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#2b35ee]">
+      <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="group block cursor-pointer text-left text-slate-950 no-underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#2b35ee]">
         <div className="grid min-w-0 items-start gap-8 border-b border-slate-200 pb-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-10 lg:pb-14 xl:gap-16">
           <div className="relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:sticky lg:top-20 lg:self-start lg:aspect-[1.16/1]">
             {study.id === 'design-system-icons' ? (
@@ -104,7 +104,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   }
   return (
     <a
-      href={`#case-study-${study.id}`}
+      href={`/case-studies/${study.id}`}
       onClick={handleSelect}
       style={isStacked ? { '--stack-offset': `${stackPosition * 44}px`, zIndex: stackPosition + 1 } as React.CSSProperties : undefined}
       aria-label={`Read the ${study.title} case study`}
