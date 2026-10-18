@@ -97,8 +97,8 @@ export const HomePage: React.FC<HomePageProps> = ({
       >
         <div className="mb-12 md:mb-16">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-slate-950">
-              Works I have proud on
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-950">
+              Recent work
             </h2>
           </div>
         </div>
