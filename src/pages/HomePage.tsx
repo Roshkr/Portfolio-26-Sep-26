@@ -103,7 +103,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
 
-        <div className="flex flex-col gap-12 md:gap-16">
+        <div className="grid grid-cols-1 auto-rows-fr gap-12 md:gap-16">
           {caseStudies.map((study, index) => (
             <ProjectCard
               key={study.id}

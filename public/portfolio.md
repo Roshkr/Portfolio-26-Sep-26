@@ -1,8 +1,9 @@
-# Roushan Kumar - UX/UI & Product Designer
+# Roushan Kumar - Product Designer
 
 **Official portfolio:** https://roushan.in/
 
 **Location:** Ahmedabad, India  
+**Positioning:** Product Designer focused on complex B2B/SaaS workflows and design systems. I turn messy enterprise processes into clear, shippable experiences.
 **Focus Areas:** SaaS, B2B, Fintech, Enterprise Workflows, Mobile Experiences  
 **Email:** roushan.ux@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/roushankuma/  
@@ -14,7 +15,7 @@
 
 ## About
 
-I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in simplifying complex workflows in SaaS, B2B, and fintech products through research, clear information architecture, and thoughtful interaction design. I enjoy working end-to-end, from understanding user problems to delivering production-ready designs and design systems.
+I am a Product Designer based in Ahmedabad, India, focused on complex B2B/SaaS workflows and design systems. I turn messy enterprise processes into clear, shippable experiences through research, clear information architecture, and thoughtful interaction design.
 
 ---
 
@@ -27,10 +28,10 @@ I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in sim
 - **Duration:** 4 weeks (Concept to Live MVP)
 - **Role:** Product Design, Interaction Design, End-to-end ownership
 - **Type:** B2B SaaS | Mobile-first
-- **Problem:** Service businesses were struggling with repetitive invoice creation using Excel and outdated tools.
+- **Problem:** Service businesses lost time to repetitive invoice entry, spreadsheet errors, and inconsistent branding.
 - **Solution:** Designed a mobile-first invoicing product that allows service businesses to create professional, branded invoices in minutes.
 - **Key Contributions:** Product strategy, user research, information architecture, invoice creation flow, customer & service reuse, branding system, and PDF export experience.
-- **Outcome:** Successfully delivered from concept to live MVP in 4 weeks.
+- **Outcome:** The pilot reduced average invoice creation and export time from 18 minutes to under 3 minutes, with reusable details, automatic calculations, and branded PDFs.
 
 ### 2. Umbrella - Enterprise Third-party Onboarding
 **Case study:** https://roushan.in/case-studies/umbrella
@@ -39,18 +40,18 @@ I am a UX/UI and Product Designer based in Ahmedabad, India. I specialize in sim
 - **Duration:** 1 month
 - **Role:** Enterprise UX & Workflow Design
 - **Type:** Enterprise Tool
-- **Problem:** The existing multi-step NDA onboarding form for adding third parties was complex, confusing, and visually outdated.
+- **Problem:** The existing NDA onboarding form asked users to interpret dense fields, confusing company and individual rows, and required information in a dated layout.
 - **Research:** Conducted 5 usability sessions (20 minutes each). 80% of participants had previous experience with onboarding tools. Average form experience rating: 3.5/5.
 - **Key Insights:** Confusing company vs individual selection, too many fields, and dated visual style.
-- **Solution:** Re-architected the form with clearer structure, improved validation, better visual hierarchy, and simplified user flow.
-- **Outcome:** Delivered a cleaner and more efficient enterprise onboarding experience.
+- **Solution:** Refined field grouping, company and individual paths, required-field cues, and visual hierarchy within the existing enterprise context.
+- **Outcome:** Made the form easier to scan and reduced interpretation burden while preserving the information the workflow requires.
 
 ### 3. Design System, Components & Iconography
 **Case study:** https://roushan.in/case-studies/design-system-icons
 
-- **Status:** In progress
+- **Status:** Design system foundations and guidance
 - **Focus:** Reusable components, visual consistency, and iconography
-- **Overview:** A dedicated project page for design system and icon work. Additional project details and media are coming soon.
+- **Overview:** A practical foundation for consistent product interfaces: shared visual rules, reusable components with clear states, and purposeful iconography. The system helps teams reduce repeated decisions and design debt while leaving room for workflow-specific needs.
 ---
 
 ## Contact

@@ -21,12 +21,12 @@ export const usePageMetadata = (route: PortfolioRoute) => {
       ? studyMetadata[route.caseStudy.id]?.title ?? `${route.caseStudy.title} Case Study | Roushan Kumar`
       : route.page === 'about'
         ? 'About Roushan Kumar | UX/UI & Product Designer in Ahmedabad'
-        : 'Roushan Kumar | UX/UI & Product Designer in Ahmedabad';
+        : 'Roushan Kumar | Product Designer';
     const description = route.page === 'case-study'
       ? studyMetadata[route.caseStudy.id]?.description ?? route.caseStudy.subtitle
       : route.page === 'about'
         ? 'Meet Roushan Kumar, a UX/UI and product designer in Ahmedabad, India, working on SaaS, B2B, fintech, research, and complex digital workflows.'
-        : 'Roushan Kumar is a UX/UI and Product Designer in Ahmedabad, India, simplifying complex SaaS, B2B, and fintech workflows through research, information architecture, and interaction design.';
+        : 'Product Designer focused on complex B2B/SaaS workflows and design systems. I turn messy enterprise processes into clear, shippable experiences.';
 
     document.title = title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', description);
@@ -54,7 +54,7 @@ export const usePageMetadata = (route: PortfolioRoute) => {
           '@type': 'Person',
           name: 'Roushan Kumar',
           url: 'https://roushan.in/',
-          jobTitle: 'UX/UI and Product Designer',
+          jobTitle: 'Product Designer',
           description,
           address: {
             '@type': 'PostalAddress',

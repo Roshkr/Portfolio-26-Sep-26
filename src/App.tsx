@@ -88,7 +88,7 @@ export default function App() {
           </motion.main>
         </AnimatePresence>
 
-        <ContactSection />
+        <ContactSection onOpenChat={() => setIsContactOpen(true)} />
 
         {/* Dark Footer with Social Links & Resume */}
         <Footer />

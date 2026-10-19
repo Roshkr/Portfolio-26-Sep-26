@@ -11,22 +11,22 @@ interface DesignSystemProjectPageProps {
 }
 
 const projectFacts = [
-  ['My role', 'Project details to be added'],
-  ['In collaboration', 'Project details to be added'],
-  ['Timeframe', 'Project details to be added'],
+  ['My role', 'Product design · system definition'],
+  ['In collaboration', 'Cross-functional partners'],
+  ['Timeframe', 'Ongoing system evolution'],
   ['Focus', 'Design systems · Components · Iconography'],
 ];
 
 const approachItems = [
-  ['01', 'Foundations', 'Color, typography, spacing, and the visual rules that hold the system together.'],
-  ['02', 'Components', 'Reusable interface patterns, with their states and usage guidance.'],
-  ['03', 'Iconography', 'A considered icon family designed to work as part of the wider system.'],
+  ['01', 'Foundations', 'Set shared color, type, spacing, and hierarchy rules so common decisions stay consistent across screens and teams. Keep tokens legible and adaptable as product needs grow.'],
+  ['02', 'Components', 'Build repeatable controls and patterns around real interface needs, with clear states for default, focus, error, disabled, and success. Document when to reuse a pattern and when a new one is justified.'],
+  ['03', 'Iconography', 'Use a coherent visual weight, grid, and metaphor style. Prefer familiar, purposeful symbols; pair icons with labels when meaning is ambiguous, and avoid decoration that competes with task information.'],
 ];
 
 const outcomeItems = [
-  ['What shipped', 'Project deliverables and implementation details will be added here.'],
-  ['What changed', 'The observed effect on design and development workflows will be added here.'],
-  ['What was learned', 'Evidence, limitations, and lessons from the work will be added here.'],
+  ['Reusable patterns', 'Shared foundations, interface components, state guidance, and icon rules give recurring product needs a dependable starting point.'],
+  ['Less design debt', 'Teams can extend established patterns instead of recreating controls and resolving visual inconsistencies screen by screen.'],
+  ['Designed to evolve', 'A system is useful when it supports change: document decisions, review exceptions, and refine components as product workflows reveal new needs.'],
 ];
 
 const SectionReveal: React.FC<React.PropsWithChildren<{ id?: string; className?: string }>> = ({
@@ -90,7 +90,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
           Design system, components &amp; icons
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-2xl">
-          A focused project exploring reusable interface components, a consistent design foundation, and a coherent icon family.
+          A practical foundation for consistent product interfaces: reusable components, clear usage rules, and an icon family that supports fast, confident scanning.
         </p>
       </div>
 
@@ -117,7 +117,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         </div>
         <div className="space-y-6">
           <p className="max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            This case study brings the design system, reusable components, and iconography work into one place. The project context and specific design challenge will be added as details become available.
+            As products grow, small inconsistencies compound: similar controls behave differently, teams repeat design decisions, and one-off fixes become design debt. The system establishes shared foundations and reusable patterns so teams can ship coherent experiences without slowing down delivery. Its goal is consistency with enough flexibility for distinct workflow needs.
           </p>
           <MediaPlaceholder label="Project context and challenge" className="aspect-[16/10]" />
         </div>
@@ -132,7 +132,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         </div>
         <div>
           <p className="mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            The work is organized around the core parts of a design system. Each area will show the decisions, examples, and guidance behind the finished work.
+            The system prioritizes common, high-frequency interface needs and makes the rules behind reuse explicit. Foundations create a shared visual language; component guidance covers behavior and states; icon rules keep meaning and visual weight consistent. Reuse speeds up delivery and review, while documented exceptions prevent the system from forcing a poor fit.
           </p>
           <div className="divide-y divide-slate-200 border-y border-slate-200">
             {approachItems.map(([number, title, description]) => (
@@ -158,7 +158,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         </div>
         <div className="space-y-5">
           <p className="max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            The project outcomes and examples of the system in use will be documented here. Specific results will be added when the supporting project details are available.
+            A shared foundation makes hierarchy and interaction patterns more predictable across product areas. Designers can focus effort on workflow-specific problems, while developers have clearer references for expected states. Consistent components also make omissions and edge cases easier to spot during review.
           </p>
           <MediaPlaceholder label="The system applied in context" className="aspect-[16/10]" />
         </div>
@@ -173,7 +173,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         </div>
         <div>
           <p className="mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            The project’s shipped assets, adoption, and observed impact will be described here, with claims tied to the available evidence.
+            The system is intended to reduce repeat decisions and visual drift by making the common path easy to reuse. Its value comes from adoption, clear ownership, and regular maintenance—not from the component library alone.
           </p>
           <div className="grid gap-4 md:grid-cols-3">
             {outcomeItems.map(([title, description]) => (
@@ -196,7 +196,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
           </div>
           <div className="space-y-6">
             <p className="max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-              The next step is to add the project decisions, visual examples, and outcomes so the full story is grounded in the work.
+              As products and constraints change, review patterns against real usage, retire redundant variants, and document new decisions where teams need them. Visual examples can show how the same foundations support different workflows without flattening their differences.
             </p>
             <div className="rounded-2xl bg-slate-950 p-7 text-white md:p-9">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">The principle behind the work</p>

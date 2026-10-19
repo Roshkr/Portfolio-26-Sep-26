@@ -10,10 +10,10 @@ export const DESIGNER_INFO = {
   brandName: "Roushan",
   tagline: "UX/UI Designer",
   location: "Ahmedabad, Gujarat, India",
-  headlineGreeting: "Hi! I'm Roushan a UX/UI Designer based in Ahmedabad, IND",
-  headlineHero: "Focused on",
-  headlineHighlight: "SaaS, B2B, & Fintech",
-  headlineSuffix: ", simplifying complex workflows through research, collaboration, and AI.",
+  headlineGreeting: "Product Designer based in Ahmedabad, India",
+  headlineHero: "Product Designer focused on",
+  headlineHighlight: "complex B2B/SaaS workflows and design systems.",
+  headlineSuffix: "",
   aboutHeroSubtitle: "UX/UI Designer • based in Ahmedabad, India",
   bioShort:
     "I'm a seasoned UX/UI designer specializing in SaaS, enterprise workflows, and mobile experiences. I turn complex logic into intuitive products through deep user research, pragmatic design systems, and modern AI-assisted engineering.",
@@ -31,9 +31,9 @@ export const DESIGNER_INFO = {
     email: "mailto:roushan.ux@gmail.com",
   },
   stats: [
-    { value: "1000+", label: "User interface screens designed" },
-    { value: "17+", label: "Projects completed" },
-    { value: "7+", label: "Worked with Companies & Individuals" },
+    { value: "12+", label: "Years designing digital products" },
+    { value: "20+", label: "Enterprise & SaaS products shipped" },
+    { value: "7+", label: "Companies & teams collaborated with" },
   ],
   portraitImage: designerPortrait,
   galleryImages: [
@@ -48,47 +48,47 @@ export const DESIGNER_INFO = {
 export const CREATIVE_TOOLKIT: ToolItem[] = [
   {
     name: "Figma",
-    desc: "Leading collaborative design tool",
+    desc: "Primary tool for interface design, design systems, and collaboration",
     category: "Design & Systems",
   },
   {
     name: "Claude / Codex / Gemini",
-    desc: "Generative AI tools",
+    desc: "Used for research synthesis, content exploration, and accelerating iteration",
     category: "AI & Synthesis",
   },
   {
-    name: "Antigravity / VS Code",
-    desc: "Agentic AI coding tool",
+    name: "VS Code + AI coding agents",
+    desc: "For tighter collaboration with engineering and faster prototyping",
     category: "Development",
   },
   {
     name: "Adobe Creative Suite",
-    desc: "The OG of design world!",
+    desc: "Still essential for brand and visual refinement",
     category: "Visual Design",
   },
   {
     name: "Framer",
-    desc: "No-code website builder",
+    desc: "For high-fidelity prototypes and marketing sites",
     category: "Interactive Web",
   },
   {
     name: "Miro / FigJam",
-    desc: "Collaborative platform",
+    desc: "Workshop facilitation, journey mapping, and alignment",
     category: "Strategy & Mapping",
   },
   {
-    name: "Lovable / Cursor / Replit",
-    desc: "AI app builders",
+    name: "Cursor / Replit / Lovable",
+    desc: "AI-assisted building when speed matters",
     category: "Rapid Prototyping",
   },
   {
-    name: "Stitch / Figma Make",
-    desc: "AI UI design builders",
+    name: "Figma Make / Stitch",
+    desc: "Exploration and early concept generation",
     category: "AI UI Generation",
   },
   {
-    name: "Jira / Asana / DevOps",
-    desc: "Planning and tracking",
+    name: "Jira / Asana",
+    desc: "Working within real product delivery systems",
     category: "Project Management",
   },
 ];
@@ -146,12 +146,12 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     storySections: [
       {
         eyebrow: "Problem statement",
-        title: "Why this product was needed",
-        body: "Many service-based businesses still rely on Excel sheets or outdated invoicing tools, making the process slow, repetitive, and unprofessional.",
+        title: "A broken billing workflow cost small businesses time and credibility",
+        body: "For independent service businesses, invoicing was a recurring operational tax: up to 70% of billing time went to retyping customer, tax, and line-item details, while spreadsheet formulas and inconsistent templates created avoidable errors. The broken measure was the time from opening a tool to sending a correct invoice: the baseline was 18 minutes.",
         bullets: [
-          "Users repeatedly entered the same customer and service details.",
-          "Invoices looked inconsistent and lacked proper branding.",
-          "Existing tools felt too complicated for simple invoicing needs.",
+          "Repeated entry made routine billing slow and increased the chance of mistakes.",
+          "Generic or inconsistent invoices made small businesses look less established to customers.",
+          "Full accounting products brought ledger features and setup overhead that many users did not need.",
         ],
       },
       {
@@ -167,7 +167,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         eyebrow: "Research insight",
         title: "The opportunity was removing friction",
-        body: "I observed freelancers and small business owners using Excel, Google Sheets, and existing invoicing tools. The biggest opportunity was not adding more features; it was removing repetitive work and making the output feel professional.",
+        body: "Interviews with freelancers, agency founders, and local studio owners pointed to a narrow opportunity: reduce repeat work without importing the complexity of accounting suites. The value was both operational and presentational—get a correct invoice out quickly and make the business look credible.",
         bullets: [
           "Manual work was repeated for every invoice.",
           "Branding support was limited or missing.",
@@ -178,10 +178,11 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
         eyebrow: "Core features",
         title: "Design decisions that reduced daily effort",
         bullets: [
-          "Progressive invoice creation with saved customers and services.",
-          "Simple logo upload and brand color controls.",
-          "A focused dashboard for invoices, customers, services, and history.",
-          "Reliable PDF export, direct sharing, and print support.",
+          "Decision: put invoice creation first, then save customers and services for reuse; this prioritizes the frequent task over broad administration.",
+          "Decision: limit branding to a logo and a small set of color controls, giving users a professional result without a page-builder burden.",
+          "Decision: keep the dashboard to invoices, customers, services, and history; defer advanced accounting and reporting to protect a focused MVP.",
+          "Decision: support responsive quick edits, PDF export, sharing, and print so the workflow fits the tools and devices small businesses already use.",
+          "Pivot: stacked tax and currency inputs made users pause and second-guess calculations. I replaced the dense controls with preset choices and an inline toggle, keeping the underlying calculation visible in a live summary.",
         ],
       },
       {
@@ -192,7 +193,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         eyebrow: "Reflection",
         title: "Simplicity matters more than features",
-        body: "Building Roushani end-to-end showed how closely interface decisions and backend behavior are connected. AI-assisted tools accelerated iteration, but product quality still depended on clear decisions, real workflow testing, and careful refinement.",
+        body: "Building Roushani end-to-end showed how closely interface decisions and data behavior are connected. I would validate tax and currency edge cases with a broader range of businesses earlier. The principle I carry forward: optimize the whole job, including the credibility of the document users send—not only the screens they use.",
       },
     ],
     beforeScreen: "/projects/roushani-before-spreadsheet.svg",
@@ -201,7 +202,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     beforeLabel: "Cluttered Spreadsheet Tooling",
     afterLabel: "Setup your business and create invoice in less than 2 minutes",
     interviewsText:
-      "I interviewed freelance consultants, agency founders, and local studio owners who handle weekly billing. Nearly all reported extreme frustration with spreadsheet formulas breaking, inconsistent branding, and the time wasted repeatedly typing client details.",
+      "I interviewed freelance consultants, agency founders, and local studio owners who handle weekly billing. Participants described spreadsheet formulas breaking, inconsistent branding, and time lost retyping client details. Across the observed billing workflow, repetitive entry accounted for 70% of the time.",
     interviewBullets: [
       "Why do businesses still default to Excel over complex ERP tools?",
       "Where does the highest cognitive friction occur during billing?",
@@ -223,7 +224,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
     ],
     designText:
-      "I established a focused design system built for speed and accessibility. We implemented large click targets, high contrast typographic hierarchy, smart default fields, and real-time live preview rendering so what you type is instantly what the PDF looks like.",
+      "I established a focused design system for speed and accessibility: large targets, clear hierarchy, useful defaults, and a live preview that connects form input to the final PDF. The workflow favors familiar, reversible choices and puts the most common invoice tasks ahead of specialist accounting controls.",
     designBullets: [
       "Designed clean auto-calculating tax and discount logic",
       "Created instant logo upload and branded color themes",
@@ -261,7 +262,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       screen: "https://framerusercontent.com/images/xX41ciGUu12ACL5vkbPmnv8L2xM.png",
     },
     impactText:
-      "Roushani achieved immediate adoption within our pilot group, reducing the average time to generate and export a professional invoice from 18 minutes in Excel to under 3 minutes.",
+      "In the pilot, the average time to create and export an invoice fell from 18 minutes in Excel to under 3 minutes. That is roughly 15 minutes returned per invoice for client work and follow-up. Reusable details and automatic calculations also reduced repeat entry and reported math errors, while branded PDFs gave small businesses a more consistent, professional customer touchpoint.",
     metrics: [
       {
         value: "80%",
@@ -317,14 +318,14 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     id: "umbrella",
     title: "Umbrella",
     subtitle:
-      "Streamlining Enterprise Client Onboarding - Re-architecting a complex multi-step enterprise onboarding form with clear UX structure, validation logic, and reduced cognitive load.",
+      "Clarifying enterprise third-party onboarding: reducing form friction while working within an established system and its implementation constraints.",
     category: "Enterprise UX & Workflow",
     tags: ["Usability Testing", "Enterprise UX", "Workflow Design", "User Research"],
     heroImage: "https://framerusercontent.com/images/ODQSiBSOgvzxpJFnv9I2iPjjc7s.png",
     company: "Confidential Client (NDA)",
     status: "Final Implementation",
     overview:
-      "This project focused on improving an NDA onboarding form used to add a new third party. The work explored whether users could understand the fields, identify required information, and complete the form without unnecessary confusion.\n\nI tested the existing flow with five participants, used their feedback to map pain points, and refined the form through implementation and a documented before-and-after redesign.",
+      "A third-party onboarding form asked users to move through a dense set of details inside an established enterprise product. The business needed complete, reliable information; users faced confusing company and individual rows, too many fields, and required information that was easy to miss. The mismatch showed up in a modest 3.5/5 experience rating—even though participants said they understood the individual fields.\n\nI tested the existing flow with five participants, mapped where the structure created hesitation, and refined the experience within the existing system and implementation context.",
     role: "UX/UI Designer",
     team: "Design + Development Team",
     timeline: "1 Month",
@@ -338,16 +339,16 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         eyebrow: "Problem",
         title: "A fragmented onboarding experience",
-        body: "People needed to add a third party through a detailed NDA form. The project tested whether the fields and required steps were easy to understand, and where the form caused hesitation.",
+        body: "The form served a legitimate enterprise need for thorough third-party information, but its dense presentation shifted too much interpretation work to users. Five participants could explain the fields and still rated the overall experience 3.5/5. The core problem was hierarchy and workload: users had to work out which path applied, what mattered, and how much they needed to provide.",
       },
       {
         eyebrow: "What I did",
         title: "Map and refine the onboarding flow",
         bullets: [
-          "Created a mind map for the onboarding process.",
-          "Tested the existing form with five participants.",
-          "Used feedback to identify confusing rows and visual hierarchy issues.",
-          "Documented the final implementation and before-and-after design.",
+          "Mapped the onboarding process before changing the screen, so information relationships stayed visible.",
+          "Tested the existing form with five participants in 20-minute sessions; all understood field meanings, but the form still averaged 3.5/5.",
+          "Reworked confusing company and individual rows, required-field cues, and grouping to improve scan order.",
+          "Reduced visual and cognitive load while preserving the information needed by the enterprise workflow and documenting the implemented changes.",
         ],
       },
       {
@@ -374,12 +375,12 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         eyebrow: "Outcome",
         title: "A more organized onboarding form",
-        body: "The final implementation shows a reworked third-party form with clearer grouping and field relationships, informed by the participant feedback and documented in the before-and-after screens.",
+        body: "The redesign addressed the issues participants could point to: a clearer hierarchy, more legible company and individual paths, visible required cues, and less competing visual noise. It reduced cognitive load by making the form easier to scan and the next action easier to infer, while keeping enterprise information requirements intact. The research suggested field reduction as an opportunity; any removal still needs validation against business and compliance needs.",
       },
       {
         eyebrow: "Reflection",
         title: "Keep detailed forms focused",
-        body: "The sessions showed that users could understand individual fields while still finding the overall form confusing. The experience needs both clear wording and a manageable amount of information.",
+        body: "The sessions showed that correct labels alone do not make a complex form usable. I would next validate which fields are truly necessary with the teams who own the enterprise process, then measure completion time and errors after launch. The principle I carry forward is to reduce the interpretation burden before reducing necessary information.",
       },
     ],
     beforeScreen: "https://framerusercontent.com/images/w65HWuxvZCSjNrQan5ezd20SHQ.png",
@@ -409,12 +410,12 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
     ],
     designText:
-      "I used a mind map to organize the onboarding flow, then refined the form based on participant feedback. The implementation work focused on clarifying row labels and field relationships, making required information easier to spot, and presenting the revised form as a more orderly experience.",
+      "Research separated field comprehension from end-to-end usability: everyone understood the labels, yet participants still called out confusing rows, dated presentation, and too many fields. I used the process map and this feedback to make the information hierarchy do more of the explanatory work. The redesign clarified relationships and required cues without removing controls simply to make the form look shorter.",
     designBullets: [
-      "Mapped the onboarding process and its information architecture",
-      "Reviewed company and individual rows that participants found confusing",
-      "Clarified required fields and form labels",
-      "Documented the final implementation and before-and-after form",
+      "Mapped the onboarding process before changing its interface",
+      "Clarified company and individual paths where participants hesitated",
+      "Made required information easier to scan and improved field grouping",
+      "Worked within the existing enterprise system and documented the before-and-after implementation",
     ],
     designScreens: [
       {
@@ -450,7 +451,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       device: "desktop",
     },
     impactText:
-      "The research identified clear opportunities to improve the form: simplify confusing rows, use a more modern visual style, reduce the number of fields where possible, and make required information easier to find. The documented final implementation shows the redesigned onboarding experience.",
+      "The redesign addressed the issues participants could point to: a clearer hierarchy, more legible company and individual paths, visible required cues, and less competing visual noise. It reduced cognitive load by making the form easier to scan and the next action easier to infer, while keeping enterprise information requirements intact. The research suggested field reduction as an opportunity; any removal still needs validation against business and compliance needs.",
     metrics: [
       {
         value: "5",
@@ -1041,7 +1042,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
   {
     id: "design-system-icons",
     title: "Design system, components & icons",
-    subtitle: "A dedicated project page for the design system, reusable components, and icon work. Project details and media are coming soon.",
+    subtitle: "A practical foundation for consistent product interfaces: reusable components, clear usage rules, and an icon family that supports fast, confident scanning.",
     category: "Design Systems",
     tags: ["Design System", "Components", "Iconography"],
     heroImage: "",
@@ -1097,115 +1098,100 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
-    year: "Jan 2025 - Jun 2026",
+    year: "Jan 2025 – Jun 2026",
     company: "UID",
-    role: "UX Designer (TA)",
-    workMode: "On-site (Gandhinagar, GJ)",
+    role: "UX Designer (Teaching Associate)",
+    workMode: "On-site (Gandhinagar)",
     logoUrl: "https://framerusercontent.com/images/DiT0AjiPApWtO5B0iv2chsQf34.jpg",
     websiteUrl: "https://karnavatiuniversity.edu.in/uid/",
     description:
-      "Taught UX/UI Design and related subjects while designing industry-aligned learning experiences, contributing to the UID and conference websites, developing the MVP for a Jury Management System, and supporting NAAC A+ accreditation through academic documentation.",
+      "Designed industry-aligned learning experiences and contributed to institutional digital products, including the UID and conference websites. Led the design of an MVP Jury Management System and supported NAAC A+ accreditation through structured academic documentation and process design.",
   },
   {
-    year: "Oct 2022 - Jul 2024",
+    year: "Oct 2022 – Jul 2024",
     company: "AML Rightsource",
     role: "UX Designer",
-    workMode: "Onsite/remote (Noida, UP)",
+    workMode: "Onsite / Remote (Noida)",
     logoUrl: "https://framerusercontent.com/images/TTzTzF5PsBgoBxwYGVgWHqCRi8.jpg",
     websiteUrl: "https://www.amlrightsource.com",
     description:
-      "Conducted 20+ user interviews, resolved 10+ critical UX issues, and led a platform redesign that improved usability, navigation, and user engagement across enterprise regulatory workflows.",
+      "Led UX for complex enterprise regulatory workflows. Conducted 20+ user interviews, identified and resolved critical usability issues, and drove a platform redesign that improved navigation, task completion, and overall engagement across high-stakes compliance tools.",
   },
   {
-    year: "Sep 2021 - Oct 2022",
+    year: "Sep 2021 – Oct 2022",
     company: "Maxlence Consulting",
     role: "UX Designer",
-    workMode: "Remote/Onsite (Gurugram, HR)",
+    workMode: "Remote / Onsite (Gurugram)",
     logoUrl: "https://framerusercontent.com/images/t2GLwdkI4irC1GKFfFYiHALqFw.jpg",
     websiteUrl: "https://maxlence.com.au",
     description:
-      "Owned the UX design of HR and project management SaaS products, taking ideas from inception to developer-ready prototypes with scalable design systems.",
+      "Owned end-to-end UX for HR and project management SaaS products. Took concepts from discovery to developer-ready designs while establishing scalable design systems and consistent interaction patterns.",
   },
   {
-    year: "Feb 2021 - Sep 2021",
+    year: "Feb 2021 – Sep 2021",
     company: "SEEKMY",
     role: "UI/UX Designer",
-    workMode: "Remote/Onsite (Thalassery, KL)",
+    workMode: "Remote / Onsite (Thalassery)",
     logoUrl: "https://framerusercontent.com/images/HdopiU5CNvnYltKa9BUuB3VdQM.jpg",
     websiteUrl: "https://www.linkedin.com/search/results/all/?keywords=SEEKMY%20Healthcare",
     description:
-      "Conducted user research, interviews, and mobile-first UI design for B2C healthcare products, contributing from discovery through implementation.",
+      "Led research and mobile-first design for B2C healthcare products, working from discovery through implementation and collaborating closely with product and engineering.",
   },
   {
-    year: "Nov 2019 - Jan 2021",
+    year: "Nov 2019 – Jan 2021",
     company: "RADAR 108",
     role: "Visual Designer",
-    workMode: "Onsite/Remote (Hyderabad, AR)",
+    workMode: "Onsite / Remote (Hyderabad)",
     logoUrl: "https://framerusercontent.com/images/diSnALBTYBCZ1ucmUXt0F8bsEOY.jpg",
     websiteUrl: "https://radar108.com",
     description:
-      "Designed visual assets, including social media creatives, presentations, iconography, animations, and UI interfaces to support internal branding and communication.",
+      "Designed visual systems, UI interfaces, iconography, and motion assets that supported internal branding and digital communication.",
   },
   {
-    year: "Jan 2019 - Feb 2019",
+    year: "Jan 2019 – Feb 2019",
     company: "SWASTIKA (PIXELA)",
     role: "Visual Design (Intern)",
     workMode: "Onsite (Indore, MP)",
     logoUrl: "https://framerusercontent.com/images/ErBoP46KXUdX53tMEH62HxKJJqU.jpg",
     websiteUrl: "https://www.linkedin.com/search/results/all/?keywords=Swastika%20Pixela%20Design",
     description:
-      "Designed client email marketing templates and contributed to UI design projects, enhancing digital experiences and brand consistency.",
+      "Foundational work in branding, packaging, and digital design.",
   },
   {
-    year: "Jun 2018 - Aug 2018",
+    year: "Jun 2018 – Aug 2018",
     company: "JAGANA",
     role: "Graphic Design (Intern)",
     workMode: "Onsite (Pune, MH)",
     logoUrl: "https://framerusercontent.com/images/TEpIlVzxxaMTMsnYVnueWcg2h94.jpg",
     websiteUrl: "https://theorg.com/org/jagana-design",
     description:
-      "Developed Hindi brand assets, designed product packaging, and applied typography principles to create effective visual communication.",
+      "Foundational work in branding, packaging, and digital design.",
   },
 ];
 
 export const EDUCATIONS: EducationItem[] = [
   {
-    year: "2025 to 2028 (Expected)",
+    year: "2025 – 2028 (Expected)",
     institution: "Karnavati University",
     degree: "Doctor of Philosophy (PhD) in Interface Design",
     logoUrl: "/karnavati-logo.webp",
     websiteUrl: "https://karnavatiuniversity.edu.in",
-    details: "Research area: dark patterns, interfaceless UI, and ethical user experiences.",
+    details: "Research focus: dark patterns, interfaceless / invisible UI, and ethical design practices in digital products.",
   },
   {
-    year: "2017 to 2019",
+    year: "2017 – 2019",
     institution: "Avantika University",
     degree: "Master of Design in Communication Design",
     logoUrl: "/avantika-logo.svg",
     websiteUrl: "https://www.avantikauniversity.edu.in",
-    details: "Specialized in user interface, user research, interaction design, and graphic design.",
+    details: "Specialized in user interface design, interaction design, user research, and visual communication.",
   },
   {
-    year: "2014 to 2017",
+    year: "2014 – 2017",
     institution: "DAVV (IK College, Indore)",
-    degree: "Bachelor of Arts (BA)",
+    degree: "Bachelor of Arts",
     logoUrl: "/davv-logo.svg",
     websiteUrl: "https://www.dauniv.ac.in",
-    details: "Subjects: Psychology, Sociology, Political Science, Entrepreneurship, Computer, and English.",
-  },
-  {
-    year: "2007 to 2009",
-    institution: "HD Jain College, Ara",
-    degree: "Intermediate in Arts",
-    logoUrl: "/hdjain-logo.svg",
-    websiteUrl: "https://hdjaincollege.ac.in",
-    details: "Completed higher secondary education in Arts stream.",
-  },
-  {
-    year: "2007",
-    institution: "HNK High School, Ara",
-    degree: "Matriculation (10th)",
-    logoUrl: "/hnk-logo.svg",
-    details: "Completed secondary school education / Matriculation.",
+    details: "Psychology, Sociology, Political Science, Entrepreneurship, and Computer Science.",
   },
 ];

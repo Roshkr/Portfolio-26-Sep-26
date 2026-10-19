@@ -23,7 +23,7 @@ const ProfilePortrait: React.FC<{ className?: string }> = ({ className = '' }) =
     />
     <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white pointer-events-none">
       <span className="text-xs uppercase tracking-wider text-slate-300">Roushan Kumar</span>
-      <p className="text-sm font-medium">UX/UI Designer · Researcher</p>
+      <p className="text-sm font-medium">UX/UI &amp; Product Designer</p>
     </div>
   </div>
 );
@@ -44,16 +44,16 @@ export const AboutPage: React.FC = () => {
                 Hi, I'm Roushan Kumar
               </h1>
               <p className="text-base font-normal text-slate-500">
-                UX/UI Designer • based in Ahmedabad, Gujarat, India
+                UX/UI &amp; Product Designer &#8226; based in Ahmedabad, Gujarat, India
               </p>
             </div>
 
             <div className="space-y-5 text-lg md:text-xl font-light text-slate-800 leading-relaxed">
               <p>
-                I'm a seasoned UX/UI designer specializing in mobile and desktop designs, creating user-friendly and visually appealing digital experiences that drive engagement and growth.
+                I design complex B2B and SaaS products, turning messy enterprise workflows into clear, efficient experiences. My work sits at the intersection of research, systems thinking, and practical product judgment — with a strong focus on reducing cognitive load and shipping work that actually gets used.
               </p>
               <p>
-                My focus lies in SaaS and B2B products, turning complex workflows into intuitive experiences through research, cross-functional collaboration, and AI-assisted engineering tools. Currently pursuing research on interface design ethics, dark patterns, and invisible UI.
+                I’m currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.
               </p>
             </div>
 
@@ -106,7 +106,7 @@ export const AboutPage: React.FC = () => {
             My creative toolkit!
           </h2>
           <p className="text-sm md:text-base text-slate-500 max-w-xl">
-            A battle-tested stack of design systems, AI engineering agents, and product strategy software.
+            A focused stack for research, systems, rapid prototyping, and AI-assisted delivery.
           </p>
         </div>
 
