@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUp, Expand, X } from 'lucide-react';
+import { ArrowUp, Expand, Loader2, X } from 'lucide-react';
 import { DESIGNER_INFO } from '../data/portfolioData';
 import { submitContactInquiry } from '../lib/contactService';
 
@@ -9,7 +9,7 @@ interface ContactModalProps {
 }
 
 interface ChatMessage {
-  from: 'visitor' | 'portfolio';
+  from: 'visitor' | 'portfolio' | 'system';
   text: string;
 }
 
@@ -20,39 +20,24 @@ const suggestions = [
   'Where should I start?',
 ];
 
-function portfolioReply(question: string): string {
-  const q = question.toLowerCase();
-  if (q.includes('career') || q.includes('experience') || q.includes('background')) {
-    return 'Roushan is a product designer based in Ahmedabad, with 12+ years designing digital products. His experience spans enterprise compliance, SaaS, healthcare, and design systems. You can explore the About page for his full career history.';
-  }
-  if (q.includes('about') || q.includes('who')) {
-    return 'Roushan Kumar is a product designer in Ahmedabad who works across B2B SaaS, enterprise workflows, and design systems. His approach combines research, systems thinking, and practical product judgment.';
-  }
-  if (q.includes('project') || q.includes('mylow') || q.includes('work') || q.includes('case')) {
-    return 'Start with the Recent Work section to explore detailed case studies, including Roushani and Umbrella. They cover the problem, research, design decisions, constraints, and outcomes.';
-  }
-  if (q.includes('start') || q.includes('where')) {
-    return "Start with Recent Work to read the case studies, or visit About to see Roushan's experience and skills. For a project conversation, contact him on WhatsApp.";
-  }
-  return "Explore Recent Work for project stories and About for Roushan's experience, or contact him on WhatsApp. This guide uses preset replies; the full chat is emailed when you close the popup.";
-}
-
 export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isSending, setIsSending] = useState(false);
+  const [isResponding, setIsResponding] = useState(false);
   const [deliveryStatus, setDeliveryStatus] = useState<'idle' | 'sent' | 'failed'>('idle');
   const inputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<ChatMessage[]>(messages);
   const sendingRef = useRef(false);
+  const respondingRef = useRef(false);
   const emailSentRef = useRef(false);
   const closeChatRef = useRef<() => void>(() => undefined);
   messagesRef.current = messages;
 
   const closeChat = async () => {
-    if (sendingRef.current) return;
+    if (sendingRef.current || respondingRef.current) return;
     const transcript = messagesRef.current;
     if (transcript.length === 0 || emailSentRef.current) {
       onClose();
@@ -63,7 +48,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     setIsSending(true);
     setDeliveryStatus('idle');
     const transcriptText = transcript
-      .map(({ from, text }) => `${from === 'visitor' ? 'Visitor' : 'Portfolio'}: ${text}`)
+      .map(({ from, text }) => `${from === 'visitor' ? 'Visitor' : from === 'system' ? 'Chat status' : 'Roushan'}: ${text}`)
       .join('\n\n');
     try {
       await submitContactInquiry(
@@ -82,6 +67,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     } finally {
       sendingRef.current = false;
       setIsSending(false);
+      setIsResponding(false);
+      respondingRef.current = false;
     }
   };
   closeChatRef.current = () => { void closeChat(); };
@@ -117,15 +104,34 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   const submitQuestion = async (text: string) => {
     const value = text.trim();
-    if (!value || isSending) return;
-    const reply = portfolioReply(value);
-    setMessages((current) => [
-      ...current,
-      { from: 'visitor', text: value },
-      { from: 'portfolio', text: reply },
-    ]);
+    if (!value || isSending || respondingRef.current) return;
+    const conversation = [...messagesRef.current, { from: 'visitor' as const, text: value }];
+    messagesRef.current = conversation;
+    setMessages(conversation);
     setQuestion('');
     setDeliveryStatus('idle');
+    respondingRef.current = true;
+    setIsResponding(true);
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: conversation.map(({ from, text }) => ({ role: from === 'visitor' ? 'user' : 'model', text })),
+        }),
+      });
+      const result = await response.json() as { reply?: unknown; error?: unknown };
+      if (!response.ok || typeof result.reply !== 'string') {
+        throw new Error(typeof result.error === 'string' ? result.error : 'Roushan could not reply just now. Please try again.');
+      }
+      setMessages((current) => [...current, { from: 'portfolio', text: result.reply as string }]);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Chat is temporarily unavailable. Please try again.';
+      setMessages((current) => [...current, { from: 'system', text: message }]);
+    } finally {
+      respondingRef.current = false;
+      setIsResponding(false);
+    }
   };
 
   return (
@@ -144,7 +150,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <button type="button" onClick={() => setIsExpanded((value) => !value)} aria-label={isExpanded ? 'Restore dialog size' : 'Expand dialog'} className="hidden rounded-xl p-2 transition-colors hover:bg-slate-100 hover:text-black sm:block">
             <Expand className="h-5 w-5" aria-hidden="true" />
           </button>
-          <button type="button" onClick={() => closeChatRef.current()} disabled={isSending} aria-label="Close dialog" className="rounded-xl p-2 transition-colors hover:bg-slate-100 hover:text-black disabled:cursor-wait disabled:opacity-50">
+          <button type="button" onClick={() => closeChatRef.current()} disabled={isSending || isResponding} aria-label="Close dialog" className="rounded-xl p-2 transition-colors hover:bg-slate-100 hover:text-black disabled:cursor-wait disabled:opacity-50">
             <X className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
@@ -154,7 +160,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             Let's talk product design.
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-[#656565] sm:mt-3 sm:text-base lg:text-lg">
-            Explore Roushan's projects, process, and experience. This guide uses preset replies; the full conversation is emailed when you close the chat.
+            Explore Roushan's projects, process, and experience. Ask about the work, process, or career. The full conversation is emailed when you close the chat.
           </p>
         </header>
 
@@ -178,11 +184,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         </div>
 
         <div className="flex shrink-0 flex-nowrap gap-2 overflow-x-auto overscroll-x-contain pb-4 sm:flex-wrap sm:gap-2.5 sm:overflow-visible sm:pb-6">
-          {suggestions.map((suggestion, index) => (
+          {suggestions.map((suggestion) => (
             <button
               key={suggestion}
               type="button"
-              onClick={() => submitQuestion(index === 0 ? 'Tell me a little about Roushan and his work.' : suggestion)}
+              disabled={isResponding || isSending}
+              onClick={() => submitQuestion(suggestion)}
               className="min-h-10 shrink-0 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-left text-xs leading-tight text-slate-800 transition-colors hover:bg-slate-100 disabled:cursor-wait disabled:opacity-60 sm:px-4 sm:py-3 sm:text-sm"
             >
               {suggestion}
@@ -207,7 +214,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         </form>
         <p className="mt-3 shrink-0 text-[10px] leading-relaxed text-[#686868] sm:mt-4 sm:text-xs">
           <a href={DESIGNER_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-[#222222] underline underline-offset-2">Message Roushan on WhatsApp</a>
-          {' · '}{isSending ? 'Sending chat transcript to email...' : deliveryStatus === 'failed' ? 'Email delivery failed. Close to retry, or use WhatsApp.' : 'Your chat transcript is emailed when you close this window.'}
+          {' · '}{isResponding ? 'Roushan is preparing a reply...' : isSending ? 'Sending chat transcript to email...' : deliveryStatus === 'failed' ? 'Email delivery failed. Close to retry, or use WhatsApp.' : 'Your chat transcript is emailed when you close this window.'}
         </p>
       </section>
     </div>
