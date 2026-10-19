@@ -120,13 +120,22 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           messages: conversation.map(({ from, text }) => ({ role: from === 'visitor' ? 'user' : 'model', text })),
         }),
       });
-      const result = await response.json() as { reply?: unknown; error?: unknown };
+      let result: { reply?: unknown; error?: unknown };
+      try {
+        result = await response.json() as { reply?: unknown; error?: unknown };
+      } catch {
+        throw new Error(response.status === 404
+          ? 'The /api/chat function is missing from this deployment. Redeploy the latest Vercel build.'
+          : 'The chat endpoint returned an invalid response. Check the Vercel function logs.');
+      }
       if (!response.ok || typeof result.reply !== 'string') {
         throw new Error(typeof result.error === 'string' ? result.error : 'Roushan could not reply just now. Please try again.');
       }
       setMessages((current) => [...current, { from: 'portfolio', text: result.reply as string }]);
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Chat is temporarily unavailable. Please try again.';
+      const message = error instanceof TypeError
+        ? 'Could not reach the chat service. Check the deployment and try again.'
+        : error instanceof Error ? error.message : 'Chat is temporarily unavailable. Please try again.';
       setMessages((current) => [...current, { from: 'system', text: message }]);
     } finally {
       respondingRef.current = false;

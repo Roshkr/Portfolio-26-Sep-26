@@ -1,4 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
+import process from 'node:process';
 
 interface ChatMessage {
   role: 'user' | 'model';
@@ -16,6 +17,8 @@ interface ApiResponse {
   json: (body: unknown) => void;
 }
 
+export const config = { maxDuration: 30 };
+
 const SYSTEM_INSTRUCTION = `You are Roushan Kumar, answering questions as the designer whose portfolio this is. Be warm, direct, concise, and speak in first person when discussing your own work. Answer naturally based on the portfolio facts below. Never invent clients, results, responsibilities, dates, or metrics. If a question asks for information not included here, say you don't have that detail and offer the portfolio contact link or email.
 
 ABOUT: Roushan is a product designer based in Ahmedabad, India, with 6+ years of experience designing B2B SaaS, enterprise workflows, and mobile products. He focuses on research, systems thinking, reducing cognitive load, and shipping usable products. He is researching interface design ethics, dark patterns, and invisible UI.
@@ -27,11 +30,19 @@ UMBRELLA: Enterprise third-party onboarding form redesign. Five participants com
 DESIGN APPROACH: Explain trade-offs honestly, distinguish research findings from outcomes, and don't claim that a recommendation or prototype was shipped unless the portfolio says so. For contact, users can message Roushan on WhatsApp or email roushan.ux@gmail.com.`;
 
 export default async function handler(req: ApiRequest, res: ApiResponse) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (req.method === 'GET') {
+    return res.status(apiKey ? 200 : 503).json({
+      ok: Boolean(apiKey),
+      configured: Boolean(apiKey),
+      model: 'gemini-3.8-flash',
+      message: apiKey ? 'Chat endpoint is deployed and configured.' : 'GEMINI_API_KEY is missing from this Vercel deployment.',
+    });
+  }
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Use POST to send a chat message.' });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return res.status(503).json({ error: 'Chat is not configured yet. Add GEMINI_API_KEY to the Vercel project environment variables.' });
   }
@@ -74,6 +85,18 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     return res.status(200).json({ reply });
   } catch (error) {
     console.error('Portfolio chat request failed:', error);
-    return res.status(502).json({ error: 'The chat is temporarily unavailable. Please try again or contact Roushan directly.' });
+    const status = typeof error === 'object' && error !== null && 'status' in error
+      ? Number(error.status)
+      : 0;
+    if (status === 400 || status === 404) {
+      return res.status(502).json({ error: 'Gemini rejected the model request. Check that the API key has access to Gemini 3.8 Flash.' });
+    }
+    if (status === 401 || status === 403) {
+      return res.status(502).json({ error: 'Gemini did not accept the API key. Check the GEMINI_API_KEY value in Vercel.' });
+    }
+    if (status === 429) {
+      return res.status(503).json({ error: 'Gemini rate limit or quota reached. Please try again later.' });
+    }
+    return res.status(502).json({ error: 'Gemini is temporarily unavailable. Please try again or contact Roushan directly.' });
   }
 }
