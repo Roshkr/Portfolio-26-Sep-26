@@ -31,7 +31,7 @@ export const DESIGNER_INFO = {
     email: "mailto:roushan.ux@gmail.com",
   },
   stats: [
-    { value: "12+", label: "Years designing digital products" },
+    { value: "6+", label: "Years designing digital products" },
     { value: "20+", label: "Enterprise & SaaS products shipped" },
     { value: "7+", label: "Companies & teams collaborated with" },
   ],

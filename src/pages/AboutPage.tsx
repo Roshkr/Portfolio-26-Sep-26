@@ -50,7 +50,7 @@ export const AboutPage: React.FC = () => {
 
             <div className="space-y-5 text-lg md:text-xl font-light text-slate-800 leading-relaxed">
               <p>
-                I design complex B2B and SaaS products, turning messy enterprise workflows into clear, efficient experiences. My work sits at the intersection of research, systems thinking, and practical product judgment — with a strong focus on reducing cognitive load and shipping work that actually gets used.
+                With 6+ years of experience, I design complex B2B and SaaS products, turning messy enterprise workflows into clear, efficient experiences. My work combines research, systems thinking, and practical product judgment to reduce cognitive load and deliver products people can use with confidence.
               </p>
               <p>
                 I’m currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.

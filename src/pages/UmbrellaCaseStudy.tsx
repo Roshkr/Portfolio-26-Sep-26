@@ -5,6 +5,7 @@ import type { CaseStudy } from '../types';
 import { ProjectCard } from '../components/ProjectCard';
 import { ProjectMockup } from '../components/PhoneMockup';
 import { CharacterRevealText } from '../components/CharacterRevealText';
+import { TradeoffsSection } from '../components/TradeoffsSection';
 
 interface UmbrellaCaseStudyProps {
   caseStudy: CaseStudy;
@@ -95,6 +96,28 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
           <div><p className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.designText}</p><div className="divide-y divide-slate-200 border-y border-slate-200">{caseStudy.designBullets.map((item, index) => <div key={item} className="grid gap-3 py-5 sm:grid-cols-[3rem_1fr] sm:gap-5"><span className="text-xs font-medium text-slate-400">0{index + 1}</span><p className="text-sm leading-relaxed text-slate-700 md:text-base">{item}</p></div>)}</div><div className="mt-10 grid gap-5">{caseStudy.designScreens.map((screen) => <figure key={screen.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3">{screen.fit === 'natural' ? <img src={screen.image} alt={screen.title} className="block h-auto w-full rounded-lg" loading="lazy" /> : <ProjectMockup imageSrc={screen.image} device={screen.device || 'desktop'} ariaLabel={screen.title} className="mx-auto w-full" />}<figcaption className="px-2 pb-1 pt-3"><span className="text-sm font-semibold text-slate-900">{screen.title}</span><p className="mt-1 text-sm text-slate-500">{screen.note}</p></figcaption></figure>)}</div></div>
         </div>
       </section>
+
+      <TradeoffsSection
+        title="Reduce friction without breaking the enterprise workflow."
+        intro="Participant feedback called for fewer fields, but the product still had to collect information required by the business. I pushed back on shortening the form before validating which fields were genuinely optional."
+        items={[
+          {
+            title: 'Fewer fields vs. complete third-party records',
+            decision: 'Kept the required information in place and improved grouping, company and individual paths, and required-field cues so users could understand the form more easily.',
+            constraint: 'The information supported an established enterprise onboarding process; field removal needed review with business and compliance owners.',
+          },
+          {
+            title: 'A clearer experience vs. a full platform rebuild',
+            decision: 'Focused the redesign on hierarchy, row relationships, and visual consistency within the current product, then documented the implemented changes with the development team.',
+            constraint: 'The work had to fit the existing enterprise system and its implementation context.',
+          },
+          {
+            title: 'Label comprehension vs. overall usability',
+            decision: 'The five participants understood the field labels, yet still rated the experience 3.5 out of 5. I prioritized scan order and grouping over rewriting labels that users already understood.',
+            constraint: 'The research sample was small; completion time, error rate, and any field reduction still need validation after implementation.',
+          },
+        ]}
+      />
 
       <section className="border-y border-slate-200 bg-white py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">

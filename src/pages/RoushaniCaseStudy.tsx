@@ -5,6 +5,7 @@ import type { CaseStudy } from '../types';
 import { LazyVideo } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
 import { CharacterRevealText } from '../components/CharacterRevealText';
+import { TradeoffsSection } from '../components/TradeoffsSection';
 
 interface RoushaniCaseStudyProps {
   caseStudy: CaseStudy;
@@ -176,6 +177,28 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
           </div>
         </div>
       </RevealSection>
+
+      <TradeoffsSection
+        title="Keep the invoice job simple and credible."
+        intro="The MVP had to make routine billing faster without turning into another accounting suite. I pushed back on scope that added setup or choice without helping users send a correct, professional invoice."
+        items={[
+          {
+            title: 'A focused invoicing tool vs. a full accounting suite',
+            decision: 'Kept the core around creating invoices, reusing customer and service details, and sharing a polished PDF. Advanced accounting and reporting stayed out of the MVP.',
+            constraint: 'A four-week, 200-hour solo build and research that showed most advanced ledger features were unnecessary for the target users.',
+          },
+          {
+            title: 'Professional branding vs. a page-builder burden',
+            decision: 'Limited customization to a logo and a small set of color controls so non-designers could produce a credible invoice quickly.',
+            constraint: 'The interface needed to stay approachable for service businesses already relying on spreadsheets or outdated tools.',
+          },
+          {
+            title: 'Tax flexibility vs. fast, confident entry',
+            decision: 'When stacked tax and currency inputs made users pause, I replaced the dense controls with preset choices, an inline toggle, and a live calculation summary.',
+            constraint: 'The workflow needed to support different billing needs without hiding how totals were calculated; broader tax edge cases remain a validation priority.',
+          },
+        ]}
+      />
 
       <RevealSection className="border-y border-slate-200 bg-white py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">

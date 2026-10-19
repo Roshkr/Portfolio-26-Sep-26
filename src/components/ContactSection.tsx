@@ -9,7 +9,7 @@ interface ContactSectionProps {
 export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) => (
   <section
     id="contact"
-    className="sticky top-0 z-10 mx-auto flex w-[calc(100%-24px)] max-w-[calc(72rem-24px)] flex-col justify-start gap-8 px-6 py-10 [container-type:inline-size] sm:gap-10 sm:px-10 sm:py-12 lg:min-h-[320px] lg:gap-12 lg:px-16 lg:py-14"
+    className="sticky top-0 z-10 mx-auto flex w-[calc(100%-24px)] max-w-[calc(72rem-24px)] flex-col justify-start gap-8 px-6 pt-10 pb-10 [container-type:inline-size] sm:gap-10 sm:px-10 sm:pt-12 sm:pb-12 lg:gap-12 lg:px-16 lg:pt-14 lg:pb-14"
   >
     <div className="flex items-start justify-between gap-4">
       <h2 className="m-0 min-w-0 flex-1 whitespace-nowrap text-[clamp(2rem,13.5cqw,9.5rem)] font-black leading-[0.82] tracking-[-0.04em] text-[#111111]">
