@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUp, Expand, Loader2, X } from 'lucide-react';
-import { DESIGNER_INFO } from '../data/portfolioData';
+import { ArrowUp, Expand, X } from 'lucide-react';
 import { submitContactInquiry } from '../lib/contactService';
 
 interface ContactModalProps {
@@ -16,8 +15,8 @@ interface ChatMessage {
 const suggestions = [
   'About Roushan',
   'Career & experience',
-  'Project case studies',
   'Where should I start?',
+  'Check my fit for a role',
 ];
 
 export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
@@ -27,7 +26,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   const [isSending, setIsSending] = useState(false);
   const [isResponding, setIsResponding] = useState(false);
   const [deliveryStatus, setDeliveryStatus] = useState<'idle' | 'sent' | 'failed'>('idle');
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<ChatMessage[]>(messages);
   const sendingRef = useRef(false);
@@ -178,7 +177,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             <div className="flex h-full min-h-32 flex-col items-center justify-center px-4 text-center">
               <span className="grid h-11 w-11 place-items-center rounded-full bg-[#2b35ee]/10 text-sm font-semibold text-[#2b35ee]">RK</span>
               <p className="mb-1 mt-3 text-sm font-semibold text-slate-800 sm:text-base">What would you like to know?</p>
-              <p className="m-0 max-w-sm text-xs leading-relaxed text-slate-500 sm:text-sm">Choose a topic below or write a question. The full conversation is sent when you close this window.</p>
+              <p className="m-0 max-w-sm text-xs leading-relaxed text-slate-500 sm:text-sm">Choose a topic below or write a question.</p>
             </div>
           )}
           {messages.map((message, index) => (
@@ -189,6 +188,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               </div>
             </div>
           ))}
+          {isResponding && (
+            <div role="status" aria-label="Roushan is typing" className="flex flex-col items-start">
+              <span className="mb-1 px-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Roushan</span>
+              <div className="inline-flex items-center gap-1 rounded-2xl rounded-bl-md border border-slate-200 bg-white px-4 py-3">
+                {[0, 1, 2].map((dot) => (
+                  <span key={dot} className="h-1.5 w-1.5 animate-pulse rounded-full bg-slate-500" style={{ animationDelay: `${dot * 180}ms` }} />
+                ))}
+              </div>
+            </div>
+          )}
           <div ref={messagesEndRef} />
         </div>
 
@@ -208,13 +217,20 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
         <form className="shrink-0" onSubmit={(event) => { event.preventDefault(); submitQuestion(question); }}>
           <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-2.5 transition-colors focus-within:border-[#2b35ee] focus-within:ring-2 focus-within:ring-[#2b35ee]/15">
-            <input
+            <textarea
               ref={inputRef}
+              rows={1}
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
-              placeholder="What’s on your mind?"
-              aria-label="Ask a question about the portfolio"
-              className="min-w-0 flex-1 border-0 bg-transparent text-base text-slate-800 outline-none placeholder:text-slate-400"
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+                  event.preventDefault();
+                  submitQuestion(question);
+                }
+              }}
+              placeholder="Ask a question or paste a job description…"
+              aria-label="Ask a question or paste a job description"
+              className="max-h-32 min-h-6 min-w-0 flex-1 resize-y border-0 bg-transparent text-base leading-relaxed text-slate-800 outline-none placeholder:text-slate-400"
             />
             <button type="submit" aria-label="Send question" disabled={!question.trim() || isSending} className="rounded-lg p-1.5 text-slate-400 transition-colors enabled:text-[#2b35ee] enabled:hover:bg-[#2b35ee]/5">
               <ArrowUp className={`h-6 w-6 ${isSending ? 'animate-pulse' : ''}`} aria-hidden="true" />
@@ -222,8 +238,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           </div>
         </form>
         <p className="mt-3 shrink-0 text-[10px] leading-relaxed text-[#686868] sm:mt-4 sm:text-xs">
-          <a href={DESIGNER_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-[#222222] underline underline-offset-2">Message Roushan on WhatsApp</a>
-          {' · '}{isResponding ? 'Roushan is preparing a reply...' : isSending ? 'Sending chat transcript to email...' : deliveryStatus === 'failed' ? 'Email delivery failed. Close to retry, or use WhatsApp.' : 'Your chat transcript is emailed when you close this window.'}
+          {isSending ? 'Sending chat transcript to email...' : deliveryStatus === 'failed' ? 'Email delivery failed. Close to retry.' : ''}
         </p>
       </section>
     </div>

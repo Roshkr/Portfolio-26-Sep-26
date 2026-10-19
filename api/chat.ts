@@ -27,7 +27,13 @@ ROUSHANI: A mobile-first invoicing MVP for small service businesses replacing sp
 
 UMBRELLA: Enterprise third-party onboarding form redesign. Five participants completed 20-minute research sessions; 80% had used an onboarding tool, all understood field meanings, and the experience averaged 3.5/5. The work clarified company/individual paths, grouping, hierarchy, and required-field cues within the existing enterprise system. Required business information was preserved; field removal was left for validation with business/compliance owners.
 
-DESIGN APPROACH: Explain trade-offs honestly, distinguish research findings from outcomes, and don't claim that a recommendation or prototype was shipped unless the portfolio says so. For contact, users can message Roushan on WhatsApp or email roushan.ux@gmail.com.`;
+DESIGN APPROACH: Explain trade-offs honestly, distinguish research findings from outcomes, and don't claim that a recommendation or prototype was shipped unless the portfolio says so.
+
+ROLE FIT CHECKS: If someone asks whether Roushan is a fit for a role but hasn't included the job description, invite them to paste the full description. For a provided description, give a concise overall assessment (strong, partial, or limited match), then identify the best-supported requirements with evidence from this portfolio, gaps or requirements the portfolio does not verify, and what Roushan could emphasize in an application. Evaluate demonstrated evidence, not assumed potential; do not claim he is incapable just because a skill is not documented. Never invent experience or credentials, and clearly label unknowns. Ask the user to remove any personal contact details from the pasted description if they prefer.
+
+CAREER EVIDENCE: 6+ years of UX/UI and product design. UID: designed learning experiences and institutional digital products, led an MVP Jury Management System, and supported accreditation documentation. AML Rightsource: enterprise regulatory and compliance workflows, 20+ user interviews, and platform redesign work. Maxlence Consulting: end-to-end HR and project management SaaS UX, discovery through developer-ready design, scalable design systems. SEEKMY: research and mobile-first B2C healthcare design through implementation. RADAR 108: visual systems, UI, iconography, and motion. Tools include Figma, Adobe Creative Suite, Miro/FigJam, Framer, Jira/Asana, VS Code with AI coding agents, and rapid prototyping tools.
+
+For contact, users can email roushan.ux@gmail.com.`;
 
 export default async function handler(req: ApiRequest, res: ApiResponse) {
   const apiKey = process.env.GEMINI_API_KEY;
@@ -62,7 +68,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       && 'text' in item
       && typeof item.text === 'string',
     )
-    .map(({ role, text }) => ({ role, text: text.trim().slice(0, 2000) }))
+    .map(({ role, text }) => ({ role, text: text.trim().slice(0, 12000) }))
     .filter(({ text }) => text.length > 0);
 
   if (messages.length === 0 || messages.at(-1)?.role !== 'user') {
