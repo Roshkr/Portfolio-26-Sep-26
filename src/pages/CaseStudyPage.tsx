@@ -119,7 +119,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-black transition-colors cursor-pointer py-1"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to projects</span>
+          <span>Back</span>
         </button>
 
       </div>
@@ -181,8 +181,8 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Overview & Meta Section */}
       <section className={caseStudy.id === 'roushani'
-        ? 'py-20 md:py-24 border-y border-[#2b35ee]/15'
-        : 'py-16 md:py-20 max-w-6xl mx-auto px-6 border-t border-black/[0.04]'}>
+        ? 'py-12 md:py-16 border-y border-[#2b35ee]/15'
+        : 'py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]'}>
         <div className={caseStudy.id === 'roushani' ? 'max-w-6xl mx-auto px-6' : ''}>
           <div className={caseStudy.id === 'roushani' ? 'space-y-6' : 'space-y-4'}>
             <h2 className={caseStudy.id === 'roushani'
@@ -203,7 +203,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Source Portfolio Details */}
       {(caseStudy.projectDetails || caseStudy.contributionAreas) && (
-        <section className="py-16 md:py-20 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+        <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
           <div className="space-y-12">
             {caseStudy.projectDetails && (
               <div>
@@ -260,7 +260,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       )}
 
       {/* Before & After Section */}
-      <section className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Before Mockup Card */}
           <div className={`${caseStudy.beforeDevice === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[500px]' : 'p-8 md:p-12 min-h-[500px]'} bg-[#eef0f3] rounded-[32px] flex flex-col items-center justify-center`}>
@@ -303,7 +303,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </div>
 
       {/* 01 - Interviews Section */}
-      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6">
         <div className="max-w-3xl space-y-6 mb-12">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             01 - Interviews & Discovery
@@ -338,7 +338,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* 02 - Design Section with Interactive Device Carousel */}
-      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
         <div className="project-section-sticky max-w-3xl space-y-6 mb-12 bg-[#fbfbfb] py-4">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             02 - Design Architecture
@@ -411,7 +411,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* 03 - Usability Testing Section */}
-      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
         <div className="max-w-3xl space-y-6 mb-12">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             03 - Usability Testing & Iteration
@@ -468,7 +468,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {caseStudy.storySections && (
-        <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+        <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
           <div className="max-w-3xl space-y-6 mb-12">
             <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
               Project narrative
@@ -530,7 +530,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </div>
 
       {/* Impact Section */}
-      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6">
         <div className="max-w-3xl space-y-6 mb-12">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             Impact
@@ -564,7 +564,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Learnings & Next Steps */}
-      <section className="py-16 md:py-20 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Learnings Column */}
           <div className="space-y-6">
@@ -628,7 +628,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Next Project Teaser Footer (from Framer) */}
       {nextStudy && onSelectCaseStudy && (
-        <section className="py-16 md:py-20 bg-[#fbfbfb] border-t border-black/[0.04]">
+        <section className="py-12 md:py-16 bg-[#fbfbfb] border-t border-black/[0.04]">
           <div className="max-w-6xl mx-auto px-6 next-project-content">
             <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
               Next Project

@@ -37,7 +37,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
     <article className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10">
         <button onClick={onBack} className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950">
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to work
+          <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back
         </button>
         <span className="rounded-full bg-[#eef0f3] px-3 py-1 text-xs font-medium text-slate-600">{caseStudy.status || caseStudy.category}</span>
       </div>
@@ -61,7 +61,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
         </figure>
       </header>
 
-      <section className="border-y border-slate-200 bg-white py-14 md:py-20">
+      <section className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="roushani-summary-sticky"><SectionHeading eyebrow="The short version" title="A clearer path through third-party onboarding." /></div>
           <ol className="divide-y divide-slate-200">
@@ -70,7 +70,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white py-16 md:py-24">
+      <section className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="roushani-summary-sticky"><SectionHeading eyebrow="The challenge" title={problem?.title ?? 'A fragmented onboarding experience'} /></div>
           <div className="space-y-6"><p className="text-lg leading-relaxed text-slate-600 md:text-xl">{problem?.body}</p><p className="whitespace-pre-line text-base leading-relaxed text-slate-600 md:text-lg">{caseStudy.overview}</p></div>
@@ -119,7 +119,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
         ]}
       />
 
-      <section className="border-y border-slate-200 bg-white py-16 md:py-24">
+      <section className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="roushani-summary-sticky"><SectionHeading eyebrow="What changed" title="A more organized onboarding form." /></div>
           <div className="space-y-6"><p className="text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.impactText}</p><figure className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3"><img src="/projects/umbrella-changes.png" alt="Form improvements: clearer tab and checkbox identification, required field markers, consistent dropdowns, icons, typography, input fields, and button placement." loading="lazy" className="block h-auto w-full rounded-lg" /></figure></div>
@@ -133,7 +133,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-[#eef0f3] py-16 md:py-24">
+      <section className="border-t border-slate-200 bg-[#eef0f3] py-12 md:py-16">
         <div className="mx-auto max-w-5xl px-6 md:px-10">
           <div className="max-w-3xl"><SectionHeading eyebrow="Reflection" title={reflection?.title ?? 'Keep detailed forms focused'} /><p className="mt-6 text-base leading-relaxed text-slate-600 md:text-lg">{reflection?.body}</p></div>
           <div className="mt-10 grid gap-8 border-t border-slate-300 pt-6 md:grid-cols-2 md:gap-12">
@@ -143,7 +143,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
         </div>
       </section>
 
-      {nextStudy && onSelectCaseStudy && <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-16 md:py-20"><div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10"><span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span><ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners /></div></section>}
+      {nextStudy && onSelectCaseStudy && <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-12 md:py-16"><div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10"><span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span><ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners /></div></section>}
     </article>
   );
 };

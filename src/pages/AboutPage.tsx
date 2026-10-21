@@ -120,9 +120,16 @@ export const AboutPage: React.FC = () => {
                 '--stack-offset-md': `${idx * 40}px`,
                 zIndex: idx + 1,
               } as React.CSSProperties}
-              className="about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-2.5 sm:p-3 md:p-3.5 flex flex-col justify-center hover:bg-[#e7eaf0] transition-colors group/card"
+              className="about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-3.5 sm:p-4 md:p-4.5 flex flex-row items-center gap-3.5 sm:gap-4 md:gap-5 hover:bg-[#e7eaf0] transition-colors group/card"
             >
-              <div className="space-y-1.5">
+              <div className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-xl sm:rounded-2xl border border-slate-200/90 bg-white p-3 sm:p-4 shadow-xs flex items-center justify-center">
+                {tool.iconUrl ? (
+                  <img src={tool.iconUrl} alt={`${tool.name} icon`} className="h-full w-full object-contain" loading="lazy" />
+                ) : (
+                  <Sparkles className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" />
+                )}
+              </div>
+              <div className="min-w-0 flex-1 space-y-1.5">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                   {tool.category}
                 </span>

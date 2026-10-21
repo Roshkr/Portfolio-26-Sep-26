@@ -50,46 +50,55 @@ export const CREATIVE_TOOLKIT: ToolItem[] = [
     name: "Figma",
     desc: "Primary tool for interface design, design systems, and collaboration",
     category: "Design & Systems",
+    iconUrl: "https://cdn.simpleicons.org/figma/F24E1E",
   },
   {
     name: "Claude / Codex / Gemini",
     desc: "Used for research synthesis, content exploration, and accelerating iteration",
     category: "AI & Synthesis",
+    iconUrl: "https://cdn.simpleicons.org/openai/412991",
   },
   {
     name: "VS Code + AI coding agents",
     desc: "For tighter collaboration with engineering and faster prototyping",
     category: "Development",
+    iconUrl: "https://cdn.simpleicons.org/visualstudiocode/007ACC",
   },
   {
     name: "Adobe Creative Suite",
     desc: "Still essential for brand and visual refinement",
     category: "Visual Design",
+    iconUrl: "https://cdn.simpleicons.org/adobe/DA1F26",
   },
   {
     name: "Framer",
     desc: "For high-fidelity prototypes and marketing sites",
     category: "Interactive Web",
+    iconUrl: "https://cdn.simpleicons.org/framer/0055FF",
   },
   {
     name: "Miro / FigJam",
     desc: "Workshop facilitation, journey mapping, and alignment",
     category: "Strategy & Mapping",
+    iconUrl: "https://cdn.simpleicons.org/miro/FFD02F",
   },
   {
     name: "Cursor / Replit / Lovable",
     desc: "AI-assisted building when speed matters",
     category: "Rapid Prototyping",
+    iconUrl: "https://cdn.simpleicons.org/cursor/000000",
   },
   {
     name: "Figma Make / Stitch",
     desc: "Exploration and early concept generation",
     category: "AI UI Generation",
+    iconUrl: "https://cdn.simpleicons.org/figma/F24E1E",
   },
   {
     name: "Jira / Asana",
     desc: "Working within real product delivery systems",
     category: "Project Management",
+    iconUrl: "https://cdn.simpleicons.org/jira/0052CC",
   },
 ];
 
@@ -561,6 +570,15 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
         eyebrow: "Reflection",
         title: "Responsive behavior belongs in the first concept",
         body: "Early work focused too heavily on desktop information architecture. Revisiting navigation and layout for smaller screens reinforced that information architecture, responsiveness, and usability need to evolve together.",
+      },
+      {
+        eyebrow: "Trade-offs & pushback",
+        title: "Keep the service story complete without bringing back the clutter",
+        body: "The redesign had to explain a broad set of services while making the site faster to scan. I kept the essential service information, but pushed the layout toward clearer grouping, shorter summaries, and a stronger hierarchy instead of restoring long, competing blocks of copy.",
+        bullets: [
+          "Preserved the information clients needed to evaluate the offering.",
+          "Used modular sections and clear calls to action to keep the experience focused.",
+        ],
       },
     ],
     beforeScreen: "https://framerusercontent.com/images/NvwCzpue7KQaYCXTYTFo3MbBtdE.png",

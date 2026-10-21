@@ -102,4 +102,5 @@ export interface ToolItem {
   desc: string;
   category: string;
   iconName?: string;
+  iconUrl?: string;
 }

@@ -175,7 +175,18 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         <div aria-live="polite" className="my-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain py-2 sm:my-5">
           {messages.length === 0 && (
             <div className="flex h-full min-h-32 flex-col items-center justify-center px-4 text-center">
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-[#2b35ee]/10 text-sm font-semibold text-[#2b35ee]">RK</span>
+              <div className="h-11 w-11 overflow-hidden rounded-full bg-[#2b35ee]/10">
+                <video
+                  src="/line-profile-picture.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Roushan profile video"
+                  className="h-full w-full object-cover"
+                />
+              </div>
               <p className="mb-1 mt-3 text-sm font-semibold text-slate-800 sm:text-base">What would you like to know?</p>
               <p className="m-0 max-w-sm text-xs leading-relaxed text-slate-500 sm:text-sm">Choose a topic below or write a question.</p>
             </div>

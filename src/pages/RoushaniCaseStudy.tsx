@@ -50,7 +50,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
           className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Back to work
+          Back
         </button>
         <span className="rounded-full bg-[#eef0f3] px-3 py-1 text-xs font-medium text-slate-600">
           {caseStudy.status || caseStudy.category}
@@ -81,7 +81,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         <MediaFrame caseStudy={caseStudy} />
       </header>
 
-      <RevealSection className="border-y border-slate-200 bg-white py-14 md:py-20">
+      <RevealSection className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="lg:sticky lg:top-24 lg:self-start">
           <div className="roushani-summary-sticky">
@@ -110,7 +110,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
-      <RevealSection className="border-y border-slate-200 bg-white py-16 md:py-24">
+      <RevealSection className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="roushani-summary-sticky">
             <SectionHeading eyebrow="The challenge" title={challenge?.title || 'Why this product was needed'} />
@@ -200,7 +200,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         ]}
       />
 
-      <RevealSection className="border-y border-slate-200 bg-white py-16 md:py-24">
+      <RevealSection className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="roushani-summary-sticky">
             <SectionHeading eyebrow="What changed" title="Less time making invoices. More time running a business." />
@@ -260,7 +260,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
       </RevealSection>
 
       {nextStudy && onSelectCaseStudy && (
-        <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-16 md:py-20">
+        <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-12 md:py-16">
           <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span>
             <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners />

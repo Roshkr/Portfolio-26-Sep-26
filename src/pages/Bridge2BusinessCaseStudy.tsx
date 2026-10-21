@@ -25,6 +25,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
   const research = caseStudy.storySections?.[2];
   const concept = caseStudy.storySections?.[3];
   const reflection = caseStudy.storySections?.[4];
+  const tradeoffs = caseStudy.storySections?.[5];
   const articleRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -86,7 +87,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
           className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950"
         >
           <ArrowLeft className="h-4 w-4" />
-          <span>Back to projects</span>
+          <span>Back</span>
         </button>
         {caseStudy.status && (
           <span className="rounded-full bg-[#eef0f3] px-3 py-1 text-xs font-medium text-slate-600">
@@ -163,7 +164,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="grid gap-10 md:grid-cols-12 md:gap-16">
           <div className="md:col-span-4 project-section-sticky">
             <p className={eyebrowClass}>The challenge</p>
@@ -182,7 +183,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </section>
 
-      <section className="bg-[#f0f1f4] py-16 md:py-24">
+      <section className="bg-[#f0f1f4] py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-3xl">
             <p className={eyebrowClass}>Listen before redesigning</p>
@@ -235,7 +236,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="mb-10 flex flex-col gap-4 md:mb-12 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className={eyebrowClass}>Before and after</p>
@@ -277,7 +278,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </section>
 
-      <section className="border-y border-black/[0.06] bg-white py-16 md:py-24">
+      <section className="border-y border-black/[0.06] bg-white py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4 project-section-sticky">
@@ -344,7 +345,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
         <div className="max-w-3xl">
           <p className={eyebrowClass}>Test and refine</p>
           <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-5xl">
@@ -379,7 +380,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </section>
 
-      <section className="border-t border-black/[0.06] bg-white py-16 md:py-24">
+      <section className="border-t border-black/[0.06] bg-white py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-2xl">
             <p className={eyebrowClass}>The finished experience</p>
@@ -410,6 +411,27 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
           </div>
         </div>
       </section>
+
+      {tradeoffs && (
+        <section className="border-y border-black/[0.06] bg-white py-12 md:py-16">
+          <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
+            <div className="project-section-sticky">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{tradeoffs.eyebrow}</p>
+              <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-5xl">{tradeoffs.title}</h2>
+            </div>
+            <div>
+              {tradeoffs.body && <p className="text-lg leading-relaxed text-slate-600 md:text-xl">{tradeoffs.body}</p>}
+              {tradeoffs.bullets && (
+                <ul className="mt-6 space-y-4">
+                  {tradeoffs.bullets.map((item) => (
+                    <li key={item} className="border-t border-slate-200 pt-4 text-sm leading-relaxed text-slate-700 md:text-base">{item}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-[#eef0f3] py-16 text-slate-950 md:py-24">
         <div className="mx-auto max-w-6xl px-6">
@@ -481,7 +503,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
       </section>
 
       {nextStudy && onSelectCaseStudy && (
-        <section className="border-t border-black/[0.06] py-16 md:py-20">
+        <section className="border-t border-black/[0.06] py-12 md:py-16">
           <div className="mx-auto max-w-6xl px-6">
             <p className={eyebrowClass}>Next project</p>
             <div className="mt-5">

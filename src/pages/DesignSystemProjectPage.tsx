@@ -78,7 +78,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
     <div className="mx-auto flex max-w-6xl items-center justify-between border-b border-slate-200 px-6 py-5 md:px-10">
       <button onClick={onBack} className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950">
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-        Back to projects
+        Back
       </button>
       <span className="text-xs font-medium text-slate-400">Selected work / Design systems</span>
     </div>
@@ -109,7 +109,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
       <p className="mt-3 text-xs text-slate-400">Design system overview</p>
     </section>
 
-    <SectionReveal id="challenge" className="border-y border-slate-200 bg-white py-16 md:py-24">
+    <SectionReveal id="challenge" className="border-y border-slate-200 bg-white py-12 md:py-16">
       <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
         <div className="project-section-sticky">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">The challenge</p>
@@ -150,7 +150,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
       <MediaPlaceholder label="Foundations, components, and iconography" className="mt-12 aspect-[16/8]" />
     </SectionReveal>
 
-    <SectionReveal id="what-changed" className="border-y border-slate-200 bg-white py-16 md:py-24">
+    <SectionReveal id="what-changed" className="border-y border-slate-200 bg-white py-12 md:py-16">
       <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
         <div className="project-section-sticky">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">What changed</p>
@@ -187,7 +187,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
       </div>
     </SectionReveal>
 
-    <SectionReveal id="next" className="border-t border-slate-200 bg-white py-16 md:py-24">
+    <SectionReveal id="next" className="border-t border-slate-200 bg-white py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-6 md:px-10">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
           <div>
@@ -211,7 +211,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
     </SectionReveal>
 
     {nextStudy && onSelectCaseStudy && (
-      <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-16 md:py-20">
+      <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-12 md:py-16">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span>
           <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners />
