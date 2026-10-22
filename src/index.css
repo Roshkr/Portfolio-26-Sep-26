@@ -67,6 +67,26 @@
   will-change: transform;
 }
 
+.hero-typewriter-cursor {
+  display: inline-block;
+  width: 0.055em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  vertical-align: -0.06em;
+  background: #2b35ee;
+  animation: hero-cursor-blink 0.85s steps(2, start) infinite;
+}
+
+@keyframes hero-cursor-blink {
+  to { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-typewriter-cursor {
+    animation: none;
+  }
+}
+
 .hero-gradient-float {
   width: 100%;
   height: 100%;
