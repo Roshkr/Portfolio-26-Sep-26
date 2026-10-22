@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import type { CaseStudy } from '../types';
 import { ProjectCard } from '../components/ProjectCard';
+import { LazyVideo } from '../components/PhoneMockup';
 
 interface DesignSystemProjectPageProps {
   onBack: () => void;
@@ -105,8 +106,10 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
     </header>
 
     <section className="mx-auto max-w-6xl px-6 pb-16 md:px-10 md:pb-24">
-      <MediaPlaceholder label="Design system overview" className="aspect-[16/9]" />
-      <p className="mt-3 text-xs text-slate-400">Design system overview</p>
+      <div className="aspect-[16/9] overflow-hidden rounded-2xl border border-slate-200 bg-[#eef0f3]">
+        <LazyVideo src="/projects/color-system.mp4" ariaLabel="Color system design walkthrough" objectFit="contain" frameClassName="rounded-2xl bg-[#eef0f3]" />
+      </div>
+      <p className="mt-3 text-xs text-slate-400">Color system walkthrough</p>
     </section>
 
     <SectionReveal id="challenge" className="border-y border-slate-200 bg-white py-12 md:py-16">

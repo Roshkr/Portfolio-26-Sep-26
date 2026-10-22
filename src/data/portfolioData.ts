@@ -1064,6 +1064,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     category: "Design Systems",
     tags: ["Design System", "Components", "Iconography"],
     heroImage: "",
+    heroVideo: "/projects/color-system.mp4",
     overview: "",
     role: "",
     team: "",
