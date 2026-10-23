@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useReducedMotion } from 'motion/react';
+import React, { useRef } from 'react';
 import { CaseStudy } from '../types';
 import { DESIGNER_INFO } from '../data/portfolioData';
 import { ProjectCard } from '../components/ProjectCard';
@@ -14,29 +13,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectCaseStudy,
 }) => {
   const heroGradientRef = useRef<HTMLDivElement>(null);
-  const shouldReduceMotion = useReducedMotion();
   const heroHeadline = `${DESIGNER_INFO.headlineHero} ${DESIGNER_INFO.headlineHighlight}${DESIGNER_INFO.headlineSuffix}`;
-  const [typedLength, setTypedLength] = useState(shouldReduceMotion ? heroHeadline.length : 0);
-
-  useEffect(() => {
-    if (shouldReduceMotion) {
-      setTypedLength(heroHeadline.length);
-      return;
-    }
-
-    setTypedLength(0);
-    const timer = window.setInterval(() => {
-      setTypedLength((length) => {
-        if (length >= heroHeadline.length) {
-          window.clearInterval(timer);
-          return length;
-        }
-        return length + 1;
-      });
-    }, 42);
-
-    return () => window.clearInterval(timer);
-  }, [heroHeadline, shouldReduceMotion]);
 
   const handleHeroPointerMove = (event: React.PointerEvent<HTMLElement>) => {
     if (event.pointerType !== 'mouse' || !heroGradientRef.current) return;
@@ -91,16 +68,11 @@ export const HomePage: React.FC<HomePageProps> = ({
             <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-normal tracking-tight text-slate-500 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]"
             >
-              <span className="sr-only">{heroHeadline}</span>
-              <span aria-hidden="true" className="whitespace-pre-wrap">
-                {heroHeadline.slice(0, Math.min(typedLength, DESIGNER_INFO.headlineHero.length + 1))}
+              <span className="whitespace-pre-wrap">
+                {DESIGNER_INFO.headlineHero}{' '}
                 <span className="text-[#2b35ee] font-bold">
-                  {heroHeadline.slice(
-                    DESIGNER_INFO.headlineHero.length + 1,
-                    typedLength,
-                  )}
+                  {DESIGNER_INFO.headlineHighlight}{DESIGNER_INFO.headlineSuffix}
                 </span>
-                <span className="hero-typewriter-cursor" />
               </span>
             </h1>
           </div>

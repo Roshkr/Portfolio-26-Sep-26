@@ -42,7 +42,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     return (
       <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="group block cursor-pointer text-left text-slate-950 no-underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#2b35ee]">
         <div className="grid min-w-0 items-start gap-8 border-b border-slate-200 pb-12 lg:items-stretch lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-10 lg:pb-14 xl:gap-16">
-          <div className="relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch">
+          <div className={`relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch ${study.id === 'umbrella' ? 'lg:mb-14' : ''}`}>
             {study.id === 'design-system-icons' && study.heroVideo ? (
               <LazyVideo src={study.heroVideo} poster={study.heroImage || undefined} ariaLabel="Design system color palette preview" objectFit="cover" frameClassName="rounded-xl bg-[#f1f2f4] transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
             ) : study.id === 'design-system-icons' ? (
@@ -72,6 +72,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   <span className="text-xs text-slate-500">Components & icon set</span>
                 </div>
               </div>
+            ) : study.id === 'umbrella' ? (
+              <img
+                src="/projects/umbrella-third-party-form.png"
+                alt="Umbrella add a new third party form preview"
+                loading="lazy"
+                className="h-full w-full rounded-xl object-cover object-top transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]"
+              />
             ) : study.heroVideo ? (
               <LazyVideo src={study.heroVideo} poster={study.heroImage} ariaLabel={`${study.title} project preview`} objectFit="cover" frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-xl" />
             ) : (
