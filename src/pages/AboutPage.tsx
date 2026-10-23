@@ -124,10 +124,20 @@ export const AboutPage: React.FC = () => {
             >
               <div className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-xl sm:rounded-2xl border border-slate-200/90 bg-white p-3 sm:p-4 shadow-xs flex items-center justify-center">
                 {tool.iconUrl ? (
-                  <img src={tool.iconUrl} alt={`${tool.name} icon`} className="h-full w-full object-contain" loading="lazy" />
+                  <img
+                    src={tool.iconUrl}
+                    alt={`${tool.name} icon`}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                    onError={(event) => {
+                      event.currentTarget.hidden = true;
+                      event.currentTarget.nextElementSibling?.removeAttribute('hidden');
+                    }}
+                  />
                 ) : (
                   <Sparkles className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" />
                 )}
+                {tool.iconUrl && <Sparkles hidden className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" />}
               </div>
               <div className="min-w-0 flex-1 space-y-1.5">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">

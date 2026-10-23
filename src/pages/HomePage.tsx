@@ -58,12 +58,6 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Hero Content (Centered within Viewport) */}
         <div className="w-full max-w-6xl mx-auto px-6 relative z-10">
           <div className="max-w-4xl space-y-8 md:space-y-10">
-            {/* Subtitle / Kicker */}
-            <div className="inline-flex items-center gap-2.5 md:gap-3 text-xs md:text-sm font-medium text-slate-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2b35ee] shrink-0" />
-              <span className="tracking-normal leading-relaxed">{DESIGNER_INFO.headlineGreeting}</span>
-            </div>
-
             {/* Main Headline */}
             <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-normal tracking-tight text-slate-500 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]"
@@ -75,6 +69,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </span>
               </span>
             </h1>
+
           </div>
         </div>
       </section>
@@ -87,7 +82,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="mb-12 md:mb-16">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-950">
-              Recent work
+              Recent works
             </h2>
           </div>
         </div>

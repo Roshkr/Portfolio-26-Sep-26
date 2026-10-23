@@ -76,7 +76,7 @@ const MediaPlaceholder: React.FC<{ label: string; className?: string }> = ({ lab
 
 export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = ({ onBack, nextStudy, onSelectCaseStudy }) => (
   <div id="top" className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
-    <div className="mx-auto flex max-w-6xl items-center justify-between border-b border-slate-200 px-6 py-5 md:px-10">
+    <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
       <button onClick={onBack} className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950">
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
         Back
@@ -157,7 +157,14 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
           </div>
         </div>
       </div>
-      <MediaPlaceholder label="Foundations, components, and iconography" className="mt-12 aspect-[16/8]" />
+      <figure className="mt-12 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+        <img
+          src="/projects/design-system-icon-legend.png"
+          alt="Design system icon library with product icons and descriptions for their use across the platform."
+          loading="lazy"
+          className="block h-auto w-full"
+        />
+      </figure>
     </SectionReveal>
 
     <SectionReveal id="what-changed" className="border-y border-slate-200 bg-white py-12 md:py-16">
