@@ -12,7 +12,7 @@ interface DesignSystemProjectPageProps {
 }
 
 const projectFacts = [
-  ['My role', 'Created a design system for the entire platform'],
+  ['My role', 'UX Designer'],
   ['In collaboration', 'Design manager and development team'],
   ['Timeframe', '2 months'],
   ['Focus', 'Design systems · Components · Iconography'],
@@ -177,7 +177,14 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
           <p className="max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
             The system brings the platform’s visual and interaction patterns into one consistent foundation. Reusable components and documented states give designers and developers a shared reference as they work on product-specific needs.
           </p>
-          <MediaPlaceholder label="The system applied in context" className="aspect-[16/10]" />
+              <div className="aspect-video overflow-hidden rounded-2xl border border-slate-200 bg-[#eef0f3]">
+            <LazyVideo
+              src="/projects/design-system-in-context.mp4"
+              ariaLabel="Design system applied across the platform"
+              objectFit="contain"
+              frameClassName="rounded-2xl bg-[#eef0f3]"
+            />
+          </div>
         </div>
       </div>
     </SectionReveal>
