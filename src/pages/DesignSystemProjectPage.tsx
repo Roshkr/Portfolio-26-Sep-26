@@ -12,9 +12,9 @@ interface DesignSystemProjectPageProps {
 }
 
 const projectFacts = [
-  ['My role', 'Product design · system definition'],
-  ['In collaboration', 'Cross-functional partners'],
-  ['Timeframe', 'Ongoing system evolution'],
+  ['My role', 'Created a design system for the entire platform'],
+  ['In collaboration', 'Design manager and development team'],
+  ['Timeframe', '2 months'],
   ['Focus', 'Design systems · Components · Iconography'],
 ];
 
@@ -120,9 +120,16 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         </div>
         <div className="space-y-6">
           <p className="max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            As products grow, small inconsistencies compound: similar controls behave differently, teams repeat design decisions, and one-off fixes become design debt. The system establishes shared foundations and reusable patterns so teams can ship coherent experiences without slowing down delivery. Its goal is consistency with enough flexibility for distinct workflow needs.
+            I created a design system for the entire platform so its screens and workflows could stay visually consistent. I collaborated with the design manager and development team to define shared foundations and reusable patterns that fit the platform’s needs.
           </p>
-          <MediaPlaceholder label="Project context and challenge" className="aspect-[16/10]" />
+      <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+        <img
+          src="/projects/design-system-components.png"
+          alt="Design system component library showing radio buttons, checkboxes, switches, form fields, dropdowns, calendars, and button states."
+          loading="lazy"
+          className="block h-auto w-full"
+        />
+      </figure>
         </div>
       </div>
     </SectionReveal>
@@ -135,7 +142,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         </div>
         <div>
           <p className="mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            The system prioritizes common, high-frequency interface needs and makes the rules behind reuse explicit. Foundations create a shared visual language; component guidance covers behavior and states; icon rules keep meaning and visual weight consistent. Reuse speeds up delivery and review, while documented exceptions prevent the system from forcing a poor fit.
+            Over two months, I worked with the design manager and development team to establish the system’s foundations, reusable components, and icon rules. The shared color, type, spacing, hierarchy, and component states give the full platform a consistent visual language while supporting its different workflows.
           </p>
           <div className="divide-y divide-slate-200 border-y border-slate-200">
             {approachItems.map(([number, title, description]) => (
@@ -161,7 +168,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         </div>
         <div className="space-y-5">
           <p className="max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            A shared foundation makes hierarchy and interaction patterns more predictable across product areas. Designers can focus effort on workflow-specific problems, while developers have clearer references for expected states. Consistent components also make omissions and edge cases easier to spot during review.
+            The system brings the platform’s visual and interaction patterns into one consistent foundation. Reusable components and documented states give designers and developers a shared reference as they work on product-specific needs.
           </p>
           <MediaPlaceholder label="The system applied in context" className="aspect-[16/10]" />
         </div>
@@ -176,7 +183,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         </div>
         <div>
           <p className="mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            The system is intended to reduce repeat decisions and visual drift by making the common path easy to reuse. Its value comes from adoption, clear ownership, and regular maintenance—not from the component library alone.
+            The platform-wide system gives the design and development teams a consistent starting point for product work. Shared foundations and reusable components reduce the need to redefine patterns from one area of the platform to another.
           </p>
           <div className="grid gap-4 md:grid-cols-3">
             {outcomeItems.map(([title, description]) => (
