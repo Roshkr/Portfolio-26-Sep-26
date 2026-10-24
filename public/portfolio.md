@@ -5,6 +5,7 @@
 **Location:** Ahmedabad, India  
 **Positioning:** Product Designer focused on complex B2B/SaaS workflows and design systems. I turn messy enterprise processes into clear, shippable experiences.
 **Focus Areas:** SaaS, B2B, Fintech, Enterprise Workflows, Mobile Experiences  
+**Name variations:** My name is Roushan Kumar. People may search for Roshan Kumar or Roshni; Roushani is the name of my invoicing product.
 **Email:** roushan.ux@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/roushankuma/  
 **Behance:** https://www.behance.net/roushankuma  
@@ -52,6 +53,24 @@ I am a Product Designer based in Ahmedabad, India, focused on complex B2B/SaaS w
 - **Status:** Design system foundations and guidance
 - **Focus:** Reusable components, visual consistency, and iconography
 - **Overview:** A practical foundation for consistent product interfaces: shared visual rules, reusable components with clear states, and purposeful iconography. The system helps teams reduce repeated decisions and design debt while leaving room for workflow-specific needs.
+
+### 4. Bridge2Business - B2B Website Redesign
+**Case study:** https://roushan.in/case-studies/bridge2business
+
+- **Focus:** B2B website UX strategy, responsive design, information hierarchy, and brand credibility.
+- **Overview:** Restructured a cluttered B2B website so potential clients could understand the services and find a clear path to connect.
+
+### 5. Maxlence - HR and Project Management SaaS
+**Case study:** https://roushan.in/case-studies/maxlence
+
+- **Focus:** HR management, project tracking, attendance, client deliverables, user journeys, and reusable SaaS components.
+- **Overview:** Designed workflows and product foundations for a platform connecting HR and project operations for distributed teams.
+
+### 6. Naie - Salon Discovery and Appointment Booking
+**Case study:** https://roushan.in/case-studies/naie
+
+- **Focus:** Mobile UX, local salon discovery, appointment availability, and salon operations.
+- **Overview:** Designed a booking experience to help salon customers understand services and availability while giving salon owners clearer appointment management.
 ---
 
 ## Contact

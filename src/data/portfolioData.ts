@@ -55,7 +55,7 @@ export const CREATIVE_TOOLKIT: ToolItem[] = [
     name: "Claude / Codex / Gemini",
     desc: "Used for research synthesis, content exploration, and accelerating iteration",
     category: "AI & Synthesis",
-    iconUrl: "/tool-logos/openai.svg",
+    iconUrl: "https://cdn.simpleicons.org/claude/D97757",
   },
   {
     name: "VS Code + AI coding agents",

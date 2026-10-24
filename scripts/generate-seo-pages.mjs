@@ -8,9 +8,10 @@ const person = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Roushan Kumar',
+  alternateName: ['Roshan Kumar', 'Roshni'],
   url: `${siteUrl}/`,
   jobTitle: 'UX/UI and Product Designer',
-  description: 'UX/UI and Product Designer in Ahmedabad, India, focused on SaaS, B2B, fintech, and complex product workflows.',
+  description: 'UX/UI and product designer in Ahmedabad, India, focused on B2B SaaS, fintech, enterprise workflows, and mobile products.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Ahmedabad',
@@ -25,6 +26,7 @@ const person = {
   knowsAbout: [
     'UX design', 'UI design', 'Product design', 'SaaS', 'B2B', 'Fintech',
     'Enterprise workflows', 'Mobile experiences', 'User research', 'Design systems',
+    'HR software', 'Project management', 'Salon booking',
   ],
 };
 
@@ -32,10 +34,11 @@ const pages = [
   {
     path: '/about',
     title: 'About Roushan Kumar | UX/UI & Product Designer in Ahmedabad',
-    description: 'Meet Roushan Kumar, a UX/UI and product designer in Ahmedabad, India, working on SaaS, B2B, fintech, research, and complex digital workflows.',
+    description: 'About Roushan Kumar, sometimes searched as Roshan Kumar or Roshni: a UX/UI and product designer in Ahmedabad working across B2B SaaS, fintech, and enterprise workflows.',
     heading: 'About Roushan Kumar',
     paragraphs: [
       'Roushan Kumar is a UX/UI and product designer based in Ahmedabad, India. He works on SaaS, B2B, fintech, enterprise workflows, and mobile experiences.',
+      'His name is sometimes searched as Roshan Kumar or Roshni. Roushani is the name of his mobile invoicing product.',
       'His process spans user research, information architecture, interaction design, production-ready interfaces, and design systems. He is open to product design opportunities and interesting product challenges.',
     ],
     jsonLd: person,
@@ -168,9 +171,10 @@ for (const page of pages) {
   ];
   let html = source;
   for (const [pattern, replacement] of tags) html = html.replace(pattern, replacement);
+  html = html.replace(/<main id="home-seo-fallback"[\s\S]*?<\/main>/, '');
 
   const copy = page.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('\n');
-  const fallback = `<main id="seo-fallback" style="max-width:760px;margin:9vh auto;padding:0 24px;font:18px/1.65 system-ui,sans-serif;color:#1e293b"><p style="font-size:14px;color:#64748b">ROUSHAN KUMAR | UX/UI &amp; PRODUCT DESIGNER | AHMEDABAD, INDIA</p><h1 style="font-size:clamp(34px,6vw,56px);line-height:1.1;letter-spacing:-.04em;color:#0f172a">${escapeHtml(page.heading)}</h1>${copy}<nav aria-label="Portfolio pages" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:32px"><a href="/">Home</a><a href="/about">About</a><a href="/case-studies/roushani">Roushani case study</a><a href="/case-studies/umbrella">Umbrella case study</a><a href="/case-studies/design-system-icons">Design system case study</a><a href="mailto:roushan.ux@gmail.com">Contact Roushan</a></nav></main>`;
+  const fallback = `<main id="seo-fallback" style="max-width:760px;margin:9vh auto;padding:0 24px;font:18px/1.65 system-ui,sans-serif;color:#1e293b"><p style="font-size:14px;color:#64748b">ROUSHAN KUMAR | UX/UI &amp; PRODUCT DESIGNER | AHMEDABAD, INDIA</p><h1 style="font-size:clamp(34px,6vw,56px);line-height:1.1;letter-spacing:-.04em;color:#0f172a">${escapeHtml(page.heading)}</h1>${copy}<nav aria-label="Portfolio pages" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:32px"><a href="/">Home</a><a href="/about">About</a><a href="/case-studies/roushani">Roushani case study</a><a href="/case-studies/umbrella">Umbrella case study</a><a href="/case-studies/design-system-icons">Design system case study</a><a href="/case-studies/bridge2business">Bridge2Business case study</a><a href="/case-studies/maxlence">Maxlence case study</a><a href="/case-studies/naie">Naie case study</a><a href="mailto:roushan.ux@gmail.com">Contact Roushan</a></nav></main>`;
   html = html.replace('<div id="root"></div>', `${fallback}\n    <div id="root"></div>`);
 
   const output = resolve('dist', `${page.path.slice(1)}.html`);

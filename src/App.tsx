@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -19,6 +19,11 @@ import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
 import { useContentProtection } from './hooks/useContentProtection';
 
 export default function App() {
+  useEffect(() => {
+    document.getElementById('home-seo-fallback')?.remove();
+    document.getElementById('seo-fallback')?.remove();
+  }, []);
+
   const [caseStudies, setCaseStudies] = useState<CaseStudy[]>(() =>
     ['roushani', 'umbrella', 'design-system-icons', 'bridge2business', 'maxlence', 'naie']
       .map((id) => DEFAULT_CASE_STUDIES.find((study) => study.id === id))
@@ -33,7 +38,7 @@ export default function App() {
     ? `${route.caseStudy.title} | Roushan Kumar`
     : route.page === 'about'
       ? 'About | Roushan Kumar'
-      : 'Home | Roushan Kumar';
+      : 'Roushan Kumar | UX/UI & Product Designer in Ahmedabad';
   const routePath = route.page === 'home'
     ? '/'
     : route.page === 'about'

@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  FileText,
-  Download,
-  ArrowUpRight,
-  Sparkles,
-} from 'lucide-react';
+import { ArrowUpRight, Sparkles } from 'lucide-react';
 import {
   DESIGNER_INFO,
   CREATIVE_TOOLKIT,
@@ -55,18 +50,25 @@ export const AboutPage: React.FC = () => {
               <p>
                 I’m currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.
               </p>
+              <p>
+                My name is sometimes searched as Roshan Kumar or Roshni; the correct spelling is Roushan Kumar. Roushani is the name of my mobile invoicing product.
+              </p>
             </div>
 
-            {/* Resume Download Callout */}
+            {/* Social Profile */}
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <a
-                href={DESIGNER_INFO.resumeUrl}
+                href={DESIGNER_INFO.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-black hover:bg-neutral-800 text-white rounded-2xl font-medium text-sm transition-all shadow-md active:scale-95 group cursor-pointer"
+                aria-label="Visit Roushan Kumar's LinkedIn profile"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 rounded-2xl font-medium text-sm transition-all shadow-sm active:scale-95"
               >
-                <Download className="w-4 h-4 text-white/80 group-hover:translate-y-0.5 transition-transform" />
-                <span>Download Resume</span>
+                <svg className="h-4 w-4 fill-[#0a66c2]" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM3.555 20.452h3.564V9H3.555v11.452Z" />
+                </svg>
+                <span>LinkedIn</span>
+                <ArrowUpRight className="w-4 h-4 text-slate-400" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -122,11 +124,11 @@ export const AboutPage: React.FC = () => {
               } as React.CSSProperties}
               className="about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-3.5 sm:p-4 md:p-4.5 flex flex-row items-center gap-3.5 sm:gap-4 md:gap-5 hover:bg-[#e7eaf0] transition-colors group/card"
             >
-              <div className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-xl sm:rounded-2xl border border-slate-200/90 bg-white p-3 sm:p-4 shadow-xs flex items-center justify-center">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs sm:h-20 sm:w-20 sm:p-4">
                 {tool.iconUrl ? (
                   <img
                     src={tool.iconUrl}
-                    alt={`${tool.name} icon`}
+                    alt={`${tool.name} logo`}
                     className="h-full w-full object-contain"
                     loading="lazy"
                     onError={(event) => {
@@ -137,11 +139,7 @@ export const AboutPage: React.FC = () => {
                 ) : (
                   <Sparkles className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" />
                 )}
-                {tool.iconUrl && (
-                  <span hidden>
-                    <Sparkles className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" />
-                  </span>
-                )}
+                {tool.iconUrl && <span hidden><Sparkles className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" /></span>}
               </div>
               <div className="min-w-0 flex-1 space-y-1.5">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">

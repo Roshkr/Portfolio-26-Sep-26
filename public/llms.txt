@@ -1,6 +1,6 @@
 # Roushan Kumar - Product Designer
 
-> Official portfolio of Roushan Kumar, a Product Designer based in Ahmedabad, India, focused on complex B2B/SaaS workflows and design systems. He turns messy enterprise processes into clear, shippable experiences.
+> Official portfolio of Roushan Kumar (also searched as Roshan Kumar or Roshni), a UX/UI and product designer based in Ahmedabad, India. Roushani is his mobile invoicing product. His work spans B2B SaaS, fintech, enterprise workflows, mobile products, and design systems.
 
 Roushan works end-to-end, from understanding user problems through research and information architecture to interaction design, production-ready designs, and design systems.
 
@@ -15,6 +15,9 @@ Roushan works end-to-end, from understanding user problems through research and 
 - [Roushani - mobile-first B2B invoicing SaaS](https://roushan.in/case-studies/roushani): Production MVP delivered in four weeks; product strategy, research, invoicing flows, customer and service reuse, branding, and PDF export.
 - [Umbrella - enterprise third-party onboarding](https://roushan.in/case-studies/umbrella): NDA onboarding redesign informed by five usability sessions; clearer structure, validation, visual hierarchy, and user flow.
 - [Design system, components, and icons](https://roushan.in/case-studies/design-system-icons): A dedicated project page for reusable components and icon work.
+- [Bridge2Business B2B website redesign](https://roushan.in/case-studies/bridge2business): Responsive website UX, service messaging, information hierarchy, and brand credibility.
+- [Maxlence HR and project management SaaS](https://roushan.in/case-studies/maxlence): Connected HR, attendance, project tracking, and client delivery workflows.
+- [Naie salon discovery and booking](https://roushan.in/case-studies/naie): Mobile salon discovery, booking availability, and salon-owner operations.
 
 ## Contact and profiles
 
