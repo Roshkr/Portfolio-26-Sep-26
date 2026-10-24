@@ -137,7 +137,11 @@ export const AboutPage: React.FC = () => {
                 ) : (
                   <Sparkles className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" />
                 )}
-                {tool.iconUrl && <Sparkles hidden className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" />}
+                {tool.iconUrl && (
+                  <span hidden>
+                    <Sparkles className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" />
+                  </span>
+                )}
               </div>
               <div className="min-w-0 flex-1 space-y-1.5">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
