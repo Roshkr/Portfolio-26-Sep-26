@@ -84,19 +84,19 @@ export const LazyVideo: React.FC<{
   }, [inView]);
 
   return (
-    <div className={`relative w-full h-full overflow-hidden rounded-[18px] sm:rounded-[22px] ${frameClassName}`}>
+    <div className={`relative w-full h-full overflow-hidden rounded-[18px] bg-slate-100 sm:rounded-[22px] ${frameClassName}`}>
       {/* Poster background displayed while video is idle or buffering */}
       {poster && !isReady && (
         <img
           src={poster}
           alt="Video thumbnail placeholder"
-          className="absolute inset-0 w-full h-full object-cover rounded-[18px] sm:rounded-[22px]"
+          className={`absolute inset-0 w-full h-full ${objectFitClass} rounded-[18px] sm:rounded-[22px]`}
           loading="lazy"
         />
       )}
       <video
         ref={videoRef}
-        src={inView ? src : undefined}
+        src={inView && src.trim() ? src : undefined}
         poster={poster}
         preload="none"
         muted
@@ -104,6 +104,7 @@ export const LazyVideo: React.FC<{
         playsInline
         aria-label={ariaLabel}
         onCanPlay={() => setIsReady(true)}
+        onError={() => setIsReady(false)}
         className={`w-full h-full ${objectFitClass} rounded-[18px] sm:rounded-[22px] transition-opacity duration-300 ${
           isReady ? 'opacity-100' : 'opacity-0'
         } ${className}`}
@@ -190,7 +191,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                   src={imageSrc}
                   alt="Mobile UI Screen"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover rounded-[30px]"
+                  className="w-full h-full object-contain rounded-[30px]"
                   loading="lazy"
                   onError={(e) => {
                     const target = e.currentTarget;

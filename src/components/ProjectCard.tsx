@@ -44,7 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="grid min-w-0 items-start gap-8 border-b border-slate-200 pb-12 lg:items-stretch lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-10 lg:pb-14 xl:gap-16">
           <div className={`relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch ${study.id === 'umbrella' ? 'lg:mb-14' : ''}`}>
             {study.id === 'design-system-icons' && study.heroVideo ? (
-              <LazyVideo src={study.heroVideo} poster={study.heroImage || undefined} ariaLabel="Design system color palette preview" objectFit="cover" frameClassName="rounded-xl bg-[#f1f2f4] transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
+              <LazyVideo src={study.heroVideo} poster={study.heroImage || undefined} ariaLabel="Design system color palette preview" objectFit="contain" frameClassName="rounded-xl bg-[#f1f2f4] transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
             ) : study.id === 'design-system-icons' ? (
               <div className="flex h-full w-full flex-col justify-center gap-5 rounded-xl border border-slate-200 bg-[#f1f2f4] p-5 sm:gap-7 sm:p-8" aria-label="Project preview coming soon">
                 <div className="flex items-center justify-between">
@@ -77,10 +77,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 src="/projects/umbrella-third-party-form.png"
                 alt="Umbrella add a new third party form preview"
                 loading="lazy"
-                className="h-full w-full rounded-xl object-cover object-top transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]"
+                className="h-full w-full rounded-xl object-contain transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]"
               />
             ) : study.heroVideo ? (
-              <LazyVideo src={study.heroVideo} poster={study.heroImage} ariaLabel={`${study.title} project preview`} objectFit="cover" frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-xl" />
+              <LazyVideo src={study.heroVideo} poster={study.heroImage} ariaLabel={`${study.title} project preview`} objectFit="contain" frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-xl" />
             ) : (
               <img src={study.heroImage} alt={`${study.title} project preview`} referrerPolicy="no-referrer" loading="lazy" className="h-full w-full object-contain rounded-xl transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
             )}

@@ -94,6 +94,60 @@ const pages = [
       keywords: ['Design systems', 'UI components', 'Iconography', 'Product design'],
     },
   },
+  {
+    path: '/case-studies/bridge2business',
+    title: 'Bridge2Business Case Study | B2B Website UX Design - Roushan Kumar',
+    description: 'A B2B website redesign focused on clearer service messaging, responsive information hierarchy, and stronger brand credibility.',
+    heading: 'Bridge2Business: a clearer B2B website experience',
+    paragraphs: [
+      'Bridge2Business needed to explain complex services clearly and help potential clients act with confidence. The existing website was cluttered, difficult to use on mobile, and unclear about its value.',
+      'Roushan restructured the content, improved the responsive experience, and delivered a focused redesign proposal with a clearer path to connect.',
+    ],
+    jsonLd: {
+      '@context': 'https://schema.org', '@type': 'CreativeWork',
+      name: 'Bridge2Business B2B website redesign case study',
+      url: `${siteUrl}/case-studies/bridge2business`,
+      description: 'A responsive B2B website redesign focused on information hierarchy and brand credibility.',
+      creator: { '@type': 'Person', name: 'Roushan Kumar', url: `${siteUrl}/` },
+      keywords: ['B2B', 'Website redesign', 'UX strategy', 'Responsive design'],
+    },
+  },
+  {
+    path: '/case-studies/maxlence',
+    title: 'Maxlence Case Study | HR and Project Management SaaS - Roushan Kumar',
+    description: 'Designing connected HR and project management workflows for a distributed team in a scalable SaaS platform.',
+    heading: 'Maxlence: connected HR and project workflows',
+    paragraphs: [
+      'Maxlence Consulting needed one platform for HR management, project tracking, attendance, and client deliverables across distributed teams.',
+      'Roushan translated product requirements into user journeys, end-to-end UX design, and reusable components ready for engineering.',
+    ],
+    jsonLd: {
+      '@context': 'https://schema.org', '@type': 'CreativeWork',
+      name: 'Maxlence HR and project management SaaS case study',
+      url: `${siteUrl}/case-studies/maxlence`,
+      description: 'UX design for an integrated HR and project management SaaS platform.',
+      creator: { '@type': 'Person', name: 'Roushan Kumar', url: `${siteUrl}/` },
+      keywords: ['HR SaaS', 'Project management', 'Enterprise UX', 'Design systems'],
+    },
+  },
+  {
+    path: '/case-studies/naie',
+    title: 'Naie Case Study | Salon Booking and Discovery UX - Roushan Kumar',
+    description: 'A salon discovery and appointment booking experience designed to improve slot visibility and reduce waiting for customers and salon owners.',
+    heading: 'Naie: salon appointments with less uncertainty',
+    paragraphs: [
+      'Local salon bookings often depend on calls and messages, leaving customers unsure about availability and salon teams juggling appointments manually.',
+      'Roushan designed a mobile booking and salon operations experience that makes services and availability easier to understand and schedule.',
+    ],
+    jsonLd: {
+      '@context': 'https://schema.org', '@type': 'CreativeWork',
+      name: 'Naie salon appointment and discovery case study',
+      url: `${siteUrl}/case-studies/naie`,
+      description: 'A mobile salon discovery and booking experience for customers and salon owners.',
+      creator: { '@type': 'Person', name: 'Roushan Kumar', url: `${siteUrl}/` },
+      keywords: ['Mobile UX', 'Salon booking', 'Appointment scheduling', 'User research'],
+    },
+  },
 ];
 
 const escapeHtml = (value) => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');

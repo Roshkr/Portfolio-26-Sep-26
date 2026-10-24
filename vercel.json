@@ -17,6 +17,9 @@
     { "source": "/about", "destination": "/about.html" },
     { "source": "/case-studies/roushani", "destination": "/case-studies/roushani.html" },
     { "source": "/case-studies/umbrella", "destination": "/case-studies/umbrella.html" },
-    { "source": "/case-studies/design-system-icons", "destination": "/case-studies/design-system-icons.html" }
+    { "source": "/case-studies/design-system-icons", "destination": "/case-studies/design-system-icons.html" },
+    { "source": "/case-studies/bridge2business", "destination": "/case-studies/bridge2business.html" },
+    { "source": "/case-studies/maxlence", "destination": "/case-studies/maxlence.html" },
+    { "source": "/case-studies/naie", "destination": "/case-studies/naie.html" }
   ]
 }
