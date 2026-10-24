@@ -20,7 +20,9 @@ import { useContentProtection } from './hooks/useContentProtection';
 
 export default function App() {
   const [caseStudies, setCaseStudies] = useState<CaseStudy[]>(() =>
-    DEFAULT_CASE_STUDIES.filter(({ id }) => ['roushani', 'umbrella', 'design-system-icons'].includes(id)),
+    ['roushani', 'umbrella', 'design-system-icons', 'bridge2business', 'maxlence', 'naie']
+      .map((id) => DEFAULT_CASE_STUDIES.find((study) => study.id === id))
+      .filter((study): study is CaseStudy => Boolean(study)),
   );
   const [isContactOpen, setIsContactOpen] = useState(false);
   const { route, navigateTo, selectCaseStudy } = usePortfolioNavigation(caseStudies);
