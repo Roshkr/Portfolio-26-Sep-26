@@ -1118,12 +1118,12 @@ export const EXPERIENCES: ExperienceItem[] = [
   {
     year: "Jan 2025 – Jun 2026",
     company: "UID",
-    role: "UX Designer (Teaching Associate)",
+    role: "UX Designer (Teaching Assistant)",
     workMode: "On-site (Gandhinagar)",
     logoUrl: "https://framerusercontent.com/images/DiT0AjiPApWtO5B0iv2chsQf34.jpg",
     websiteUrl: "https://karnavatiuniversity.edu.in/uid/",
     description:
-      "Designed industry-aligned learning experiences and contributed to institutional digital products, including the UID and conference websites. Led the design of an MVP Jury Management System and supported NAAC A+ accreditation through structured academic documentation and process design.",
+      "Led UX design for institutional digital products, architecting an MVP Jury Management System that streamlined student portfolio evaluations alongside UID and academic conference web portals. Mentored design cohorts in user research, design systems, and interaction design, while driving structured process documentation that supported NAAC A+ accreditation.",
   },
   {
     year: "Oct 2022 – Jul 2024",
