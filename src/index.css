@@ -29,11 +29,243 @@
   color: #2b35ee;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root,
+  body {
+    color-scheme: dark;
+  }
+
+  body,
+  .portfolio-canvas-backdrop,
+  .portfolio-protected,
+  .home-hero-background,
+  [class~="bg-[#fbfbfb]"],
+  [class~="bg-[#fbfbfb]/90"] {
+    color: #e2e8f0;
+    background-color: #0b0f17;
+  }
+
+  [class~="bg-[#fbfbfb]/90"] {
+    background-color: rgb(11 15 23 / 90%);
+  }
+
+  .home-hero-background {
+    background-image:
+      radial-gradient(ellipse 58% 72% at 72% 45%, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0.08) 36%, transparent 72%),
+      radial-gradient(ellipse 38% 50% at 24% 78%, rgba(59, 130, 246, 0.08) 0%, transparent 72%);
+  }
+
+  [class~="bg-[#f4f5f7]"],
+  [class~="bg-[#f2f3f6]"],
+  [class~="bg-[#f1f3f6]"],
+  [class~="bg-[#f1f2f4]"],
+  [class~="bg-[#f0f1f4]"],
+  [class~="bg-[#eef0f3]"],
+  [class~="bg-[#eaedf1]"],
+  [class~="bg-[#e7eaf0]"],
+  [class~="bg-[#e2e4e8]"],
+  [class~="bg-slate-50"],
+  [class~="bg-slate-50/80"] {
+    background-color: #111827;
+  }
+
+  [class~="bg-slate-100"],
+  [class~="bg-slate-200"],
+  [class~="bg-slate-200/80"] {
+    background-color: #1b2534;
+  }
+
+  [class~="bg-slate-300"] {
+    background-color: #334155;
+  }
+
+  [class~="bg-slate-400"] {
+    background-color: #475569;
+  }
+
+  [class~="bg-[#e8eaff]"] {
+    background-color: #1b2140;
+  }
+
+  [class~="bg-[#2b35ee]/10"] {
+    background-color: rgb(79 93 255 / 14%);
+  }
+
+  [class~="bg-[#2b35ee]/5"] {
+    background-color: rgb(79 93 255 / 8%);
+  }
+
+  [class~="bg-[#2b35ee]"] {
+    background-color: #4f5dff;
+  }
+
+  [class~="bg-white"] {
+    background-color: #111827;
+  }
+
+  [class~="bg-white/80"] {
+    background-color: rgb(17 24 39 / 80%);
+  }
+
+  [class~="bg-white/90"] {
+    background-color: rgb(17 24 39 / 90%);
+  }
+
+  [class~="bg-white/95"] {
+    background-color: rgb(17 24 39 / 95%);
+  }
+
+  [class~="bg-white/10"] {
+    background-color: rgb(248 250 252 / 10%);
+  }
+
+  [class~="bg-white/5"] {
+    background-color: rgb(248 250 252 / 5%);
+  }
+
+  [class~="hover:bg-slate-100"]:hover,
+  [class~="hover:bg-slate-50"]:hover,
+  [class~="hover:bg-slate-200/80"]:hover {
+    background-color: #263345;
+  }
+
+  [class~="hover:bg-slate-400"]:hover {
+    background-color: #64748b;
+  }
+
+  [class~="hover:bg-white"]:hover {
+    background-color: #273449;
+  }
+
+  [class~="hover:bg-slate-50"]:hover {
+    background-color: #1b2534;
+  }
+
+  [class~="hover:text-black"]:hover,
+  [class~="hover:text-slate-950"]:hover {
+    color: #f8fafc;
+  }
+
+  [class~="hover:text-slate-700"]:hover {
+    color: #cbd5e1;
+  }
+
+  [class~="text-[#111111]"],
+  [class~="text-black"],
+  [class~="text-slate-950"],
+  [class~="text-slate-900"] {
+    color: #f8fafc;
+  }
+
+  [class~="text-slate-800"] {
+    color: #e2e8f0;
+  }
+
+  [class~="text-slate-700"] {
+    color: #cbd5e1;
+  }
+
+  [class~="text-slate-600"],
+  [class~="text-[#656565]"],
+  [class~="text-[#666666]"] {
+    color: #b6c2d1;
+  }
+
+  [class~="text-slate-500"],
+  [class~="text-[#686868]"] {
+    color: #94a3b8;
+  }
+
+  [class~="text-slate-400"] {
+    color: #8290a2;
+  }
+
+  [class~="text-slate-300"] {
+    color: #64748b;
+  }
+
+  [class~="text-[#2b35ee]"] {
+    color: #9aa4ff;
+  }
+
+  [class~="border-slate-100"],
+  [class~="border-slate-200"],
+  [class~="border-slate-200/60"],
+  [class~="border-slate-200/70"],
+  [class~="border-slate-200/80"],
+  [class~="border-slate-200/90"],
+  [class~="border-slate-300"] {
+    border-color: #2b3648;
+  }
+
+  [class~="border-slate-400"],
+  [class~="border-slate-500"] {
+    border-color: #475569;
+  }
+
+  [class~="divide-slate-200"] > :not(:last-child) {
+    border-color: #2b3648;
+  }
+
+  .portfolio-protected::before {
+    border-color: rgb(71 85 105 / 72%) !important;
+  }
+
+  .case-study-page :is(h1, h2, h3, h4):not([class*="text-white"]) {
+    color: #f8fafc;
+  }
+
+  .case-study-page :is(p, li, dd):not(.case-study-accent)[class*="text-slate-500"],
+  .case-study-page :is(p, li, dd):not(.case-study-accent)[class*="text-slate-600"],
+  .case-study-page :is(p, li, dd):not(.case-study-accent)[class*="text-slate-700"],
+  .case-study-page :is(p, li, dd):not(.case-study-accent):not([class*="text-slate-400"]):not([class*="text-slate-800"]):not([class*="text-slate-900"]) {
+    color: #b6c2d1;
+  }
+
+  .case-study-page .case-study-accent {
+    color: #9aa4ff;
+  }
+
+  .about-contact-sticky,
+  .about-contact-info {
+    background: #0b0f17;
+  }
+
+  .about-contact-info {
+    border-color: #2b3648;
+  }
+
+  [class~="from-[#f8f9fb]"][class~="to-[#edf0f5]"] {
+    background-image: linear-gradient(to bottom, #17202d, #111827);
+  }
+}
+
 .portfolio-canvas-backdrop {
   background-color: #fbfbfb;
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
+}
+
+@media (min-width: 1152px) {
+  .portfolio-protected::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 50%;
+    width: min(100%, 72rem);
+    transform: translateX(-50%);
+    border-inline: 1px solid rgba(203, 213, 225, 0.72);
+    pointer-events: none;
+    z-index: 20;
+  }
+}
+
+.home-hero-background {
+  background-color: #fbfbfb;
+  background-image:
+    radial-gradient(ellipse 58% 72% at 72% 45%, rgba(99, 102, 241, 0.105) 0%, rgba(165, 180, 252, 0.065) 36%, transparent 72%),
+    radial-gradient(ellipse 38% 50% at 24% 78%, rgba(191, 219, 254, 0.055) 0%, transparent 72%);
 }
 
 .hero-gradient-pointer {
@@ -55,9 +287,9 @@
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(43, 53, 238, 0.08) 0%,
-    rgba(99, 102, 241, 0.045) 40%,
-    rgba(148, 163, 184, 0.03) 65%,
+    rgba(43, 53, 238, 0.12) 0%,
+    rgba(99, 102, 241, 0.075) 40%,
+    rgba(148, 163, 184, 0.04) 65%,
     transparent 78%
   );
   filter: blur(32px);
@@ -219,4 +451,35 @@
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.07) 1px, transparent 1px),
                     linear-gradient(to bottom, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .portfolio-canvas-backdrop {
+    background-color: #0b0f17 !important;
+  }
+
+  .home-hero-background {
+    background-color: #0b0f17 !important;
+    background-image:
+      radial-gradient(ellipse 58% 72% at 72% 45%, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0.08) 36%, transparent 72%),
+      radial-gradient(ellipse 38% 50% at 24% 78%, rgba(59, 130, 246, 0.08) 0%, transparent 72%) !important;
+  }
+
+  .about-contact-sticky,
+  .about-contact-info {
+    background: #0b0f17 !important;
+  }
+
+  .about-contact-info {
+    border-color: #2b3648 !important;
+  }
+
+  .bg-dot-pattern {
+    background-image: radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+  }
+
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(148, 163, 184, 0.11) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.11) 1px, transparent 1px);
+  }
 }

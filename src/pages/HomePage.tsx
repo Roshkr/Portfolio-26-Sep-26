@@ -35,7 +35,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="w-full">
       {/* Hero Section with Viewport Presence & Subtle UXfolio Dot Grid Background */}
       <section
-        className="relative w-full min-h-0 md:min-h-[calc(100vh-5rem)] md:min-h-[calc(100dvh-5rem)] flex items-center justify-center overflow-hidden py-10 md:py-24"
+        className="home-hero-background relative w-full min-h-0 md:min-h-[calc(100vh-5rem)] md:min-h-[calc(100dvh-5rem)] flex items-center justify-center overflow-hidden py-10 md:py-24"
         onPointerMove={handleHeroPointerMove}
         onPointerLeave={resetHeroPointer}
       >
