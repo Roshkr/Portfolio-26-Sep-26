@@ -177,7 +177,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             Let's talk product design.
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-[#656565] sm:mt-3 sm:text-base lg:text-lg">
-            Explore Roushan's projects, process, and experience. Ask about the work, process, or career. The full conversation is emailed when you close the chat.
+            Ask about Roushan's work, process, or career. If you'd like a direct follow-up, share your email in the chat. The conversation is emailed to Roushan when you close it.
           </p>
         </header>
 
