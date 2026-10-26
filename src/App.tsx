@@ -56,8 +56,8 @@ export default function App() {
   useContentProtection();
 
   return (
-    <div className="portfolio-canvas-backdrop min-h-screen w-full bg-[#eaedf2] text-[#111111]">
-      <div className="portfolio-protected relative isolate min-h-screen flex flex-col bg-[#fbfbfb] text-[#111111] max-w-6xl mx-auto min-[1152px]:border-x border-slate-200/90 shadow-[0_0_60px_-15px_rgba(15,23,42,0.07)]">
+    <div className="portfolio-canvas-backdrop min-h-screen w-full bg-[#fbfbfb] text-[#111111]">
+      <div className="portfolio-protected relative isolate min-h-screen w-full flex flex-col bg-[#fbfbfb] text-[#111111]">
         {/* Header */}
         <Header
           currentPage={route.page}

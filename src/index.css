@@ -9,7 +9,7 @@
 @layer base {
   body {
     font-family: 'Aptos', sans-serif;
-    background-color: #eaedf2;
+    background-color: #fbfbfb;
     color: #111111;
   }
 }
@@ -30,7 +30,7 @@
 }
 
 .portfolio-canvas-backdrop {
-  background-color: #eaedf2;
+  background-color: #fbfbfb;
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
