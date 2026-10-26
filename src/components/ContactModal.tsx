@@ -111,10 +111,13 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     setDeliveryStatus('idle');
     respondingRef.current = true;
     setIsResponding(true);
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 27_000);
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           messages: conversation.map(({ from, text }) => ({ role: from === 'visitor' ? 'user' : 'model', text })),
         }),
@@ -123,20 +126,26 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       try {
         result = await response.json() as { reply?: unknown; error?: unknown };
       } catch {
-        throw new Error(response.status === 404
-          ? 'The /api/chat function is missing from this deployment. Redeploy the latest Vercel build.'
-          : 'The chat endpoint returned an invalid response. Check the Vercel function logs.');
+        if (response.status === 404) {
+          throw new Error('The chat service is missing from this deployment. Please try again later.');
+        }
+        throw new Error(response.status >= 500
+          ? 'The chat service failed before returning a reply. Please try again in a moment.'
+          : 'The chat service returned an unreadable response. Please try again.');
       }
       if (!response.ok || typeof result.reply !== 'string') {
         throw new Error(typeof result.error === 'string' ? result.error : 'Roushan could not reply just now. Please try again.');
       }
       setMessages((current) => [...current, { from: 'portfolio', text: result.reply as string }]);
     } catch (error) {
-      const message = error instanceof TypeError
+      const message = error instanceof DOMException && error.name === 'AbortError'
+        ? 'Roushan took too long to reply. Please try again.'
+        : error instanceof TypeError
         ? 'Could not reach the chat service. Check the deployment and try again.'
         : error instanceof Error ? error.message : 'Chat is temporarily unavailable. Please try again.';
       setMessages((current) => [...current, { from: 'system', text: message }]);
     } finally {
+      window.clearTimeout(timeoutId);
       respondingRef.current = false;
       setIsResponding(false);
     }
@@ -193,7 +202,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           )}
           {messages.map((message, index) => (
             <div key={`${index}-${message.from}`} className={`flex flex-col ${message.from === 'visitor' ? 'items-end' : 'items-start'}`}>
-              <span className="mb-1 px-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">{message.from === 'visitor' ? 'You' : 'Roushan'}</span>
+              <span className="mb-1 px-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">{message.from === 'visitor' ? 'You' : message.from === 'system' ? 'Chat status' : 'Roushan'}</span>
               <div className={`max-w-[90%] rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[80%] sm:text-base ${message.from === 'visitor' ? 'rounded-br-md bg-[#2b35ee] text-white' : 'rounded-bl-md border border-slate-200 bg-white text-slate-700'}`}>
                 {message.text}
               </div>
@@ -234,17 +243,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               value={question}
               onChange={(event) => setQuestion(event.target.value)}
               onKeyDown={(event) => {
-                if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+                if (event.key === 'Enter' && !event.shiftKey) {
                   event.preventDefault();
                   submitQuestion(question);
                 }
               }}
-              placeholder="Ask a question or paste a job description…"
+              placeholder="Ask a question or paste a job description..."
               aria-label="Ask a question or paste a job description"
               className="max-h-32 min-h-6 min-w-0 flex-1 resize-y border-0 bg-transparent text-base leading-relaxed text-slate-800 outline-none placeholder:text-slate-400"
             />
-            <button type="submit" aria-label="Send question" disabled={!question.trim() || isSending} className="rounded-lg p-1.5 text-slate-400 transition-colors enabled:text-[#2b35ee] enabled:hover:bg-[#2b35ee]/5">
-              <ArrowUp className={`h-6 w-6 ${isSending ? 'animate-pulse' : ''}`} aria-hidden="true" />
+            <button type="submit" aria-label="Send question" disabled={!question.trim() || isSending || isResponding} className="rounded-lg p-1.5 text-slate-400 transition-colors enabled:text-[#2b35ee] enabled:hover:bg-[#2b35ee]/5">
+              <ArrowUp className={`h-6 w-6 ${isSending || isResponding ? 'animate-pulse' : ''}`} aria-hidden="true" />
             </button>
           </div>
         </form>

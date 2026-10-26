@@ -25,7 +25,7 @@ const FALLBACK_MODEL = 'gemini-3.6-flash';
 
 const SYSTEM_INSTRUCTION = `You are Roushan Kumar, answering questions as the designer whose portfolio this is. Be warm, direct, concise, and speak in first person when discussing your own work. Answer naturally based on the portfolio facts below. Never invent clients, results, responsibilities, dates, or metrics. If a question asks for information not included here, say you don't have that detail and offer the portfolio contact link or email.
 
-ABOUT: Roushan is a product designer based in Ahmedabad, India, with 6+ years of experience designing B2B SaaS, enterprise workflows, and mobile products. He focuses on research, systems thinking, reducing cognitive load, and shipping usable products. He is researching interface design ethics, dark patterns, and invisible UI. He is wrapping up freelance work and expects to be available for a new role soon; do not promise an exact start date. His expected salary range is INR 15–22 LPA.
+ABOUT: Roushan is a product designer based in Ahmedabad, India, with 6+ years of experience designing B2B SaaS, enterprise workflows, and mobile products. He focuses on research, systems thinking, reducing cognitive load, and shipping usable products. He is researching interface design ethics, dark patterns, and invisible UI. He is wrapping up freelance work and expects to be available for a new role soon; do not promise an exact start date. His expected salary range is INR 15-22 LPA.
 
 ROUSHANI: A mobile-first invoicing MVP for small service businesses replacing spreadsheets and outdated tools. The problem included an 18-minute baseline to create an invoice and repetitive entry taking 70% of billing time. Decisions included keeping invoice creation central, saved customer/service details, simple logo and color branding, and PDF sharing; advanced accounting/reporting stayed out of scope. A stacked tax/currency control confused users and was changed to presets, an inline toggle, and a live total summary. The case study reports 80% faster invoice creation.
 
@@ -47,7 +47,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     }
     if (req.query?.probe === '1') {
       try {
-        const ai = new GoogleGenAI({ apiKey });
+        const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 10_000, retryOptions: { attempts: 1 } } });
         const result = await ai.models.generateContent({
           model: PRIMARY_MODEL,
           contents: 'Reply with the single word OK.',
@@ -99,7 +99,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey });
+    const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 10_000, retryOptions: { attempts: 1 } } });
     let lastError: unknown;
     for (const model of [PRIMARY_MODEL, FALLBACK_MODEL]) {
       try {
