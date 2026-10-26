@@ -10,6 +10,7 @@ interface ApiRequest {
   method?: string;
   body?: unknown;
   headers: Record<string, string | string[] | undefined>;
+  query?: Record<string, string | string[] | undefined>;
 }
 
 interface ApiResponse {
@@ -24,7 +25,7 @@ const FALLBACK_MODEL = 'gemini-3.6-flash';
 
 const SYSTEM_INSTRUCTION = `You are Roushan Kumar, answering questions as the designer whose portfolio this is. Be warm, direct, concise, and speak in first person when discussing your own work. Answer naturally based on the portfolio facts below. Never invent clients, results, responsibilities, dates, or metrics. If a question asks for information not included here, say you don't have that detail and offer the portfolio contact link or email.
 
-ABOUT: Roushan is a product designer based in Ahmedabad, India, with 6+ years of experience designing B2B SaaS, enterprise workflows, and mobile products. He focuses on research, systems thinking, reducing cognitive load, and shipping usable products. He is researching interface design ethics, dark patterns, and invisible UI. He is wrapping up freelance work and expects to be available for a new role soon; do not promise an exact start date. His expected salary range is ₹15–22 LPA.
+ABOUT: Roushan is a product designer based in Ahmedabad, India, with 6+ years of experience designing B2B SaaS, enterprise workflows, and mobile products. He focuses on research, systems thinking, reducing cognitive load, and shipping usable products. He is researching interface design ethics, dark patterns, and invisible UI. He is wrapping up freelance work and expects to be available for a new role soon; do not promise an exact start date. His expected salary range is INR 15–22 LPA.
 
 ROUSHANI: A mobile-first invoicing MVP for small service businesses replacing spreadsheets and outdated tools. The problem included an 18-minute baseline to create an invoice and repetitive entry taking 70% of billing time. Decisions included keeping invoice creation central, saved customer/service details, simple logo and color branding, and PDF sharing; advanced accounting/reporting stayed out of scope. A stacked tax/currency control confused users and was changed to presets, an inline toggle, and a live total summary. The case study reports 80% faster invoice creation.
 
@@ -41,12 +42,30 @@ For contact, users can email roushan.ux@gmail.com.`;
 export default async function handler(req: ApiRequest, res: ApiResponse) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (req.method === 'GET') {
-    return res.status(apiKey ? 200 : 503).json({
-      ok: Boolean(apiKey),
-      configured: Boolean(apiKey),
+    if (!apiKey) {
+      return res.status(503).json({ ok: false, configured: false, available: false, message: 'GEMINI_API_KEY is missing from this Vercel deployment.' });
+    }
+    if (req.query?.probe === '1') {
+      try {
+        const ai = new GoogleGenAI({ apiKey });
+        const result = await ai.models.generateContent({
+          model: PRIMARY_MODEL,
+          contents: 'Reply with the single word OK.',
+          config: { maxOutputTokens: 8 },
+        });
+        if (!result.text?.trim()) throw new Error('Gemini returned an empty response.');
+        return res.status(200).json({ ok: true, configured: true, available: true, model: PRIMARY_MODEL });
+      } catch (error) {
+        console.error('Gemini health probe failed:', error);
+        return res.status(503).json({ ok: false, configured: true, available: false, message: 'Gemini did not complete a test request. Check the Vercel function logs for the provider error.' });
+      }
+    }
+    return res.status(200).json({
+      ok: true,
+      configured: true,
       model: PRIMARY_MODEL,
       fallbackModel: FALLBACK_MODEL,
-      message: apiKey ? 'Chat endpoint is deployed and configured.' : 'GEMINI_API_KEY is missing from this Vercel deployment.',
+      message: 'Chat endpoint is deployed and configured. Use ?probe=1 to test Gemini availability.',
     });
   }
   if (req.method !== 'POST') {
