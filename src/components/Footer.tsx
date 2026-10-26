@@ -1,8 +1,11 @@
 import React from 'react';
-import { ArrowUpRight, FileText } from 'lucide-react';
+import { ArrowRight, ArrowUp, ArrowUpRight, FileText } from 'lucide-react';
+import { useReducedMotion } from 'motion/react';
 import { DESIGNER_INFO } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <footer className="about-footer w-full bg-[#030303] text-white pt-24 pb-16 px-6 relative z-20 overflow-hidden rounded-t-[32px] sm:rounded-t-[40px] md:rounded-t-[48px] shadow-[0_-10px_30px_rgba(0,0,0,0.06)]">
       <div className="max-w-6xl mx-auto flex flex-col justify-between min-h-[380px]">
@@ -85,6 +88,14 @@ export const Footer: React.FC = () => {
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: shouldReduceMotion ? 'auto' : 'smooth' })}
+            className="inline-flex items-center gap-2 font-medium text-white/90 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            Back to top
+            <ArrowRight className="h-4 w-4 -rotate-90" aria-hidden="true" />
+          </button>
         </div>
       </div>
     </footer>

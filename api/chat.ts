@@ -19,6 +19,9 @@ interface ApiResponse {
 
 export const config = { maxDuration: 30 };
 
+const PRIMARY_MODEL = 'gemini-3.8-flash';
+const FALLBACK_MODEL = 'gemini-3.6-flash';
+
 const SYSTEM_INSTRUCTION = `You are Roushan Kumar, answering questions as the designer whose portfolio this is. Be warm, direct, concise, and speak in first person when discussing your own work. Answer naturally based on the portfolio facts below. Never invent clients, results, responsibilities, dates, or metrics. If a question asks for information not included here, say you don't have that detail and offer the portfolio contact link or email.
 
 ABOUT: Roushan is a product designer based in Ahmedabad, India, with 6+ years of experience designing B2B SaaS, enterprise workflows, and mobile products. He focuses on research, systems thinking, reducing cognitive load, and shipping usable products. He is researching interface design ethics, dark patterns, and invisible UI. He is wrapping up freelance work and expects to be available for a new role soon; do not promise an exact start date. His expected salary range is ₹15–22 LPA.
@@ -41,7 +44,8 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     return res.status(apiKey ? 200 : 503).json({
       ok: Boolean(apiKey),
       configured: Boolean(apiKey),
-      model: 'gemini-3.8-flash',
+      model: PRIMARY_MODEL,
+      fallbackModel: FALLBACK_MODEL,
       message: apiKey ? 'Chat endpoint is deployed and configured.' : 'GEMINI_API_KEY is missing from this Vercel deployment.',
     });
   }
@@ -77,25 +81,40 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
 
   try {
     const ai = new GoogleGenAI({ apiKey });
-    const result = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
-      contents: messages.map(({ role, text }) => ({ role, parts: [{ text }] })),
-      config: {
-        systemInstruction: SYSTEM_INSTRUCTION,
-        temperature: 0.4,
-        maxOutputTokens: 450,
-      },
-    });
-    const reply = result.text?.trim();
-    if (!reply) return res.status(502).json({ error: 'The chat could not generate a reply. Please try again.' });
-    return res.status(200).json({ reply });
+    let lastError: unknown;
+    for (const model of [PRIMARY_MODEL, FALLBACK_MODEL]) {
+      try {
+        const result = await ai.models.generateContent({
+          model,
+          contents: messages.map(({ role, text }) => ({ role, parts: [{ text }] })),
+          config: {
+            systemInstruction: SYSTEM_INSTRUCTION,
+            temperature: 0.4,
+            maxOutputTokens: 450,
+          },
+        });
+        const reply = result.text?.trim();
+        if (!reply) return res.status(502).json({ error: 'The chat could not generate a reply. Please try again.' });
+        return res.status(200).json({ reply });
+      } catch (error) {
+        lastError = error;
+        const status = typeof error === 'object' && error !== null && 'status' in error
+          ? Number(error.status)
+          : 0;
+        if (model === FALLBACK_MODEL || (status !== 0 && status !== 404 && status !== 429 && status < 500)) {
+          throw error;
+        }
+        console.warn(`Gemini model ${model} failed; retrying with ${FALLBACK_MODEL}.`);
+      }
+    }
+    throw lastError;
   } catch (error) {
     console.error('Portfolio chat request failed:', error);
     const status = typeof error === 'object' && error !== null && 'status' in error
       ? Number(error.status)
       : 0;
     if (status === 400 || status === 404) {
-      return res.status(502).json({ error: 'Gemini rejected the model request. Check that the API key has access to Gemini 3.8 Flash.' });
+      return res.status(502).json({ error: `Gemini rejected both model requests. Check that the API key has access to ${PRIMARY_MODEL} and ${FALLBACK_MODEL}.` });
     }
     if (status === 401 || status === 403) {
       return res.status(502).json({ error: 'Gemini did not accept the API key. Check the GEMINI_API_KEY value in Vercel.' });

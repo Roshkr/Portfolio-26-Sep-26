@@ -260,7 +260,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
       </RevealSection>
 
       {nextStudy && onSelectCaseStudy && (
-        <section className="border-t border-black/[0.04] bg-[#fbfbfb] py-12 md:py-16">
+        <section className="border-t border-slate-200 bg-[#fbfbfb] py-12 md:py-16">
           <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10">
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span>
             <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners />
@@ -307,7 +307,7 @@ const BeforeAfterMedia: React.FC<{ label: string; src: string; videoSrc?: string
     ) : (
       <img src={src} alt={label} loading="lazy" className="max-h-80 w-full rounded-lg object-contain" />
     )}
-    <figcaption className="px-2 pb-1 pt-3 text-xs font-medium text-slate-500">{label}</figcaption>
+    <figcaption className="mt-4 px-2 pb-1 text-xs font-medium text-slate-500">{label}</figcaption>
   </figure>
 );
 

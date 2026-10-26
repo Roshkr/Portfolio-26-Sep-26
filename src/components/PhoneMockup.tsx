@@ -41,6 +41,7 @@ export const LazyVideo: React.FC<{
 }> = ({ src, poster, className = '', ariaLabel = 'Product video preview', objectFit = 'cover', frameClassName = 'bg-slate-900' }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(false);
+  const [posterReady, setPosterReady] = useState(!poster);
   const [isReady, setIsReady] = useState(false);
   const objectFitClass = objectFit === 'contain' ? 'object-contain' : 'object-cover';
   useEffect(() => {
@@ -64,14 +65,15 @@ export const LazyVideo: React.FC<{
   }, []);
 
   useEffect(() => {
+    setPosterReady(!poster);
     setIsReady(false);
-  }, [src]);
+  }, [poster, src]);
 
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
 
-    if (inView) {
+    if (inView && posterReady) {
       const playPromise = el.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {
@@ -81,7 +83,7 @@ export const LazyVideo: React.FC<{
     } else if (!el.paused) {
       el.pause();
     }
-  }, [inView]);
+  }, [inView, posterReady]);
 
   return (
     <div className={`relative w-full h-full overflow-hidden rounded-[18px] bg-slate-100 sm:rounded-[22px] ${frameClassName}`}>
@@ -91,13 +93,17 @@ export const LazyVideo: React.FC<{
           src={poster}
           alt="Video thumbnail placeholder"
           className={`absolute inset-0 w-full h-full ${objectFitClass} rounded-[18px] sm:rounded-[22px]`}
-          loading="lazy"
+          loading={inView ? 'eager' : 'lazy'}
+          fetchPriority={inView ? 'high' : 'auto'}
+          decoding="async"
+          onLoad={() => setPosterReady(true)}
+          onError={() => setPosterReady(true)}
         />
       )}
       <video
         ref={videoRef}
-        src={inView && src.trim() ? src : undefined}
-        poster={poster}
+        src={inView && posterReady && src.trim() ? src : undefined}
+        poster={inView && posterReady ? poster : undefined}
         preload="none"
         muted
         loop

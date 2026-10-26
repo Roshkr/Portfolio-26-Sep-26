@@ -113,7 +113,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   return (
     <div className="case-study-page w-full bg-[#fbfbfb]">
       {/* Top Floating Action Bar / Breadcrumb */}
-      <div className="max-w-6xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between border-b border-black/[0.04]">
+      <div className="max-w-6xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between border-b border-slate-200">
         <button
           onClick={onBack}
           className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-black transition-colors cursor-pointer py-1"
@@ -182,7 +182,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       {/* Overview & Meta Section */}
       <section className={caseStudy.id === 'roushani'
         ? 'py-12 md:py-16 border-y border-[#2b35ee]/15'
-        : 'py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]'}>
+        : 'py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200'}>
         <div className={caseStudy.id === 'roushani' ? 'max-w-6xl mx-auto px-6' : ''}>
           <div className={caseStudy.id === 'roushani' ? 'space-y-6' : 'space-y-4'}>
             <h2 className={caseStudy.id === 'roushani'
@@ -203,7 +203,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Source Portfolio Details */}
       {(caseStudy.projectDetails || caseStudy.contributionAreas) && (
-        <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+        <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
           <div className="space-y-12">
             {caseStudy.projectDetails && (
               <div>
@@ -212,7 +212,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
                 </h2>
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
                   {caseStudy.projectDetails.map((detail) => (
-                    <div key={detail.label} className="border-b border-black/[0.06] pb-4">
+                    <div key={detail.label} className="border-b border-slate-200 pb-4">
                       <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
                         {detail.label}
                       </span>
@@ -260,7 +260,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       )}
 
       {/* Before & After Section */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Before Mockup Card */}
           <div className={`${caseStudy.beforeDevice === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[500px]' : 'p-8 md:p-12 min-h-[500px]'} bg-[#eef0f3] rounded-[32px] flex flex-col items-center justify-center`}>
@@ -287,17 +287,21 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Process Ticker Divider */}
-      <div className="w-full overflow-hidden py-5 bg-transparent border-y border-black/[0.06] select-none">
-        <div className="animate-marquee flex items-center gap-12 text-slate-800 text-xl md:text-2xl font-normal">
-          {processTickerItems.map((step, index) => (
-            <React.Fragment key={`${index}-${step}`}>
-              <span className="whitespace-nowrap">{step}</span>
-              {index < processTickerItems.length - 1 && (
-                <span aria-hidden="true" className="px-2 text-slate-400 text-base">
-                  {(index + 1) % PROCESS_TICKER_GROUP_SIZE === 0 ? '*' : '|'}
-                </span>
-              )}
-            </React.Fragment>
+      <div aria-hidden="true" className="w-full overflow-hidden py-5 bg-transparent border-y border-slate-200 select-none">
+        <div className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex min-w-[100vw] flex-none items-center justify-around gap-12">
+              {processTickerItems.map((step, index) => (
+                <React.Fragment key={`${index}-${step}`}>
+                  <span className="whitespace-nowrap">{step}</span>
+                  {index < processTickerItems.length - 1 && (
+                    <span className="px-2 text-slate-400 text-base">
+                      {(index + 1) % PROCESS_TICKER_GROUP_SIZE === 0 ? '*' : '|'}
+                    </span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -338,7 +342,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* 02 - Design Section with Interactive Device Carousel */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
         <div className="project-section-sticky max-w-3xl space-y-6 mb-12 bg-[#fbfbfb] py-4">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             02 - Design Architecture
@@ -411,7 +415,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* 03 - Usability Testing Section */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
         <div className="max-w-3xl space-y-6 mb-12">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             03 - Usability Testing & Iteration
@@ -468,7 +472,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {caseStudy.storySections && (
-        <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+        <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
           <div className="max-w-3xl space-y-6 mb-12">
             <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
               Project narrative
@@ -508,24 +512,18 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       )}
 
       {/* Outcome Ticker Divider */}
-      <div className="w-full overflow-hidden py-5 bg-transparent border-y border-black/[0.06] select-none">
-        <div className="animate-marquee flex items-center gap-12 text-slate-800 text-xl md:text-2xl font-normal">
-          <span>Outcome</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Outcome</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Outcome</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Outcome</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Outcome</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Outcome</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Outcome</span>
-          <span className="text-slate-400 text-base">◆</span>
-          <span>Outcome</span>
-          <span className="text-slate-400 text-base">◆</span>
+      <div aria-hidden="true" className="w-full overflow-hidden py-5 bg-transparent border-y border-slate-200 select-none">
+        <div className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex min-w-[100vw] flex-none items-center justify-around gap-12">
+              {Array.from({ length: 8 }, (_, index) => (
+                <React.Fragment key={index}>
+                  <span>Outcome</span>
+                  {index < 7 && <span className="text-slate-400 text-base">◆</span>}
+                </React.Fragment>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -564,7 +562,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Learnings & Next Steps */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Learnings Column */}
           <div className="space-y-6">
@@ -597,7 +595,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Final Screens Gallery Showcase (5 phone mockups row) */}
-      <section className="py-20 md:py-28 max-w-6xl mx-auto px-6 border-t border-black/[0.04]">
+      <section className="py-20 md:py-28 max-w-6xl mx-auto px-6 border-t border-slate-200">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
             Final Flow Showcase
@@ -628,7 +626,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Next Project Teaser Footer (from Framer) */}
       {nextStudy && onSelectCaseStudy && (
-        <section className="py-12 md:py-16 bg-[#fbfbfb] border-t border-black/[0.04]">
+        <section className="py-12 md:py-16 bg-[#fbfbfb] border-t border-slate-200">
           <div className="max-w-6xl mx-auto px-6 next-project-content">
             <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
               Next Project

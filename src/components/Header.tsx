@@ -12,7 +12,7 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigate,
 }) => {
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#fbfbfb]/90 backdrop-blur-md border-b border-black/[0.04] transition-all">
+    <header className="sticky top-0 z-40 w-full bg-[#fbfbfb]/90 backdrop-blur-md border-b border-slate-200 transition-all">
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Brand Wordmark */}
         <button

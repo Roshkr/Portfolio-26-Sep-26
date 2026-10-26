@@ -134,7 +134,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </header>
 
-      <section className="border-b border-black/[0.06]">
+      <section className="border-b border-slate-200">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-12 md:gap-16 md:py-20">
           <div className="md:col-span-4 project-section-sticky">
             <p className={eyebrowClass}>The project</p>
@@ -278,7 +278,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </section>
 
-      <section className="border-y border-black/[0.06] bg-white py-12 md:py-16">
+      <section className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-10 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-4 project-section-sticky">
@@ -380,7 +380,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
       </section>
 
-      <section className="border-t border-black/[0.06] bg-white py-12 md:py-16">
+      <section className="border-t border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6">
           <div className="max-w-2xl">
             <p className={eyebrowClass}>The finished experience</p>
@@ -413,7 +413,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
       </section>
 
       {tradeoffs && (
-        <section className="border-y border-black/[0.06] bg-white py-12 md:py-16">
+        <section className="border-y border-slate-200 bg-white py-12 md:py-16">
           <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
             <div className="project-section-sticky">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{tradeoffs.eyebrow}</p>
@@ -503,7 +503,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
       </section>
 
       {nextStudy && onSelectCaseStudy && (
-        <section className="border-t border-black/[0.06] py-12 md:py-16">
+        <section className="border-t border-slate-200 py-12 md:py-16">
           <div className="mx-auto max-w-6xl px-6">
             <p className={eyebrowClass}>Next project</p>
             <div className="mt-5">

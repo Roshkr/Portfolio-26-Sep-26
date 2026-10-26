@@ -42,7 +42,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Subtle UXfolio Background: Micro Dot Pattern & Ambient Lighting */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           {/* Dot Grid */}
-          <div className="absolute inset-0 bg-dot-pattern opacity-40" />
+          <div className="absolute inset-0 bg-dot-pattern opacity-65" />
 
           {/* Subtle pointer-responsive gradient */}
           <div
@@ -77,7 +77,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Selected Projects Section */}
       <section
         id="projects"
-        className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200/60"
+        className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200"
       >
         <div className="mb-12 md:mb-16">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">

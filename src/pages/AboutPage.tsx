@@ -81,7 +81,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Stats Ribbon */}
-      <section className="py-12 border-y border-black/[0.06] bg-[#fbfbfb]">
+      <section className="py-12 border-y border-slate-200 bg-[#fbfbfb]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
             {DESIGNER_INFO.stats.map((stat, idx) => (
@@ -158,7 +158,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Experience & Education Section */}
-      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-black/[0.04] space-y-20">
+      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200 space-y-20">
         {/* Experience Section */}
         <div className="space-y-8">
           <div className="space-y-2">
