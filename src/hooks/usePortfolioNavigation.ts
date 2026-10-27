@@ -55,12 +55,14 @@ export const usePortfolioNavigation = (caseStudies: CaseStudy[]) => {
 
   const selectCaseStudy = useCallback((study: CaseStudy) => {
     const selectedStudy = caseStudies.find((candidate) => candidate.id === study.id) ?? study;
+    // Reset the viewport before mounting the next study so its reveal observers
+    // start with the top of the page, instead of queueing text during a smooth scroll.
+    window.scrollTo({ top: 0, behavior: 'auto' });
     setRoute({ page: 'case-study', caseStudy: selectedStudy });
     const nextPath = `/case-studies/${selectedStudy.id}`;
     if (window.location.pathname !== nextPath || window.location.hash) {
       window.history.pushState({}, '', nextPath);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [caseStudies]);
 
   return { route, navigateTo, selectCaseStudy };

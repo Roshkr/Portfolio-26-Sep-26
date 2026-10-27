@@ -1,17 +1,18 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
-import { CaseStudy } from '../types';
+import type { CaseStudy, SelectCaseStudy } from '../types';
 import { LazyVideo } from './PhoneMockup';
 
 type ProjectCardVariant = 'default' | 'editorial';
 
 interface ProjectCardProps {
   study: CaseStudy;
-  onSelectCaseStudy: (study: CaseStudy) => void;
+  onSelectCaseStudy: SelectCaseStudy;
   stackIndex?: number;
   variant?: ProjectCardVariant;
   compactCorners?: boolean;
+  transitionOnSelect?: boolean;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -20,13 +21,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   stackIndex,
   variant = 'default',
   compactCorners = false,
+  transitionOnSelect = false,
 }) => {
   const shouldReduceMotion = useReducedMotion();
   const isStacked = stackIndex !== undefined;
   const stackPosition = stackIndex ?? 0;
   const handleSelect = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    onSelectCaseStudy(study);
+    onSelectCaseStudy(study, transitionOnSelect ? 'curtain' : undefined);
   };
 
   if (variant === 'editorial') {
@@ -119,8 +121,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       aria-label={`Read the ${study.title} case study`}
       className={`${isStacked ? 'project-stack-card ' : ''}group cursor-pointer bg-white ${compactCorners ? 'rounded-xl' : 'rounded-3xl'} border border-slate-200/80 hover:border-slate-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col lg:flex-row overflow-hidden items-stretch no-underline ${study.heroVideo || ['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'lg:h-auto lg:max-h-none' : 'lg:h-[min(80vh,540px)] lg:max-h-[80vh]'}`}
     >
-      <div className="w-full lg:w-7/12 bg-gradient-to-b from-[#f8f9fb] to-[#edf0f5] p-4 sm:p-6 lg:p-7 border-b lg:border-b-0 lg:border-r border-slate-200/70 relative overflow-hidden flex items-center justify-center shrink-0 lg:h-full">
-        <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2">
+      <div className="w-full lg:w-7/12 bg-gradient-to-b from-[#f8f9fb] to-[#edf0f5] p-4 sm:p-6 lg:p-7 border-b lg:border-b-0 lg:border-r border-slate-200/70 relative overflow-hidden flex flex-col items-center justify-center shrink-0 lg:h-full">
+        <div className="relative z-20 mb-4 flex w-full shrink-0 items-center gap-2">
           <span className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-white/95 text-slate-700 shadow-2xs border border-slate-200/70 backdrop-blur-xs">
             {study.id === 'bridge2business'
               ? 'Redesign Proposal'
@@ -128,9 +130,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </span>
         </div>
 
-        <div className={`w-full h-full ${study.heroVideo ? '' : 'min-h-[220px] sm:min-h-[280px]'} flex items-center justify-center relative p-1 sm:p-2`}>
+        <div className={`w-full ${study.heroVideo ? '' : 'min-h-[220px] sm:min-h-[280px]'} flex items-center justify-center relative p-1 sm:p-2`}>
           {study.heroVideo ? (
-            <div className={`w-full max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] aspect-video overflow-hidden ${compactCorners ? 'rounded-xl' : 'rounded-[20px] sm:rounded-[28px]'}`}>
+            <div className={`w-full max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[380px] aspect-video overflow-hidden ${compactCorners ? 'rounded-xl' : 'rounded-[20px] sm:rounded-[28px]'}`}>
               <LazyVideo
                 src={study.heroVideo}
                 poster={study.heroImage}
@@ -144,7 +146,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               src={study.heroImage}
               alt={study.title}
               referrerPolicy="no-referrer"
-              className={`max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] w-auto h-auto object-contain ${compactCorners ? 'rounded-xl' : 'rounded-[20px] sm:rounded-[28px]'} shadow-sm sm:shadow-md border border-slate-200/80 group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300`}
+              className={`max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[380px] w-auto h-auto object-contain ${compactCorners ? 'rounded-xl' : 'rounded-[20px] sm:rounded-[28px]'} shadow-sm sm:shadow-md border border-slate-200/80 group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300`}
               loading="lazy"
             />
           )}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
-import { CaseStudy } from '../types';
+import { CaseStudy, SelectCaseStudy } from '../types';
 import { CharacterRevealText } from '../components/CharacterRevealText';
 import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
@@ -11,7 +11,7 @@ import { UmbrellaCaseStudy } from './UmbrellaCaseStudy';
 interface CaseStudyPageProps {
   caseStudy: CaseStudy;
   allCaseStudies?: CaseStudy[];
-  onSelectCaseStudy?: (caseStudy: CaseStudy) => void;
+  onSelectCaseStudy?: SelectCaseStudy;
   onBack: () => void;
 }
 
@@ -634,6 +634,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             <ProjectCard
               study={nextStudy}
               onSelectCaseStudy={onSelectCaseStudy}
+              transitionOnSelect
             />
           </div>
         </section>

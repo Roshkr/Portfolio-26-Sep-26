@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import type { CaseStudy } from '../types';
+import type { CaseStudy, SelectCaseStudy } from '../types';
 import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
 
@@ -8,7 +8,7 @@ interface Bridge2BusinessCaseStudyProps {
   caseStudy: CaseStudy;
   nextStudy: CaseStudy | null;
   onBack: () => void;
-  onSelectCaseStudy?: (caseStudy: CaseStudy) => void;
+  onSelectCaseStudy?: SelectCaseStudy;
 }
 
 const eyebrowClass =
@@ -507,7 +507,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
           <div className="mx-auto max-w-6xl px-6">
             <p className={eyebrowClass}>Next project</p>
             <div className="mt-5">
-              <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} />
+              <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} transitionOnSelect />
             </div>
           </div>
         </section>

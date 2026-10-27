@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
-import { CaseStudy } from '../types';
+import type { CaseStudy, SelectCaseStudy } from '../types';
 import { DESIGNER_INFO } from '../data/portfolioData';
 import { ProjectCard } from '../components/ProjectCard';
 
 interface HomePageProps {
   caseStudies: CaseStudy[];
-  onSelectCaseStudy: (caseStudy: CaseStudy) => void;
+  onSelectCaseStudy: SelectCaseStudy;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({

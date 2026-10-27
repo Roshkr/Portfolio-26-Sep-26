@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
-import type { CaseStudy } from '../types';
+import type { CaseStudy, SelectCaseStudy } from '../types';
 import { ProjectCard } from '../components/ProjectCard';
 import { LazyVideo } from '../components/PhoneMockup';
 
 interface DesignSystemProjectPageProps {
   onBack: () => void;
   nextStudy?: CaseStudy | null;
-  onSelectCaseStudy?: (study: CaseStudy) => void;
+  onSelectCaseStudy?: SelectCaseStudy;
 }
 
 const projectFacts = [
@@ -238,7 +238,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
       <section className="border-t border-slate-200 bg-[#fbfbfb] py-12 md:py-16">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span>
-          <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners />
+          <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners transitionOnSelect />
         </div>
       </section>
     )}
