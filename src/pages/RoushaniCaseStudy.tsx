@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from 'lucide-react';
 import type { CaseStudy, SelectCaseStudy } from '../types';
-import { LazyVideo } from '../components/PhoneMockup';
+import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
 import { CharacterRevealText } from '../components/CharacterRevealText';
 import { TradeoffsSection } from '../components/TradeoffsSection';
@@ -41,6 +41,13 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
     ['Business goals', 'Research insight', 'Core features', 'Accessibility'].includes(section.eyebrow ?? ''),
   ) ?? [];
   const reflection = caseStudy.storySections?.find((section) => section.eyebrow === 'Reflection');
+  const workflowStages = [
+    { title: 'Start an invoice', detail: 'Put the frequent billing task first.' },
+    { title: 'Reuse details', detail: 'Select saved customers and services.' },
+    { title: 'Review totals', detail: 'Use presets and live calculations.' },
+    { title: 'Make it yours', detail: 'Add a logo and choose brand colors.' },
+    { title: 'Send it', detail: 'Preview, export, share, or print the PDF.' },
+  ];
 
   return (
     <article className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
@@ -110,6 +117,71 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
+      <RevealSection className="border-y border-slate-200 bg-white py-14 md:py-20">
+        <div className="mx-auto max-w-6xl px-6 md:px-10">
+          <div className="mb-10 max-w-3xl md:mb-14">
+            <SectionHeading eyebrow="A closer look" title="The screens behind a simpler invoice workflow." />
+          </div>
+          <div className="grid gap-5 lg:grid-cols-3">
+            {caseStudy.designScreens.map((screen, index) => (
+              <figure key={screen.title} className="overflow-hidden rounded-2xl border border-slate-200 bg-[#f4f5f7]">
+                <div className="flex min-h-[250px] items-center justify-center p-5 sm:min-h-[300px]">
+                  <ProjectMockup
+                    imageSrc={screen.image}
+                    videoSrc={screen.videoSrc}
+                    device={screen.device || 'desktop'}
+                    ariaLabel={screen.title}
+                    className={`w-full ${screen.device === 'phone' ? 'max-w-[220px]' : 'max-w-[520px]'}`}
+                  />
+                </div>
+                <figcaption className="border-t border-slate-200 bg-white p-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">0{index + 1}</p>
+                  <h3 className="mt-2 text-base font-semibold text-slate-900">{screen.title.replace(/^\d+\.\s*/, '')}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{screen.note}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </RevealSection>
+
+      <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
+        <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
+          <div className="roushani-summary-sticky">
+            <SectionHeading eyebrow="The decision" title="Keep the invoice job simple, from first detail to final PDF." />
+          </div>
+          <div>
+            <CharacterRevealBlock text={caseStudy.designText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
+            <div className="grid gap-3 sm:grid-cols-2">
+              {caseStudy.designBullets.map((item, index) => (
+                <article key={item} className="rounded-xl border border-slate-200 bg-white p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">0{index + 1}</p>
+                  <CharacterRevealBlock text={item} className="mt-3 text-sm font-medium leading-relaxed text-slate-800" />
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </RevealSection>
+
+      <RevealSection className="border-y border-slate-200 bg-[#eef0f3] py-14 md:py-20">
+        <div className="mx-auto max-w-6xl px-6 md:px-10">
+          <div className="mb-10 max-w-3xl md:mb-12">
+            <SectionHeading eyebrow="Connected moments" title="From an empty invoice to a document ready to send." />
+          </div>
+          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {workflowStages.map((stage, index) => (
+              <li key={stage.title} className="relative rounded-xl border border-slate-200 bg-white p-5">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-950 text-xs font-semibold text-white">0{index + 1}</span>
+                <h3 className="mt-5 text-base font-semibold text-slate-900">{stage.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{stage.detail}</p>
+                {index < workflowStages.length - 1 && <ArrowRight className="absolute -right-3 top-7 z-10 hidden h-5 w-5 text-slate-400 lg:block" aria-hidden="true" />}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </RevealSection>
+
       <RevealSection className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="roushani-summary-sticky">
@@ -117,16 +189,6 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
           </div>
           <div className="space-y-6">
             {challenge?.body && <CharacterRevealBlock text={challenge.body} className="text-lg leading-relaxed text-slate-600 md:text-xl" />}
-            <CharacterRevealBlock text={caseStudy.overview} className="text-base leading-relaxed text-slate-600 md:text-lg" />
-            {challenge?.bullets?.length ? (
-              <ul className="space-y-3">
-                {challenge.bullets.map((item) => <RevealListItem key={item} text={item} />)}
-              </ul>
-            ) : null}
-            <CharacterRevealBlock text={caseStudy.interviewsText} className="pt-2 text-base leading-relaxed text-slate-600 md:text-lg" />
-            <div className="space-y-3">
-              {caseStudy.interviewBullets.slice(0, 3).map((item) => <RevealListItem key={item} text={item} />)}
-            </div>
             {caseStudy.keyInsights.length > 0 && (
               <div className="grid gap-3 pt-2">
                 {caseStudy.keyInsights.map((insight, index) => (
@@ -137,43 +199,6 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                 ))}
               </div>
             )}
-          </div>
-        </div>
-      </RevealSection>
-
-      <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
-          <div className="roushani-summary-sticky">
-            <SectionHeading eyebrow="The approach" title="From research to a simpler workflow." />
-          </div>
-          <div>
-            <CharacterRevealBlock text={caseStudy.designText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
-            <div className="divide-y divide-slate-200 border-y border-slate-200">
-              {approachSections.map((section, index) => (
-                <article key={section.eyebrow} className="grid gap-3 py-6 sm:grid-cols-[3rem_1fr] sm:gap-5">
-                  <span className="text-xs font-medium text-slate-400">0{index + 1}</span>
-                  <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{section.eyebrow}</p>
-                    <h3 className="mt-2 text-lg font-semibold tracking-tight text-slate-900">{section.title}</h3>
-                    {section.body && <CharacterRevealBlock text={section.body} className="mt-3 text-sm leading-relaxed text-slate-600" />}
-                    {section.bullets?.length ? (
-                      <ul className="mt-4 space-y-2">
-                        {section.bullets.map((item) => <RevealListItem key={item} text={item} />)}
-                      </ul>
-                    ) : null}
-                  </div>
-                </article>
-              ))}
-              {caseStudy.designBullets.map((item, index) => (
-                <article key={item} className="grid gap-3 py-5 sm:grid-cols-[3rem_1fr] sm:gap-5">
-                  <span className="text-xs font-medium text-slate-400">{String(approachSections.length + index + 1).padStart(2, '0')}</span>
-                  <div className="flex gap-3 text-sm leading-relaxed text-slate-700 md:text-base">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />
-                    <CharacterRevealInline text={item} />
-                  </div>
-                </article>
-              ))}
-            </div>
           </div>
         </div>
       </RevealSection>
@@ -200,6 +225,42 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         ]}
       />
 
+      <RevealSection className="border-y border-slate-200 bg-[#fbfbfb] py-14 md:py-20">
+        <div className="mx-auto max-w-6xl px-6 md:px-10">
+          <div className="mb-10 max-w-3xl md:mb-14">
+            <SectionHeading eyebrow="More of the work" title="The supporting screens and behaviors." />
+          </div>
+          <div className="mb-12 grid gap-4 md:grid-cols-2">
+            {approachSections.map((section) => (
+              <article key={section.eyebrow} className="rounded-xl border border-slate-200 bg-white p-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{section.eyebrow}</p>
+                <h3 className="mt-2 text-lg font-semibold tracking-tight text-slate-900">{section.title}</h3>
+                {section.body && <CharacterRevealBlock text={section.body} className="mt-3 text-sm leading-relaxed text-slate-600" />}
+                {section.bullets?.length ? (
+                  <ul className="mt-4 space-y-2">
+                    {section.bullets.map((item) => <RevealListItem key={item} text={item} />)}
+                  </ul>
+                ) : null}
+              </article>
+            ))}
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {caseStudy.finalScreens.map((screen) => (
+              <figure key={screen.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3">
+                <ProjectMockup
+                  imageSrc={screen.image}
+                  videoSrc={screen.videoSrc}
+                  device={screen.device || 'desktop'}
+                  ariaLabel={screen.title}
+                  className={`mx-auto w-full ${screen.device === 'phone' ? 'max-w-[220px]' : 'max-w-[520px]'}`}
+                />
+                <figcaption className="px-2 pb-1 pt-4 text-sm font-medium text-slate-700">{screen.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </RevealSection>
+
       <RevealSection className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
           <div className="roushani-summary-sticky">
@@ -218,11 +279,11 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
       <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
           <div className="roushani-summary-sticky">
-            <SectionHeading eyebrow="Outcomes" title="What changed after the work shipped." />
+            <SectionHeading eyebrow="Evidence and limits" title="What the pilot measured—and what still needs validation." />
           </div>
           <div>
             <CharacterRevealBlock text={caseStudy.usabilityText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
-            <div className="grid gap-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {caseStudy.metrics.map((metric) => (
                 <article key={metric.label} className="rounded-xl bg-[#eef0f3] p-6 md:p-7">
                   <p className="text-3xl font-medium tracking-tight text-slate-950 md:text-4xl">{metric.value}</p>
@@ -231,6 +292,12 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                 </article>
               ))}
             </div>
+            {reflection?.body && (
+              <aside className="mt-5 rounded-xl border border-slate-200 bg-white p-6">
+                <h3 className="text-sm font-semibold text-slate-900">What I would validate next</h3>
+                <CharacterRevealBlock text={reflection.body} className="mt-3 text-sm leading-relaxed text-slate-600" />
+              </aside>
+            )}
           </div>
         </div>
       </RevealSection>
@@ -239,7 +306,6 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         <div className="mx-auto max-w-4xl space-y-8 px-6 md:px-10">
           <div className="max-w-3xl">
             <SectionHeading eyebrow="What’s next" title="Keep making the everyday feel easier." />
-            {reflection?.body && <CharacterRevealBlock text={reflection.body} className="mt-6 text-base leading-relaxed text-slate-600 md:text-lg" />}
           </div>
           <div className="border-t border-slate-300 pt-6">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">The principle I carry forward</p>
