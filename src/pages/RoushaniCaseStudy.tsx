@@ -280,6 +280,7 @@ const MediaFrame: React.FC<{ caseStudy: CaseStudy }> = ({ caseStudy }) => (
           poster={caseStudy.heroImage}
           ariaLabel={`${caseStudy.title} product preview`}
           objectFit="contain"
+          eager
           frameClassName="overflow-hidden rounded-xl bg-white"
         />
       </div>

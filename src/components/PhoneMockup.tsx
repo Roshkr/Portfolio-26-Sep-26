@@ -38,15 +38,20 @@ export const LazyVideo: React.FC<{
   ariaLabel?: string;
   objectFit?: 'cover' | 'contain';
   frameClassName?: string;
-}> = ({ src, poster, className = '', ariaLabel = 'Product video preview', objectFit = 'cover', frameClassName = 'bg-slate-900' }) => {
+  eager?: boolean;
+}> = ({ src, poster, className = '', ariaLabel = 'Product video preview', objectFit = 'cover', frameClassName = 'bg-slate-900', eager = false }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [inView, setInView] = useState(false);
-  const [posterReady, setPosterReady] = useState(!poster);
+  const [inView, setInView] = useState(eager);
+  const [posterReady, setPosterReady] = useState(!poster || eager);
   const [isReady, setIsReady] = useState(false);
   const objectFitClass = objectFit === 'contain' ? 'object-contain' : 'object-cover';
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
+    if (eager) {
+      setInView(true);
+      return;
+    }
 
     if (typeof IntersectionObserver === 'undefined') {
       setInView(true);
@@ -62,12 +67,12 @@ export const LazyVideo: React.FC<{
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [eager]);
 
   useEffect(() => {
-    setPosterReady(!poster);
+    setPosterReady(!poster || eager);
     setIsReady(false);
-  }, [poster, src]);
+  }, [eager, poster, src]);
 
   useEffect(() => {
     const el = videoRef.current;
@@ -104,7 +109,7 @@ export const LazyVideo: React.FC<{
         ref={videoRef}
         src={inView && posterReady && src.trim() ? src : undefined}
         poster={inView && posterReady ? poster : undefined}
-        preload="none"
+        preload={eager ? 'auto' : 'none'}
         muted
         loop
         playsInline

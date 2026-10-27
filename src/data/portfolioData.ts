@@ -1,6 +1,6 @@
 import { CaseStudy, Testimonial, ExperienceItem, EducationItem, ToolItem } from '../types';
 import designerPortrait from '../assets/images/Roushan Picture.png';
-import roushaniInvoiceVideo from '../assets/video/Roushani Final Invoice Video.mp4';
+import roushaniFinalVideo from '../assets/video/Roushani Final Invoice Video.mp4';
 import bridge2BusinessVideo from '../assets/video/Bridge2business.mp4';
 import maxlenceVideo from '../assets/video/Maxlence.mp4';
 import naieVideo from '../assets/video/NAIE.mp4';
@@ -110,7 +110,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     category: "B2B SaaS Product Design",
     tags: ["Concept to Market", "Product Design", "Interaction Design", "Mobile UX"],
     heroImage: "https://framerusercontent.com/images/xX41ciGUu12ACL5vkbPmnv8L2xM.png",
-    heroVideo: roushaniInvoiceVideo,
+    heroVideo: roushaniFinalVideo,
     company: "Roushani Invoicing",
     status: "Production MVP",
     overview:
