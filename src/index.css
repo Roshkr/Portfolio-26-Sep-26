@@ -424,8 +424,7 @@ button:not(.retro-contact-window > button):active {
   grid-template-columns: minmax(0, 1fr);
 }
 
-.retro-hero-video-frame,
-.about-hero-video-frame {
+.retro-hero-video-frame {
   position: relative;
   width: min(100%, 360px);
   aspect-ratio: 4 / 5;
@@ -461,37 +460,11 @@ button:not(.retro-contact-window > button):active {
   opacity: 1;
 }
 
-.retro-hero-video-frame video,
-.about-hero-video-frame video {
+.retro-hero-video-frame video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.about-hero-video-frame {
-  width: 100%;
-  max-width: 360px;
-}
-
-.about-page > section:first-child {
-  min-height: 260svh;
-}
-
-.about-page > section:first-child > .retro-window-titlebar,
-.about-page > section:first-child > .grid {
-  position: sticky;
-}
-
-.about-page > section:first-child > .retro-window-titlebar {
-  top: 76px;
-  z-index: 2;
-}
-
-.about-page > section:first-child > .grid {
-  top: 112px;
-  min-height: calc(100svh - 140px);
-  align-items: center;
 }
 
 .retro-hero-body h1 {
@@ -1321,25 +1294,6 @@ button:not(.retro-contact-window > button):active {
   .retro-hero-video-frame {
     width: min(42vw, 220px);
     align-self: center;
-  }
-
-  .about-page > section:first-child {
-    min-height: 220svh;
-  }
-
-  .about-page > section:first-child > .grid {
-    top: 92px;
-    min-height: 0;
-    align-items: start;
-  }
-
-  .about-page > section:first-child > .retro-window-titlebar {
-    top: 64px;
-  }
-
-  .about-hero-video-frame {
-    width: min(58vw, 280px);
-    margin-top: 24px;
   }
 
   .retro-hero-body {
