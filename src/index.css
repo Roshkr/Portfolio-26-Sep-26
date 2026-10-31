@@ -95,7 +95,7 @@
 }
 
 .portfolio-protected {
-  width: min(100%, 1440px);
+  width: min(100%, 1920px);
   min-height: 100vh;
   min-height: 100dvh;
   margin-inline: auto;
@@ -367,14 +367,14 @@ button:not(.retro-contact-window > button):active {
   min-height: 0;
   flex-direction: column;
   overflow: visible;
-  padding: 0;
+  padding: var(--dp-spacing-section-gap) 0 0;
   background: transparent;
 }
 
 .retro-home-grid {
   display: grid;
   flex: 1;
-  height: 100%;
+  height: auto;
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
 }
@@ -423,10 +423,10 @@ button:not(.retro-contact-window > button):active {
   margin: 0;
   color: var(--dp-color-ink);
   font-family: var(--dp-typography-display);
-  font-size: clamp(24px, min(6.5vw, 7svh), 96px);
+  font-size: clamp(32px, min(8.5vw, 8svh), 116px);
   font-weight: 900;
-  letter-spacing: -0.065em;
-  line-height: 1;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
   -webkit-text-stroke: 0.012em currentColor;
   text-transform: uppercase;
 }
@@ -435,9 +435,9 @@ button:not(.retro-contact-window > button):active {
   display: block;
   width: fit-content;
   max-width: 100%;
-  margin-bottom: clamp(6px, 1.2svh, 14px);
+  margin-bottom: clamp(10px, 1.5svh, 20px);
   border: 4px solid var(--dp-color-ink);
-  padding: 0.02em 0.12em 0.08em;
+  padding: 0.04em 0.14em 0.1em;
   box-shadow: 6px 6px 0 var(--dp-color-ink);
   overflow-wrap: normal;
 }
@@ -644,8 +644,9 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page > section {
-  width: min(calc(100% - 24px), 1200px);
-  margin: 24px auto 34px;
+  width: 100%;
+  max-width: none;
+  margin: 24px 0 34px;
   border: var(--dp-border-frame) solid var(--dp-color-ink);
   background: var(--dp-color-window);
   padding: 0;
@@ -668,6 +669,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page > section:nth-child(2) > div:nth-child(2) {
+  max-width: none;
   padding: 18px clamp(18px, 3vw, 38px);
 }
 
@@ -679,7 +681,8 @@ button:not(.retro-contact-window > button):active {
   padding: 0 clamp(18px, 3vw, 38px) clamp(22px, 3vw, 36px);
 }
 
-.about-page > section:nth-child(4) > div:nth-child(2) {
+.about-page > section:nth-child(4) > div:nth-child(2),
+.about-page > section:nth-child(5) > div:nth-child(2) {
   padding: clamp(22px, 3vw, 36px) clamp(18px, 3vw, 38px);
 }
 
@@ -757,14 +760,48 @@ button:not(.retro-contact-window > button):active {
   color: var(--dp-color-ink);
 }
 
+.case-study-page.roushani-case-study > :is(header, section) {
+  padding-inline: 0;
+}
+
+.case-study-page.roushani-case-study > div:first-child {
+  width: 100%;
+  max-width: none;
+  margin-block: 0;
+  padding-block: 12px;
+  padding-inline: clamp(12px, 1.5vw, 24px);
+}
+
+.case-study-page.roushani-case-study > header {
+  margin-block: 12px 24px;
+  padding-block: clamp(24px, 4vw, 48px);
+}
+
+.roushani-case-study > header > div:first-child,
+.roushani-case-study > header > div:last-child,
+.roushani-case-study > section > div {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 3vw, 40px);
+}
+
+.roushani-case-study > header > div:last-child {
+  padding: 12px;
+}
+
+.roushani-case-study > section > div > :is(article, figure, ol) {
+  width: 100%;
+}
+
 .case-study-page > header,
 .case-study-page > section {
   position: relative;
   width: 100%;
   max-width: none;
-  margin-inline: 0;
+  margin: clamp(20px, 3vw, 36px) 0;
   border: var(--dp-border-frame) solid var(--dp-color-ink) !important;
-  padding: clamp(24px, 4vw, 56px) clamp(16px, 2.4vw, 36px);
+  padding: clamp(32px, 5vw, 64px) clamp(16px, 2.4vw, 36px);
   background-color: var(--dp-color-window) !important;
   box-shadow:
     inset 1px 1px 0 #fff,
@@ -789,7 +826,17 @@ button:not(.retro-contact-window > button):active {
 }
 
 .case-study-page :is(p, li, dd) {
-  line-height: 1.55;
+  line-height: 1.65;
+}
+
+.case-study-page :is([class~="text-xs"], [class*="text-[10px]"], [class*="text-[11px]"]) {
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+
+.case-study-page [class~="text-sm"] {
+  font-size: 16px !important;
+  line-height: 1.6;
 }
 
 /* Keep muted copy readable and accent labels consistent on every case study. */
@@ -831,6 +878,15 @@ button:not(.retro-contact-window > button):active {
   border: 2px solid var(--dp-color-ink) !important;
   background-color: #fff5dc !important;
   box-shadow: 4px 4px 0 var(--dp-color-ink);
+}
+
+.case-study-page section.sticky {
+  border: 2px solid var(--dp-color-ink) !important;
+  background: var(--dp-color-window) !important;
+  box-shadow:
+    inset 2px 2px 0 var(--dp-color-bevel-light),
+    inset -2px -2px 0 var(--dp-color-bevel-dark),
+    4px 4px 0 var(--dp-color-ink) !important;
 }
 
 .case-study-page .case-study-accent {
@@ -1020,6 +1076,12 @@ button:not(.retro-contact-window > button):active {
   background-color: var(--dp-color-accent) !important;
 }
 
+.portfolio-protected :is(button, a)[class~="bg-[#2b35ee]"],
+.portfolio-protected :is(button, a)[class~="bg-blue-600"],
+.portfolio-protected :is(button, a)[class~="bg-blue-700"] {
+  color: #fff !important;
+}
+
 .portfolio-protected [class*="border-[#2b35ee]"] {
   border-color: var(--dp-color-accent) !important;
 }
@@ -1150,7 +1212,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .about-page > section {
-    width: calc(100% - 18px);
+    width: 100%;
     margin-block: 18px 26px;
   }
 
@@ -1170,7 +1232,8 @@ button:not(.retro-contact-window > button):active {
     padding: 0 16px 18px;
   }
 
-  .about-page > section:nth-child(4) > div:nth-child(2) {
+  .about-page > section:nth-child(4) > div:nth-child(2),
+  .about-page > section:nth-child(5) > div:nth-child(2) {
     padding: 18px 16px;
   }
 
@@ -1185,7 +1248,7 @@ button:not(.retro-contact-window > button):active {
 
   .case-study-page > section {
     width: 100%;
-    margin-inline: 0;
+    margin-block: 18px 26px;
   }
 
   .about-footer {
@@ -1204,7 +1267,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-hero-body h1 {
-    font-size: clamp(24px, min(8vw, 4.2svh), 40px);
+    font-size: clamp(28px, min(9vw, 5svh), 44px);
   }
 
   .retro-projects-heading {

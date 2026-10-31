@@ -194,11 +194,12 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
   const activeMoment = showcaseMoments[activeMomentIndex];
 
   return (
-    <article className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
+    <article className="case-study-page roushani-case-study w-full bg-[#fbfbfb] text-slate-950">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10">
         <button
+          type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-slate-950"
+          className="retro-button inline-flex items-center gap-2 px-4 py-2 text-sm"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Back

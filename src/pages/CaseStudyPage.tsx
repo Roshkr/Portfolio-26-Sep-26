@@ -115,8 +115,9 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       {/* Top Floating Action Bar / Breadcrumb */}
       <div className="max-w-6xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between border-b border-slate-200">
         <button
+          type="button"
           onClick={onBack}
-          className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-black transition-colors cursor-pointer py-1"
+          className="retro-button inline-flex items-center gap-2 px-4 py-2 text-sm cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back</span>

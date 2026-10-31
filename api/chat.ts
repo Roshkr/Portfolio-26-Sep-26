@@ -1,4 +1,4 @@
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 import process from 'node:process';
 
 interface ChatMessage {
@@ -108,7 +108,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
           contents: messages.map(({ role, text }) => ({ role, parts: [{ text }] })),
           config: {
             systemInstruction: SYSTEM_INSTRUCTION,
-            temperature: 0.4,
+            thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
             maxOutputTokens: 450,
           },
         });
@@ -120,7 +120,10 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
         const status = typeof error === 'object' && error !== null && 'status' in error
           ? Number(error.status)
           : 0;
-        if (model === FALLBACK_MODEL || (status !== 0 && status !== 404 && status !== 429 && status < 500)) {
+        const shouldStopOnProviderStatus = status !== 0
+          && ![403, 404, 429].includes(status)
+          && status < 500;
+        if (model === FALLBACK_MODEL || shouldStopOnProviderStatus) {
           throw error;
         }
         console.warn(`Gemini model ${model} failed; retrying with ${FALLBACK_MODEL}.`);

@@ -19,7 +19,6 @@ const ProfilePortrait: React.FC<{ className?: string }> = ({ className = '' }) =
     />
     <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white pointer-events-none">
       <span className="text-xs uppercase tracking-wider text-slate-300">Roushan Kumar</span>
-      <p className="text-sm font-medium">UX/UI &amp; Product Designer</p>
     </div>
   </div>
 );
@@ -173,14 +172,13 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Experience & Education Section */}
+      {/* Experience Section */}
       <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200 space-y-20">
         <div className="retro-window-titlebar">
-          <span>CAREER.LOG</span>
-          <span aria-hidden="true">04 / EXPERIENCE &amp; EDUCATION</span>
+          <span>EXPERIENCE.LOG</span>
+          <span aria-hidden="true">04 / EXPERIENCE</span>
           <WindowControls />
         </div>
-        {/* Experience Section */}
         <div className="space-y-8">
           <div className="space-y-2">
             <span className="text-xs uppercase tracking-wider text-[#2b35ee] font-semibold">
@@ -229,15 +227,15 @@ export const AboutPage: React.FC = () => {
                               href={exp.websiteUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-[#2b35ee] hover:text-blue-700 transition-colors group/link"
+                              className="retro-button mt-1 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm group/link"
                             >
-                              <span className="group-hover/link:underline">{exp.company}</span>
+                              <span>{exp.company}</span>
                               <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                             </a>
                           ) : (
-                            <p className="text-xs sm:text-sm font-semibold text-[#2b35ee]">
+                            <span className="retro-button mt-1 inline-flex px-3 py-1.5 text-xs sm:text-sm">
                               {exp.company}
-                            </p>
+                            </span>
                           )}
                           {exp.workMode && (
                             <span className="inline-flex items-center gap-1.5 text-[10.5px] sm:text-xs font-medium px-2.5 py-0.5 rounded-full bg-white/95 text-slate-700 border border-slate-200/90 shadow-2xs">
@@ -263,8 +261,15 @@ export const AboutPage: React.FC = () => {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Education Section */}
+      {/* Education Section */}
+      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200 space-y-20">
+        <div className="retro-window-titlebar">
+          <span>EDUCATION.LOG</span>
+          <span aria-hidden="true">05 / EDUCATION</span>
+          <WindowControls />
+        </div>
         <div className="space-y-8">
           <div className="space-y-2">
             <span className="text-xs uppercase tracking-wider text-[#2b35ee] font-semibold">
