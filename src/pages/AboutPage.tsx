@@ -21,25 +21,25 @@ export const AboutPage: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Text Column */}
-          <div className="md:col-span-12 max-w-5xl space-y-8">
+          <div className="about-hero-copy-content md:col-span-12 space-y-8">
             <div className="space-y-3">
-              <span className="text-xs uppercase tracking-wider text-[#2b35ee] font-semibold">
+              <span className="inline-block border-2 border-black bg-[#ff00b8] px-3 py-1 text-sm uppercase tracking-wider text-black font-bold">
                 About Me
               </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-slate-950 leading-tight">
+              <h1 className="text-[clamp(3rem,7vw,6.25rem)] font-extrabold tracking-[-0.06em] text-slate-950 leading-[1.02]">
                 Hi, I'm Roushan Kumar
               </h1>
-              <p className="text-base font-normal text-slate-500">
+              <p className="inline-block border-2 border-black bg-[#000080] px-3 py-2 text-base sm:text-xl font-bold text-white">
                 UX/UI &amp; Product Designer &#8226; based in Ahmedabad, Gujarat, India
               </p>
             </div>
 
-            <div className="space-y-5 text-lg md:text-xl font-light text-slate-800 leading-relaxed">
-              <p>
+            <div className="about-hero-copy-list space-y-4">
+              <p className="about-hero-copy about-hero-copy-primary">
                 With 6+ years of experience, I design complex B2B and SaaS products, turning messy enterprise workflows into clear, efficient experiences. My work combines research, systems thinking, and practical product judgment to reduce cognitive load and deliver products people can use with confidence.
               </p>
-              <p>
-                I’m currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.
+              <p className="about-hero-copy about-hero-copy-secondary">
+                I'm currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.
               </p>
             </div>
 
@@ -50,7 +50,7 @@ export const AboutPage: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit Roushan Kumar's LinkedIn profile"
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 border border-slate-200 bg-white hover:bg-slate-50 text-slate-900 rounded-2xl font-medium text-sm transition-all shadow-sm active:scale-95"
+                className="retro-button inline-flex items-center gap-2.5 px-6 py-3.5 text-sm"
               >
                 <svg className="h-4 w-4 fill-[#0a66c2]" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM3.555 20.452h3.564V9H3.555v11.452Z" />
@@ -87,11 +87,49 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
+      {/* More About Me */}
+      <section className="about-personal-section">
+        <div className="retro-window-titlebar">
+          <span>ABOUT.ROUSHAN</span>
+          <span aria-hidden="true">03 / BEYOND THE WORK</span>
+          <WindowControls />
+        </div>
+        <div className="about-personal-body">
+          <div className="about-personal-intro">
+            <span className="about-personal-kicker">A little more about me</span>
+            <h2>Thanks for visiting Roushan.in—my portfolio.</h2>
+            <p>Here’s a little more about what drives me, how I connect with people, and what you can expect when we work together.</p>
+          </div>
+          <div className="about-personal-grid">
+            <article className="about-personal-card about-personal-card-growth">
+              <span>01 / GROWTH</span>
+              <h3>I keep learning—and learn from others.</h3>
+              <p>I believe in hard work, consistency, and continuous learning. I seek out people who challenge and inspire me, because learning from others is one of the best ways to grow. My background in communication, learning, and development informs my interest in human behavior and personal growth.</p>
+            </article>
+            <article className="about-personal-card about-personal-card-optimism">
+              <span>02 / MINDSET</span>
+              <h3>I stay optimistic through challenges.</h3>
+              <p>I try to meet challenges with optimism, adapt to new situations, and take something useful from every experience.</p>
+            </article>
+            <article className="about-personal-card about-personal-card-connection">
+              <span>03 / CONNECTION</span>
+              <h3>I value conversation and reflection.</h3>
+              <p>I’m an extrovert who is also introspective. I enjoy meaningful conversations and connecting with people, while making time for solitude to reflect and recharge. I aim to be kind, reliable, creative, empathetic, and ambitious.</p>
+            </article>
+            <article className="about-personal-card about-personal-card-teamwork">
+              <span>04 / TEAMWORK</span>
+              <h3>I bring a positive, collaborative attitude.</h3>
+              <p>I’m adaptable and enjoy solving creative challenges with a team. If we work together, you can count on me to approach my responsibilities with positivity and commitment.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       {/* Creative Toolkit Section (Exact from Framer) */}
       <section className="py-20 md:py-24 max-w-6xl mx-auto px-6">
         <div className="retro-window-titlebar">
           <span>TOOLS &amp; SKILLS</span>
-          <span aria-hidden="true">03 / TOOLKIT</span>
+          <span aria-hidden="true">04 / TOOLKIT</span>
           <WindowControls />
         </div>
         <div className="mb-12 space-y-2">
@@ -155,7 +193,7 @@ export const AboutPage: React.FC = () => {
       <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200 space-y-20">
         <div className="retro-window-titlebar">
           <span>EXPERIENCE.LOG</span>
-          <span aria-hidden="true">04 / EXPERIENCE</span>
+          <span aria-hidden="true">05 / EXPERIENCE</span>
           <WindowControls />
         </div>
         <div className="space-y-8">
@@ -246,7 +284,7 @@ export const AboutPage: React.FC = () => {
       <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200 space-y-20">
         <div className="retro-window-titlebar">
           <span>EDUCATION.LOG</span>
-          <span aria-hidden="true">05 / EDUCATION</span>
+          <span aria-hidden="true">06 / EDUCATION</span>
           <WindowControls />
         </div>
         <div className="space-y-8">

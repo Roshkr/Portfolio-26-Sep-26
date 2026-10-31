@@ -722,22 +722,132 @@ button:not(.retro-contact-window > button):active {
   padding: 18px clamp(18px, 3vw, 38px);
 }
 
-.about-page > section:nth-child(3) > div:nth-child(2) {
+.about-page > section:nth-child(4) > div:nth-child(2) {
   padding: clamp(22px, 3vw, 36px) clamp(18px, 3vw, 38px) 0;
 }
 
-.about-page > section:nth-child(3) > div:nth-child(3) {
+.about-page > section:nth-child(4) > div:nth-child(3) {
   padding: 0 clamp(18px, 3vw, 38px) clamp(22px, 3vw, 36px);
 }
 
-.about-page > section:nth-child(4) > div:nth-child(2),
-.about-page > section:nth-child(5) > div:nth-child(2) {
+.about-page > section:nth-child(5) > div:nth-child(2),
+.about-page > section:nth-child(6) > div:nth-child(2) {
   padding: clamp(22px, 3vw, 36px) clamp(18px, 3vw, 38px);
+}
+
+.about-personal-body {
+  padding: clamp(20px, 3vw, 38px);
+}
+
+.about-personal-intro {
+  margin-bottom: clamp(20px, 3vw, 36px);
+  border: 2px solid var(--dp-color-ink);
+  padding: clamp(18px, 3vw, 32px);
+  background: var(--dp-color-highlight);
+  box-shadow: 4px 4px 0 var(--dp-color-ink);
+}
+
+.about-personal-kicker,
+.about-personal-card > span {
+  color: var(--dp-color-accent);
+  font-family: var(--dp-typography-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-personal-intro h2 {
+  margin: 10px 0 0;
+  color: var(--dp-color-ink);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.08;
+}
+
+.about-personal-intro p {
+  max-width: 70ch;
+  margin: 12px 0 0;
+  color: var(--dp-color-ink);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.55;
+}
+
+.about-personal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+
+.about-personal-card {
+  min-height: 100%;
+  border: 2px solid var(--dp-color-ink);
+  padding: clamp(18px, 2.5vw, 30px);
+  box-shadow: 4px 4px 0 var(--dp-color-ink);
+  color: var(--dp-color-ink);
+}
+
+.about-personal-card h3 {
+  margin: 12px 0 0;
+  font-family: var(--dp-typography-display);
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.about-personal-card p {
+  margin: 12px 0 0;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.about-personal-card-growth {
+  background: #fff5dc;
+}
+
+.about-personal-card-optimism {
+  background: var(--dp-color-emphasis);
+}
+
+.about-personal-card-connection {
+  background: var(--dp-color-window);
+}
+
+.about-personal-card-teamwork {
+  background: var(--dp-color-titlebar);
+  color: #fff;
+}
+
+.about-personal-card-teamwork > span {
+  color: #ffff00;
 }
 
 .about-page > section:first-child > div:nth-child(2) > div:first-child {
   padding: 10px;
   background: var(--dp-color-highlight);
+}
+
+.about-hero-copy-content {
+  width: 100%;
+}
+
+.about-hero-copy {
+  border: 2px solid var(--dp-color-ink);
+  padding: clamp(18px, 3vw, 34px);
+  box-shadow: 4px 4px 0 var(--dp-color-ink);
+  color: var(--dp-color-ink);
+  font-size: clamp(1.25rem, 2.1vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.about-hero-copy-primary {
+  background: #fff5dc;
+}
+
+.about-hero-copy-secondary {
+  background: var(--dp-color-emphasis);
 }
 
 .about-page > section:first-child h1,
@@ -1351,17 +1461,25 @@ button:not(.retro-contact-window > button):active {
     padding: 16px;
   }
 
-  .about-page > section:nth-child(3) > div:nth-child(2) {
+  .about-page > section:nth-child(4) > div:nth-child(2) {
     padding: 18px 16px 0;
   }
 
-  .about-page > section:nth-child(3) > div:nth-child(3) {
+  .about-page > section:nth-child(4) > div:nth-child(3) {
     padding: 0 16px 18px;
   }
 
-  .about-page > section:nth-child(4) > div:nth-child(2),
-  .about-page > section:nth-child(5) > div:nth-child(2) {
+  .about-page > section:nth-child(5) > div:nth-child(2),
+  .about-page > section:nth-child(6) > div:nth-child(2) {
     padding: 18px 16px;
+  }
+
+  .about-personal-body {
+    padding: 16px;
+  }
+
+  .about-personal-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .about-page > section:first-child > div:nth-child(2) > div:first-child {
