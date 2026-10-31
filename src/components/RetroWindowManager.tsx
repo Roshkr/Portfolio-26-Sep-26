@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { Square } from 'lucide-react';
+import { Maximize2 } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
 interface MinimizedWindow {
@@ -47,7 +47,7 @@ export const RetroWindowManager: React.FC = () => {
       <div className="retro-window-dock-items">
         {minimizedWindows.map((item) => (
           <button key={item.id} type="button" className="retro-button retro-window-dock-item" onClick={() => restoreWindow(item)} aria-label={`Maximize ${item.title}`}>
-            <Square className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <Maximize2 className="h-4 w-4 shrink-0" aria-hidden="true" />
             <span>{item.title}</span>
             <span className="retro-window-dock-action">MAXIMIZE</span>
           </button>

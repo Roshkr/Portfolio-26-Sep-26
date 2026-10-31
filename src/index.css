@@ -383,6 +383,19 @@ button:not(.retro-contact-window > button):active {
   padding: clamp(18px, 2.5vw, 28px) 0 clamp(24px, 3vw, 40px);
 }
 
+.home-hero-background:has(.retro-hero-window[data-retro-minimized="true"]) {
+  display: none;
+  height: 0;
+}
+
+.retro-facts-section:has(> .retro-facts-window[data-retro-minimized="true"]) {
+  display: none;
+}
+
+#projects:has(> .retro-projects-window[data-retro-minimized="true"]) {
+  display: none;
+}
+
 .retro-hero-window {
   display: flex;
   height: 100%;
