@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { RetroWindowManager } from './components/RetroWindowManager';
 import { ContactSection } from './components/ContactSection';
 import { ContactModal } from './components/ContactModal';
 import { HomePage } from './pages/HomePage';
@@ -133,6 +134,8 @@ export default function App() {
           {/* Dark Footer with Social Links & Resume */}
           <Footer />
         </div>
+
+        <RetroWindowManager />
 
         {/* Modals */}
         <ContactModal

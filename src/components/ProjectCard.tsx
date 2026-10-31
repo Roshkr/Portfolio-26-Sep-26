@@ -43,12 +43,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     };
     const story = stories[study.id] ?? { headline: study.title, person: study.subtitle, decision: study.role, shipped: [study.company, study.timeline].filter(Boolean).join(' / ') };
     return (
-      <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="retro-project-window group block cursor-pointer text-left no-underline">
+      <div className="retro-project-window">
         <div className="retro-window-titlebar">
           <span>{study.title}</span>
           <span aria-hidden="true">CASE FILE</span>
           <WindowControls />
         </div>
+        <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="retro-project-link group block cursor-pointer text-left text-black no-underline">
         <div className="retro-project-layout grid min-w-0 items-start gap-5 lg:items-stretch lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-6">
           <div className={`retro-project-media relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch ${study.id === 'umbrella' ? 'lg:mb-14' : ''}`}>
             {study.id === 'design-system-icons' && study.heroVideo ? (
@@ -117,6 +118,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </motion.div>
         </div>
       </a>
+      </div>
     );
   }
   return (

@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
               className="retro-button px-5 py-3 text-sm"
             >
               <FileText className="w-4 h-4" />
-              <span>Download Resume</span>
+              <span>Resume</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
@@ -73,12 +73,12 @@ export const Footer: React.FC = () => {
           </time>
 
           {/* Social Links from Framer Portfolio */}
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center gap-3">
             <a
               href={DESIGNER_INFO.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="retro-button px-4 py-2 text-sm"
             >
               LinkedIn
             </a>
@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
               href={DESIGNER_INFO.socials.behance}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="retro-button px-4 py-2 text-sm"
             >
               Behance
             </a>
@@ -94,18 +94,9 @@ export const Footer: React.FC = () => {
               href={DESIGNER_INFO.socials.dribbble}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="retro-button px-4 py-2 text-sm"
             >
               Dribbble
-            </a>
-            <a
-              href={DESIGNER_INFO.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors flex items-center gap-1 font-medium text-white/90"
-            >
-              <span>Resume</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
           <button

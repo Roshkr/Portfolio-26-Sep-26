@@ -8,6 +8,18 @@ interface HomePageProps {
   onSelectCaseStudy: SelectCaseStudy;
 }
 
+const headlineWords = `${DESIGNER_INFO.headlineHero} ${DESIGNER_INFO.headlineHighlight}${DESIGNER_INFO.headlineSuffix}`
+  .trim()
+  .replace(/\s+/g, ' ')
+  .split(' ');
+const heroHeadlineLines = [
+  headlineWords.slice(0, 2).join(' '),
+  headlineWords.slice(2, 5).join(' '),
+  headlineWords.slice(5, 6).join(' '),
+  headlineWords.slice(6, 8).join(' '),
+  headlineWords.slice(8).join(' '),
+];
+
 export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => (
   <div className="w-full">
     <section className="home-hero-background relative w-full">
@@ -19,46 +31,40 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => (
             <WindowControls />
           </div>
           <div className="retro-hero-body">
-            <div>
+            <div className="retro-hero-main">
               <h1>
-                <span>
-                  {DESIGNER_INFO.headlineHero}{' '}
-                  <span>
-                    {DESIGNER_INFO.headlineHighlight.split(/(B2B\/SaaS|design systems)/gi).map((part, index) =>
-                      /^(B2B\/SaaS|design systems)$/i.test(part)
-                        ? <span className="retro-hero-highlight" key={`${part}-${index}`}>{part}</span>
-                        : part,
-                    )}{DESIGNER_INFO.headlineSuffix}
-                  </span>
-                </span>
+                <span className="retro-hero-line retro-hero-line-outline">{heroHeadlineLines[0]}</span>
+                <span className="retro-hero-line retro-hero-line-paper">{heroHeadlineLines[1]}</span>
+                <span className="retro-hero-line retro-hero-line-highlight">{heroHeadlineLines[2]}</span>
+                <span className="retro-hero-line retro-hero-line-ink">{heroHeadlineLines[3]}</span>
+                <span className="retro-hero-line retro-hero-line-highlight retro-hero-line-highlight-final">{heroHeadlineLines[4]}</span>
               </h1>
-            </div>
-            <div className="retro-hero-baseline retro-metadata">
-              <span>{DESIGNER_INFO.tagline}</span>
-              <span>{DESIGNER_INFO.location}</span>
             </div>
           </div>
         </div>
 
-        <aside className="retro-window retro-facts-window" aria-label="Designer facts">
-          <div className="retro-window-titlebar">
-            <span>QUICK FACTS</span>
-            <span aria-hidden="true">INFO.DAT</span>
-            <WindowControls />
-          </div>
-          <div className="retro-facts-body">
-            <div className="retro-facts-list">
-              {DESIGNER_INFO.stats.map((stat) => (
-                <div className="retro-fact-row" key={stat.label}>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </aside>
       </div>
 
+    </section>
+
+    <section className="retro-facts-section w-full" aria-label="Quick facts">
+      <aside className="retro-window retro-facts-window">
+        <div className="retro-window-titlebar">
+          <span>QUICK FACTS</span>
+          <span aria-hidden="true">INFO.DAT</span>
+          <WindowControls />
+        </div>
+        <div className="retro-facts-body">
+          <div className="retro-facts-list">
+            {DESIGNER_INFO.stats.map((stat) => (
+              <div className="retro-fact-row" key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </aside>
     </section>
 
     <section id="projects" className="retro-projects">
