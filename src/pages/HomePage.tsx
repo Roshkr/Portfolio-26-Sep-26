@@ -1,93 +1,77 @@
-import React, { useRef } from 'react';
 import type { CaseStudy, SelectCaseStudy } from '../types';
 import { DESIGNER_INFO } from '../data/portfolioData';
 import { ProjectCard } from '../components/ProjectCard';
+import { WindowControls } from '../components/WindowControls';
 
 interface HomePageProps {
   caseStudies: CaseStudy[];
   onSelectCaseStudy: SelectCaseStudy;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({
-  caseStudies,
-  onSelectCaseStudy,
-}) => {
-  const heroGradientRef = useRef<HTMLDivElement>(null);
-  const heroHeadline = `${DESIGNER_INFO.headlineHero} ${DESIGNER_INFO.headlineHighlight}${DESIGNER_INFO.headlineSuffix}`;
-
-  const handleHeroPointerMove = (event: React.PointerEvent<HTMLElement>) => {
-    if (event.pointerType !== 'mouse' || !heroGradientRef.current) return;
-
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const offsetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 48;
-    const offsetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 34;
-
-    heroGradientRef.current.style.setProperty('--hero-pointer-x', `${offsetX}px`);
-    heroGradientRef.current.style.setProperty('--hero-pointer-y', `${offsetY}px`);
-  };
-
-  const resetHeroPointer = () => {
-    heroGradientRef.current?.style.setProperty('--hero-pointer-x', '0px');
-    heroGradientRef.current?.style.setProperty('--hero-pointer-y', '0px');
-  };
-
-  return (
-    <div className="w-full">
-      {/* Hero Section with Viewport Presence & Subtle UXfolio Dot Grid Background */}
-      <section
-        className="home-hero-background relative w-full min-h-0 md:min-h-[calc(100vh-5rem)] md:min-h-[calc(100dvh-5rem)] flex items-center justify-center overflow-hidden py-10 md:py-24"
-        onPointerMove={handleHeroPointerMove}
-        onPointerLeave={resetHeroPointer}
-      >
-        {/* Subtle UXfolio Background: Micro Dot Pattern & Ambient Lighting */}
-        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          {/* Dot Grid */}
-          <div className="absolute inset-0 bg-dot-pattern opacity-65" />
-
-          {/* Subtle pointer-responsive gradient */}
-          <div
-            ref={heroGradientRef}
-            aria-hidden="true"
-            className="hero-gradient-pointer absolute top-1/2 left-1/2"
-          >
-            <div className="hero-gradient-float" />
+export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => (
+  <div className="w-full">
+    <section className="home-hero-background relative w-full">
+      <div className="retro-home-grid w-full">
+        <div className="retro-window retro-hero-window">
+          <div className="retro-window-titlebar">
+            <span>ROUSHAN.IN / HOME</span>
+            <span aria-hidden="true">01</span>
+            <WindowControls />
           </div>
-
-        </div>
-
-        {/* Hero Content (Centered within Viewport) */}
-        <div className="w-full max-w-6xl mx-auto px-6 relative z-10">
-          <div className="max-w-4xl space-y-8 md:space-y-10">
-            {/* Main Headline */}
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-normal tracking-tight text-slate-500 leading-[1.24] sm:leading-[1.2] md:leading-[1.18]"
-            >
-              <span className="whitespace-pre-wrap">
-                {DESIGNER_INFO.headlineHero}{' '}
-                <span className="text-[#2b35ee] font-bold">
-                  {DESIGNER_INFO.headlineHighlight}{DESIGNER_INFO.headlineSuffix}
+          <div className="retro-hero-body">
+            <div>
+              <h1>
+                <span>
+                  {DESIGNER_INFO.headlineHero}{' '}
+                  <span>
+                    {DESIGNER_INFO.headlineHighlight.split(/(B2B\/SaaS|design systems)/gi).map((part, index) =>
+                      /^(B2B\/SaaS|design systems)$/i.test(part)
+                        ? <span className="retro-hero-highlight" key={`${part}-${index}`}>{part}</span>
+                        : part,
+                    )}{DESIGNER_INFO.headlineSuffix}
+                  </span>
                 </span>
-              </span>
-            </h1>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Selected Projects Section */}
-      <section
-        id="projects"
-        className="py-16 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200"
-      >
-        <div className="mb-12 md:mb-16">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-950">
-              Recent works
-            </h2>
+              </h1>
+            </div>
+            <div className="retro-hero-baseline retro-metadata">
+              <span>{DESIGNER_INFO.tagline}</span>
+              <span>{DESIGNER_INFO.location}</span>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 auto-rows-fr gap-12 md:gap-16">
+        <aside className="retro-window retro-facts-window" aria-label="Designer facts">
+          <div className="retro-window-titlebar">
+            <span>QUICK FACTS</span>
+            <span aria-hidden="true">INFO.DAT</span>
+            <WindowControls />
+          </div>
+          <div className="retro-facts-body">
+            <div className="retro-facts-list">
+              {DESIGNER_INFO.stats.map((stat) => (
+                <div className="retro-fact-row" key={stat.label}>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
+      </div>
+
+    </section>
+
+    <section id="projects" className="retro-projects">
+      <div className="retro-window retro-projects-window">
+        <div className="retro-window-titlebar">
+          <span>SELECTED WORKS</span>
+          <span aria-hidden="true">{String(caseStudies.length).padStart(2, '0')} PROJECTS</span>
+          <WindowControls />
+        </div>
+        <div className="retro-projects-heading">
+          <h2>Recent works</h2>
+        </div>
+        <div className="retro-project-list">
           {caseStudies.map((study, index) => (
             <ProjectCard
               key={study.id}
@@ -98,8 +82,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             />
           ))}
         </div>
-      </section>
-
-    </div>
-  );
-};
+      </div>
+    </section>
+  </div>
+);

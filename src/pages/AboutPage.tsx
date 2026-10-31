@@ -7,6 +7,7 @@ import {
   EDUCATIONS,
 } from '../data/portfolioData';
 import { CompanyLogoMark } from '../components/CompanyLogoMarks';
+import { WindowControls } from '../components/WindowControls';
 
 const ProfilePortrait: React.FC<{ className?: string }> = ({ className = '' }) => (
   <div className={`w-full max-w-sm aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-200 shadow-xl border border-black/5 relative group ${className}`}>
@@ -28,6 +29,11 @@ export const AboutPage: React.FC = () => {
     <div className="about-page w-full">
       {/* Hero Bio Section */}
       <section className="pt-20 pb-16 md:pt-28 md:pb-24 max-w-6xl mx-auto px-6">
+        <div className="retro-window-titlebar">
+          <span>PROFILE.TXT</span>
+          <span aria-hidden="true">01 / BIO</span>
+          <WindowControls />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Text Column */}
           <div className="md:col-span-7 space-y-8">
@@ -82,6 +88,11 @@ export const AboutPage: React.FC = () => {
 
       {/* Stats Ribbon */}
       <section className="py-12 border-y border-slate-200 bg-[#fbfbfb]">
+        <div className="retro-window-titlebar">
+          <span>AT A GLANCE</span>
+          <span aria-hidden="true">02 / FACTS</span>
+          <WindowControls />
+        </div>
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
             {DESIGNER_INFO.stats.map((stat, idx) => (
@@ -100,6 +111,11 @@ export const AboutPage: React.FC = () => {
 
       {/* Creative Toolkit Section (Exact from Framer) */}
       <section className="py-20 md:py-24 max-w-6xl mx-auto px-6">
+        <div className="retro-window-titlebar">
+          <span>TOOLS &amp; SKILLS</span>
+          <span aria-hidden="true">03 / TOOLKIT</span>
+          <WindowControls />
+        </div>
         <div className="mb-12 space-y-2">
           <span className="text-xs uppercase tracking-wider text-[#2b35ee] font-semibold">
             Tools & Skills
@@ -159,6 +175,11 @@ export const AboutPage: React.FC = () => {
 
       {/* Experience & Education Section */}
       <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200 space-y-20">
+        <div className="retro-window-titlebar">
+          <span>CAREER.LOG</span>
+          <span aria-hidden="true">04 / EXPERIENCE &amp; EDUCATION</span>
+          <WindowControls />
+        </div>
         {/* Experience Section */}
         <div className="space-y-8">
           <div className="space-y-2">

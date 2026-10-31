@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import type { CaseStudy, SelectCaseStudy } from '../types';
 import { LazyVideo } from './PhoneMockup';
+import { WindowControls } from './WindowControls';
 
 type ProjectCardVariant = 'default' | 'editorial';
 
@@ -42,9 +43,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     };
     const story = stories[study.id] ?? { headline: study.title, person: study.subtitle, decision: study.role, shipped: [study.company, study.timeline].filter(Boolean).join(' / ') };
     return (
-      <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="group block cursor-pointer text-left text-slate-950 no-underline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#2b35ee]">
-        <div className="grid min-w-0 items-start gap-8 border-b border-slate-200 pb-12 lg:items-stretch lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-10 lg:pb-14 xl:gap-16">
-          <div className={`relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch ${study.id === 'umbrella' ? 'lg:mb-14' : ''}`}>
+      <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="retro-project-window group block cursor-pointer text-left no-underline">
+        <div className="retro-window-titlebar">
+          <span>{study.title}</span>
+          <span aria-hidden="true">CASE FILE</span>
+          <WindowControls />
+        </div>
+        <div className="retro-project-layout grid min-w-0 items-start gap-5 lg:items-stretch lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-6">
+          <div className={`retro-project-media relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch ${study.id === 'umbrella' ? 'lg:mb-14' : ''}`}>
             {study.id === 'design-system-icons' && study.heroVideo ? (
               <LazyVideo src={study.heroVideo} poster={study.heroImage || undefined} ariaLabel="Design system color palette preview" objectFit="contain" frameClassName="rounded-xl bg-[#f1f2f4] transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
             ) : study.id === 'design-system-icons' ? (
@@ -88,7 +94,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
           </div>
           <motion.div
-            className="min-w-0"
+            className="retro-project-copy min-w-0"
             initial={shouldReduceMotion ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}

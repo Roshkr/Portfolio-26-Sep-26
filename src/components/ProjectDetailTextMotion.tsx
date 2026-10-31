@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { animate, useReducedMotion } from 'motion/react';
 
 interface ProjectDetailTextMotionProps {
@@ -10,6 +10,10 @@ const TEXT_SELECTOR = 'h1:not([data-text-reveal]), h2:not([data-text-reveal]), h
 export const ProjectDetailTextMotion: React.FC<ProjectDetailTextMotionProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -53,7 +57,7 @@ export const ProjectDetailTextMotion: React.FC<ProjectDetailTextMotionProps> = (
 
     textElements.forEach((element) => {
       element.style.opacity = '0';
-      element.style.transform = 'translateY(14px)';
+      element.style.transform = 'translateY(-14px)';
       observer.observe(element);
     });
 

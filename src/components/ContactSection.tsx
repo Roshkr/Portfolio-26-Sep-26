@@ -8,10 +8,10 @@ interface ContactSectionProps {
 export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) => (
   <section
     id="contact"
-    className="group sticky top-0 z-10 mx-auto flex w-full max-w-6xl flex-col justify-start gap-8 px-6 pt-0 pb-24 [container-type:inline-size] sm:gap-10 sm:pt-0 sm:pb-28 lg:gap-12 lg:pt-0 lg:pb-32"
+    className="retro-contact-window group sticky top-0 z-10 flex w-full flex-col justify-start [container-type:inline-size]"
   >
-    <div className="pointer-events-none -translate-y-2 flex items-center justify-between gap-4">
-      <h2 className="m-0 min-w-0 flex-1 whitespace-nowrap text-[clamp(2rem,13.5cqw,9.5rem)] font-black leading-[0.82] tracking-[-0.04em] text-[#111111] transition-colors duration-200 group-hover:text-neutral-800">
+    <div className="pointer-events-none flex items-center justify-between gap-4">
+      <h2 className="m-0 min-w-0 flex-1 whitespace-nowrap text-[clamp(2rem,13.5cqw,9.5rem)] font-black leading-none tracking-[-0.04em] text-[#111111] transition-colors duration-200 group-hover:text-neutral-800">
         Let’s talk
       </h2>
       <span className="inline-flex shrink-0 text-[#111111] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
@@ -22,7 +22,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) =>
       type="button"
       onClick={onOpenChat}
       aria-label="Open Let’s talk chat"
-      className="absolute inset-0 z-20 cursor-pointer rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2b35ee]"
+      className="absolute inset-0 z-20 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2b35ee]"
     />
   </section>
 );
