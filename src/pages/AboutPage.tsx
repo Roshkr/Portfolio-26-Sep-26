@@ -9,20 +9,6 @@ import {
 import { CompanyLogoMark } from '../components/CompanyLogoMarks';
 import { WindowControls } from '../components/WindowControls';
 
-const ProfilePortrait: React.FC<{ className?: string }> = ({ className = '' }) => (
-  <div className={`w-full max-w-sm aspect-[4/5] rounded-[32px] overflow-hidden bg-slate-200 shadow-xl border border-black/5 relative group ${className}`}>
-    <img
-      src={DESIGNER_INFO.portraitImage}
-      alt={DESIGNER_INFO.name}
-      referrerPolicy="no-referrer"
-      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-    />
-    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white pointer-events-none">
-      <span className="text-xs uppercase tracking-wider text-slate-300">Roushan Kumar</span>
-    </div>
-  </div>
-);
-
 export const AboutPage: React.FC = () => {
   return (
     <div className="about-page w-full">
@@ -35,7 +21,7 @@ export const AboutPage: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Text Column */}
-          <div className="md:col-span-7 space-y-8">
+          <div className="md:col-span-12 max-w-5xl space-y-8">
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-wider text-[#2b35ee] font-semibold">
                 About Me
@@ -54,9 +40,6 @@ export const AboutPage: React.FC = () => {
               </p>
               <p>
                 I’m currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.
-              </p>
-              <p>
-                My name is sometimes searched as Roshan Kumar or Roshni; the correct spelling is Roushan Kumar. Roushani is the name of my mobile invoicing product.
               </p>
             </div>
 
@@ -78,10 +61,6 @@ export const AboutPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Portrait stays sticky only while the hero section is in view */}
-          <div className="md:col-span-5 md:self-stretch flex flex-col items-center md:items-end">
-            <ProfilePortrait className="md:sticky md:top-24" />
-          </div>
         </div>
       </section>
 

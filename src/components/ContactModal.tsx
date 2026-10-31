@@ -235,14 +235,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         role="dialog"
         aria-modal="true"
         aria-labelledby="contact-chat-title"
-        className={`relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-[#fbfbfb] text-[#111111] shadow-2xl sm:rounded-3xl ${isExpanded ? 'h-[calc(100dvh-16px)] max-h-none max-w-none sm:h-[calc(100dvh-40px)]' : 'h-[min(774px,calc(100dvh-16px))] max-h-[calc(100dvh-16px)] sm:h-[min(774px,calc(100dvh-40px))] sm:max-h-[calc(100dvh-40px)] sm:max-w-[950px]'} px-5 pb-5 pt-16 sm:px-8 sm:pb-7 sm:pt-20 lg:px-10`}
+        className={`retro-chat-modal relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-[#111111] shadow-2xl sm:rounded-3xl ${isExpanded ? 'h-[calc(100dvh-16px)] max-h-none max-w-none sm:h-[calc(100dvh-40px)]' : 'h-[min(774px,calc(100dvh-16px))] max-h-[calc(100dvh-16px)] sm:h-[min(774px,calc(100dvh-40px))] sm:max-h-[calc(100dvh-40px)] sm:max-w-[950px]'} px-5 pb-5 pt-16 sm:px-8 sm:pb-7 sm:pt-20 lg:px-10`}
         onClick={(event) => event.stopPropagation()}
       >
         <div className="absolute right-4 top-3 flex items-center gap-3 text-[#666666] sm:right-7 sm:top-5 sm:gap-5">
           <button type="button" onClick={() => setIsExpanded((value) => !value)} aria-label={isExpanded ? 'Restore dialog size' : 'Expand dialog'} className="hidden rounded-xl p-2 transition-colors hover:bg-slate-100 hover:text-black sm:block">
             <Expand className="h-5 w-5" aria-hidden="true" />
           </button>
-          <button type="button" onClick={() => closeChatRef.current()} disabled={isSending || isResponding} aria-label="Close dialog" className="rounded-xl p-2 transition-colors hover:bg-slate-100 hover:text-black disabled:cursor-wait disabled:opacity-50">
+          <button type="button" onClick={() => closeChatRef.current()} disabled={isSending || isResponding} aria-label="Close dialog" className="retro-chat-close rounded-xl p-2 transition-colors disabled:cursor-wait disabled:opacity-50">
             <X className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
@@ -256,10 +256,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           </p>
         </header>
 
-        <div aria-live="polite" className="my-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain py-2 sm:my-5">
+        <div aria-live="polite" className="retro-chat-messages my-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain py-2 sm:my-5">
           {messages.length === 0 && (
-            <div className="flex h-full min-h-32 flex-col items-center justify-center px-4 text-center">
-              <div className="h-11 w-11 overflow-hidden rounded-full bg-[#2b35ee]/10">
+            <div className="retro-chat-empty-state flex h-full min-h-0 flex-col items-center justify-center px-4 text-center">
+              <div className="retro-chat-animation relative mb-3 grid place-items-center bg-white">
                 <video
                   src="/line-profile-picture.mp4"
                   autoPlay
@@ -268,7 +268,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   playsInline
                   preload="metadata"
                   aria-label="Roushan profile video"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full bg-white object-contain"
                 />
               </div>
               <p className="mb-1 mt-3 text-sm font-semibold text-slate-800 sm:text-base">What would you like to know?</p>
