@@ -22,7 +22,7 @@
   --dp-color-bevel-light: #ffffff;
   --dp-color-accent: #6600ff;
   --dp-color-highlight: #ffff00;
-  --dp-color-link-hover: #0000ff;
+  --dp-color-link-hover: #6600ff;
   --dp-color-desktop: #008080;
   --dp-color-emphasis: #ff00b8;
   --dp-color-titlebar: #000080;
@@ -910,6 +910,143 @@ button:not(.retro-contact-window > button):active {
 
 .about-contact-info {
   border-radius: 0;
+}
+
+/* Use one neo-brutalist system for cards, actions, chips, labels, and fields. */
+.portfolio-protected :is(
+  .about-stack-card,
+  .project-stack-card,
+  .retro-project-window,
+  .case-study-page article:not(.case-study-page),
+  .case-study-page figure,
+  [role="dialog"],
+  [class*="max-w-lg"][class*="shadow-2xl"],
+  a[class~="bg-white"][class*="shadow-"]
+) {
+  border: 2px solid var(--dp-color-ink) !important;
+  border-radius: 0 !important;
+  background-color: var(--dp-color-window) !important;
+  box-shadow:
+    inset 2px 2px 0 var(--dp-color-bevel-light),
+    inset -2px -2px 0 var(--dp-color-bevel-dark),
+    4px 4px 0 var(--dp-color-ink) !important;
+}
+
+.portfolio-protected [class*="bg-white"][class*="p-"],
+.portfolio-protected [class*="bg-[#eef0f3]"][class*="p-"],
+.portfolio-protected [class*="bg-[#f0f1f4]"][class*="p-"],
+.portfolio-protected [class*="bg-[#eaedf1]"][class*="p-"] {
+  border: 2px solid var(--dp-color-ink) !important;
+  border-radius: 0 !important;
+  background-color: var(--dp-color-window) !important;
+  box-shadow: 4px 4px 0 var(--dp-color-ink) !important;
+}
+
+.portfolio-protected :is(
+  button:not(.retro-window-control):not(.retro-contact-window > button),
+  a.retro-button,
+  a[role="button"],
+  a[class*="inline-flex"][class*="px-"][class*="py-"]
+) {
+  min-height: 44px;
+  border: 2px solid var(--dp-color-ink) !important;
+  border-radius: 0 !important;
+  background: var(--dp-color-window) !important;
+  box-shadow:
+    inset 2px 2px 0 var(--dp-color-bevel-light),
+    inset -2px -2px 0 var(--dp-color-bevel-dark),
+    2px 2px 0 var(--dp-color-ink) !important;
+  color: var(--dp-color-ink) !important;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+}
+
+.portfolio-protected :is(
+  button:not(.retro-window-control):not(.retro-contact-window > button),
+  a.retro-button,
+  a[role="button"],
+  a[class*="inline-flex"][class*="px-"][class*="py-"]
+):is(:hover, :focus-visible):not(:disabled) {
+  background: var(--dp-color-highlight) !important;
+  color: var(--dp-color-ink) !important;
+}
+
+.portfolio-protected :is(
+  button:not(.retro-window-control):not(.retro-contact-window > button),
+  a.retro-button,
+  a[role="button"],
+  a[class*="inline-flex"][class*="px-"][class*="py-"]
+):active {
+  transform: translate(2px, 2px);
+  box-shadow:
+    inset 2px 2px 0 var(--dp-color-bevel-dark),
+    inset -2px -2px 0 var(--dp-color-bevel-light) !important;
+}
+
+.portfolio-protected :is(span, label, p)[class*="uppercase"][class*="tracking-"]:not(.retro-window-titlebar *) {
+  color: var(--dp-color-accent) !important;
+  font-family: var(--dp-typography-mono) !important;
+  font-weight: 700;
+}
+
+.portfolio-protected label {
+  color: var(--dp-color-ink) !important;
+  font-family: var(--dp-typography-mono);
+  font-size: var(--dp-typography-label);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.portfolio-protected :is(span, a)[class*="rounded-full"][class*="px-"],
+.portfolio-protected :is(span, a)[class*="rounded-lg"][class*="px-"],
+.portfolio-protected :is(span, a)[class*="rounded-md"][class*="px-"] {
+  border: 2px solid var(--dp-color-ink) !important;
+  border-radius: 0 !important;
+  background: var(--dp-color-highlight) !important;
+  box-shadow: 2px 2px 0 var(--dp-color-ink) !important;
+  color: var(--dp-color-ink) !important;
+  font-family: var(--dp-typography-mono);
+  font-weight: 700;
+}
+
+.portfolio-protected [class~="text-[#2b35ee]"],
+.portfolio-protected [class~="text-blue-700"],
+.portfolio-protected [class~="text-blue-600"] {
+  color: var(--dp-color-accent) !important;
+}
+
+.portfolio-protected [class~="bg-[#2b35ee]"] {
+  background-color: var(--dp-color-accent) !important;
+}
+
+.portfolio-protected [class*="border-[#2b35ee]"] {
+  border-color: var(--dp-color-accent) !important;
+}
+
+.portfolio-protected [class*="ring-[#2b35ee]"] {
+  --tw-ring-color: var(--dp-color-accent) !important;
+}
+
+.portfolio-protected :is(input, textarea, select) {
+  border: 2px solid var(--dp-color-ink) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  box-shadow: inset 2px 2px 0 #d4d4d4 !important;
+  color: var(--dp-color-ink) !important;
+}
+
+.portfolio-protected :is(input, textarea, select)::placeholder {
+  color: #555 !important;
+}
+
+.portfolio-protected :is(input, textarea, select):focus-visible {
+  border-color: var(--dp-color-accent) !important;
+  outline-color: var(--dp-color-accent);
+}
+
+.portfolio-protected [class*="shadow-"] {
+  box-shadow: 4px 4px 0 var(--dp-color-ink) !important;
 }
 
 .about-stack-card {
