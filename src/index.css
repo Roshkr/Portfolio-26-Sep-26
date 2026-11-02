@@ -380,7 +380,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .home-hero-background {
-  height: calc(100svh - 76px + 230svh);
+  height: calc(100svh - 76px + 430svh);
 }
 
 .retro-facts-section {
@@ -684,7 +684,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page {
-  padding-block: 20px 72px;
+  padding-block: 20px 0;
 }
 
 .about-page > section {
@@ -876,7 +876,7 @@ button:not(.retro-contact-window > button):active {
   border-color: rgb(0 0 0 / 38%);
 }
 
-.about-page > section:nth-child(2) span {
+.about-page > section:nth-child(2) > div:nth-child(2) span {
   color: #000;
   font-family: var(--dp-typography-display);
   font-weight: 700;
@@ -1384,7 +1384,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .home-hero-background {
-    height: calc(100svh - 76px + 230svh);
+    height: calc(100svh - 76px + 430svh);
   }
 
   .retro-hero-body {
@@ -1548,7 +1548,7 @@ button:not(.retro-contact-window > button):active {
 
 @media (max-width: 639px) {
   .home-hero-background {
-    height: calc(100svh - 64px + 230svh);
+    height: calc(100svh - 64px + 430svh);
   }
 }
 

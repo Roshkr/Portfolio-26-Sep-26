@@ -25,7 +25,7 @@ export const useScrollScrubFrames = (
         scrollTrigger: {
           trigger: track,
           start: () => `top+=${stage.offsetTop} top+=${Number.parseFloat(getComputedStyle(stage).top) || 0}`,
-          end: 'bottom bottom',
+          end: () => `bottom-=${window.innerHeight * 2} bottom`,
           scrub: 0.35,
           invalidateOnRefresh: true,
         },

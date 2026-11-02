@@ -78,7 +78,7 @@ export const AboutPage: React.FC = () => {
                 <span className="text-4xl md:text-5xl font-light text-slate-950 tracking-tight">
                   {stat.value}
                 </span>
-                <p className="text-sm text-slate-700 font-normal">
+                <p className="text-sm text-white font-normal">
                   {stat.label}
                 </p>
               </div>
@@ -244,18 +244,18 @@ export const AboutPage: React.FC = () => {
                               href={exp.websiteUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="retro-button mt-1 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm group/link"
+                              className="retro-button mt-1 inline-flex h-8 items-center gap-1.5 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm group/link"
                             >
                               <span>{exp.company}</span>
                               <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                             </a>
                           ) : (
-                            <span className="retro-button mt-1 inline-flex px-3 py-1.5 text-xs sm:text-sm">
+                            <span className="retro-button mt-1 inline-flex h-8 items-center whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm">
                               {exp.company}
                             </span>
                           )}
                           {exp.workMode && (
-                            <span className="inline-flex items-center gap-1.5 text-[10.5px] sm:text-xs font-medium px-2.5 py-0.5 rounded-full bg-white/95 text-slate-700 border border-slate-200/90 shadow-2xs">
+                            <span className="retro-button mt-1 inline-flex h-8 items-center gap-1.5 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm">
                               <span className="w-1.5 h-1.5 rounded-full bg-[#2b35ee] shrink-0"></span>
                               <span>{exp.workMode}</span>
                             </span>
@@ -334,7 +334,7 @@ export const AboutPage: React.FC = () => {
                             href={edu.websiteUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#2b35ee] hover:text-blue-700 transition-colors group/link mt-0.5"
+                            className="retro-button mt-1 inline-flex h-8 items-center gap-1.5 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm group/link"
                           >
                             <span className="group-hover/link:underline">
                               {edu.institution}

@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import type { CaseStudy, ProjectDevice, SelectCaseStudy } from '../types';
 import { LazyVideo, ProjectMockup } from '../components/PhoneMockup';
 import { ProjectCard } from '../components/ProjectCard';
 import { CharacterRevealText } from '../components/CharacterRevealText';
+import createInvoiceImage from '../assets/images/Roushani create invoice.png';
+import defaultInvoiceImage from '../assets/images/Roushani default invoice.png';
+import calculationImage from '../assets/images/Roushani calculation.png';
+import previewInvoiceImage from '../assets/images/Roushani preview invoice.png';
+import clientHistoryImage from '../assets/images/Roushani Client and History.png';
+import recallUserDataImage from '../assets/images/Roushani recall user data.png';
+import phoneEditsImage from '../assets/images/Phone edits.png';
+import shareInvoiceImage from '../assets/images/Roushani Share invoice.png';
+import invoiceImage from '../assets/images/Roushani Invoice.jpeg';
 
 interface RoushaniCaseStudyProps {
   caseStudy: CaseStudy;
@@ -13,12 +22,13 @@ interface RoushaniCaseStudyProps {
   onSelectCaseStudy?: SelectCaseStudy;
 }
 
-const RevealSection: React.FC<React.PropsWithChildren<{ className?: string }>> = ({ className = '', children }) => {
+const RevealSection: React.FC<React.PropsWithChildren<{ className?: string; elementRef?: React.Ref<HTMLElement> }>> = ({ className = '', elementRef, children }) => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.section
       className={className}
+      ref={elementRef}
       initial={shouldReduceMotion ? false : { opacity: 0, y: -24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -45,82 +55,55 @@ interface ShowcaseFeature {
   imageSrc: string;
   videoSrc?: string;
   device?: ProjectDevice;
+  aspectRatio?: number;
 }
 
 interface ShowcaseMoment {
   label: string;
-  title: string;
   features: ShowcaseFeature[];
 }
 
-const MomentShowcase: React.FC<{ moment: ShowcaseMoment }> = ({ moment }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const shouldReduceMotion = useReducedMotion();
+const MomentShowcase: React.FC<{
+  moment: ShowcaseMoment;
+  activeIndex: number;
+}> = ({ moment, activeIndex }) => {
   const activeFeature = moment.features[activeIndex];
 
   return (
-    <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,2.1fr)_minmax(18rem,1fr)] lg:gap-12">
-      <div className="overflow-hidden rounded-xl bg-[#e9e7e2] p-3 shadow-[0_24px_70px_-38px_rgba(15,23,42,.35)] sm:rounded-2xl sm:p-5">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={`${moment.label}-${activeIndex}`}
-            className="relative flex h-[min(38svh,320px)] items-center justify-center overflow-hidden rounded-lg bg-white sm:rounded-xl lg:h-[min(50svh,480px)]"
-            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.99 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.99 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: 'easeOut' }}
-          >
-            {activeFeature.videoSrc ? (
-              <LazyVideo
-                src={activeFeature.videoSrc}
-                poster={activeFeature.imageSrc}
-                ariaLabel={`${moment.label}: ${activeFeature.title}`}
-                objectFit="contain"
-                frameClassName="rounded-xl bg-white"
-              />
-            ) : activeFeature.device === 'phone' ? (
-              <ProjectMockup
-                imageSrc={activeFeature.imageSrc}
-                device="phone"
-                ariaLabel={`${moment.label}: ${activeFeature.title}`}
-                className="h-full max-w-[220px]"
-              />
-            ) : (
-              <img
-                src={activeFeature.imageSrc}
-                alt={`${moment.label}: ${activeFeature.title}`}
-                loading="lazy"
-                referrerPolicy="no-referrer"
-                className="h-full w-full object-contain"
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 sm:gap-4">
+      <div className="border-2 border-slate-900 bg-white px-4 py-3 sm:px-6 sm:py-4">
+        <h3 className="text-base font-semibold leading-snug text-slate-950 sm:text-lg">{activeFeature.title}</h3>
+        <p className="mt-1 text-sm leading-relaxed text-slate-600 sm:text-base">{activeFeature.description}</p>
       </div>
-
-      <div>
-        <p className="text-3xl font-medium leading-tight tracking-[-0.045em] text-slate-950 md:text-4xl">{moment.label}</p>
-        <p className="mt-3 text-sm leading-relaxed text-slate-500 md:text-base">{moment.title}</p>
-        <div className="mt-6 space-y-1 md:mt-8">
-          {moment.features.map((feature, featureIndex) => {
-            const isActive = featureIndex === activeIndex;
-
-            return (
-              <button
-                key={feature.title}
-                type="button"
-                aria-pressed={isActive}
-                onClick={() => setActiveIndex(featureIndex)}
-                className="group flex w-full gap-4 rounded-lg py-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2b35ee] focus-visible:ring-offset-2"
-              >
-                <span className={`mt-1.5 h-3 w-3 shrink-0 rounded-full transition-colors ${isActive ? 'bg-[#2b35ee]' : 'bg-slate-300 group-hover:bg-slate-500'}`} aria-hidden="true" />
-                <span>
-                  <span className={`block text-base font-semibold leading-snug ${isActive ? 'text-slate-950' : 'text-slate-600'}`}>{feature.title}</span>
-                  <span className="mt-1 block text-sm leading-relaxed text-slate-500 md:text-base">{feature.description}</span>
-                </span>
-              </button>
-            );
-          })}
+      <div className="overflow-hidden rounded-xl bg-[#e9e7e2] p-2 shadow-[0_24px_70px_-38px_rgba(15,23,42,.35)] sm:rounded-2xl sm:p-4">
+        <div
+          className={`relative flex w-full ${activeFeature.aspectRatio ? 'h-auto' : 'h-[min(38svh,300px)] sm:h-[min(54svh,440px)]'} items-center justify-center overflow-hidden rounded-lg bg-white sm:rounded-xl`}
+          style={activeFeature.aspectRatio ? { aspectRatio: activeFeature.aspectRatio } : undefined}
+        >
+          {activeFeature.videoSrc ? (
+            <LazyVideo
+              src={activeFeature.videoSrc}
+              poster={activeFeature.imageSrc}
+              ariaLabel={`${moment.label}: ${activeFeature.title}`}
+              objectFit="contain"
+              frameClassName="rounded-xl bg-white"
+            />
+          ) : activeFeature.device === 'phone' ? (
+            <ProjectMockup
+              imageSrc={activeFeature.imageSrc}
+              device="phone"
+              ariaLabel={`${moment.label}: ${activeFeature.title}`}
+              className="h-full max-w-[220px]"
+            />
+          ) : (
+            <img
+              src={activeFeature.imageSrc}
+              alt={`${moment.label}: ${activeFeature.title}`}
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              className="h-full w-full object-contain"
+            />
+          )}
         </div>
       </div>
     </div>
@@ -140,6 +123,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
   const reflection = caseStudy.storySections?.find((section) => section.eyebrow === 'Reflection');
   const shouldReduceMotion = useReducedMotion();
   const [activeMomentIndex, setActiveMomentIndex] = useState(0);
+  const [activeFeatureIndex, setActiveFeatureIndex] = useState(0);
   const [momentDirection, setMomentDirection] = useState(1);
   const workflowStages = [
     { title: 'Start an invoice', detail: 'Put the frequent billing task first.' },
@@ -151,47 +135,80 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
   const showcaseMoments: ShowcaseMoment[] = [
     {
       label: 'It starts',
-      title: 'A clear canvas puts the invoice first.',
       features: [
-        { title: 'Live invoice canvas', description: caseStudy.designScreens[0]?.note ?? 'A live preview connects invoice details to the final document.', imageSrc: caseStudy.designScreens[0]?.image ?? caseStudy.heroImage },
+        { title: 'Live invoice canvas', description: caseStudy.designScreens[0]?.note ?? 'A live preview connects invoice details to the final document.', imageSrc: createInvoiceImage, aspectRatio: 1857 / 869 },
         { title: 'Start with useful defaults', description: 'The most common invoice tasks come before specialist accounting controls.', imageSrc: caseStudy.designScreens[0]?.image ?? caseStudy.heroImage },
-        { title: 'Useful defaults', description: 'Large targets and clear hierarchy keep the frequent invoice tasks easy to reach.', imageSrc: caseStudy.designScreens[0]?.image ?? caseStudy.heroImage },
+        { title: 'Useful defaults', description: 'Large targets and clear hierarchy keep the frequent invoice tasks easy to reach.', imageSrc: defaultInvoiceImage, aspectRatio: 1843 / 871 },
       ],
     },
     {
       label: 'It calculates',
-      title: 'Totals stay clear as invoice details change.',
       features: [
-        { title: 'Tax and discount logic', description: caseStudy.designBullets[0] ?? 'Tax and discounts calculate automatically.', imageSrc: caseStudy.designScreens[0]?.image ?? caseStudy.heroImage },
-        { title: 'Single-tap tax presets', description: caseStudy.solution1.desc, imageSrc: caseStudy.solution1.screen },
-        { title: 'Preview the final document', description: caseStudy.designScreens[0]?.note ?? 'See calculations and invoice styling update live.', imageSrc: caseStudy.designScreens[0]?.image ?? caseStudy.heroImage },
+        { title: 'Tax and discount logic', description: caseStudy.designBullets[0] ?? 'Tax and discounts calculate automatically.', imageSrc: calculationImage },
+        { title: 'Preview the final document', description: caseStudy.designScreens[0]?.note ?? 'See calculations and invoice styling update live.', imageSrc: previewInvoiceImage },
       ],
     },
     {
       label: 'It remembers',
-      title: 'Saved details make repeat work faster.',
       features: [
-        { title: 'Client and history hub', description: caseStudy.designScreens[1]?.note ?? 'Reuse saved customer and service details.', imageSrc: caseStudy.designScreens[1]?.image ?? caseStudy.heroImage },
-        { title: 'Saved customer details', description: caseStudy.designBullets[2] ?? 'Keep customer details close at hand.', imageSrc: caseStudy.designScreens[1]?.image ?? caseStudy.heroImage },
-        { title: 'Reuse services and line items', description: 'Previous invoice details reduce repetitive data entry.', imageSrc: caseStudy.designScreens[1]?.image ?? caseStudy.heroImage },
+        { title: 'Client and history hub', description: caseStudy.designScreens[1]?.note ?? 'Reuse saved customer and service details.', imageSrc: clientHistoryImage },
+        { title: 'Reuse services and line items', description: 'Previous invoice details reduce repetitive data entry.', imageSrc: recallUserDataImage },
       ],
     },
     {
       label: 'On the go',
-      title: 'Finish and send invoices from a phone.',
       features: [
-        { title: 'Quick mobile edits', description: caseStudy.designBullets[3] ?? 'Make quick invoice edits on mobile.', imageSrc: caseStudy.designScreens[2]?.image ?? caseStudy.heroImage, device: caseStudy.designScreens[2]?.device },
-        { title: 'Ready-to-send PDF', description: caseStudy.designScreens[2]?.note ?? 'Preview and export invoices from a smartphone.', imageSrc: caseStudy.designScreens[2]?.image ?? caseStudy.heroImage, device: caseStudy.designScreens[2]?.device },
-        { title: 'A professional customer touchpoint', description: 'Branded PDFs give small businesses a consistent, professional invoice to share.', imageSrc: caseStudy.designScreens[0]?.image ?? caseStudy.heroImage },
+        { title: 'Quick mobile edits', description: caseStudy.designBullets[3] ?? 'Make quick invoice edits on mobile.', imageSrc: phoneEditsImage, device: caseStudy.designScreens[2]?.device },
+        { title: 'Ready-to-send PDF', description: caseStudy.designScreens[2]?.note ?? 'Preview and export invoices from a smartphone.', imageSrc: shareInvoiceImage, device: caseStudy.designScreens[2]?.device },
+        { title: 'A professional customer touchpoint', description: 'Branded PDFs give small businesses a consistent, professional invoice to share.', imageSrc: invoiceImage },
       ],
     },
   ];
-  const showMoment = (nextIndex: number) => {
-    if (nextIndex < 0 || nextIndex >= showcaseMoments.length || nextIndex === activeMomentIndex) return;
-    setMomentDirection(nextIndex > activeMomentIndex ? 1 : -1);
-    setActiveMomentIndex(nextIndex);
+  const totalShowcaseSteps = showcaseMoments.reduce((total, moment) => total + moment.features.length, 0);
+  const navigateShowcaseStep = (step: number) => {
+    const nextStep = Math.max(0, Math.min(totalShowcaseSteps - 1, step));
+    let remaining = nextStep;
+    const momentIndex = showcaseMoments.findIndex((moment) => {
+      if (remaining < moment.features.length) return true;
+      remaining -= moment.features.length;
+      return false;
+    });
+    const nextMomentIndex = Math.max(0, momentIndex);
+    const currentStep = showcaseMoments.slice(0, activeMomentIndex).reduce((total, moment) => total + moment.features.length, 0) + activeFeatureIndex;
+    setMomentDirection(nextStep >= currentStep ? 1 : -1);
+    setActiveMomentIndex(nextMomentIndex);
+    setActiveFeatureIndex(remaining);
   };
   const activeMoment = showcaseMoments[activeMomentIndex];
+  const activeShowcaseStep = showcaseMoments.slice(0, activeMomentIndex).reduce((total, moment) => total + moment.features.length, 0) + activeFeatureIndex;
+  const moreWorkImageByKeyword: Record<string, string> = {
+    'Hero Canvas': createInvoiceImage,
+    'Client Directory': clientHistoryImage,
+    'Mobile View': phoneEditsImage,
+    'Export & Share': shareInvoiceImage,
+    'Template System': defaultInvoiceImage,
+  };
+  const moreWorkScreens = caseStudy.finalScreens.map((screen) => ({
+    ...screen,
+    image: moreWorkImageByKeyword[screen.title] ?? screen.image,
+  }));
+
+  useEffect(() => {
+    const preloadShowcaseImages = () => {
+      const sources = new Set(showcaseMoments.flatMap((moment) => moment.features.map((feature) => feature.imageSrc)));
+      sources.forEach((source) => {
+        const image = new Image();
+        image.src = source;
+      });
+    };
+
+    if (typeof IntersectionObserver === 'undefined') {
+      preloadShowcaseImages();
+      return;
+    }
+
+    preloadShowcaseImages();
+  }, [totalShowcaseSteps]);
 
   return (
     <article className="case-study-page roushani-case-study w-full bg-[#fbfbfb] text-slate-950">
@@ -282,56 +299,55 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
-      <RevealSection className="border-y border-slate-200 bg-white py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="mb-6 max-w-3xl md:mb-8">
-            <SectionHeading eyebrow="A closer look" title="Four moments in the invoice workflow." />
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-500 md:text-base">A closer look at the screens and small decisions that help service businesses create, review, and send an invoice.</p>
-          </div>
+      <RevealSection className="flex min-h-[calc(100svh-4rem)] items-center border-y border-slate-200 bg-white py-4 sm:min-h-[calc(100svh-76px)] sm:py-6">
+        <div className="mx-auto w-full max-w-7xl px-6 py-2 md:px-10">
           <div className="overflow-hidden">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
-                key={activeMoment.label}
+                key={`${activeMoment.label}-${activeFeatureIndex}`}
                 initial={shouldReduceMotion ? false : { opacity: 0, x: momentDirection * 56 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={shouldReduceMotion ? undefined : { opacity: 0, x: momentDirection * -56 }}
                 transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
-                <MomentShowcase moment={activeMoment} />
+                <MomentShowcase
+                  moment={activeMoment}
+                  activeIndex={activeFeatureIndex}
+                />
               </motion.div>
             </AnimatePresence>
           </div>
-          <div className="mt-7 flex items-center justify-between gap-6 md:mt-9">
-            <div className="flex items-center gap-4" role="group" aria-label="Choose a project moment">
-              {showcaseMoments.map((moment, index) => (
+          <div className="mt-5 flex items-center justify-between gap-3 sm:mt-7 sm:gap-6 md:mt-9">
+            <div className="flex items-center gap-0.5 sm:gap-2" role="group" aria-label="Choose an image in the invoice workflow">
+              {showcaseMoments.flatMap((moment) => moment.features).map((feature, index) => (
                 <button
-                  key={moment.label}
+                  key={`${feature.title}-${index}`}
                   type="button"
-                  aria-label={`Show ${moment.label} moment`}
-                  aria-current={index === activeMomentIndex ? 'step' : undefined}
-                  onClick={() => showMoment(index)}
-                  className="grid h-8 w-6 place-items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2b35ee] focus-visible:ring-offset-2"
+                  aria-label={`Show image ${index + 1} of ${totalShowcaseSteps}: ${feature.title}`}
+                  aria-current={index === activeShowcaseStep ? 'step' : undefined}
+                  onClick={() => navigateShowcaseStep(index)}
+                  className="grid h-8 w-3.5 place-items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2b35ee] focus-visible:ring-offset-2 sm:w-5"
                 >
-                  <span className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${index === activeMomentIndex ? 'scale-110 bg-[#2b35ee]' : 'border border-slate-400 bg-transparent hover:bg-slate-300'}`} />
+                  <span className={`h-2 w-2 rounded-full transition-all duration-300 sm:h-2.5 sm:w-2.5 ${index === activeShowcaseStep ? 'scale-110 bg-[#2b35ee]' : 'border border-slate-400 bg-transparent hover:bg-slate-300'}`} />
                 </button>
               ))}
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <button
                 type="button"
-                aria-label="Previous moment"
-                onClick={() => showMoment(activeMomentIndex - 1)}
-                disabled={activeMomentIndex === 0}
-                className="grid h-12 w-12 place-items-center rounded-full border border-slate-300 text-slate-700 transition-colors hover:border-slate-950 hover:text-slate-950 disabled:cursor-not-allowed disabled:text-slate-300 md:h-16 md:w-16"
+                aria-label="Previous image"
+                onClick={() => navigateShowcaseStep(activeShowcaseStep - 1)}
+                disabled={activeShowcaseStep === 0}
+                className="grid h-10 w-10 place-items-center rounded-full border border-slate-300 text-slate-700 transition-colors hover:border-slate-950 hover:text-slate-950 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-300 sm:h-12 sm:w-12 md:h-16 md:w-16"
               >
                 <ArrowLeft className="h-5 w-5" aria-hidden="true" />
               </button>
               <button
                 type="button"
-                aria-label="Next moment"
-                onClick={() => showMoment(activeMomentIndex + 1)}
-                disabled={activeMomentIndex === showcaseMoments.length - 1}
-                className="grid h-12 w-12 place-items-center rounded-full border border-slate-400 text-slate-950 transition-colors hover:border-slate-950 hover:bg-slate-950 hover:text-white disabled:cursor-not-allowed disabled:border-slate-200 disabled:text-slate-300 md:h-16 md:w-16"
+                aria-label="Next image"
+                onClick={() => navigateShowcaseStep(activeShowcaseStep + 1)}
+                disabled={activeShowcaseStep === totalShowcaseSteps - 1}
+                className="grid h-10 w-10 place-items-center rounded-full border border-slate-400 text-slate-950 transition-colors hover:border-slate-950 hover:bg-slate-950 hover:text-white disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-300 sm:h-12 sm:w-12 md:h-16 md:w-16"
               >
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </button>
@@ -482,7 +498,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
             viewport={{ once: true, amount: 0.12 }}
             variants={staggeredReveal}
           >
-            {caseStudy.finalScreens.map((screen) => (
+            {moreWorkScreens.map((screen) => (
               <motion.figure
                 key={screen.title}
                 variants={riseIn}
