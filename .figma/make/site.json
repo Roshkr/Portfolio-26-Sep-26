@@ -1,0 +1,10 @@
+{
+  "description": "An online coding workspace for writing, editing, and testing code, helping developers turn ideas into working software.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

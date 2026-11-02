@@ -11,6 +11,7 @@ interface PhoneMockupProps {
   wireframe?: boolean;
   wireframeType?: 'search' | 'card' | 'detail' | 'grid';
   label?: string;
+  fitHeight?: boolean;
 }
 
 interface ProjectMockupProps {
@@ -19,6 +20,7 @@ interface ProjectMockupProps {
   device?: ProjectDevice;
   className?: string;
   ariaLabel?: string;
+  fitHeight?: boolean;
 }
 
 /**
@@ -131,6 +133,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({
   device = 'desktop',
   className = '',
   ariaLabel = 'Project interface preview',
+  fitHeight = false,
 }) => {
   if (device === 'phone') {
     return (
@@ -139,6 +142,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({
         videoSrc={videoSrc}
         className={className}
         label={ariaLabel}
+        fitHeight={fitHeight}
       />
     );
   }
@@ -179,13 +183,14 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   className = '',
   wireframe = false,
   label,
+  fitHeight = false,
 }) => {
   const activePoster = poster || imageSrc;
 
   return (
     <div className={`relative flex flex-col items-center ${className}`}>
       {/* Outer Phone Shell */}
-      <div className="relative w-full aspect-[9/19] max-w-[280px] bg-black rounded-[42px] p-[6px] shadow-2xl ring-1 ring-black/10 transition-transform duration-300 hover:scale-[1.01]">
+      <div className={`relative ${fitHeight ? 'h-full w-auto max-w-full' : 'w-full max-w-[280px]'} aspect-[9/19] bg-black rounded-[42px] p-[6px] shadow-2xl ring-1 ring-black/10 transition-transform duration-300 hover:scale-[1.01]`}>
         {/* Dynamic Island / Speaker */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-20 flex items-center justify-center pointer-events-none">
           <div className="w-2.5 h-2.5 rounded-full bg-[#18181b] mr-2"></div>

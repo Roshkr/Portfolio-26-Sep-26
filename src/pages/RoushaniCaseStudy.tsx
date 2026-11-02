@@ -77,7 +77,7 @@ const MomentShowcase: React.FC<{
       </div>
       <div className="overflow-hidden rounded-xl bg-[#e9e7e2] p-2 shadow-[0_24px_70px_-38px_rgba(15,23,42,.35)] sm:rounded-2xl sm:p-4">
         <div
-          className={`relative flex w-full ${activeFeature.aspectRatio ? 'h-auto' : 'h-[min(38svh,300px)] sm:h-[min(54svh,440px)]'} items-center justify-center overflow-hidden rounded-lg bg-white sm:rounded-xl`}
+          className={`relative flex w-full ${activeFeature.aspectRatio ? 'h-auto' : activeFeature.device === 'phone' ? 'h-[min(52svh,380px)] sm:h-[min(54svh,440px)]' : 'h-[min(38svh,300px)] sm:h-[min(54svh,440px)]'} items-center justify-center overflow-hidden rounded-lg bg-white sm:rounded-xl`}
           style={activeFeature.aspectRatio ? { aspectRatio: activeFeature.aspectRatio } : undefined}
         >
           {activeFeature.videoSrc ? (
@@ -93,7 +93,8 @@ const MomentShowcase: React.FC<{
               imageSrc={activeFeature.imageSrc}
               device="phone"
               ariaLabel={`${moment.label}: ${activeFeature.title}`}
-              className="h-full max-w-[220px]"
+              className="h-full w-full max-w-[220px]"
+              fitHeight
             />
           ) : (
             <img
@@ -358,7 +359,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
-          <div className="roushani-summary-sticky">
+          <div className="roushani-summary-sticky md:sticky md:top-24 md:self-start">
             <SectionHeading eyebrow="The decision" title="One decision: make invoicing feel simple." />
           </div>
           <div>
@@ -431,7 +432,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       <RevealSection className="border-y border-slate-200 bg-white py-12 md:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
-          <div className="roushani-summary-sticky">
+          <div className="roushani-summary-sticky md:sticky md:top-24 md:self-start">
             <SectionHeading eyebrow="The challenge" title={challenge?.title || 'Why this product was needed'} />
           </div>
           <div className="space-y-6">
@@ -492,20 +493,21 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
             ))}
           </motion.div>
           <motion.div
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[minmax(190px,auto)] lg:gap-5"
             initial={shouldReduceMotion ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, amount: 0.12 }}
             variants={staggeredReveal}
           >
-            {moreWorkScreens.map((screen) => (
+            {moreWorkScreens.map((screen, index) => (
               <motion.figure
                 key={screen.title}
                 variants={riseIn}
                 whileHover={shouldReduceMotion ? undefined : { y: -5, scale: 1.01 }}
-                className="group overflow-hidden rounded-xl border border-slate-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-xl"
+                className={`group flex min-h-[280px] flex-col overflow-hidden rounded-xl border border-slate-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-xl sm:min-h-[320px] ${index === 0 ? 'sm:col-span-2 lg:col-span-7' : index === 1 ? 'lg:col-span-5' : 'lg:col-span-4'}`}
               >
                 <motion.div
+                  className="flex flex-1 items-center justify-center overflow-hidden rounded-lg bg-[#f1f2f5] p-3 sm:p-5"
                   whileHover={shouldReduceMotion ? undefined : { scale: 1.035 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
@@ -514,10 +516,13 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                     videoSrc={screen.videoSrc}
                     device={screen.device || 'desktop'}
                     ariaLabel={screen.title}
-                    className={`mx-auto w-full ${screen.device === 'phone' ? 'max-w-[220px]' : 'max-w-[520px]'}`}
+                    className={`mx-auto w-full ${screen.device === 'phone' ? 'max-w-[220px]' : 'max-w-[560px]'}`}
                   />
                 </motion.div>
-                <figcaption className="px-2 pb-1 pt-4 text-sm font-medium text-slate-700">{screen.title}</figcaption>
+                <figcaption className="flex items-center justify-between gap-3 px-2 pb-1 pt-4 text-sm font-semibold text-slate-800">
+                  <span>{screen.title}</span>
+                  <span className="font-mono text-[10px] tracking-widest text-slate-400">0{index + 1}</span>
+                </figcaption>
               </motion.figure>
             ))}
           </motion.div>

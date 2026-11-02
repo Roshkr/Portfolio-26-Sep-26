@@ -52,6 +52,12 @@ export interface CaseStudy {
     body?: string;
     bullets?: string[];
   }>;
+  visualSections?: Array<{
+    eyebrow?: string;
+    title: string;
+    intro?: string;
+    images: Array<{ title: string; image: string; alt: string }>;
+  }>;
   liveUrl?: string;
   finalScreens: Array<{
     title: string;

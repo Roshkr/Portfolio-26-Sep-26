@@ -1,12 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, type RefObject } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-type ElementRef<T extends HTMLElement> = { current: T | null };
-
 export const useScrollScrubFrames = (
-  trackRef: ElementRef<HTMLElement>,
-  stageRef: ElementRef<HTMLElement>,
+  trackRef: RefObject<HTMLElement | null>,
+  stageRef: RefObject<HTMLElement | null>,
   frameCount: number,
   setFramePosition: (framePosition: number) => void,
 ) => {
@@ -14,6 +12,11 @@ export const useScrollScrubFrames = (
     const track = trackRef.current;
     const stage = stageRef.current;
     if (!track || !stage || frameCount < 2) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setFramePosition(0);
+      return;
+    }
 
     gsap.registerPlugin(ScrollTrigger);
     const playhead = { frame: 0 };
@@ -24,10 +27,19 @@ export const useScrollScrubFrames = (
         onUpdate: () => setFramePosition(playhead.frame),
         scrollTrigger: {
           trigger: track,
-          start: () => `top+=${stage.offsetTop} top+=${Number.parseFloat(getComputedStyle(stage).top) || 0}`,
-          end: () => `bottom-=${window.innerHeight * 2} bottom`,
-          scrub: 0.35,
+          start: () => {
+            const trackDocumentTop = window.scrollY + track.getBoundingClientRect().top;
+            return `top top+=${trackDocumentTop}`;
+          },
+          end: () => {
+            const stickyTop = Number.parseFloat(getComputedStyle(stage).top) || 0;
+            const trackDocumentTop = window.scrollY + track.getBoundingClientRect().top;
+            const releaseScrollPosition = trackDocumentTop + track.clientHeight - stage.offsetHeight - stickyTop;
+            return `+=${Math.max(1, releaseScrollPosition)}`;
+          },
+          scrub: 0.12,
           invalidateOnRefresh: true,
+          onEnter: () => stage.classList.add('retro-tv-glitch-active'),
         },
       });
     }, track);

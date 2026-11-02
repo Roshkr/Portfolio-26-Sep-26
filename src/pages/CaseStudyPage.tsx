@@ -512,6 +512,41 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </section>
       )}
 
+      {caseStudy.visualSections?.map((visualSection) => (
+        <section key={visualSection.title} className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
+          <div className="max-w-3xl space-y-4 mb-10">
+            {visualSection.eyebrow && (
+              <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
+                {visualSection.eyebrow}
+              </span>
+            )}
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight text-slate-950">
+              {visualSection.title}
+            </h2>
+            {visualSection.intro && (
+              <p className="text-sm md:text-base text-slate-500 leading-relaxed">
+                {visualSection.intro}
+              </p>
+            )}
+          </div>
+          <div className={`grid gap-6 ${visualSection.images.length === 1 ? 'mx-auto max-w-4xl grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+            {visualSection.images.map((image) => (
+              <figure key={image.title} className="overflow-hidden rounded-xl border border-slate-200 bg-[#eef0f3] p-3 sm:p-4">
+                <img
+                  src={image.image}
+                  alt={image.alt}
+                  loading="lazy"
+                  className="mx-auto h-auto max-h-[760px] w-full object-contain"
+                />
+                <figcaption className="px-2 pb-1 pt-3 text-xs font-medium text-slate-600 sm:text-sm">
+                  {image.title}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))}
+
       {/* Outcome Ticker Divider */}
       <div aria-hidden="true" className="w-full overflow-hidden py-5 bg-transparent border-y border-slate-200 select-none">
         <div className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">

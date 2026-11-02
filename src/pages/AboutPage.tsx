@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
 import {
   DESIGNER_INFO,
@@ -8,20 +8,23 @@ import {
 } from '../data/portfolioData';
 import { CompanyLogoMark } from '../components/CompanyLogoMarks';
 import { WindowControls } from '../components/WindowControls';
+import { ScrollTvPortrait } from '../components/ScrollTvPortrait';
 
 export const AboutPage: React.FC = () => {
+  const tvTrackRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className="about-page w-full">
       {/* Hero Bio Section */}
-      <section className="pt-20 pb-16 md:pt-28 md:pb-24 max-w-6xl mx-auto px-6">
+      <section className="about-hero-scroll-track pt-20 pb-0 md:pt-28 md:pb-0 max-w-6xl mx-auto px-6">
         <div className="retro-window-titlebar">
           <span>PROFILE.TXT</span>
           <span aria-hidden="true">01 / BIO</span>
           <WindowControls />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div ref={tvTrackRef} className="about-hero-layout relative grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Text Column */}
-          <div className="about-hero-copy-content md:col-span-12 space-y-8">
+          <div className="about-hero-copy-content md:col-span-7 space-y-4">
             <div className="space-y-3">
               <span className="inline-block border-2 border-black bg-[#ff00b8] px-3 py-1 text-sm uppercase tracking-wider text-black font-bold">
                 About Me
@@ -33,7 +36,6 @@ export const AboutPage: React.FC = () => {
                 UX/UI &amp; Product Designer &#8226; based in Ahmedabad, Gujarat, India
               </p>
             </div>
-
             <div className="about-hero-copy-list space-y-4">
               <p className="about-hero-copy about-hero-copy-primary">
                 With 6+ years of experience, I design complex B2B and SaaS products, turning messy enterprise workflows into clear, efficient experiences. My work combines research, systems thinking, and practical product judgment to reduce cognitive load and deliver products people can use with confidence.
@@ -42,9 +44,7 @@ export const AboutPage: React.FC = () => {
                 I'm currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.
               </p>
             </div>
-
-            {/* Social Profile */}
-            <div className="pt-4 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <a
                 href={DESIGNER_INFO.socials.linkedin}
                 target="_blank"
@@ -60,12 +60,12 @@ export const AboutPage: React.FC = () => {
               </a>
             </div>
           </div>
-
+          <ScrollTvPortrait trackRef={tvTrackRef} />
         </div>
       </section>
 
       {/* Stats Ribbon */}
-      <section className="py-12 border-y border-slate-200 bg-[#fbfbfb]">
+      <section className="about-quick-facts-section py-8 border-y border-slate-200 bg-[#fbfbfb]">
         <div className="retro-window-titlebar">
           <span>AT A GLANCE</span>
           <span aria-hidden="true">02 / FACTS</span>
