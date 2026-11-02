@@ -5,7 +5,9 @@
 **Location:** Ahmedabad, India  
 **Positioning:** Product Designer focused on complex B2B/SaaS workflows and design systems. I turn messy enterprise processes into clear, shippable experiences.
 **Focus Areas:** SaaS, B2B, Fintech, Enterprise Workflows, Mobile Experiences  
-**Name variations:** My name is Roushan Kumar. People may search for Roshan Kumar or Roshni; Roushani is the name of my invoicing product.
+**Role:** UX/UI and Product Designer
+**Product:** Roushani is the name of my mobile-first invoicing product.
+**Experience:** 6+ years designing digital products, including work across 20+ enterprise and SaaS products.
 **Email:** roushan.ux@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/roushankuma/  
 **Behance:** https://www.behance.net/roushankuma  
@@ -17,6 +19,10 @@
 ## About
 
 I am a Product Designer based in Ahmedabad, India, focused on complex B2B/SaaS workflows and design systems. I turn messy enterprise processes into clear, shippable experiences through research, clear information architecture, and thoughtful interaction design.
+
+### What I do
+
+I help product teams make complex workflows easier to understand and use. My work includes product discovery and user research, information architecture, interaction and interface design, design systems, and close collaboration with engineering through delivery.
 
 ---
 

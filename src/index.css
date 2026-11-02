@@ -449,15 +449,10 @@ button:not(.retro-contact-window > button):active {
   user-select: none;
 }
 
-.retro-hero-sequence-image-previous {
+.retro-hero-sequence-image-next {
   z-index: 1;
-  opacity: 0;
   pointer-events: none;
-  transition: opacity 180ms ease-out;
-}
-
-.retro-hero-sequence-image-previous.is-visible {
-  opacity: 1;
+  will-change: opacity;
 }
 
 .retro-hero-video-frame video {
@@ -1401,9 +1396,13 @@ button:not(.retro-contact-window > button):active {
     flex: 1 1 auto;
   }
 
-  .retro-hero-video-frame {
-    width: min(42vw, 220px);
-    align-self: center;
+  .retro-hero-sequence-frame {
+    width: 100%;
+    max-width: none;
+    height: min(42svh, 320px);
+    aspect-ratio: auto;
+    align-self: stretch;
+    flex: 0 0 auto;
   }
 
   .retro-hero-body {

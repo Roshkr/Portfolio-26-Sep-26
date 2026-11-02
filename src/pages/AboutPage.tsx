@@ -78,7 +78,7 @@ export const AboutPage: React.FC = () => {
                 <span className="text-4xl md:text-5xl font-light text-slate-950 tracking-tight">
                   {stat.value}
                 </span>
-                <p className="text-sm text-slate-500 font-normal">
+                <p className="text-sm text-slate-700 font-normal">
                   {stat.label}
                 </p>
               </div>

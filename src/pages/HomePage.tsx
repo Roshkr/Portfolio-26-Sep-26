@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { CaseStudy, SelectCaseStudy } from '../types';
 import { DESIGNER_INFO } from '../data/portfolioData';
 import { ProjectCard } from '../components/ProjectCard';
@@ -41,26 +41,11 @@ const heroAnimationFrames = [
 export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
   const trackRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const [frameIndex, setFrameIndex] = useState(0);
-  const [previousFrameIndex, setPreviousFrameIndex] = useState<number | null>(null);
-  const [previousFrameVisible, setPreviousFrameVisible] = useState(false);
-  const currentFrameRef = useRef(0);
-  const transitionFrameRef = useRef(0);
-  const transitionTimeoutRef = useRef(0);
-  const handleFrameChange = useCallback((nextFrame: number) => {
-    if (nextFrame === currentFrameRef.current) return;
-
-    const previousFrame = currentFrameRef.current;
-    currentFrameRef.current = nextFrame;
-    setPreviousFrameIndex(previousFrame);
-    setFrameIndex(nextFrame);
-    setPreviousFrameVisible(true);
-    cancelAnimationFrame(transitionFrameRef.current);
-    window.clearTimeout(transitionTimeoutRef.current);
-    transitionFrameRef.current = requestAnimationFrame(() => setPreviousFrameVisible(false));
-    transitionTimeoutRef.current = window.setTimeout(() => setPreviousFrameIndex(null), 220);
-  }, []);
-  useScrollScrubFrames(trackRef, stageRef, heroAnimationFrames.length, handleFrameChange);
+  const [framePosition, setFramePosition] = useState(0);
+  const frameIndex = Math.floor(framePosition);
+  const nextFrameIndex = Math.min(frameIndex + 1, heroAnimationFrames.length - 1);
+  const frameBlend = framePosition - frameIndex;
+  useScrollScrubFrames(trackRef, stageRef, heroAnimationFrames.length, setFramePosition);
 
   useEffect(() => {
     heroAnimationFrames.forEach((src) => {
@@ -89,7 +74,7 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
                 <span className="retro-hero-line retro-hero-line-highlight retro-hero-line-highlight-final">{heroHeadlineLines[4]}</span>
               </h1>
             </div>
-            <div className="retro-hero-video-frame retro-hero-sequence-frame" role="img" aria-label={`Roushan animation, frame ${frameIndex + 1} of ${heroAnimationFrames.length}`}>
+            <div className="retro-hero-video-frame retro-hero-sequence-frame" role="img" aria-label={`Roushan animation, frame ${Math.round(framePosition) + 1} of ${heroAnimationFrames.length}`}>
               <img
                 className="retro-hero-sequence-image"
                 src={heroAnimationFrames[frameIndex]}
@@ -97,12 +82,13 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
                 draggable={false}
                 fetchPriority="high"
               />
-              {previousFrameIndex !== null && (
+              {nextFrameIndex !== frameIndex && (
                 <img
-                  className={`retro-hero-sequence-image retro-hero-sequence-image-previous${previousFrameVisible ? ' is-visible' : ''}`}
-                  src={heroAnimationFrames[previousFrameIndex]}
+                  className="retro-hero-sequence-image retro-hero-sequence-image-next"
+                  src={heroAnimationFrames[nextFrameIndex]}
                   alt=""
                   draggable={false}
+                  style={{ opacity: frameBlend }}
                 />
               )}
             </div>

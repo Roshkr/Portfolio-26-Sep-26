@@ -9,6 +9,14 @@ const getWindowElement = (controls: Element | null) => controls?.closest<HTMLEle
 const getWindowTitle = (element: HTMLElement) =>
   element.querySelector<HTMLElement>('.retro-window-titlebar > span:first-child')?.textContent?.trim() || 'Portfolio window';
 
+const smiles = [
+  { face: '🙂', label: 'friendly smile' },
+  { face: '😏', label: 'knowing smirk' },
+  { face: '😈', label: 'mischievous grin' },
+  { face: '👹', label: 'menacing monster grin' },
+  { face: '🤡', label: 'sinister clown smile' },
+];
+
 const getWindowId = (element: HTMLElement) => {
   if (!element.dataset.retroWindowId) {
     element.dataset.retroWindowId = window.crypto?.randomUUID?.() ?? `window-${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -24,6 +32,7 @@ export const WindowControls: React.FC = () => {
   const noButtonRef = useRef<HTMLButtonElement>(null);
   const dialogTitleId = useId();
   const dialogDescriptionId = useId();
+  const smile = closeAttempt ? smiles[Math.min(closeAttempt.attempt - 1, smiles.length - 1)] : smiles[0];
 
   useEffect(() => {
     if (!closeAttempt) return;
@@ -129,7 +138,7 @@ export const WindowControls: React.FC = () => {
             </div>
             <div className="retro-confirm-body">
               <p className="retro-metadata">{closeAttempt.title}</p>
-              <h2 id={dialogTitleId}>Are you sure? <span role="img" aria-label="smiling face">{String.fromCodePoint(0x1f642)}</span></h2>
+              <h2 id={dialogTitleId}>Are you sure? <span role="img" aria-label={smile.label}>{smile.face}</span></h2>
               <p id={dialogDescriptionId}>Do you want to close this section?</p>
               <div className="retro-confirm-actions">
                 <button type="button" className="retro-button px-5 py-3" onClick={() => setCloseAttempt((request) => request ? { ...request, attempt: request.attempt + 1 } : null)}>

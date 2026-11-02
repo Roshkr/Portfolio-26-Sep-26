@@ -37,7 +37,7 @@ export const usePageMetadata = (route: PortfolioRoute) => {
     const description = route.page === 'case-study'
       ? studyMetadata[route.caseStudy.id]?.description ?? route.caseStudy.subtitle
       : route.page === 'about'
-        ? 'About Roushan Kumar, sometimes searched as Roshan Kumar or Roshni: a UX/UI and product designer in Ahmedabad working across B2B SaaS, fintech, and enterprise workflows.'
+        ? 'Roushan Kumar is a UX/UI and product designer in Ahmedabad, India, working across B2B SaaS, fintech, and enterprise workflows.'
         : 'Roushan Kumar is a UX/UI and product designer in Ahmedabad, India, focused on B2B SaaS, fintech, enterprise workflows, and mobile products.';
 
     document.title = title;
@@ -58,14 +58,14 @@ export const usePageMetadata = (route: PortfolioRoute) => {
           name: title,
           url: `https://roushan.in${canonicalPath}`,
           description,
-          creator: { '@type': 'Person', name: 'Roushan Kumar', url: 'https://roushan.in/' },
+          creator: { '@type': 'Person', '@id': 'https://roushan.in/#person', name: 'Roushan Kumar', url: 'https://roushan.in/' },
           keywords: route.caseStudy.tags?.join(', '),
         }
       : {
           '@context': 'https://schema.org',
           '@type': 'Person',
           name: 'Roushan Kumar',
-          alternateName: ['Roshan Kumar', 'Roshni'],
+          '@id': 'https://roushan.in/#person',
           url: 'https://roushan.in/',
           jobTitle: 'Product Designer',
           description,

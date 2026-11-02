@@ -68,8 +68,8 @@ export const Footer: React.FC = () => {
             <span aria-hidden="true">·</span>
             <span>{DESIGNER_INFO.location}</span>
           </div>
-          <time className="retro-footer-clock retro-metadata" dateTime={time.toISOString()} aria-label={`Current time in Ahmedabad: ${clock} IST`}>
-            AHMEDABAD {clock} IST
+          <time className="retro-footer-clock retro-metadata" dateTime={time.toISOString()} aria-label={`Current time: ${clock} IST`}>
+            {clock} IST
           </time>
 
           {/* Social Links from Framer Portfolio */}
