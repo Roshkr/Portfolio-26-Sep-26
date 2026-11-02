@@ -96,7 +96,7 @@ export const LazyVideo: React.FC<{
       {poster && !isReady && (
         <img
           src={poster}
-          alt="Video thumbnail placeholder"
+          alt={`${ariaLabel} thumbnail`}
           className={`absolute inset-0 w-full h-full ${objectFitClass} rounded-[18px] sm:rounded-[22px]`}
           loading={inView ? 'eager' : 'lazy'}
           fetchPriority={inView ? 'high' : 'auto'}
@@ -114,6 +114,7 @@ export const LazyVideo: React.FC<{
         loop
         playsInline
         aria-label={ariaLabel}
+        title={ariaLabel}
         onCanPlay={() => setIsReady(true)}
         onError={() => setIsReady(false)}
         className={`w-full h-full ${objectFitClass} rounded-[18px] sm:rounded-[22px] transition-opacity duration-300 ${
@@ -137,6 +138,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({
         imageSrc={imageSrc}
         videoSrc={videoSrc}
         className={className}
+        label={ariaLabel}
       />
     );
   }
@@ -196,11 +198,16 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
             /* High Fidelity Rendered Screen — prefers video over image */
             <div className="relative w-full h-full rounded-[30px] overflow-hidden">
               {videoSrc ? (
-                <LazyVideo src={videoSrc} poster={activePoster} className="rounded-[30px]" />
+            <LazyVideo
+              src={videoSrc}
+              poster={activePoster}
+              ariaLabel={`${label || 'Mobile product interface'} video demonstration`}
+              className="rounded-[30px]"
+            />
               ) : (
                 <img
                   src={imageSrc}
-                  alt="Mobile UI Screen"
+                  alt={`${label || 'Mobile product'} interface screenshot`}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-contain rounded-[30px]"
                   loading="lazy"

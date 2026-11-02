@@ -170,7 +170,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             ) : (
               <img
                 src={caseStudy.heroImage}
-                alt={caseStudy.title}
+                alt={`${caseStudy.title} ${caseStudy.category.toLowerCase()} case study hero image.`}
                 referrerPolicy="no-referrer"
                 className="max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-sm sm:shadow-md border border-slate-200/80"
                 loading="lazy"

@@ -76,65 +76,50 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isSending, setIsSending] = useState(false);
   const [isResponding, setIsResponding] = useState(false);
-  const [deliveryStatus, setDeliveryStatus] = useState<'idle' | 'sent' | 'failed'>('idle');
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<ChatMessage[]>(messages);
-  const sendingRef = useRef(false);
   const respondingRef = useRef(false);
-  const emailSentRef = useRef(false);
+  const requestControllerRef = useRef<AbortController | null>(null);
+  const closedSessionRef = useRef(false);
   const closeChatRef = useRef<() => void>(() => undefined);
   messagesRef.current = messages;
 
-  const closeChat = async () => {
-    if (sendingRef.current || respondingRef.current) return;
-    const transcript = messagesRef.current;
-    if (transcript.length === 0 || emailSentRef.current) {
-      onClose();
-      return;
-    }
+  const closeChat = () => {
+    if (closedSessionRef.current) return;
+    closedSessionRef.current = true;
 
-    sendingRef.current = true;
-    setIsSending(true);
-    setDeliveryStatus('idle');
-    const transcriptText = transcript
-      .map(({ from, text }) => `${from === 'visitor' ? 'Visitor' : from === 'system' ? 'Chat status' : 'Roushan'}: ${text}`)
-      .join('\n\n');
-    try {
-      await submitContactInquiry(
+    const transcript = messagesRef.current;
+    requestControllerRef.current?.abort();
+    requestControllerRef.current = null;
+    respondingRef.current = false;
+    setIsResponding(false);
+    onClose();
+
+    if (transcript.length > 0) {
+      const transcriptText = transcript
+        .map(({ from, text }) => `${from === 'visitor' ? 'Visitor' : from === 'system' ? 'Chat status' : 'Roushan'}: ${text}`)
+        .join('\n\n');
+      void submitContactInquiry(
         {
           name: 'Portfolio chat visitor',
           email: '',
           message: `Chat transcript:\n\n${transcriptText}`,
         },
         'Portfolio chat transcript',
-      );
-      emailSentRef.current = true;
-      setDeliveryStatus('sent');
-      onClose();
-    } catch {
-      setDeliveryStatus('failed');
-    } finally {
-      sendingRef.current = false;
-      setIsSending(false);
-      setIsResponding(false);
-      respondingRef.current = false;
+      ).catch((error) => console.error('Failed to email the portfolio chat transcript:', error));
     }
   };
-  closeChatRef.current = () => { void closeChat(); };
+  closeChatRef.current = closeChat;
 
   useEffect(() => {
     if (!isOpen) {
       setMessages([]);
       messagesRef.current = [];
-      setDeliveryStatus('idle');
-      emailSentRef.current = false;
-      sendingRef.current = false;
-      setIsSending(false);
       return;
     }
+    closedSessionRef.current = false;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') closeChatRef.current();
     };
@@ -156,7 +141,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   const submitQuestion = async (text: string) => {
     const value = text.trim();
-    if (!value || isSending || respondingRef.current) return;
+    if (!value || respondingRef.current) return;
     const conversation = [...messagesRef.current, { from: 'visitor' as const, text: value }];
 
     const similarQuestionCount = messagesRef.current.filter((message) =>
@@ -174,17 +159,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       messagesRef.current = nextMessages;
       setMessages(nextMessages);
       setQuestion('');
-      setDeliveryStatus('idle');
       return;
     }
 
     messagesRef.current = conversation;
     setMessages(conversation);
     setQuestion('');
-    setDeliveryStatus('idle');
     respondingRef.current = true;
     setIsResponding(true);
     const controller = new AbortController();
+    requestControllerRef.current = controller;
     const timeoutId = window.setTimeout(() => controller.abort(), 27_000);
     try {
       const response = await fetch('/api/chat', {
@@ -213,6 +197,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       }
       setMessages((current) => [...current, { from: 'portfolio', text: result.reply as string }]);
     } catch (error) {
+      if (controller.signal.aborted) return;
       console.error('Portfolio chat request failed:', error);
       setMessages((current) => [...current, {
         from: 'system',
@@ -221,8 +206,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       }]);
     } finally {
       window.clearTimeout(timeoutId);
-      respondingRef.current = false;
-      setIsResponding(false);
+      if (requestControllerRef.current === controller) {
+        requestControllerRef.current = null;
+        respondingRef.current = false;
+        setIsResponding(false);
+      }
     }
   };
 
@@ -242,7 +230,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <button type="button" onClick={() => setIsExpanded((value) => !value)} aria-label={isExpanded ? 'Restore dialog size' : 'Expand dialog'} className="hidden rounded-xl p-2 transition-colors hover:bg-slate-100 hover:text-black sm:block">
             <Expand className="h-5 w-5" aria-hidden="true" />
           </button>
-          <button type="button" onClick={() => closeChatRef.current()} disabled={isSending || isResponding} aria-label="Close dialog" className="retro-chat-close rounded-xl p-2 transition-colors disabled:cursor-wait disabled:opacity-50">
+          <button type="button" onClick={() => closeChatRef.current()} aria-label="Close dialog" className="retro-chat-close rounded-xl p-2 transition-colors">
             <X className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
@@ -268,6 +256,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   playsInline
                   preload="metadata"
                   aria-label="Roushan profile video"
+                  title="Roushan Kumar profile video"
                   className="h-full w-full bg-white object-contain"
                 />
               </div>
@@ -302,7 +291,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             <button
               key={suggestion}
               type="button"
-              disabled={isResponding || isSending}
+              disabled={isResponding}
               onClick={() => submitQuestion(suggestion)}
               className="min-h-10 shrink-0 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-left text-xs leading-tight text-slate-800 transition-colors hover:bg-slate-100 disabled:cursor-wait disabled:opacity-60 sm:px-4 sm:py-3 sm:text-sm"
             >
@@ -328,15 +317,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               aria-label="Ask a question or paste a job description"
               className="max-h-32 min-h-6 min-w-0 flex-1 resize-y border-0 bg-transparent text-base leading-relaxed text-slate-800 outline-none placeholder:text-slate-400"
             />
-            <button type="submit" aria-label="Send question" disabled={!question.trim() || isSending || isResponding} className="rounded-lg p-1.5 text-slate-400 transition-colors enabled:text-[#2b35ee] enabled:hover:bg-[#2b35ee]/5">
-              <ArrowUp className={`h-6 w-6 ${isSending || isResponding ? 'animate-pulse' : ''}`} aria-hidden="true" />
+            <button type="submit" aria-label="Send question" disabled={!question.trim() || isResponding} className="rounded-lg p-1.5 text-slate-400 transition-colors enabled:text-[#2b35ee] enabled:hover:bg-[#2b35ee]/5">
+              <ArrowUp className={`h-6 w-6 ${isResponding ? 'animate-pulse' : ''}`} aria-hidden="true" />
             </button>
           </div>
         </form>
-        <p className="mt-3 shrink-0 text-[10px] leading-relaxed text-[#686868] sm:mt-4 sm:text-xs">
-          {isSending ? 'Sending chat transcript to email...' : deliveryStatus === 'failed' ? 'Email delivery failed. Contact Roushan directly instead:' : ''}
-        </p>
-        {deliveryStatus === 'failed' && <WhatsAppContactButton />}
       </section>
     </div>
   );

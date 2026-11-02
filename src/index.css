@@ -1436,6 +1436,7 @@ button:not(.retro-contact-window > button):active {
 
   .retro-project-window .retro-project-layout {
     grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
   }
 
   .retro-project-window .retro-project-media {

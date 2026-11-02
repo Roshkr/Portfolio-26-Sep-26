@@ -74,11 +74,11 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
                 <span className="retro-hero-line retro-hero-line-highlight retro-hero-line-highlight-final">{heroHeadlineLines[4]}</span>
               </h1>
             </div>
-            <div className="retro-hero-video-frame retro-hero-sequence-frame" role="img" aria-label={`Roushan animation, frame ${Math.round(framePosition) + 1} of ${heroAnimationFrames.length}`}>
+            <div className="retro-hero-video-frame retro-hero-sequence-frame">
               <img
                 className="retro-hero-sequence-image"
                 src={heroAnimationFrames[frameIndex]}
-                alt=""
+                alt={`Roushan Kumar, product designer, portrait in the animated home hero, frame ${Math.round(framePosition) + 1} of ${heroAnimationFrames.length}.`}
                 draggable={false}
                 fetchPriority="high"
               />
@@ -87,6 +87,7 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
                   className="retro-hero-sequence-image retro-hero-sequence-image-next"
                   src={heroAnimationFrames[nextFrameIndex]}
                   alt=""
+                  aria-hidden="true"
                   draggable={false}
                   style={{ opacity: frameBlend }}
                 />

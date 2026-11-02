@@ -16,6 +16,7 @@ export const submitContactInquiry = async (
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
+    keepalive: true,
     body: JSON.stringify({
       ...inquiry,
       _subject: subject,

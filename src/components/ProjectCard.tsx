@@ -152,7 +152,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           ) : (
             <img
               src={study.heroImage}
-              alt={study.title}
+              alt={`${study.title} case study thumbnail.`}
               referrerPolicy="no-referrer"
               className={`max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[380px] w-auto h-auto object-contain ${compactCorners ? 'rounded-xl' : 'rounded-[20px] sm:rounded-[28px]'} shadow-sm sm:shadow-md border border-slate-200/80 group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300`}
               loading="lazy"

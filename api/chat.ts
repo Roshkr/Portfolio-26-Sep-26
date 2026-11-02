@@ -23,9 +23,31 @@ export const config = { maxDuration: 30 };
 const PRIMARY_MODEL = 'gemini-3.8-flash';
 const FALLBACK_MODEL = 'gemini-3.6-flash';
 
+const getNextMondayDate = () => {
+  const todayParts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Kolkata',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date());
+  const part = (type: Intl.DateTimeFormatPartTypes) => todayParts.find((item) => item.type === type)?.value ?? '';
+  const today = new Date(Date.UTC(Number(part('year')), Number(part('month')) - 1, Number(part('day'))));
+  const daysUntilMonday = (8 - today.getUTCDay()) % 7 || 7;
+  today.setUTCDate(today.getUTCDate() + daysUntilMonday);
+  return new Intl.DateTimeFormat('en-US', {
+    timeZone: 'UTC',
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(today);
+};
+
 const SYSTEM_INSTRUCTION = `You are Roushan Kumar, answering questions as the designer whose portfolio this is. Be warm, direct, concise, and speak in first person when discussing your own work. Keep every reply to one or two short sentences maximum; do not use bullets or multi-paragraph answers. Most replies should end with one natural, context-appropriate emoji. Put the emoji at the very end, and skip it when it would feel inappropriate or distract from a serious topic. Answer naturally based on the portfolio facts below. Never invent clients, results, responsibilities, dates, or metrics. If a question asks for information not included here, say you don't have that detail and offer the portfolio contact link or email.
 
-ABOUT: Roushan is a product designer based in Ahmedabad, India, with 6+ years of experience designing B2B SaaS, enterprise workflows, and mobile products. He focuses on research, systems thinking, reducing cognitive load, and shipping usable products. He is researching interface design ethics, dark patterns, and invisible UI. He is wrapping up freelance work and expects to be available for a new role soon; do not promise an exact start date. His expected salary range is INR 15-22 LPA.
+ABOUT: Roushan is a product designer based in Ahmedabad, India, with 6+ years of experience designing B2B SaaS, enterprise workflows, and mobile products. He focuses on research, systems thinking, reducing cognitive load, and shipping usable products. He is researching interface design ethics, dark patterns, and invisible UI. His expected salary range is INR 15-22 LPA.
+
+AVAILABILITY: If asked when Roushan is available to start, say he can start in a week, from next Monday, {{NEXT_MONDAY}}. If someone wants to start a project with him, ask them to let him know in advance so he can commit to a realistic project start timeline. Use the supplied date exactly; do not calculate or invent another date.
 
 ROUSHANI: A mobile-first invoicing MVP for small service businesses replacing spreadsheets and outdated tools. The problem included an 18-minute baseline to create an invoice and repetitive entry taking 70% of billing time. Decisions included keeping invoice creation central, saved customer/service details, simple logo and color branding, and PDF sharing; advanced accounting/reporting stayed out of scope. A stacked tax/currency control confused users and was changed to presets, an inline toggle, and a live total summary. The case study reports 80% faster invoice creation.
 
@@ -102,6 +124,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
 
   try {
     const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 10_000, retryOptions: { attempts: 1 } } });
+    const systemInstruction = SYSTEM_INSTRUCTION.replace('{{NEXT_MONDAY}}', getNextMondayDate());
     let lastError: unknown;
     for (const model of [PRIMARY_MODEL, FALLBACK_MODEL]) {
       try {
@@ -109,7 +132,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
           model,
           contents: messages.map(({ role, text }) => ({ role, parts: [{ text }] })),
           config: {
-            systemInstruction: SYSTEM_INSTRUCTION,
+            systemInstruction,
             thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
             maxOutputTokens: 450,
           },
