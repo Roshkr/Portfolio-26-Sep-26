@@ -144,7 +144,7 @@ export const AboutPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="space-y-3.5 sm:space-y-4">
+        <div className="about-stack-list">
           {CREATIVE_TOOLKIT.map((tool, idx) => (
             <div
               key={idx}
@@ -206,7 +206,7 @@ export const AboutPage: React.FC = () => {
             </h2>
           </div>
 
-          <div className="space-y-3.5 sm:space-y-4">
+          <div className="about-stack-list">
             {EXPERIENCES.map((exp, idx) => (
               <div
                 key={idx}
@@ -297,7 +297,7 @@ export const AboutPage: React.FC = () => {
             </h2>
           </div>
 
-          <div className="space-y-3.5 sm:space-y-4">
+          <div className="about-stack-list">
             {EDUCATIONS.map((edu, idx) => (
               <div
                 key={idx}

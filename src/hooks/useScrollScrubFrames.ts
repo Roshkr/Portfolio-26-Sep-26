@@ -18,6 +18,9 @@ export const useScrollScrubFrames = (
       return;
     }
 
+    const previousStickyTop = stage.style.getPropertyValue('--retro-tv-sticky-top');
+    stage.style.setProperty('--retro-tv-sticky-top', `${stage.getBoundingClientRect().top}px`);
+
     gsap.registerPlugin(ScrollTrigger);
     const playhead = { frame: 0 };
     const context = gsap.context(() => {
@@ -26,16 +29,16 @@ export const useScrollScrubFrames = (
         ease: 'none',
         onUpdate: () => setFramePosition(playhead.frame),
         scrollTrigger: {
-          trigger: track,
+          trigger: stage,
           start: () => {
-            const trackDocumentTop = window.scrollY + track.getBoundingClientRect().top;
-            return `top top+=${trackDocumentTop}`;
+            if (window.matchMedia('(max-width: 760px)').matches) return 'top bottom';
+            const stickyTop = Number.parseFloat(getComputedStyle(stage).top) || 0;
+            return `top top+=${stickyTop}`;
           },
           end: () => {
-            const stickyTop = Number.parseFloat(getComputedStyle(stage).top) || 0;
-            const trackDocumentTop = window.scrollY + track.getBoundingClientRect().top;
-            const releaseScrollPosition = trackDocumentTop + track.clientHeight - stage.offsetHeight - stickyTop;
-            return `+=${Math.max(1, releaseScrollPosition)}`;
+            if (window.matchMedia('(max-width: 760px)').matches) return 'bottom top';
+            const stickyTravel = track.clientHeight - stage.offsetTop - stage.offsetHeight;
+            return `+=${Math.max(1, stickyTravel)}`;
           },
           scrub: 0.12,
           invalidateOnRefresh: true,
@@ -44,6 +47,13 @@ export const useScrollScrubFrames = (
       });
     }, track);
 
-    return () => context.revert();
+    return () => {
+      context.revert();
+      if (previousStickyTop) {
+        stage.style.setProperty('--retro-tv-sticky-top', previousStickyTop);
+      } else {
+        stage.style.removeProperty('--retro-tv-sticky-top');
+      }
+    };
   }, [trackRef, stageRef, frameCount, setFramePosition]);
 };

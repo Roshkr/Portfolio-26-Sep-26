@@ -36,6 +36,9 @@
   --dp-spacing-pane-inset: 5px;
   --dp-spacing-item-gap: 10px;
   --dp-spacing-section-gap: clamp(28px, 3.5vw, 40px);
+  --dp-spacing-section-inset: clamp(24px, 3.5vw, 40px);
+  --dp-spacing-card-gap: clamp(16px, 2vw, 24px);
+  --dp-spacing-card-inset: clamp(16px, 2vw, 24px);
   --dp-radius-control: 0;
   --dp-border-frame: 2px;
   --dp-border-rule: 1px;
@@ -381,11 +384,11 @@ button:not(.retro-contact-window > button):active {
 
 .home-hero-background {
   height: calc(100svh - 76px);
-  margin-bottom: var(--dp-spacing-section-gap);
+  margin-bottom: 0;
 }
 
 .retro-facts-section {
-  padding: clamp(18px, 2.5vw, 28px) 0 clamp(24px, 3vw, 40px);
+  padding-block: var(--dp-spacing-section-gap);
 }
 
 .home-hero-background:has(.retro-hero-window[data-retro-minimized="true"]) {
@@ -654,7 +657,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .retro-facts-body {
-  padding: 14px;
+  padding: var(--dp-spacing-card-inset);
 }
 
 .retro-facts-list {
@@ -721,11 +724,11 @@ button:not(.retro-contact-window > button):active {
 }
 
 .retro-projects-window {
-  padding: 0 12px 12px;
+  padding: 0 var(--dp-spacing-card-inset) var(--dp-spacing-card-inset);
 }
 
 .retro-projects-window > .retro-window-titlebar {
-  margin-inline: -12px;
+  margin-inline: calc(-1 * var(--dp-spacing-card-inset));
 }
 
 .retro-projects-heading {
@@ -747,7 +750,7 @@ button:not(.retro-contact-window > button):active {
 
 .retro-project-list {
   display: grid;
-  gap: 24px;
+  gap: var(--dp-spacing-card-gap);
 }
 
 .retro-project-window {
@@ -763,7 +766,8 @@ button:not(.retro-contact-window > button):active {
 }
 
 .retro-project-window .retro-project-layout {
-  padding: 10px;
+  gap: var(--dp-spacing-card-gap);
+  padding: var(--dp-spacing-pane-inset);
 }
 
 .retro-project-window .retro-project-media {
@@ -781,7 +785,7 @@ button:not(.retro-contact-window > button):active {
 
 .retro-project-window .retro-project-copy {
   min-width: 0;
-  padding: clamp(16px, 2.4vw, 28px);
+  padding: var(--dp-spacing-card-inset);
   background: #fff;
 }
 
@@ -821,7 +825,7 @@ button:not(.retro-contact-window > button):active {
 .about-page > section {
   width: 100%;
   max-width: none;
-  margin: 24px 0 34px;
+  margin-block: var(--dp-spacing-section-gap);
   border: var(--dp-border-frame) solid var(--dp-color-ink);
   background: var(--dp-color-window);
   padding: 0;
@@ -840,7 +844,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page > section:first-child > div:nth-child(2) {
-  padding: clamp(18px, 3vw, 38px) clamp(18px, 3vw, 38px) calc(clamp(18px, 3vw, 38px) + 72svh);
+  padding: clamp(18px, 3vw, 38px);
 }
 
 .about-hero-scroll-track > .retro-window-titlebar {
@@ -854,14 +858,14 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page > .about-quick-facts-section {
-  margin-top: 0;
+  margin-top: var(--dp-spacing-section-gap);
 }
 
 .about-hero-layout .retro-hero-tv-stack {
   position: -webkit-sticky;
   position: sticky;
-  top: 96px;
-  z-index: 20;
+  top: var(--retro-tv-sticky-top, 183px);
+  z-index: 7;
   align-self: start;
 }
 
@@ -884,13 +888,13 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-personal-body {
-  padding: clamp(20px, 3vw, 38px);
+  padding: var(--dp-spacing-section-inset);
 }
 
 .about-personal-intro {
-  margin-bottom: clamp(20px, 3vw, 36px);
+  margin-bottom: var(--dp-spacing-card-gap);
   border: 2px solid var(--dp-color-ink);
-  padding: clamp(18px, 3vw, 32px);
+  padding: var(--dp-spacing-card-inset);
   background: var(--dp-color-highlight);
   box-shadow: 4px 4px 0 var(--dp-color-ink);
 }
@@ -923,13 +927,13 @@ button:not(.retro-contact-window > button):active {
 .about-personal-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 22px);
+  gap: var(--dp-spacing-card-gap);
 }
 
 .about-personal-card {
   min-height: 100%;
   border: 2px solid var(--dp-color-ink);
-  padding: clamp(18px, 2.5vw, 30px);
+  padding: var(--dp-spacing-card-inset);
   box-shadow: 4px 4px 0 var(--dp-color-ink);
   color: var(--dp-color-ink);
 }
@@ -1027,6 +1031,8 @@ button:not(.retro-contact-window > button):active {
 .about-page .about-stack-card {
   position: relative;
   top: auto;
+  gap: var(--dp-spacing-card-gap);
+  padding: var(--dp-spacing-card-inset);
   border: 2px solid var(--dp-color-bevel-dark);
   border-radius: 0;
   background: var(--dp-color-window);
@@ -1034,6 +1040,12 @@ button:not(.retro-contact-window > button):active {
     inset 1px 1px 0 #fff,
     inset -1px -1px 0 #404040,
     3px 3px 0 #000;
+}
+
+.about-page .about-stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dp-spacing-card-gap);
 }
 
 .about-page .about-stack-card:hover {
@@ -1051,7 +1063,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .case-study-page {
-  padding-block: 20px 60px;
+  padding-block: 20px 0;
   background: transparent;
   color: var(--dp-color-ink);
 }
@@ -1069,8 +1081,8 @@ button:not(.retro-contact-window > button):active {
 }
 
 .case-study-page.roushani-case-study > header {
-  margin-block: 12px 24px;
-  padding-block: clamp(24px, 4vw, 48px);
+  margin-block: var(--dp-spacing-section-gap);
+  padding-block: var(--dp-spacing-section-inset);
 }
 
 .roushani-case-study > header > div:first-child,
@@ -1095,9 +1107,9 @@ button:not(.retro-contact-window > button):active {
   position: relative;
   width: 100%;
   max-width: none;
-  margin: clamp(20px, 3vw, 36px) 0;
+  margin-block: var(--dp-spacing-section-gap);
   border: var(--dp-border-frame) solid var(--dp-color-ink) !important;
-  padding: clamp(32px, 5vw, 64px) clamp(16px, 2.4vw, 36px);
+  padding: var(--dp-spacing-section-inset) clamp(16px, 2.4vw, 36px);
   background-color: var(--dp-color-window) !important;
   box-shadow:
     inset 1px 1px 0 #fff,
@@ -1133,6 +1145,18 @@ button:not(.retro-contact-window > button):active {
 .case-study-page [class~="text-sm"] {
   font-size: 16px !important;
   line-height: 1.6;
+}
+
+.case-study-page article:not(.case-study-page):not([class*="overflow-hidden"]) {
+  padding: var(--dp-spacing-card-inset) !important;
+}
+
+.case-study-page figure[class*="p-"] {
+  padding: var(--dp-spacing-card-inset) !important;
+}
+
+.case-study-page .grid:has(> :is(article, figure)) {
+  gap: var(--dp-spacing-card-gap) !important;
 }
 
 /* Keep muted copy readable and accent labels consistent on every case study. */
@@ -1517,6 +1541,13 @@ button:not(.retro-contact-window > button):active {
 }
 
 @media (max-width: 760px) {
+  :root {
+    --dp-spacing-section-gap: 24px;
+    --dp-spacing-section-inset: 20px;
+    --dp-spacing-card-gap: 16px;
+    --dp-spacing-card-inset: 16px;
+  }
+
   .portfolio-protected {
     padding-inline: 12px;
   }
@@ -1540,7 +1571,8 @@ button:not(.retro-contact-window > button):active {
 
   .about-hero-layout .retro-hero-tv-stack {
     width: min(100%, 460px);
-    top: 88px;
+    position: static;
+    top: auto;
     justify-self: center;
     gap: 10px;
   }
@@ -1585,37 +1617,37 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-projects-window {
-    padding-inline: 8px;
+    padding-inline: var(--dp-spacing-card-inset);
   }
 
   .about-page > section {
     width: 100%;
-    margin-block: 18px 26px;
+    margin-block: var(--dp-spacing-section-gap);
   }
 
   .about-page > section:first-child > div:nth-child(2) {
-    padding: 16px 16px calc(16px + 72svh);
+    padding: var(--dp-spacing-card-inset);
   }
 
   .about-page > section:nth-child(2) > div:nth-child(2) {
-    padding: 16px;
+    padding: var(--dp-spacing-section-inset) var(--dp-spacing-card-inset);
   }
 
   .about-page > section:nth-child(4) > div:nth-child(2) {
-    padding: 18px 16px 0;
+    padding: var(--dp-spacing-section-inset) var(--dp-spacing-card-inset) 0;
   }
 
   .about-page > section:nth-child(4) > div:nth-child(3) {
-    padding: 0 16px 18px;
+    padding: 0 var(--dp-spacing-card-inset) var(--dp-spacing-section-inset);
   }
 
   .about-page > section:nth-child(5) > div:nth-child(2),
   .about-page > section:nth-child(6) > div:nth-child(2) {
-    padding: 18px 16px;
+    padding: var(--dp-spacing-section-inset) var(--dp-spacing-card-inset);
   }
 
   .about-personal-body {
-    padding: 16px;
+    padding: var(--dp-spacing-section-inset);
   }
 
   .about-personal-grid {
@@ -1633,7 +1665,7 @@ button:not(.retro-contact-window > button):active {
 
   .case-study-page > section {
     width: 100%;
-    margin-block: 18px 26px;
+    margin-block: var(--dp-spacing-section-gap);
   }
 
   .about-footer {
