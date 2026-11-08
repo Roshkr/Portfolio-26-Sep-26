@@ -383,7 +383,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .home-hero-background {
-  height: calc(100svh - 76px);
+  height: calc(100svh - 76px + var(--dp-spacing-section-gap));
   margin-bottom: 0;
 }
 
@@ -601,7 +601,7 @@ button:not(.retro-contact-window > button):active {
   margin: 0;
   color: var(--dp-color-ink);
   font-family: var(--dp-typography-display);
-  font-size: clamp(32px, min(8.5vw, 8svh), 116px);
+  font-size: clamp(32px, min(8.5vw, 10.5svh), 140px);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1.06;
@@ -1557,7 +1557,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .home-hero-background {
-    height: calc(100svh - 76px);
+    height: calc(100svh - 76px + var(--dp-spacing-section-gap));
   }
 
   .retro-hero-body {
@@ -1684,7 +1684,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-hero-body h1 {
-    font-size: clamp(28px, min(9vw, 5svh), 44px);
+    font-size: clamp(36px, min(14vw, 8svh), 56px);
   }
 
   .retro-projects-heading {
@@ -1716,7 +1716,7 @@ button:not(.retro-contact-window > button):active {
 
 @media (max-width: 639px) {
   .home-hero-background {
-    height: calc(100svh - 64px);
+    height: calc(100svh - 64px + var(--dp-spacing-section-gap));
   }
 }
 

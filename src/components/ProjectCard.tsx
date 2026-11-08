@@ -46,7 +46,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className="retro-project-window">
         <div className="retro-window-titlebar">
           <span>{study.title}</span>
-          <span aria-hidden="true">CASE FILE</span>
           <WindowControls />
         </div>
         <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="retro-project-link group block cursor-pointer text-left text-black no-underline">
@@ -89,7 +88,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 className="h-full w-full rounded-xl object-contain transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]"
               />
             ) : study.heroVideo ? (
-              <LazyVideo src={study.heroVideo} poster={study.heroImage} ariaLabel={`${study.title} project preview`} objectFit="contain" frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-xl" />
+              <LazyVideo
+                src={study.heroVideo}
+                poster={study.heroImage}
+                ariaLabel={`${study.title} project preview`}
+                objectFit={study.id === 'naie' || study.id === 'maxlence' ? 'cover' : 'contain'}
+                frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-xl"
+              />
             ) : (
               <img src={study.heroImage} alt={`${study.title} project preview`} referrerPolicy="no-referrer" loading="lazy" className="h-full w-full object-contain rounded-xl transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
             )}

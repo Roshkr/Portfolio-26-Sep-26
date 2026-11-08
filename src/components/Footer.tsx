@@ -22,7 +22,6 @@ export const Footer: React.FC = () => {
       <div className="flex w-full flex-col justify-between min-h-[380px]">
         <div className="retro-window-titlebar retro-footer-titlebar">
           <span>CONTACT / LINKS</span>
-          <span aria-hidden="true">END OF FILE</span>
           <WindowControls />
         </div>
         <div className="retro-footer-body">

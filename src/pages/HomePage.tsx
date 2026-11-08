@@ -27,7 +27,6 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
         <div className="retro-window retro-hero-window">
           <div className="retro-window-titlebar">
             <span>ROUSHAN.IN / HOME</span>
-            <span aria-hidden="true">01</span>
             <WindowControls />
           </div>
           <div className="retro-hero-body">
@@ -51,7 +50,6 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
       <aside className="retro-window retro-facts-window">
         <div className="retro-window-titlebar">
           <span>QUICK FACTS</span>
-          <span aria-hidden="true">INFO.DAT</span>
           <WindowControls />
         </div>
         <div className="retro-facts-body">
@@ -71,7 +69,6 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
       <div className="retro-window retro-projects-window">
         <div className="retro-window-titlebar">
           <span>SELECTED WORKS</span>
-          <span aria-hidden="true">{String(caseStudies.length).padStart(2, '0')} PROJECTS</span>
           <WindowControls />
         </div>
         <div className="retro-projects-heading">

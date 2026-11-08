@@ -31,7 +31,7 @@ interface ProjectMockupProps {
  * 2. IntersectionObserver (250px margin) — begins buffering just before entering screen
  * 3. Auto-pause when scrolled out of view — frees GPU decode buffers and CPU
  * 4. Poster image placeholder — prevents layout shift and blank rectangles
- * 5. Smooth fade-in once video frame is decoded and ready
+ * 5. Smooth fade-in once video playback begins
  */
 export const LazyVideo: React.FC<{
   src: string;
@@ -45,7 +45,7 @@ export const LazyVideo: React.FC<{
   const videoRef = useRef<HTMLVideoElement>(null);
   const [inView, setInView] = useState(eager);
   const [posterReady, setPosterReady] = useState(!poster || eager);
-  const [isReady, setIsReady] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const objectFitClass = objectFit === 'contain' ? 'object-contain' : 'object-cover';
   useEffect(() => {
     const el = videoRef.current;
@@ -73,7 +73,7 @@ export const LazyVideo: React.FC<{
 
   useEffect(() => {
     setPosterReady(!poster || eager);
-    setIsReady(false);
+    setIsPlaying(false);
   }, [eager, poster, src]);
 
   useEffect(() => {
@@ -95,7 +95,7 @@ export const LazyVideo: React.FC<{
   return (
     <div className={`relative w-full h-full overflow-hidden rounded-[18px] bg-slate-100 sm:rounded-[22px] ${frameClassName}`}>
       {/* Poster background displayed while video is idle or buffering */}
-      {poster && !isReady && (
+      {poster && !isPlaying && (
         <img
           src={poster}
           alt={`${ariaLabel} thumbnail`}
@@ -117,10 +117,10 @@ export const LazyVideo: React.FC<{
         playsInline
         aria-label={ariaLabel}
         title={ariaLabel}
-        onCanPlay={() => setIsReady(true)}
-        onError={() => setIsReady(false)}
+        onPlaying={() => setIsPlaying(true)}
+        onError={() => setIsPlaying(false)}
         className={`w-full h-full ${objectFitClass} rounded-[18px] sm:rounded-[22px] transition-opacity duration-300 ${
-          isReady ? 'opacity-100' : 'opacity-0'
+          isPlaying ? 'opacity-100' : 'opacity-0'
         } ${className}`}
       />
     </div>
