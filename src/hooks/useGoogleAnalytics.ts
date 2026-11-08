@@ -8,7 +8,9 @@ export const useGoogleAnalytics = (measurementId: string | undefined, routePath:
 
     if (!window.gtag) {
       window.dataLayer = window.dataLayer || [];
-      window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);
+      window.gtag = function (...args: unknown[]) {
+        window.dataLayer?.push(arguments);
+      };
       window.gtag('js', new Date());
     }
 
