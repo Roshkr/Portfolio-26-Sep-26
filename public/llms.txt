@@ -1,13 +1,13 @@
 # Roushan Kumar - Product Designer
 
-> Official portfolio of Roushan Kumar, a UX/UI and product designer based in Ahmedabad, India. Roushani is his mobile-first invoicing product for service businesses. His work spans B2B SaaS, fintech, enterprise workflows, mobile products, and design systems.
+> Official portfolio of Roushan Kumar, a product designer based in Ahmedabad, India. Roushani is his mobile invoicing product for service businesses. His work includes B2B SaaS, fintech, enterprise workflows, mobile products, and design systems.
 
-Roushan works end-to-end, from understanding user problems through research and information architecture to interaction design, production-ready designs, and design systems.
+Roushan works from research and information architecture through interface design and handoff to engineering.
 
 ## Direct answers
 
 - **Who is Roushan Kumar?** A UX/UI and product designer based in Ahmedabad, India.
-- **What does he specialize in?** Complex B2B and SaaS workflows, enterprise products, fintech, mobile experiences, and design systems.
+- **What does he work on?** B2B and SaaS workflows, enterprise products, fintech, mobile experiences, and design systems.
 - **What is Roushani?** A mobile-first invoicing product designed for service businesses.
 - **How can you contact him?** Email roushan.ux@gmail.com or use the LinkedIn profile below.
 

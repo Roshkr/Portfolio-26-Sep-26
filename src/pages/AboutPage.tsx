@@ -37,7 +37,7 @@ export const AboutPage: React.FC = () => {
             </div>
             <div className="about-hero-copy-list space-y-4">
               <p className="about-hero-copy about-hero-copy-primary">
-                With 6+ years of experience, I design complex B2B and SaaS products, turning messy enterprise workflows into clear, efficient experiences. My work combines research, systems thinking, and practical product judgment to reduce cognitive load and deliver products people can use with confidence.
+                I have 6+ years of experience designing B2B and SaaS products. I work on complex enterprise workflows and use research, information architecture, and interface design to make tasks easier to follow.
               </p>
               <p className="about-hero-copy about-hero-copy-secondary">
                 I'm currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.
@@ -94,29 +94,28 @@ export const AboutPage: React.FC = () => {
         <div className="about-personal-body">
           <div className="about-personal-intro">
             <span className="about-personal-kicker">A little more about me</span>
-            <h2>Thanks for visiting Roushan.in—my portfolio.</h2>
-            <p>Here’s a little more about what drives me, how I connect with people, and what you can expect when we work together.</p>
+            <h2>Thanks for visiting Roushan.in.</h2>
           </div>
           <div className="about-personal-grid">
             <article className="about-personal-card about-personal-card-growth">
               <span>01 / GROWTH</span>
-              <h3>I keep learning—and learn from others.</h3>
-              <p>I believe in hard work, consistency, and continuous learning. I seek out people who challenge and inspire me, because learning from others is one of the best ways to grow. My background in communication, learning, and development informs my interest in human behavior and personal growth.</p>
+              <h3>I keep learning, and learning from others.</h3>
+              <p>I'm curious about how people think and work. I enjoy learning from people with different experiences, and my background in communication and learning informs my interest in human behavior.</p>
             </article>
             <article className="about-personal-card about-personal-card-optimism">
               <span>02 / MINDSET</span>
               <h3>I stay optimistic through challenges.</h3>
-              <p>I try to meet challenges with optimism, adapt to new situations, and take something useful from every experience.</p>
+              <p>When plans change, I try to stay open, adjust, and work out what to do next.</p>
             </article>
             <article className="about-personal-card about-personal-card-connection">
               <span>03 / CONNECTION</span>
               <h3>I value conversation and reflection.</h3>
-              <p>I’m an extrovert who is also introspective. I enjoy meaningful conversations and connecting with people, while making time for solitude to reflect and recharge. I aim to be kind, reliable, creative, empathetic, and ambitious.</p>
+              <p>I'm outgoing, but I also need quiet time to think and recharge. I like talking through ideas with people and hearing how they see a problem.</p>
             </article>
             <article className="about-personal-card about-personal-card-teamwork">
               <span>04 / TEAMWORK</span>
               <h3>I bring a positive, collaborative attitude.</h3>
-              <p>I’m adaptable and enjoy solving creative challenges with a team. If we work together, you can count on me to approach my responsibilities with positivity and commitment.</p>
+              <p>I enjoy working through design problems with a team. I try to be reliable, clear about my work, and open to feedback.</p>
             </article>
           </div>
         </div>

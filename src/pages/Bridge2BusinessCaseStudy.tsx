@@ -178,7 +178,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
               {clientProblem?.body}
             </p>
             <p className="mt-8 max-w-3xl text-2xl font-medium leading-snug tracking-tight text-slate-950 md:text-3xl">
-              The goal was to help prospective clients quickly understand the offer, trust the business, and know what to do next.
+              The goal was to help potential clients understand the services and find a clear way to get in touch.
             </p>
           </div>
         </div>
@@ -358,7 +358,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {[
-            { item: caseStudy.problem1, label: 'The friction' },
+            { item: caseStudy.problem1, label: 'The problem' },
             { item: caseStudy.solution1, label: 'The response' },
           ].map(({ item, label }) => (
             <article key={item.title} className="overflow-hidden rounded-2xl bg-[#f0f1f4]">
@@ -386,7 +386,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
           <div className="max-w-2xl">
             <p className={eyebrowClass}>The finished experience</p>
             <h2 className="mt-4 text-3xl font-medium tracking-tight md:text-5xl">
-              A connected journey from first impression to inquiry.
+              A clear path from services to contact.
             </h2>
           </div>
           <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -478,7 +478,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300">What comes next</p>
-              <h3 className="mt-4 text-2xl font-medium tracking-tight md:text-3xl">Build on the clearer foundation.</h3>
+              <h3 className="mt-4 text-2xl font-medium tracking-tight md:text-3xl">What I would work on next</h3>
               <ul className="mt-6 space-y-4">
                 {caseStudy.nextSteps.map((step) => (
                   <li key={step} className="border-t border-slate-300 pt-4 text-sm leading-relaxed text-slate-600 md:text-base">

@@ -272,7 +272,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
             },
             {
               label: 'What I carry forward',
-              title: 'Simplicity matters more than features.',
+              title: 'Keep invoice creation focused.',
             },
           ].map(({ label, title }, index) => (
             <motion.section
@@ -374,7 +374,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
               {[
                 { title: 'Keep the invoice job focused', text: 'Make invoice creation, reusable customer and service details, and a polished PDF the core of the MVP. Keep advanced accounting controls out of the everyday flow.' },
                 { title: 'Make repeat work familiar', text: 'Use saved clients, services, and history to reduce repeat entry while keeping the interface approachable for businesses moving from spreadsheets.' },
-                { title: 'Give people confidence in totals', text: 'Replace stacked tax and currency controls with presets, an inline toggle, and a live itemized summary.' },
+                { title: 'Make totals easier to check', text: 'Replace stacked tax and currency controls with presets, an inline toggle, and a live itemized summary.' },
               ].map((item, index) => (
                 <motion.article
                   key={item.title}
@@ -547,7 +547,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
       <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
           <div className="roushani-summary-sticky">
-            <SectionHeading eyebrow="Evidence and limits" title="What the pilot measured—and what still needs validation." />
+            <SectionHeading eyebrow="Evidence and limits" title="What the pilot measured, and what still needs validation." />
           </div>
           <div>
             <CharacterRevealBlock text={caseStudy.usabilityText} className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl" />
@@ -593,8 +593,8 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
             <SectionHeading eyebrow="What’s next" title="Keep making the everyday feel easier." />
           </div>
           <div className="border-t border-slate-300 pt-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">The principle I carry forward</p>
-            <CharacterRevealBlock text={caseStudy.learnings[0] || 'Simplicity matters more than features.'} className="mt-3 max-w-3xl text-xl font-medium leading-snug tracking-tight text-slate-900 md:text-2xl" />
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">What I learned</p>
+            <CharacterRevealBlock text={caseStudy.learnings[0] || 'Keep invoice creation focused.'} className="mt-3 max-w-3xl text-xl font-medium leading-snug tracking-tight text-slate-900 md:text-2xl" />
           </div>
           <div className="border-t border-slate-300 pt-6">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Next steps</p>

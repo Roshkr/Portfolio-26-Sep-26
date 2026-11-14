@@ -22,7 +22,7 @@ export const usePageMetadata = (route: PortfolioRoute) => {
       },
       maxlence: {
         title: 'Maxlence Case Study | HR and Project Management SaaS - Roushan Kumar',
-        description: 'Roushan Kumar designed connected HR and project management workflows for Maxlence, from user journeys to reusable product components.',
+        description: 'Roushan Kumar designed HR, attendance, and project management workflows for Maxlence, including onboarding and reusable product components.',
       },
       naie: {
         title: 'Naie Case Study | Salon Booking UX by Roushan Kumar',

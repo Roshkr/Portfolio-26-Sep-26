@@ -27,7 +27,7 @@ const approachItems = [
 const outcomeItems = [
   ['Reusable patterns', 'Shared foundations, interface components, state guidance, and icon rules give recurring product needs a dependable starting point.'],
   ['Less design debt', 'Teams can extend established patterns instead of recreating controls and resolving visual inconsistencies screen by screen.'],
-  ['Designed to evolve', 'A system is useful when it supports change: document decisions, review exceptions, and refine components as product workflows reveal new needs.'],
+  ['Maintain the system', 'Document decisions, review exceptions, and update components when product workflows change.'],
 ];
 
 const SectionReveal: React.FC<React.PropsWithChildren<{ id?: string; className?: string }>> = ({
@@ -216,7 +216,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
         <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">What’s next</p>
-            <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">A system designed to keep evolving.</h2>
+            <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">Keep components useful as the product changes.</h2>
           </div>
           <div className="space-y-6">
             <p className="max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">

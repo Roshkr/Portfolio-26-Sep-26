@@ -24,13 +24,13 @@ interface ProjectMockupProps {
 }
 
 /**
- * LazyVideo — High-performance viewport-aware video renderer.
+ * LazyVideo - High-performance viewport-aware video renderer.
  * 
  * Performance features:
- * 1. preload="none" — 0 bytes transferred until entering viewport
- * 2. IntersectionObserver (250px margin) — begins buffering just before entering screen
- * 3. Auto-pause when scrolled out of view — frees GPU decode buffers and CPU
- * 4. Poster image placeholder — prevents layout shift and blank rectangles
+ * 1. preload="none" - 0 bytes transferred until entering viewport
+ * 2. IntersectionObserver (250px margin) - begins buffering just before entering screen
+ * 3. Auto-pause when scrolled out of view - frees GPU decode buffers and CPU
+ * 4. Poster image placeholder - prevents layout shift and blank rectangles
  * 5. Smooth fade-in once video playback begins
  */
 export const LazyVideo: React.FC<{
@@ -200,7 +200,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
         {/* Screen Bezel / Container */}
         <div className="relative w-full h-full bg-[#f4f5f7] rounded-[36px] overflow-hidden flex flex-col justify-between select-none">
           {!wireframe && (videoSrc || imageSrc) ? (
-            /* High Fidelity Rendered Screen — prefers video over image */
+            /* High Fidelity Rendered Screen - prefers video over image */
             <div className="relative w-full h-full rounded-[30px] overflow-hidden">
               {videoSrc ? (
             <LazyVideo

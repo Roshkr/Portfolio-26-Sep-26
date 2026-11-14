@@ -98,7 +98,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
       </section>
 
       <TradeoffsSection
-        title="Reduce friction without breaking the enterprise workflow."
+        title="Make the form easier to follow while keeping required fields."
         intro="Participant feedback called for fewer fields, but the product still had to collect information required by the business. I pushed back on shortening the form before validating which fields were genuinely optional."
         items={[
           {

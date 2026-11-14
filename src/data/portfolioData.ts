@@ -15,8 +15,8 @@ export const DESIGNER_INFO = {
   headlineSuffix: "",
   aboutHeroSubtitle: "UX/UI Designer • based in Ahmedabad, India",
   bioShort:
-    "I'm a seasoned UX/UI designer specializing in SaaS, enterprise workflows, and mobile experiences. I turn complex logic into intuitive products through deep user research, pragmatic design systems, and modern AI-assisted engineering.",
-  availability: "Open to new opportunities | Available 1 Jul 2026",
+    "I design B2B SaaS, enterprise, and mobile products. I use research and systems thinking to make complex workflows easier to use, and build prototypes with AI tools when they help me move faster.",
+  availability: "Open to new opportunities",
   email: "roushan.ux@gmail.com",
   phone: "+91 83499 33768",
   whatsappNumber: "8349933768",
@@ -77,7 +77,7 @@ export const CREATIVE_TOOLKIT: ToolItem[] = [
   },
   {
     name: "Miro / FigJam",
-    desc: "Workshop facilitation, journey mapping, and alignment",
+    desc: "Workshops, journey maps, and team collaboration",
     category: "Strategy & Mapping",
     iconUrl: "/tool-logos/miro.svg",
   },
@@ -106,7 +106,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     id: "roushani",
     title: "Roushani",
     subtitle:
-      "Simplifying repetitive invoicing so service businesses can create professional, branded invoices in minutes without fighting Excel or outdated tools.",
+      "A mobile invoicing tool for service businesses. Save customer and service details, create invoices, and send branded PDFs without rebuilding each invoice in a spreadsheet.",
     category: "B2B SaaS Product Design",
     tags: ["Concept to Market", "Product Design", "Interaction Design", "Mobile UX"],
     heroImage: "https://framerusercontent.com/images/xX41ciGUu12ACL5vkbPmnv8L2xM.png",
@@ -114,7 +114,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     company: "Roushani Invoicing",
     status: "Production MVP",
     overview:
-      "Roushani is a modern invoicing platform designed specifically for service-based businesses that still rely on Excel, Google Sheets, or outdated tools.\n\nAs the sole designer and full-stack builder, I owned the entire product lifecycle from user research and information architecture to AI-assisted frontend and backend implementation. The goal was to remove manual friction, eliminate repetitive data entry, and empower small businesses to look trustworthy.",
+      "Service businesses using spreadsheets had to re-enter customer, tax, and line-item details for every invoice. I designed and built Roushani, a mobile-first invoicing product with saved customer and service details, automatic calculations, and branded PDF export.",
     role: "Product Designer + AI-Assisted Builder",
     team: "Solo Ownership (Design + AI Code)",
     timeline: "4 Weeks (Concept to Live MVP)",
@@ -132,7 +132,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
       {
         title: "UX Research",
-        desc: "Observed real user workflows, identified friction in existing tools, and validated solutions through iterative testing.",
+        desc: "Studied how people billed clients and tested changes to the invoice flow.",
       },
       {
         title: "Information Architecture",
@@ -164,18 +164,18 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
       {
         eyebrow: "Business goals",
-        title: "Make professional invoicing feel effortless",
+        title: "Help businesses create invoices with less repeat work",
         bullets: [
           "Speed up invoice creation and reduce manual effort.",
           "Let users save customers and services for instant reuse.",
           "Make branding simple for people without design skills.",
-          "Create a clean experience for non-technical users.",
+          "Make the steps clear for people without accounting software experience.",
         ],
       },
       {
         eyebrow: "Research insight",
-        title: "The opportunity was removing friction",
-        body: "Interviews with freelancers, agency founders, and local studio owners pointed to a narrow opportunity: reduce repeat work without importing the complexity of accounting suites. The value was both operational and presentational—get a correct invoice out quickly and make the business look credible.",
+        title: "Users wanted to spend less time repeating billing tasks",
+        body: "Interviews with freelancers, agency founders, and local studio owners pointed to a narrow opportunity: reduce repeat work without importing the complexity of accounting suites. The value was both operational and presentational: get a correct invoice out quickly and make the business look credible.",
         bullets: [
           "Manual work was repeated for every invoice.",
           "Branding support was limited or missing.",
@@ -195,13 +195,13 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
       {
         eyebrow: "Accessibility",
-        title: "Designed for non-technical users",
-        body: "The product uses familiar labels, large click targets, strong contrast, predictable layouts, and clear validation feedback so users can create and save invoices without a learning curve.",
+        title: "Keep the invoice flow easy to follow",
+        body: "I used familiar labels, large controls, clear error messages, and a live total so users could check their work as they filled in an invoice.",
       },
       {
         eyebrow: "Reflection",
-        title: "Simplicity matters more than features",
-        body: "Building Roushani end-to-end showed how closely interface decisions and data behavior are connected. I would validate tax and currency edge cases with a broader range of businesses earlier. The principle I carry forward: optimize the whole job, including the credibility of the document users send—not only the screens they use.",
+        title: "Test billing rules with more businesses",
+        body: "Building Roushani showed me how interface choices affect calculations and the final invoice. I would test tax and currency cases with a wider range of businesses earlier. The invoice a customer receives matters as much as the screen used to create it.",
       },
     ],
     beforeScreen: "/projects/roushani-before-spreadsheet.svg",
@@ -212,27 +212,27 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     interviewsText:
       "I interviewed freelance consultants, agency founders, and local studio owners who handle weekly billing. Participants described spreadsheet formulas breaking, inconsistent branding, and time lost retyping client details. Across the observed billing workflow, repetitive entry accounted for 70% of the time.",
     interviewBullets: [
-      "Why do businesses still default to Excel over complex ERP tools?",
-      "Where does the highest cognitive friction occur during billing?",
-      "How do unprofessional invoices impact payment turnaround times?",
-      "What automated shortcuts actually save real minutes each day?",
+      "Why do businesses use Excel instead of accounting software?",
+      "Which parts of billing take the most time?",
+      "What makes an invoice feel clear and professional to a customer?",
+      "Which repeated tasks could saved details remove?",
     ],
     keyInsights: [
       {
-        title: "Repetitive Data Entry",
+        title: "Repeated data entry",
         desc: "Users spent 70% of their billing time manually retyping client tax IDs, addresses, and line-item totals.",
       },
       {
-        title: "Branding Disconnect",
-        desc: "Generic templates looked unpolished, eroding trust and causing delayed customer payment cycles.",
+        title: "Limited branding",
+        desc: "Generic templates gave businesses little control over how an invoice looked.",
       },
       {
-        title: "Feature Bloat Avoidance",
-        desc: "Users rejected traditional accounting software because 90% of the advanced ledger features were irrelevant for them.",
+        title: "Too many features",
+        desc: "The people I spoke with wanted a faster way to invoice, without the setup and accounting features of a larger platform.",
       },
     ],
     designText:
-      "I established a focused design system for speed and accessibility: large targets, clear hierarchy, useful defaults, and a live preview that connects form input to the final PDF. The workflow favors familiar, reversible choices and puts the most common invoice tasks ahead of specialist accounting controls.",
+      "I set up large controls, clear steps, and useful defaults. A live preview shows how each change affects the invoice, and saved customer and service details reduce repeated typing.",
     designBullets: [
       "Designed clean auto-calculating tax and discount logic",
       "Created instant logo upload and branded color themes",
@@ -270,7 +270,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       screen: "https://framerusercontent.com/images/xX41ciGUu12ACL5vkbPmnv8L2xM.png",
     },
     impactText:
-      "In the pilot, the average time to create and export an invoice fell from 18 minutes in Excel to under 3 minutes. That is roughly 15 minutes returned per invoice for client work and follow-up. Reusable details and automatic calculations also reduced repeat entry and reported math errors, while branded PDFs gave small businesses a more consistent, professional customer touchpoint.",
+      "In the pilot, average invoice creation and export time fell from 18 minutes in Excel to under 3 minutes. Participants also reported no calculation errors across more than 500 invoices. The product reused customer and service details and produced branded PDFs.",
     metrics: [
       {
         value: "80%",
@@ -289,9 +289,9 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
     ],
     learnings: [
-      "Simplicity matters more than features – Keeping the core flow stripped of bloat drove 100% completion rates.",
-      "UI and backend are tightly connected – Building alongside code revealed crucial edge-cases in data validation early.",
-      "AI is a powerful force-multiplier – Enabled rapid iterations from design tokens directly into functioning logic.",
+      "Keeping invoice creation at the center helped participants complete the core task.",
+      "Building the interface alongside the data logic helped me catch validation cases earlier.",
+      "AI coding tools helped me test design ideas in a working prototype sooner.",
     ],
     nextSteps: [
       "Adding recurring subscription billing automation for retainers.",
@@ -326,14 +326,14 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     id: "umbrella",
     title: "Umbrella",
     subtitle:
-      "Clarifying enterprise third-party onboarding: reducing form friction while working within an established system and its implementation constraints.",
+      "I redesigned a third-party onboarding form within an existing enterprise system, clarifying company and individual paths while keeping required fields.",
     category: "Enterprise UX & Workflow",
     tags: ["Usability Testing", "Enterprise UX", "Workflow Design", "User Research"],
     heroImage: "https://framerusercontent.com/images/ODQSiBSOgvzxpJFnv9I2iPjjc7s.png",
     company: "Confidential Client (NDA)",
     status: "Final Implementation",
     overview:
-      "A third-party onboarding form asked users to move through a dense set of details inside an established enterprise product. The business needed complete, reliable information; users faced confusing company and individual rows, too many fields, and required information that was easy to miss. The mismatch showed up in a modest 3.5/5 experience rating—even though participants said they understood the individual fields.\n\nI tested the existing flow with five participants, mapped where the structure created hesitation, and refined the experience within the existing system and implementation context.",
+      "The enterprise form needed to collect complete third-party details, but its company and individual paths were hard to scan and required fields were easy to miss. Five participants understood the field labels but rated the experience 3.5 out of 5. I tested the form with them, mapped where they hesitated, and revised the layout within the existing system.",
     role: "UX/UI Designer",
     team: "Design + Development Team",
     timeline: "1 Month",
@@ -347,16 +347,16 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         eyebrow: "Problem",
         title: "A fragmented onboarding experience",
-        body: "The form served a legitimate enterprise need for thorough third-party information, but its dense presentation shifted too much interpretation work to users. Five participants could explain the fields and still rated the overall experience 3.5/5. The core problem was hierarchy and workload: users had to work out which path applied, what mattered, and how much they needed to provide.",
+        body: "The form needed to collect detailed third-party information, but its layout made it hard to tell which fields applied. All five participants understood the field labels, yet rated the form 3.5 out of 5. They still had to work out which path to follow and which details were required.",
       },
       {
         eyebrow: "What I did",
         title: "Map and refine the onboarding flow",
         bullets: [
-          "Mapped the onboarding process before changing the screen, so information relationships stayed visible.",
+          "Mapped the onboarding process before changing the form layout.",
           "Tested the existing form with five participants in 20-minute sessions; all understood field meanings, but the form still averaged 3.5/5.",
-          "Reworked confusing company and individual rows, required-field cues, and grouping to improve scan order.",
-          "Reduced visual and cognitive load while preserving the information needed by the enterprise workflow and documenting the implemented changes.",
+          "Reorganized company and individual fields and made required fields easier to spot.",
+          "Kept the required information and documented the changes in the existing enterprise system.",
         ],
       },
       {
@@ -376,19 +376,19 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
         bullets: [
           "A company or individual row was confusing.",
           "Some companies may not have many details to provide.",
-          "The form should look modern and clean.",
+          "Participants asked for a clearer, less dated layout.",
           "The form should ask for fewer fields.",
         ],
       },
       {
         eyebrow: "Outcome",
-        title: "A more organized onboarding form",
-        body: "The redesign addressed the issues participants could point to: a clearer hierarchy, more legible company and individual paths, visible required cues, and less competing visual noise. It reduced cognitive load by making the form easier to scan and the next action easier to infer, while keeping enterprise information requirements intact. The research suggested field reduction as an opportunity; any removal still needs validation against business and compliance needs.",
+        title: "A clearer form without dropping required fields",
+        body: "The redesign grouped related details, clarified the company and individual paths, and made required fields easier to find. It kept the information the enterprise process needed. Any field removal would still need review with the business and compliance teams.",
       },
       {
         eyebrow: "Reflection",
         title: "Keep detailed forms focused",
-        body: "The sessions showed that correct labels alone do not make a complex form usable. I would next validate which fields are truly necessary with the teams who own the enterprise process, then measure completion time and errors after launch. The principle I carry forward is to reduce the interpretation burden before reducing necessary information.",
+        body: "Clear labels were not enough to make the form easy to use. Next, I would review each field with the teams responsible for the process, then measure completion time and errors after launch.",
       },
     ],
     beforeScreen: "https://framerusercontent.com/images/w65HWuxvZCSjNrQan5ezd20SHQ.png",
@@ -396,7 +396,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     beforeLabel: "Fragmented Form Layout",
     afterLabel: "Structured Step-by-Step Flow",
     interviewsText:
-      "The central research question was whether the third-party onboarding design felt user-friendly and whether adding a new user could be done without frustration or confusion. Five participants took part in 20-minute sessions.",
+      "I asked five participants to complete the third-party onboarding flow in 20-minute sessions, then asked about field labels, required details, and their overall experience.",
     interviewBullets: [
       "Have you used any onboarding tool before?",
       "Do you understand what the fields mean?",
@@ -418,7 +418,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
     ],
     designText:
-      "Research separated field comprehension from end-to-end usability: everyone understood the labels, yet participants still called out confusing rows, dated presentation, and too many fields. I used the process map and this feedback to make the information hierarchy do more of the explanatory work. The redesign clarified relationships and required cues without removing controls simply to make the form look shorter.",
+      "All five participants understood the field labels, but they still found some rows confusing, the visual design dated, and the form too long. I used the process map and their feedback to regroup fields, clarify the two paths, and make required details easier to spot. I kept controls that the enterprise process still needed.",
     designBullets: [
       "Mapped the onboarding process before changing its interface",
       "Clarified company and individual paths where participants hesitated",
@@ -513,7 +513,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     id: "bridge2business",
     title: "Bridge2Business",
     subtitle:
-      "B2B Website Redesign & Brand Experience - Freelance website redesign focusing on responsive information hierarchy, UX strategy, and brand credibility.",
+      "I redesigned Bridge2Business's B2B website with a developer, reorganizing its services and creating responsive desktop and mobile layouts.",
     category: "UX Strategy & Web",
     tags: ["Information Hierarchy", "UX Strategy", "Responsive Design"],
     heroImage: "https://framerusercontent.com/images/jq007KeZnDmvkFGcup4Y8OEXlw.png",
@@ -521,7 +521,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     company: "Freelance Website Redesign",
     status: "Shipped & Live",
     overview:
-      "Bridge2Business needed a comprehensive redesign to bridge the gap between their complex B2B services and potential clients. The legacy website was cluttered, had poor mobile responsiveness, and failed to clearly articulate their value proposition.\n\nAs the sole UX/UI designer collaborating with a developer, I carried out audience research, restructured the content hierarchy, and delivered a responsive Figma design system that elevated brand authority.",
+      "Bridge2Business's website made its services hard to understand and difficult to use on mobile. I interviewed five B2B clients, reorganized the site content, and designed responsive pages with a developer.",
     role: "IC UX/UI Designer",
     team: "1 Designer, 1 Developer",
     timeline: "15 Days",
@@ -536,44 +536,44 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         eyebrow: "Client problem",
         title: "An outdated structure made the business hard to understand",
-        body: "Bridge2Business had a cluttered website with weak hierarchy, excessive text, inconsistent visuals, and navigation friction. The experience made the company feel less credible and harder to explore.",
+        body: "Bridge2Business had a cluttered website with unclear page hierarchy, long blocks of text, inconsistent visuals, and hard-to-follow navigation. This made the company harder to understand and explore.",
       },
       {
         eyebrow: "What I did",
-        title: "Turn dense information into a clearer path",
+        title: "Reorganize the service information",
         bullets: [
-          "Audited the website for usability, hierarchy, and navigation issues.",
-          "Restructured the information architecture and content flow.",
-          "Simplified navigation and grouped content into modular cards.",
-          "Introduced a consistent typography, spacing, and visual system.",
-          "Improved CTA hierarchy and designed responsive desktop and mobile layouts.",
+          "Reviewed the site structure and navigation.",
+          "Reordered pages and sections around the services clients needed to compare.",
+          "Grouped related information into cards and clearer sections.",
+          "Set consistent type, spacing, and visual rules.",
+          "Redesigned the contact path and layouts for desktop and mobile.",
         ],
       },
       {
         eyebrow: "Research",
-        title: "Users wanted clarity, credibility, and speed",
-        body: "User research focused on how people found services, what built trust, which areas felt confusing, and what would help them engage with a digital marketing agency.",
+        title: "Clients needed to find services and proof quickly",
+        body: "I asked five B2B clients what they look for when evaluating a potential partner and which parts of the site helped them decide whether to get in touch.",
         bullets: [
-          "Users preferred intuitive layouts and easy-to-find information.",
-          "Professional visual design increased confidence in the business.",
-          "Testimonials, case studies, and evidence of expertise supported trust.",
-          "Fast, responsive performance was essential on mobile.",
+          "Clients wanted key services to be easy to find.",
+          "They looked for examples and evidence of the company's work.",
+          "Testimonials and case studies helped them assess the business.",
+          "The site needed to work well on mobile.",
         ],
       },
       {
         eyebrow: "Concept to final design",
-        title: "A modular system for exploration",
-        body: "The concept grouped services into clear sections with a stronger visual hierarchy, helping visitors understand digital transformation offerings and take the next step with confidence.",
+        title: "Group services so visitors can compare them",
+        body: "I grouped related services, added project examples, and made the contact link easier to find. This gave visitors a route from reviewing services to making an inquiry.",
       },
       {
         eyebrow: "Reflection",
         title: "Responsive behavior belongs in the first concept",
-        body: "Early work focused too heavily on desktop information architecture. Revisiting navigation and layout for smaller screens reinforced that information architecture, responsiveness, and usability need to evolve together.",
+        body: "I worked on the desktop structure first and addressed the mobile layout later. Next time, I would include mobile navigation and content decisions in the first round of design.",
       },
       {
         eyebrow: "Trade-offs & pushback",
         title: "Keep the service story complete without bringing back the clutter",
-        body: "The redesign had to explain a broad set of services while making the site faster to scan. I kept the essential service information, but pushed the layout toward clearer grouping, shorter summaries, and a stronger hierarchy instead of restoring long, competing blocks of copy.",
+        body: "The site needed to explain many services without returning to long blocks of copy. I kept the details clients needed and grouped them into shorter summaries and sections.",
         bullets: [
           "Preserved the information clients needed to evaluate the offering.",
           "Used modular sections and clear calls to action to keep the experience focused.",
@@ -585,28 +585,28 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     beforeLabel: "Legacy Unresponsive Site",
     afterLabel: "Modern B2B Experience",
     interviewsText:
-      "Conducted stakeholder discovery sessions and interviewed 5 B2B clients to determine what information was critical when evaluating partnership opportunities.",
+      "I interviewed five B2B clients about the information they need when evaluating a potential partner.",
     interviewBullets: [
-      "What key capabilities does a prospective partner search for within 10 seconds?",
-      "How can case study summaries build immediate credibility?",
-      "What CTA structures drive qualified discovery calls over spam?",
+      "Which capabilities do potential partners look for first?",
+      "What do clients want to learn from a case study?",
+      "What would help a client decide to book a discovery call?",
     ],
     keyInsights: [
       {
-        title: "Cluttered Proposition",
-        desc: "Visitors couldn't discern the company's core focus due to competing slogans and wall-of-text paragraphs.",
+        title: "The offer was hard to scan",
+        desc: "Competing slogans and long paragraphs made it difficult to see what the company did.",
       },
       {
-        title: "Mobile Experience Broken",
-        desc: "Over 55% of executive traffic originated on mobile, where tables and media broke completely.",
+        title: "Mobile layouts were breaking",
+        desc: "More than 55% of executive traffic came from mobile devices, where tables and media did not display correctly.",
       },
       {
-        title: "Weak Call to Action",
-        desc: "Burying contact forms behind multi-tier submenus resulted in negligible inquiry volume.",
+        title: "The contact link was hard to find",
+        desc: "Visitors had to navigate several menu levels to reach the contact form.",
       },
     ],
     designText:
-      "Created an editorial, bold design system with crisp typography, high-impact project showcases, and a sticky navigation path directly to scheduling consultation calls.",
+      "I set type and spacing rules, reorganized services and project examples, and added a sticky link to the consultation form.",
     designBullets: [
       "Established strict 8pt grid system across all breakpoints",
       "Designed interactive service comparison cards with expandable tabs",
@@ -615,7 +615,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     ],
     designScreens: [
       {
-        title: "01. Hero & Value Proposition",
+        title: "01. Homepage and main offer",
         image: "https://framerusercontent.com/images/jq007KeZnDmvkFGcup4Y8OEXlw.png",
         note: "Bold typography paired with immediate capability categorization.",
       },
@@ -639,16 +639,16 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     },
     solution1: {
       title: "Solution: Interactive Solution Finder",
-      desc: "Designed an intuitive 3-pillar selector filtering services by business size and goals.",
+      desc: "Designed a three-part selector to filter services by business size and goals.",
       screen: "https://framerusercontent.com/images/yzTTlSl6mf0PIHUI7qPAPbJVU.png",
     },
     impactText:
-      "Within 60 days of launching the redesigned platform, Bridge2Business experienced a dramatic surge in lead inquiries and session engagement.",
+      "In the first 60 days after launch, the project reported 68% more discovery calls, a 40% lower bounce rate, and an average session duration 2.4 times the previous level.",
     metrics: [
       {
         value: "+68%",
         label: "Increase in Discovery Calls",
-        context: "Direct conversion via streamlined CTA flow",
+        context: "Visitors used the redesigned contact path",
       },
       {
         value: "-40%",
@@ -662,8 +662,8 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
     ],
     learnings: [
-      "Content strategy is 50% of UX – Clear writing makes complex B2B offerings digestible.",
-      "Close dev handoff prevents design degradation – Annotated spacing tokens made build flawless.",
+      "Clear writing helped visitors compare the services.",
+      "Documented spacing and components helped the developer implement the design consistently.",
     ],
     nextSteps: [
       "Integrating automated calendar booking into the contact modal.",
@@ -696,7 +696,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     id: "maxlence",
     title: "Maxlence",
     subtitle:
-      "HR and Project Management SaaS - Owned the UX design taking complex internal tooling from inception to developer-ready prototypes with seamless user onboarding.",
+      "I designed onboarding, HR, and project management workflows for a SaaS platform used by distributed teams.",
     category: "HR & Enterprise SaaS",
     tags: ["Onboarding Experience", "Interaction Design", "User Flows"],
     heroImage: "https://framerusercontent.com/images/mjVeVyTpIxBkX4PqovMB92wwao0.png",
@@ -704,7 +704,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     company: "Maxlence Consulting",
     status: "Product Released",
     overview:
-      "Maxlence Consulting required an all-in-one SaaS platform to streamline HR management, daily project tracking, attendance, and client deliverables across distributed teams.\n\nAs the lead UX designer, I translated product requirements into end-to-end design artifacts, conducted user journey mapping, and produced scalable component libraries in Figma ready for agile engineering sprints.",
+      "Maxlence wanted to bring HR tasks, project tracking, attendance, and client deliverables into one platform for distributed teams. I mapped the workflows, designed onboarding and dashboard screens, and created reusable components in Figma with the development team.",
     role: "UX Designer",
     team: "1 Designer, 1 Lead Developer",
     timeline: "15 Days",
@@ -745,8 +745,8 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
       {
         eyebrow: "Outcome",
-        title: "A scalable foundation for role-based onboarding",
-        body: "The final structure introduced progressive questions, role-aware paths, and dashboard personalization. It gave the platform a foundation that could support different team sizes and future workflows without overwhelming new users.",
+        title: "Onboarding questions that change by role",
+        body: "The revised flow grouped questions into steps, changed options by role, and let people customize their dashboard. The team could add roles and workflows without showing every user the same long form.",
       },
       {
         eyebrow: "Reflection",
@@ -768,24 +768,24 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     keyInsights: [
       {
         title: "Disjointed Communication",
-        desc: "Tasks, leave requests, and file attachments were scattered across email threads and chat channels.",
+        desc: "Teams handled tasks, leave requests, and file sharing across separate email and chat threads.",
       },
       {
         title: "Time-Tracking Resistance",
-        desc: "Employees hated clunky timers that required multiple clicks to start and pause.",
+        desc: "Employees found the timer cumbersome to start and pause.",
       },
       {
-        title: "Manager Oversight Friction",
-        desc: "Leaders lacked a single high-level dashboard to inspect squad velocity and resource allocation.",
+        title: "No shared view of team work",
+        desc: "Managers had no single view of project status and team availability.",
       },
     ],
     designText:
-      "Engineered an intuitive SaaS dashboard interface with modular widgets, one-tap timer logging, role-based navigation menus, and clean notification feeds.",
+      "I designed a dashboard with configurable widgets, timer controls, role-based navigation, and a shared notification feed.",
     designBullets: [
       "Modular card dashboard customizable by department",
       "One-click attendance and quick task timer",
       "Interactive Kanban and Gantt timeline views",
-      "Clean onboarding checklist for new joiners",
+      "An onboarding checklist for new employees",
     ],
     designScreens: [
       {
@@ -801,27 +801,27 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       {
         title: "03. Task & Sprint Tracker",
         image: "https://framerusercontent.com/images/qmu2Y0W4uwUIGMxyJ9xliGA284.png",
-        note: "Fluid task management with drag-and-drop status transitions.",
+        note: "Move tasks between project statuses with drag and drop.",
       },
     ],
     usabilityText:
       "Carried out weekly design review sessions with internal teams to stress-test high-density tables and keyboard navigation efficiency.",
     problem1: {
       title: "Problem: Cluttered Project Boards",
-      desc: "Teams with 50+ simultaneous tasks felt lost in dense table views without intuitive filters.",
+      desc: "Teams with more than 50 active tasks struggled to find work in dense tables without filters.",
       screen: "https://framerusercontent.com/images/AD2obtND6Ll0w2gTlP6Kmocvcs.png",
     },
     solution1: {
-      title: "Solution: Dynamic Filter Chips & Saved Views",
+      title: "Solution: Filters and saved views",
       desc: "Allowed users to instantly toggle between 'My Tasks', 'Urgent', and 'Awaiting Review'.",
       screen: "https://framerusercontent.com/images/qmu2Y0W4uwUIGMxyJ9xliGA284.png",
     },
     impactText:
-      "The newly designed SaaS ecosystem consolidated 4 disparate third-party tools into a single platform, eliminating recurring licensing fees and speeding up sprint handoffs.",
+      "The platform brought HR, time tracking, project tasks, and chat together in one product, replacing four separate tools and reducing the number of handoffs between teams.",
     metrics: [
       {
         value: "35%",
-        label: "Improvement in Sprint Velocity",
+        label: "More work completed per sprint",
         context: "Fewer sync meetings required to confirm task status",
       },
       {
@@ -869,7 +869,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
   {
     id: "naie",
     title: "Naie",
-    subtitle: "Optimizing salon appointments for a seamless, time-saving experience.",
+    subtitle: "A salon booking concept that lets customers check services and availability before they visit.",
     category: "Mobile Consumer & Salon Operations",
     tags: ["Mobile UX", "Appointment Booking", "Service Design", "Two-Sided Platform"],
     heroImage: "/naie/naie-03.png",
@@ -877,7 +877,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     company: "Concept Project",
     status: "High-fidelity Prototype",
     overview:
-      "Naie is a salon appointment scheduling app designed to save customers time by reducing the wait typically experienced at salons. Customers can book in advance, discover nearby services, and manage visits through a convenient, user-friendly experience.\n\nHow might we reduce wait times and improve the salon experience while helping salons manage daily operations more efficiently?",
+      "Naie is a mobile concept for finding salons, checking services and appointment slots, and booking ahead. It also gives salon owners a way to manage appointments, staff, and walk-ins. The project explored how clearer availability could help customers plan visits and help salons coordinate their day.",
     role: "UX/UI Designer",
     team: "Concept Project (Sole Designer)",
     timeline: "3 Months",
@@ -909,28 +909,28 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
       {
         eyebrow: "Project brief",
-        title: "Build conviction before building the product",
-        body: "The initial goal was to create a functional prototype that could demonstrate Naie's potential to salon owners, customers, leadership, and future stakeholders.",
+        title: "Show how salon booking could work",
+        body: "I built a prototype to explain the booking idea to salon owners and customers and to gather feedback before development.",
       },
       {
         eyebrow: "Research",
-        title: "Two audiences, one shared service experience",
-        body: "I explored how customers experience salon visits and how salon owners and staff manage appointments, walk-ins, staff, and service time throughout the day. The research focused on customers seeking fast, predictable bookings and owners who need flexibility in daily operations.",
+        title: "Design for customers and salon staff",
+        body: "I looked at how customers choose salons and how owners and staff handle appointments, walk-ins, and changing service times. Customers wanted to plan ahead; salon staff needed room to adjust the schedule during the day.",
       },
       {
         eyebrow: "Vision",
-        title: "More than a booking utility",
-        body: "Naie aims to grow into a salon ecosystem where people can book appointments, explore services, receive personalized grooming recommendations, and build lasting relationships with local businesses.",
+        title: "Room to add services later",
+        body: "The first version focused on salon discovery and appointments. Later versions could add grooming recommendations and loyalty features if customers and salon owners need them.",
       },
       {
         eyebrow: "Reflection",
-        title: "Waiting time is also a trust and communication problem",
-        body: "The project showed that appointment products need flexible real-time communication, not only fixed schedules. Late arrivals, service delays, and changing queues all affect confidence, so the experience must balance business efficiency with customer convenience.",
+        title: "Schedule changes need clear updates",
+        body: "A fixed appointment time cannot account for late arrivals, service delays, or a changing queue. Customers need updated wait information, and salons need room to adjust the schedule.",
       },
       {
         eyebrow: "Future state",
-        title: "A scalable ecosystem for local services",
-        body: "Naie can expand beyond salons into other appointment-based businesses with smart scheduling, AI-powered recommendations, loyalty systems, analytics, and deeper business-management tools.",
+        title: "Where the concept could go next",
+        body: "Naie could extend to other appointment-based businesses. Possible additions include schedule management, recommendations, loyalty features, and business analytics.",
       },
     ],
     beforeScreen: "/naie/naie-26.png",
@@ -957,7 +957,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
       {
         title: "Lack of transparency",
-        desc: "Without visible slots or estimated wait times, customers cannot plan a salon visit with confidence.",
+        desc: "Without available slots or estimated wait times, customers cannot tell when to visit.",
       },
       {
         title: "Inconsistent customer experience",
@@ -965,7 +965,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
     ],
     designText:
-      "As the sole designer, I shaped the product strategy, end-to-end workflows, and visual system for customers and salon owners. The prototype connects hyperlocal discovery and service selection with live booking, queue visibility, reminders, and owner-side appointment management.",
+      "I designed the customer and salon-owner flows, including local salon discovery, service and staff selection, appointment booking, wait-time information, reminders, and appointment management.",
     designBullets: [
       "Defined customer and salon-owner booking workflows.",
       "Designed separate experiences for customers and salon owners.",
@@ -1009,7 +1009,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       screen: "/naie/naie-28.png",
     },
     impactText:
-      "Naie brings customer discovery and salon operations into one concept: customers can explore services, see availability, and plan a visit, while salons get a clearer way to coordinate appointments, staff, and customer flow. The prototype demonstrates how more transparent scheduling could reduce waiting and communication overhead.",
+      "The prototype brings salon discovery, service details, availability, and booking into the customer flow, with appointment and staff tools for salon owners. It explores whether showing availability earlier could reduce uncertainty and help salons coordinate their schedules.",
     metrics: [
       { value: "02", label: "Connected audiences", context: "Salon customers and owners" },
       { value: "17", label: "Product screens", context: "Discovery, booking, try-on, and appointments" },
@@ -1048,8 +1048,8 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
       {
         eyebrow: "Journey mapping",
-        title: "Connect the appointment from discovery to follow-up",
-        intro: "A mapped journey links discovery, service selection, booking, and the appointment experience.",
+        title: "Map the booking steps",
+        intro: "The map follows a customer from salon discovery through service selection, booking, and the appointment.",
         images: [
           { title: "Customer booking journey", image: "/naie/naie-24.png", alt: "Customer journey and service flow for booking a salon appointment with Naie." },
         ],
@@ -1072,7 +1072,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
       },
       {
         eyebrow: "Usability testing",
-        title: "Small points of friction surfaced quickly",
+        title: "Testing showed where users got stuck",
         intro: "Annotated test screens record user preferences around try-on, sign-up, search, saved salons, quick availability, and navigation icons.",
         images: [
           { title: "Save a tried hairstyle", image: "/naie/naie-27.png", alt: "Usability note: a user wanted to download a hairstyle they had tried." },
@@ -1160,17 +1160,17 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
-    year: "Jan 2025 – Jun 2026",
+    year: "Jan 2025 - Jun 2026",
     company: "UID",
     role: "UX Designer (Teaching Assistant)",
     workMode: "On-site (Gandhinagar)",
     logoUrl: "https://framerusercontent.com/images/DiT0AjiPApWtO5B0iv2chsQf34.jpg",
     websiteUrl: "https://karnavatiuniversity.edu.in/uid/",
     description:
-      "Led UX design for institutional digital products, architecting an MVP Jury Management System that streamlined student portfolio evaluations alongside UID and academic conference web portals. Mentored design cohorts in user research, design systems, and interaction design, while driving structured process documentation that supported NAAC A+ accreditation.",
+      "Led UX design for institutional products, including an MVP Jury Management System for student portfolio evaluations and academic conference web portals. Mentored design cohorts in user research, design systems, and interaction design. Wrote process documentation used for NAAC A+ accreditation.",
   },
   {
-    year: "Oct 2022 – Jul 2024",
+    year: "Oct 2022 - Jul 2024",
     company: "AML Rightsource",
     role: "UX Designer",
     workMode: "Onsite / Remote (Noida)",
@@ -1180,17 +1180,17 @@ export const EXPERIENCES: ExperienceItem[] = [
       "Led UX for complex enterprise regulatory workflows. Conducted 20+ user interviews, identified and resolved critical usability issues, and drove a platform redesign that improved navigation, task completion, and overall engagement across high-stakes compliance tools.",
   },
   {
-    year: "Sep 2021 – Oct 2022",
+    year: "Sep 2021 - Oct 2022",
     company: "Maxlence Consulting",
     role: "UX Designer",
     workMode: "Remote / Onsite (Gurugram)",
     logoUrl: "https://framerusercontent.com/images/t2GLwdkI4irC1GKFfFYiHALqFw.jpg",
     websiteUrl: "https://maxlence.com.au",
     description:
-      "Owned end-to-end UX for HR and project management SaaS products. Took concepts from discovery to developer-ready designs while establishing scalable design systems and consistent interaction patterns.",
+      "Designed HR and project management SaaS products from discovery through developer-ready designs. Built reusable design systems and interaction patterns for the products.",
   },
   {
-    year: "Feb 2021 – Sep 2021",
+    year: "Feb 2021 - Sep 2021",
     company: "SEEKMY",
     role: "UI/UX Designer",
     workMode: "Remote / Onsite (Thalassery)",
@@ -1200,7 +1200,7 @@ export const EXPERIENCES: ExperienceItem[] = [
       "Led research and mobile-first design for B2C healthcare products, working from discovery through implementation and collaborating closely with product and engineering.",
   },
   {
-    year: "Nov 2019 – Jan 2021",
+    year: "Nov 2019 - Jan 2021",
     company: "RADAR 108",
     role: "Visual Designer",
     workMode: "Onsite / Remote (Hyderabad)",
@@ -1210,7 +1210,7 @@ export const EXPERIENCES: ExperienceItem[] = [
       "Designed visual systems, UI interfaces, iconography, and motion assets that supported internal branding and digital communication.",
   },
   {
-    year: "Jan 2019 – Feb 2019",
+    year: "Jan 2019 - Feb 2019",
     company: "SWASTIKA (PIXELA)",
     role: "Visual Design (Intern)",
     workMode: "Onsite (Indore, MP)",
@@ -1220,7 +1220,7 @@ export const EXPERIENCES: ExperienceItem[] = [
       "Foundational work in branding, packaging, and digital design.",
   },
   {
-    year: "Jun 2018 – Aug 2018",
+    year: "Jun 2018 - Aug 2018",
     company: "JAGANA",
     role: "Graphic Design (Intern)",
     workMode: "Onsite (Pune, MH)",
@@ -1233,7 +1233,7 @@ export const EXPERIENCES: ExperienceItem[] = [
 
 export const EDUCATIONS: EducationItem[] = [
   {
-    year: "2025 – 2028 (Expected)",
+    year: "2025 - 2028 (Expected)",
     institution: "Karnavati University",
     degree: "Doctor of Philosophy (PhD) in Interface Design",
     logoUrl: "/karnavati-logo.webp",
@@ -1241,7 +1241,7 @@ export const EDUCATIONS: EducationItem[] = [
     details: "Research focus: dark patterns, interfaceless / invisible UI, and ethical design practices in digital products.",
   },
   {
-    year: "2017 – 2019",
+    year: "2017 - 2019",
     institution: "Avantika University",
     degree: "Master of Design in Communication Design",
     logoUrl: "/avantika-logo.svg",
@@ -1249,7 +1249,7 @@ export const EDUCATIONS: EducationItem[] = [
     details: "Specialized in user interface design, interaction design, user research, and visual communication.",
   },
   {
-    year: "2014 – 2017",
+    year: "2014 - 2017",
     institution: "DAVV (IK College, Indore)",
     degree: "Bachelor of Arts",
     logoUrl: "/davv-logo.svg",

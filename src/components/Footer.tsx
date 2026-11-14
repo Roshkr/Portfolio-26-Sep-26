@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
           {/* Main CTA Heading */}
           <div className="max-w-3xl space-y-8">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1] text-white">
-            Let’s create something great together
+            Have a project in mind? Let’s talk.
           </h2>
 
           <div className="flex flex-wrap items-center gap-4 pt-4">

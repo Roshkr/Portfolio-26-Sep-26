@@ -21,8 +21,8 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
   const [category, setCategory] = useState('Fintech');
   const [role, setRole] = useState('Lead UX Designer');
   const [overview, setOverview] = useState('');
-  const [metricValue, setMetricValue] = useState('+35%');
-  const [metricLabel, setMetricLabel] = useState('activation rate');
+  const [metricValue, setMetricValue] = useState('');
+  const [metricLabel, setMetricLabel] = useState('');
 
   if (!isOpen) return null;
 
@@ -33,81 +33,69 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
     const newStudy: CaseStudy = {
       id: `custom-${Date.now()}`,
       title: title.trim(),
-      subtitle: subtitle.trim() || 'A transformative mobile experience engineered for growth.',
+      subtitle: subtitle.trim() || 'A mobile product for a specific user need.',
       category: category.trim() || 'Product Design',
       heroImage: fintechCryptoScreen,
       overview:
         overview.trim() ||
-        'Comprehensive mobile redesign focused on user onboarding velocity, high retention, and data-driven iterations.',
+        'Describe the user problem, the design work, and the result.',
       role: role.trim() || 'Lead Product Designer',
       team: '1 Lead Designer, 2 Engineers, 1 PM',
       timeline: '12 weeks',
       beforeScreen: onboardingBeforeScreen,
       afterScreen: onboardingAfterScreen,
-      beforeLabel: 'Legacy Architecture',
-      afterLabel: 'Streamlined Flow',
-      interviewsText:
-        'Conducted qualitative research with 12 high-intent participants to dissect core drop-off friction points.',
+      beforeLabel: 'Before',
+      afterLabel: 'After',
+      interviewsText: 'Summarize who took part in research and what you learned.',
       interviewBullets: [
-        'Identified friction in authentication steps',
-        'Clarified multi-currency exchange rates',
-        'Streamlined mobile keyboard ergonomics',
+        'What task did participants need to complete?',
+        'Where did they have questions or get stuck?',
+        'What changed after reviewing their feedback?',
       ],
       keyInsights: [
         {
-          title: 'Friction Point',
-          desc: 'Users wanted immediate visual confirmation before finalizing orders.',
+          title: 'Research finding',
+          desc: 'Add a finding from the research.',
         },
         {
-          title: 'Speed Preference',
-          desc: 'One-tap biometric checkouts increased intent completion by over 40%.',
+          title: 'User need',
+          desc: 'Summarize what users needed to do.',
         },
         {
-          title: 'Clarity',
-          desc: 'Transparent fee structures eliminated abandonment during final review.',
+          title: 'Design question',
+          desc: 'Describe what users needed to understand before continuing.',
         },
       ],
-      designText:
-        'Developed end-to-end design system components, following responsive mobile heuristics and native OS principles.',
+      designText: 'Describe the design choices and how they address the user problem.',
       designBullets: [
-        'Dark mode first palette for high contrast data visibility',
-        'Custom tactile micro-interactions with haptic feedback specs',
-        'WCAG AA accessible color pairings',
+        'Describe a layout or hierarchy decision.',
+        'Describe an interaction or content decision.',
+        'Describe an accessibility consideration.',
       ],
       designScreens: [
         {
           title: '01. Dashboard Overview',
           image: fintechCryptoScreen,
-          note: 'Real-time performance tracking with instant asset swapping.',
+          note: 'Add a brief description of this screen.',
         },
       ],
-      usabilityText:
-        'Ran iterative task-completion tests across 2 milestone rounds before release validation.',
+      usabilityText: 'Describe how you evaluated the design and what you learned.',
       problem1: {
-        title: 'Initial Hesitation',
-        desc: 'Users questioned hidden gas and slippage rates.',
+        title: 'Before',
+        desc: 'Describe the issue people faced.',
         screen: onboardingBeforeScreen,
       },
       solution1: {
-        title: 'Locked Rate Badge',
-        desc: 'Implemented a 30s rate lock guarantee with immediate countdown.',
+        title: 'After',
+        desc: 'Describe how the design addresses the issue.',
         screen: onboardingAfterScreen,
       },
-      impactText:
-        'Achieved significant lift in key cohort retention and customer satisfaction metrics post rollout.',
-      metrics: [
-        { value: metricValue, label: metricLabel, context: 'Measured across 90-day cohort' },
-        { value: '-18%', label: 'Drop-off rate', context: 'During KYC identification' },
-        { value: '4.9★', label: 'App Store review', context: 'Average rating after redesign' },
-      ],
-      learnings: [
-        'Rapid paper prototyping saved two weeks of high-fidelity iteration.',
-        'Early alignment with engineering ensured 60fps gesture transitions.',
-      ],
-      nextSteps: [
-        'Exploring personalized widget dashboards for power users.',
-        'Extending design tokens to desktop web companion app.',
-      ],
+      impactText: 'Describe the result and include metrics only when they were measured.',
+      metrics: metricValue.trim() && metricLabel.trim()
+        ? [{ value: metricValue.trim(), label: metricLabel.trim() }]
+        : [],
+      learnings: [],
+      nextSteps: [],
       finalScreens: [
         { title: 'Screen 1', image: onboardingAfterScreen },
         { title: 'Screen 2', image: fintechCryptoScreen },
@@ -141,7 +129,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
             Add a new case study
           </h3>
           <p className="text-sm text-slate-500 mt-1">
-            Showcase 3–5 of your strongest projects with structured UX research, metrics, and before/after comparisons.
+            Showcase 3-5 of your strongest projects with structured UX research, metrics, and before/after comparisons.
           </p>
         </div>
 

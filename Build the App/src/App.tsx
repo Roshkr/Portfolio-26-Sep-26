@@ -7,46 +7,46 @@ const productScreens = Array.from({ length: 17 }, (_, index) => {
 const problems = [
   {
     title: 'Long wait times at salons',
-    body: 'Customers face unpredictable foot traffic and no reliable scheduling tool. This wastes time and frustrates people who need quick, dependable services.',
+    body: 'Customers may arrive while a salon is busy, with no clear estimate of how long they will wait.',
   },
   {
     title: 'Inefficient appointment management',
-    body: 'Salons struggle to balance walk-ins and scheduled appointments, creating peak-hour overcrowding and underused capacity during quieter periods.',
+    body: 'Salons have to fit walk-ins around booked appointments, which can leave some periods crowded and others quiet.',
   },
   {
     title: 'Lack of appointment transparency',
-    body: 'Customers cannot see available slots or likely wait times before visiting, making every appointment difficult to plan around.',
+    body: 'Customers cannot check available slots or likely wait times before they leave home.',
   },
   {
     title: 'Inconsistent customer experience',
-    body: 'Without an organized system, service quality depends on daily traffic, leading to dissatisfaction and lower customer retention.',
+    body: 'When appointments and customer details are tracked manually, staff may not have the same information about each visit.',
   },
 ]
 
 const contributions = [
-  'Defined the complete product UX and booking workflows',
+  'Designed booking flows for customers and salon owners',
   'Designed separate experiences for customers and salon owners',
-  'Created live slot booking, availability, and queue-tracking flows',
+  'Designed slot selection, availability, and queue views',
   'Designed service and staff selection experiences',
   'Created rescheduling and appointment-reminder workflows',
-  'Designed a hyperlocal salon discovery experience',
+  'Designed local salon discovery',
   'Structured an owner dashboard for appointments and staff management',
   'Built customer history, loyalty, and onboarding experiences',
-  'Created a minimal, premium, Gen Z–friendly visual system',
+  'Set the visual style for a mobile-first salon product',
 ]
 
 const mistakes = [
   'I focused on booking flow and wait reduction before fully considering delayed arrivals and shifting schedules.',
-  'I underestimated how important trust-building features would be for both salon owners and customers.',
+  'I did not account early enough for the information both customers and salon owners need before booking.',
   'Early concepts assumed people would strictly follow scheduled timings, but real behavior was far less predictable.',
-  'The experience had to be reworked to support dynamic queues and live operational changes.',
+  'I revised the design to account for changing queues and appointment delays.',
 ]
 
 const learnings = [
-  'Reducing wait time is not only a scheduling problem; it is a trust and communication problem.',
-  'Real-time updates and notifications help users feel confident that the system is actively managing their appointment.',
-  'Small delays create a chain reaction, so queue management needs to be flexible rather than static.',
-  'Service products must balance business efficiency and customer convenience at the same time.',
+  'Wait times depend on both the schedule and how clearly salons communicate changes.',
+  'Customers need updates when their appointment time or expected wait changes.',
+  'A late appointment can affect the rest of the day, so the schedule needs to be easy to adjust.',
+  'The booking flow needs to work for salon staff as well as customers.',
 ]
 
 function SectionHeading({ eyebrow, title, intro }: { eyebrow?: string; title: string; intro?: string }) {
@@ -73,7 +73,7 @@ export default function App() {
       <section className="hero shell">
         <div className="hero-copy">
           <p className="eyebrow">Naie · Product design case study</p>
-          <h1>Optimizing salon appointments for a seamless, time-saving experience</h1>
+          <h1>Salon discovery and booking with clearer availability</h1>
         </div>
 
         <dl className="project-meta">
@@ -95,7 +95,7 @@ export default function App() {
       <section className="content-section shell narrow">
         <SectionHeading eyebrow="Overview" title="What is Naie?" />
         <p className="lead">
-          Naie is a salon appointment scheduling app designed to save users time by reducing the wait typically experienced at salons. It lets customers book in advance, discover nearby services, and manage visits through a convenient, user-friendly experience.
+          Naie is a mobile concept for finding salons, checking services and appointment slots, and booking ahead. It also explores tools for salon owners to manage appointments, staff, and walk-ins.
         </p>
         <div className="quote-panel">
           <p>“How might we reduce wait times and improve the salon experience while helping salons manage daily operations more efficiently?”</p>
@@ -107,7 +107,7 @@ export default function App() {
         <div className="prose-grid">
           <article>
             <h3>Problem</h3>
-            <p>Most local salons rely on WhatsApp messages, calls, spreadsheets, or manual scheduling. The result is long waits, missed appointments, unclear availability, and chaotic communication.</p>
+          <p>Many local salons coordinate appointments through WhatsApp, phone calls, spreadsheets, or paper schedules. Customers may not know what is available, and salon staff have to manage bookings and walk-ins across different channels.</p>
           </article>
           <article>
             <h3>Before</h3>
@@ -115,18 +115,18 @@ export default function App() {
           </article>
           <article>
             <h3>After</h3>
-            <p>Customers can discover salons, check live availability, choose services and staff, and book with minimal effort. Owners get a cleaner way to manage schedules, reminders, and customer flow.</p>
+          <p>The proposed flow lets customers browse salons, choose a service and staff member, and review available times. Owner screens cover appointments, reminders, and walk-ins.</p>
           </article>
           <article>
             <h3>Business value</h3>
-            <p>Naie reduces waiting, missed appointments, and communication overhead while creating a more scalable experience for both salon businesses and their customers.</p>
+          <p>The concept puts booking and appointment management in one place. It explores whether showing availability earlier could reduce uncertainty for customers and scheduling work for salon staff.</p>
           </article>
         </div>
       </section>
 
       <section className="content-section tinted">
         <div className="shell narrow">
-          <SectionHeading eyebrow="My contribution" title="Designing both sides of the appointment" intro="As the sole designer, I shaped the product strategy, end-to-end workflows, and visual system for customers and salon owners." />
+          <SectionHeading eyebrow="My contribution" title="Designing for customers and salon owners" intro="As the sole designer, I planned the product and designed the booking flows and visual system for both groups." />
           <ul className="contribution-list">
             {contributions.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}
           </ul>
@@ -134,8 +134,8 @@ export default function App() {
       </section>
 
       <section className="content-section shell narrow">
-        <SectionHeading eyebrow="Vision" title="More than a booking utility" />
-        <p className="lead">Naie aims to evolve from a scheduling app into a broader salon ecosystem where people can book appointments, explore services, receive personalized grooming recommendations, and build lasting relationships with local businesses.</p>
+        <SectionHeading eyebrow="Possible next steps" title="Features to consider after booking" />
+        <p className="lead">The first concept focused on salon discovery and appointments. Later work could explore grooming recommendations and loyalty features if customers and salon owners find them useful.</p>
       </section>
 
       <section className="content-section shell">
@@ -152,8 +152,8 @@ export default function App() {
       </section>
 
       <section className="content-section shell narrow">
-        <SectionHeading eyebrow="Project brief" title="Build conviction before building the product" />
-        <p className="lead">Rather than delivering a fully developed app, the initial goal was to create a functional prototype that could demonstrate Naie’s potential to salon owners, customers, leadership, and future stakeholders.</p>
+        <SectionHeading eyebrow="Project brief" title="Use a prototype to explain the idea" />
+        <p className="lead">I created a prototype to show the booking concept to salon owners and customers and gather feedback before development.</p>
         <ProjectImage src="/naie/naie-18.png" alt="Naie project planning overview" className="wide-image" />
         <ProjectImage src="/naie/naie-19.png" alt="Naie project timeline" className="wide-image" />
       </section>
@@ -173,12 +173,12 @@ export default function App() {
       </section>
 
       <section className="content-section shell narrow">
-        <SectionHeading eyebrow="Secondary research" title="Designing for engagement beyond the appointment" />
-        <p className="lead">Competitor research focused on retention patterns such as loyalty programs, personalized offers, appointment streaks, reminders, and low-friction booking. These insights helped Naie stay useful after the immediate booking need was complete.</p>
+        <SectionHeading eyebrow="Secondary research" title="What other booking products offered" />
+        <p className="lead">I reviewed how other products handled reminders, loyalty programs, offers, and appointment booking. This helped identify features Naie could explore after the core booking flow.</p>
       </section>
 
       <section className="content-section shell narrow">
-        <SectionHeading eyebrow="Journey mapping" title="A booking flow that works before, during, and after the visit" />
+        <SectionHeading eyebrow="Journey mapping" title="Map the steps from discovery to appointment" />
         <ProjectImage src="/naie/naie-24.png" alt="User flow for booking a salon appointment" className="tall-artifact" />
       </section>
 
@@ -189,13 +189,13 @@ export default function App() {
 
       <section className="content-section tinted">
         <div className="shell narrow">
-          <SectionHeading eyebrow="Low fidelity" title="Testing the complete service before polishing the interface" intro="The early wireframes connected onboarding, discovery, salon details, service selection, booking, and account management into one testable flow." />
+          <SectionHeading eyebrow="Low fidelity" title="Test the booking flow before polishing screens" intro="The early wireframes linked onboarding, salon discovery, service selection, booking, and account management into one flow." />
           <ProjectImage src="/naie/naie-26.png" alt="Naie low-fidelity wireframe flow" className="wireframe-map" />
         </div>
       </section>
 
       <section className="content-section shell">
-        <div className="narrow"><SectionHeading eyebrow="Usability testing" title="Small points of friction surfaced quickly" intro="Early testing highlighted unclear labels, input choices, and navigation behavior that could make a simple booking feel harder than necessary." /></div>
+        <div className="narrow"><SectionHeading eyebrow="Usability testing" title="Testing showed where people got stuck" intro="Early testing found unclear labels, confusing input choices, and navigation that made booking harder to follow." /></div>
         <div className="testing-grid">
           {[27, 28, 29, 30, 31, 32].map((number) => (
             <ProjectImage key={number} src={`/naie/naie-${number}.png`} alt={`Naie usability testing insight ${number - 26}`} />
@@ -205,7 +205,7 @@ export default function App() {
 
       <section className="content-section final-design">
         <div className="shell narrow">
-          <SectionHeading eyebrow="High fidelity" title="A minimal booking experience designed for everyday use" intro="The final direction pairs a calm visual system with fast service discovery, transparent availability, and a booking flow that keeps choices easy to understand." />
+          <SectionHeading eyebrow="High fidelity" title="Screens for finding and booking a salon" intro="The final design shows salon discovery, service details, appointment availability, and booking choices." />
           <ProjectImage src="/naie/naie-33.png" alt="Naie high-fidelity product screens" className="final-map" />
         </div>
       </section>
@@ -227,8 +227,8 @@ export default function App() {
 
       <section className="content-section future-section">
         <div className="shell narrow">
-          <SectionHeading eyebrow="Future state" title="A scalable ecosystem for local services" />
-          <p className="lead">Naie can expand beyond salons into other appointment-based businesses. Future opportunities include smart scheduling, AI-powered recommendations, loyalty systems, analytics, and deeper business-management tools while maintaining a fast, minimal experience.</p>
+          <SectionHeading eyebrow="Possible next steps" title="Where the concept could go next" />
+          <p className="lead">Naie could extend to other appointment-based businesses. Possible additions include schedule management, recommendations, loyalty features, and business analytics.</p>
         </div>
       </section>
     </main>

@@ -637,7 +637,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             Final Flow Showcase
           </span>
           <h3 className="text-2xl md:text-3xl font-normal tracking-tight text-slate-950 mt-1">
-            Complete User Journey Screens
+            Key screens in the user flow
           </h3>
         </div>
 

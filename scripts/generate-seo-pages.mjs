@@ -39,7 +39,7 @@ const pages = [
     paragraphs: [
       'Roushan Kumar is a product designer based in Ahmedabad, India. He designs B2B SaaS, fintech, enterprise workflows, and mobile experiences.',
       'Roushani is a mobile-first invoicing product he designed for service businesses.',
-      'His process spans user research, information architecture, interaction design, production-ready interfaces, and design systems. He is open to product design opportunities and interesting product challenges.',
+      'His work includes user research, information architecture, interface design, and design systems. He is open to product design roles and freelance projects.',
     ],
     jsonLd: person,
   },
@@ -49,8 +49,8 @@ const pages = [
     description: 'A mobile-first B2B invoicing UX case study: how Roushan designed a simpler way for service businesses to create branded invoices and reuse client details.',
     heading: 'Roushani: mobile-first invoicing for service businesses',
     paragraphs: [
-      'Roushani is a mobile-first invoicing product for service businesses that were relying on spreadsheets and repetitive manual billing. Roushan owned product design and AI-assisted implementation from research through a production MVP.',
-      'The work covered product strategy, user research, information architecture, invoice creation, reusable customer and service details, visual identity, and PDF export. The MVP was delivered in four weeks.',
+      'Roushani is a mobile-first invoicing product for service businesses that relied on spreadsheets and repeated manual entry. Roushan designed the product and built its first version with AI coding tools.',
+      'The work included user research, invoice creation, saved customer and service details, branding, and PDF export. The MVP was delivered in four weeks.',
     ],
     jsonLd: {
       '@context': 'https://schema.org', '@type': 'CreativeWork',
@@ -103,8 +103,8 @@ const pages = [
     description: 'A B2B website redesign focused on clearer service messaging, responsive information hierarchy, and stronger brand credibility.',
     heading: 'Bridge2Business: a clearer B2B website experience',
     paragraphs: [
-      'Bridge2Business needed to explain complex services clearly and help potential clients act with confidence. The existing website was cluttered, difficult to use on mobile, and unclear about its value.',
-      'Roushan restructured the content, improved the responsive experience, and delivered a focused redesign proposal with a clearer path to connect.',
+      'Bridge2Business needed to make its services easier to find and understand. The existing website was cluttered and difficult to use on mobile.',
+      'Roushan interviewed five B2B clients, reorganized the website content, and designed responsive pages with a developer.',
     ],
     jsonLd: {
       '@context': 'https://schema.org', '@type': 'CreativeWork',
@@ -118,11 +118,11 @@ const pages = [
   {
     path: '/case-studies/maxlence',
     title: 'Maxlence Case Study | HR and Project Management SaaS - Roushan Kumar',
-    description: 'Designing connected HR and project management workflows for a distributed team in a scalable SaaS platform.',
+    description: 'Product design for HR, attendance, and project management workflows used by distributed teams.',
     heading: 'Maxlence: connected HR and project workflows',
     paragraphs: [
       'Maxlence Consulting needed one platform for HR management, project tracking, attendance, and client deliverables across distributed teams.',
-      'Roushan translated product requirements into user journeys, end-to-end UX design, and reusable components ready for engineering.',
+      'Roushan mapped team workflows, designed onboarding and dashboard screens, and created reusable Figma components with the development team.',
     ],
     jsonLd: {
       '@context': 'https://schema.org', '@type': 'CreativeWork',
@@ -136,7 +136,7 @@ const pages = [
   {
     path: '/case-studies/naie',
     title: 'Naie Case Study | Salon Booking and Discovery UX - Roushan Kumar',
-    description: 'A salon discovery and appointment booking experience designed to improve slot visibility and reduce waiting for customers and salon owners.',
+    description: 'A salon booking concept with service details, appointment availability, and tools for salon owners.',
     heading: 'Naie: salon appointments with less uncertainty',
     paragraphs: [
       'Local salon bookings often depend on calls and messages, leaving customers unsure about availability and salon teams juggling appointments manually.',

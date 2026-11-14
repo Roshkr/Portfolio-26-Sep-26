@@ -3,7 +3,7 @@
 **Official portfolio:** https://roushan.in/
 
 **Location:** Ahmedabad, India  
-**Positioning:** Product Designer focused on complex B2B/SaaS workflows and design systems. I turn messy enterprise processes into clear, shippable experiences.
+**Positioning:** Product Designer focused on B2B/SaaS workflows and design systems. I work on complex enterprise tasks and make them easier to follow.
 **Focus Areas:** SaaS, B2B, Fintech, Enterprise Workflows, Mobile Experiences  
 **Role:** UX/UI and Product Designer
 **Product:** Roushani is the name of my mobile-first invoicing product.
@@ -18,7 +18,7 @@
 
 ## About
 
-I am a Product Designer based in Ahmedabad, India, focused on complex B2B/SaaS workflows and design systems. I turn messy enterprise processes into clear, shippable experiences through research, clear information architecture, and thoughtful interaction design.
+I am a Product Designer based in Ahmedabad, India. I work on B2B/SaaS products, enterprise workflows, mobile experiences, and design systems. I use research, information architecture, and interface design to make complex tasks easier to follow.
 
 ### What I do
 
@@ -33,7 +33,7 @@ I help product teams make complex workflows easier to understand and use. My wor
 
 - **Status:** Production MVP (Live)
 - **Duration:** 4 weeks (Concept to Live MVP)
-- **Role:** Product Design, Interaction Design, End-to-end ownership
+- **Role:** Product design, interaction design, and implementation
 - **Type:** B2B SaaS | Mobile-first
 - **Problem:** Service businesses lost time to repetitive invoice entry, spreadsheet errors, and inconsistent branding.
 - **Solution:** Designed a mobile-first invoicing product that allows service businesses to create professional, branded invoices in minutes.
@@ -51,14 +51,14 @@ I help product teams make complex workflows easier to understand and use. My wor
 - **Research:** Conducted 5 usability sessions (20 minutes each). 80% of participants had previous experience with onboarding tools. Average form experience rating: 3.5/5.
 - **Key Insights:** Confusing company vs individual selection, too many fields, and dated visual style.
 - **Solution:** Refined field grouping, company and individual paths, required-field cues, and visual hierarchy within the existing enterprise context.
-- **Outcome:** Made the form easier to scan and reduced interpretation burden while preserving the information the workflow requires.
+- **Outcome:** Grouped related fields, clarified the company and individual paths, and made required information easier to find.
 
 ### 3. Design System, Components & Iconography
 **Case study:** https://roushan.in/case-studies/design-system-icons
 
 - **Status:** Design system foundations and guidance
 - **Focus:** Reusable components, visual consistency, and iconography
-- **Overview:** A practical foundation for consistent product interfaces: shared visual rules, reusable components with clear states, and purposeful iconography. The system helps teams reduce repeated decisions and design debt while leaving room for workflow-specific needs.
+- **Overview:** Shared visual rules, reusable components with documented states, and icons for a product platform. These patterns reduce repeated design work while leaving room for differences between workflows.
 
 ### 4. Bridge2Business - B2B Website Redesign
 **Case study:** https://roushan.in/case-studies/bridge2business
@@ -69,8 +69,8 @@ I help product teams make complex workflows easier to understand and use. My wor
 ### 5. Maxlence - HR and Project Management SaaS
 **Case study:** https://roushan.in/case-studies/maxlence
 
-- **Focus:** HR management, project tracking, attendance, client deliverables, user journeys, and reusable SaaS components.
-- **Overview:** Designed workflows and product foundations for a platform connecting HR and project operations for distributed teams.
+- **Focus:** HR management, project tracking, attendance, client deliverables, onboarding, and reusable components.
+- **Overview:** Designed onboarding, dashboard, HR, and project workflows for a platform serving distributed teams.
 
 ### 6. Naie - Salon Discovery and Appointment Booking
 **Case study:** https://roushan.in/case-studies/naie
@@ -81,7 +81,7 @@ I help product teams make complex workflows easier to understand and use. My wor
 
 ## Contact
 
-I'm open to full-time roles, freelance projects, and interesting product challenges in SaaS, B2B, and fintech.
+I'm open to full-time roles and freelance projects in SaaS, B2B, and fintech.
 
 **Email:** roushan.ux@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/roushankuma/
