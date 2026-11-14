@@ -10,8 +10,8 @@ const person = {
   name: 'Roushan Kumar',
   '@id': `${siteUrl}/#person`,
   url: `${siteUrl}/`,
-  jobTitle: 'UX/UI and Product Designer',
-  description: 'UX/UI and product designer in Ahmedabad, India, focused on B2B SaaS, fintech, enterprise workflows, and mobile products.',
+  jobTitle: 'Product Designer',
+  description: 'Product designer in Ahmedabad, India, creating clear UX for B2B SaaS, fintech, enterprise workflows, and mobile products.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Ahmedabad',
@@ -33,11 +33,11 @@ const person = {
 const pages = [
   {
     path: '/about',
-    title: 'About Roushan Kumar | UX/UI & Product Designer in Ahmedabad',
-    description: 'Roushan Kumar is a UX/UI and product designer in Ahmedabad, India, working across B2B SaaS, fintech, and enterprise workflows.',
+    title: 'About Roushan Kumar | Product Designer in Ahmedabad',
+    description: 'Meet Roushan Kumar, a product designer in Ahmedabad, India, working across B2B SaaS, fintech, enterprise workflows, and mobile UX.',
     heading: 'About Roushan Kumar',
     paragraphs: [
-      'Roushan Kumar is a UX/UI and product designer based in Ahmedabad, India. He works on SaaS, B2B, fintech, enterprise workflows, and mobile experiences.',
+      'Roushan Kumar is a product designer based in Ahmedabad, India. He designs B2B SaaS, fintech, enterprise workflows, and mobile experiences.',
       'Roushani is a mobile-first invoicing product he designed for service businesses.',
       'His process spans user research, information architecture, interaction design, production-ready interfaces, and design systems. He is open to product design opportunities and interesting product challenges.',
     ],
