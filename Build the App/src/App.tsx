@@ -31,7 +31,7 @@ const contributions = [
   'Created rescheduling and appointment-reminder workflows',
   'Designed local salon discovery',
   'Structured an owner dashboard for appointments and staff management',
-  'Built customer history, loyalty, and onboarding experiences',
+  'Designed customer history and onboarding experiences; considered loyalty for future work',
   'Set the visual style for a mobile-first salon product',
 ]
 
