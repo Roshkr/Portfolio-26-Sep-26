@@ -1321,7 +1321,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-footer .retro-footer-titlebar {
-  margin: -4px -4px 32px;
+  margin: -4px -4px 0;
 }
 
 .about-footer .retro-footer-body {
@@ -1807,7 +1807,12 @@ button:not(.retro-contact-window > button):active {
 
 @media (max-width: 639px) {
   .home-hero-background {
-    height: calc(100svh - 64px + var(--dp-spacing-section-gap));
+    height: calc(100svh - 64px);
+    padding-top: 12px;
+  }
+
+  .retro-home-grid {
+    top: 64px;
   }
 
   /* Keep phone layouts readable while letting text follow a natural left edge. */
@@ -1816,7 +1821,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-header-inner {
-    justify-content: center;
+    justify-content: space-between;
     gap: 8px;
     padding-inline: 8px;
   }
@@ -1824,6 +1829,17 @@ button:not(.retro-contact-window > button):active {
   .retro-more-work-heading {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .portfolio-protected main .retro-more-work {
+    padding-inline: 0;
+    text-align: left;
+  }
+
+  .portfolio-protected main .retro-more-work-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .case-study-page section.sticky {
