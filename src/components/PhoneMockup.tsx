@@ -148,7 +148,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({
   }
 
   return (
-    <div className={`relative w-full max-w-[720px] aspect-[16/10] rounded-[22px] bg-slate-950 p-1.5 shadow-2xl ring-1 ring-black/10 overflow-hidden ${className}`}>
+    <div className={`relative w-full max-w-[720px] aspect-[16/10] rounded-[22px] bg-slate-950 p-2 shadow-2xl ring-1 ring-black/10 overflow-hidden ${className}`}>
       <div className="relative h-full w-full overflow-hidden rounded-[18px] bg-[#f4f5f7]">
         {videoSrc ? (
           <LazyVideo
@@ -190,7 +190,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   return (
     <div className={`relative flex flex-col items-center ${className}`}>
       {/* Outer Phone Shell */}
-      <div className={`relative ${fitHeight ? 'h-full w-auto max-w-full' : 'w-full max-w-[280px]'} aspect-[9/19] bg-black rounded-[42px] p-[6px] shadow-2xl ring-1 ring-black/10 transition-transform duration-300 hover:scale-[1.01]`}>
+      <div className={`relative ${fitHeight ? 'h-full w-auto max-w-full' : 'w-full max-w-[280px]'} aspect-[9/19] bg-black rounded-[42px] p-1 shadow-2xl ring-1 ring-black/10 transition-transform duration-300 hover:scale-[1.01]`}>
         {/* Dynamic Island / Speaker */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-20 flex items-center justify-center pointer-events-none">
           <div className="w-2.5 h-2.5 rounded-full bg-[#18181b] mr-2"></div>
@@ -224,7 +224,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                   }}
                 />
               )}
-              <div className="hidden absolute inset-0 bg-slate-900 text-white flex-col items-center justify-center p-6 text-center">
+              <div className="hidden absolute inset-0 bg-slate-900 text-white flex-col items-center justify-center p-4 md:p-6 text-center">
                 <span className="text-xs uppercase tracking-widest text-slate-400">Mobile Interface</span>
                 <span className="text-sm font-semibold mt-1">Screen Preview</span>
               </div>
@@ -237,7 +237,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                 <span>9:41</span>
                 <div className="flex items-center gap-1">
                   <span>5G</span>
-                  <div className="w-4 h-2 border border-slate-400 rounded-[2px] p-[1px]">
+                  <div className="w-4 h-2 border border-slate-400 rounded-[2px] p-1">
                     <div className="w-full h-full bg-slate-400 rounded-[1px]"></div>
                   </div>
                 </div>
@@ -249,7 +249,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                   <span className="text-sm">‹</span>
                   <span>Back</span>
                 </div>
-                <div className="flex flex-col gap-[3px] w-4">
+                <div className="flex flex-col gap-1 w-4">
                   <div className="h-[2px] bg-slate-400 rounded-full"></div>
                   <div className="h-[2px] bg-slate-400 rounded-full"></div>
                   <div className="h-[2px] bg-slate-400 rounded-full"></div>

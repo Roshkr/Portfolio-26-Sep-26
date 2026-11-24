@@ -49,24 +49,24 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           <WindowControls />
         </div>
         <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="retro-project-link group block cursor-pointer text-left text-black no-underline">
-        <div className="retro-project-layout grid min-w-0 items-start gap-5 lg:items-stretch lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-6">
-          <div className={`retro-project-media relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch ${study.id === 'umbrella' ? 'lg:mb-14' : ''}`}>
+        <div className="retro-project-layout grid min-w-0 items-start gap-4 md:gap-6 lg:items-stretch lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div className={`retro-project-media relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch ${study.id === 'umbrella' ? 'lg:mb-12' : ''}`}>
             {study.id === 'design-system-icons' && study.heroVideo ? (
               <LazyVideo src={study.heroVideo} poster={study.heroImage || undefined} ariaLabel="Design system color palette preview" objectFit="contain" frameClassName="rounded-xl bg-[#f1f2f4] transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
             ) : study.id === 'design-system-icons' ? (
-              <div className="flex h-full w-full flex-col justify-center gap-5 rounded-xl border border-slate-200 bg-[#f1f2f4] p-5 sm:gap-7 sm:p-8" aria-label="Project preview coming soon">
+              <div className="flex h-full w-full flex-col justify-center gap-4 rounded-xl border border-slate-200 bg-[#f1f2f4] p-4 sm:gap-6 sm:p-6" aria-label="Project preview coming soon">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">Project preview</span>
-                  <span className="rounded-full border border-slate-300 bg-white px-2.5 py-1 text-[10px] font-medium text-slate-500">Color system</span>
+                  <span className="rounded-full border border-slate-300 bg-white px-2 py-1 text-[10px] font-medium text-slate-500">Color system</span>
                 </div>
                 <div className="grid grid-cols-3 gap-3 sm:gap-4">
                   {['Colors', 'Type', 'Spacing'].map((item, index) => (
-                    <div key={item} className="rounded-xl border border-slate-200 bg-white p-3 sm:p-4">
+                    <div key={item} className="rounded-xl border border-slate-200 bg-white p-4 md:p-6">
                       <span className="text-[10px] font-medium text-slate-500">{item}</span>
                       {index === 0 ? (
                         <div className="mt-3 flex gap-1">{['bg-slate-200', 'bg-slate-400', 'bg-slate-700', 'bg-slate-950'].map((color) => <span key={color} className={`h-5 flex-1 rounded-sm ${color}`} />)}</div>
                       ) : index === 1 ? (
-                        <div className="mt-2 space-y-1.5"><div className="h-2 w-4/5 rounded bg-slate-300" /><div className="h-1.5 w-3/5 rounded bg-slate-200" /></div>
+                        <div className="mt-2 space-y-2"><div className="h-2 w-4/5 rounded bg-slate-300" /><div className="h-1.5 w-3/5 rounded bg-slate-200" /></div>
                       ) : (
                         <div className="mt-2 flex items-end gap-1"><div className="h-2 w-2 rounded-sm bg-slate-200" /><div className="h-3 w-3 rounded-sm bg-slate-300" /><div className="h-5 w-5 rounded-sm bg-slate-400" /></div>
                       )}
@@ -119,7 +119,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 </motion.div>
               ))}
             </div>
-            <motion.span variants={appearTextVariants} className="mt-4 inline-flex items-center gap-2 border-b border-slate-400 pb-1.5 text-sm font-bold text-slate-900 transition-all duration-300 group-hover:gap-3 group-hover:border-slate-500 group-hover:text-slate-700 motion-reduce:transition-none">View<ArrowRight className="h-4 w-4" aria-hidden="true" /></motion.span>
+            <motion.span variants={appearTextVariants} className="mt-4 inline-flex items-center gap-2 border-b border-slate-400 pb-2 text-sm font-bold text-slate-900 transition-all duration-300 group-hover:gap-3 group-hover:border-slate-500 group-hover:text-slate-700 motion-reduce:transition-none">View<ArrowRight className="h-4 w-4" aria-hidden="true" /></motion.span>
           </motion.div>
         </div>
       </a>
@@ -130,13 +130,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     <a
       href={`/case-studies/${study.id}`}
       onClick={handleSelect}
-      style={isStacked ? { '--stack-offset': `${stackPosition * 44}px`, zIndex: stackPosition + 1 } as React.CSSProperties : undefined}
+      style={isStacked ? { zIndex: stackPosition + 1 } : undefined}
       aria-label={`Read the ${study.title} case study`}
       className={`${isStacked ? 'project-stack-card ' : ''}group cursor-pointer bg-white ${compactCorners ? 'rounded-xl' : 'rounded-3xl'} border border-slate-200/80 hover:border-slate-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.07)] transition-all duration-300 flex flex-col lg:flex-row overflow-hidden items-stretch no-underline ${study.heroVideo || ['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'lg:h-auto lg:max-h-none' : 'lg:h-[min(80vh,540px)] lg:max-h-[80vh]'}`}
     >
-      <div className="w-full lg:w-7/12 bg-gradient-to-b from-[#f8f9fb] to-[#edf0f5] p-4 sm:p-6 lg:p-7 border-b lg:border-b-0 lg:border-r border-slate-200/70 relative overflow-hidden flex flex-col items-center justify-center shrink-0 lg:h-full">
+      <div className="w-full lg:w-7/12 bg-gradient-to-b from-[#f8f9fb] to-[#edf0f5] p-4 sm:p-6 lg:p-6 border-b lg:border-b-0 lg:border-r border-slate-200/70 relative overflow-hidden flex flex-col items-center justify-center shrink-0 lg:h-full">
         <div className="relative z-20 mb-4 flex w-full shrink-0 items-center gap-2">
-          <span className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-white/95 text-slate-700 shadow-2xs border border-slate-200/70 backdrop-blur-xs">
+          <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded-full bg-white/95 text-slate-700 shadow-2xs border border-slate-200/70 backdrop-blur-xs">
             {study.id === 'bridge2business'
               ? 'Redesign Proposal'
               : study.status || 'Case Study'}
@@ -166,7 +166,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </div>
 
-      <div className={`w-full lg:w-5/12 p-5 sm:p-6 lg:p-8 flex flex-col ${['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'justify-start' : 'justify-between'} space-y-4 lg:h-full`}>
+      <div className={`w-full lg:w-5/12 p-4 sm:p-6 lg:p-6 flex flex-col ${['umbrella', 'maxlence', 'naie'].includes(study.id) ? 'justify-start' : 'justify-between'} space-y-4 lg:h-full`}>
         <div className="space-y-3">
           <div className="flex items-center justify-between text-xs">
             <span className="font-semibold uppercase tracking-wider text-[#2b35ee]">
@@ -187,18 +187,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2">
             {study.tags?.slice(0, 3).map((tag, index) => (
               <span
                 key={index}
-                className="px-2.5 py-0.5 bg-slate-100 hover:bg-slate-200/80 text-slate-600 text-[11px] font-medium rounded-md transition-colors"
+                className="px-2 py-1 bg-slate-100 hover:bg-slate-200/80 text-slate-600 text-[11px] font-medium rounded-md transition-colors"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-900 group-hover:text-[#2b35ee] group-hover:translate-x-1 transition-all shrink-0">
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-900 group-hover:text-[#2b35ee] group-hover:translate-x-1 transition-all shrink-0">
             <span>View details</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </div>

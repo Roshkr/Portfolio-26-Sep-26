@@ -216,17 +216,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-2 backdrop-blur-md sm:p-5"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-2 backdrop-blur-md sm:p-4"
       onClick={(event) => { if (event.target === event.currentTarget) closeChatRef.current(); }}
     >
       <section
         role="dialog"
         aria-modal="true"
         aria-labelledby="contact-chat-title"
-        className={`retro-chat-modal relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-[#111111] shadow-2xl sm:rounded-3xl ${isExpanded ? 'h-[calc(100dvh-16px)] max-h-none max-w-none sm:h-[calc(100dvh-40px)]' : 'h-[min(774px,calc(100dvh-16px))] max-h-[calc(100dvh-16px)] sm:h-[min(774px,calc(100dvh-40px))] sm:max-h-[calc(100dvh-40px)] sm:max-w-[950px]'} px-5 pb-5 pt-16 sm:px-8 sm:pb-7 sm:pt-20 lg:px-10`}
+        className={`retro-chat-modal relative flex w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-[#111111] shadow-2xl sm:rounded-3xl ${isExpanded ? 'h-[calc(100dvh-16px)] max-h-none max-w-none sm:h-[calc(100dvh-40px)]' : 'h-[min(774px,calc(100dvh-16px))] max-h-[calc(100dvh-16px)] sm:h-[min(774px,calc(100dvh-40px))] sm:max-h-[calc(100dvh-40px)] sm:max-w-[950px]'} px-4 pb-4 pt-16 sm:px-6 sm:pb-6 sm:pt-16 lg:px-6`}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="absolute right-4 top-3 flex items-center gap-3 text-[#666666] sm:right-7 sm:top-5 sm:gap-5">
+        <div className="absolute right-4 top-3 flex items-center gap-3 text-[#666666] sm:right-6 sm:top-4 sm:gap-4">
           <button type="button" onClick={() => setIsExpanded((value) => !value)} aria-label={isExpanded ? 'Restore dialog size' : 'Expand dialog'} className="hidden rounded-xl p-2 transition-colors hover:bg-slate-100 hover:text-black sm:block">
             <Expand className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -244,7 +244,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           </p>
         </header>
 
-        <div aria-live="polite" className="retro-chat-messages my-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain py-2 sm:my-5">
+        <div aria-live="polite" className="retro-chat-messages my-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain py-2 sm:my-6">
           {messages.length === 0 && (
             <div className="retro-chat-empty-state flex h-full min-h-0 flex-col items-center justify-center px-4 text-center">
               <div className="retro-chat-animation relative mb-3 grid place-items-center bg-white">
@@ -286,14 +286,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="flex shrink-0 flex-nowrap gap-2 overflow-x-auto overscroll-x-contain pb-4 sm:flex-wrap sm:gap-2.5 sm:overflow-visible sm:pb-6">
+        <div className="flex shrink-0 flex-nowrap gap-2 overflow-x-auto overscroll-x-contain pb-4 sm:flex-wrap sm:gap-2 sm:overflow-visible sm:pb-6">
           {suggestions.map((suggestion) => (
             <button
               key={suggestion}
               type="button"
               disabled={isResponding}
               onClick={() => submitQuestion(suggestion)}
-              className="min-h-10 shrink-0 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-left text-xs leading-tight text-slate-800 transition-colors hover:bg-slate-100 disabled:cursor-wait disabled:opacity-60 sm:px-4 sm:py-3 sm:text-sm"
+              className="min-h-10 shrink-0 rounded-xl border border-slate-200 bg-white px-3 py-2 text-left text-xs leading-tight text-slate-800 transition-colors hover:bg-slate-100 disabled:cursor-wait disabled:opacity-60 sm:px-4 sm:py-3 sm:text-sm"
             >
               {suggestion}
             </button>
@@ -301,7 +301,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
         </div>
 
         <form className="shrink-0" onSubmit={(event) => { event.preventDefault(); submitQuestion(question); }}>
-          <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-2.5 transition-colors focus-within:border-[#2b35ee] focus-within:ring-2 focus-within:ring-[#2b35ee]/15">
+          <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-2 transition-colors focus-within:border-[#2b35ee] focus-within:ring-2 focus-within:ring-[#2b35ee]/15">
             <textarea
               ref={inputRef}
               rows={1}
@@ -317,7 +317,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               aria-label="Ask a question or paste a job description"
               className="max-h-32 min-h-6 min-w-0 flex-1 resize-y border-0 bg-transparent text-base leading-relaxed text-slate-800 outline-none placeholder:text-slate-400"
             />
-            <button type="submit" aria-label="Send question" disabled={!question.trim() || isResponding} className="rounded-lg p-1.5 text-slate-400 transition-colors enabled:text-[#2b35ee] enabled:hover:bg-[#2b35ee]/5">
+            <button type="submit" aria-label="Send question" disabled={!question.trim() || isResponding} className="rounded-lg p-2 text-slate-400 transition-colors enabled:text-[#2b35ee] enabled:hover:bg-[#2b35ee]/5">
               <ArrowUp className={`h-6 w-6 ${isResponding ? 'animate-pulse' : ''}`} aria-hidden="true" />
             </button>
           </div>

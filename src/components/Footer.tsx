@@ -44,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenChat }) => {
               href={DESIGNER_INFO.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="retro-button px-5 py-3 text-sm"
+              className="retro-button px-4 py-3 text-sm"
             >
               <FileText className="w-4 h-4" />
               <span>Resume</span>
@@ -68,13 +68,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenChat }) => {
         </div>
 
         {/* Bottom Metadata & Socials */}
-        <div className="pt-8 mt-8 border-t border-slate-400 flex flex-col md:flex-row md:items-center justify-between gap-6 text-sm text-slate-700">
+        <div className="pt-8 mt-8 border-t border-slate-400 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 text-sm text-slate-700">
           <div className="flex items-center gap-2">
             <span>© {DESIGNER_INFO.name} 2026</span>
             <span aria-hidden="true">·</span>
             <span>{DESIGNER_INFO.location}</span>
           </div>
-          <time className="retro-footer-clock retro-metadata" dateTime={time.toISOString()} aria-label={`Current time: ${clock} IST`}>
+          <time suppressHydrationWarning className="retro-footer-clock retro-metadata" dateTime={time.toISOString()} aria-label={`Current time: ${clock} IST`}>
             {clock} IST
           </time>
 

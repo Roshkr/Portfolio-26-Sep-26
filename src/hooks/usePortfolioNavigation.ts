@@ -23,10 +23,10 @@ const getRouteFromLocation = (pathname: string, hash: string, caseStudies: CaseS
   return { page: 'home' };
 };
 
-export const usePortfolioNavigation = (caseStudies: CaseStudy[]) => {
+export const usePortfolioNavigation = (caseStudies: CaseStudy[], initialPath?: string) => {
   const [route, setRoute] = useState<PortfolioRoute>(() =>
     typeof window === 'undefined'
-      ? { page: 'home' }
+      ? getRouteFromLocation(initialPath ?? '/', '', caseStudies)
       : getRouteFromLocation(window.location.pathname, window.location.hash, caseStudies)
   );
 

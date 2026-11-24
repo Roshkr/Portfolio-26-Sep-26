@@ -27,7 +27,7 @@ const portraitFrames = [
 export const ScrollTvPortrait = ({
   trackRef,
 }: {
-  trackRef: RefObject<HTMLDivElement | null>;
+  trackRef: RefObject<HTMLElement | null>;
 }) => {
   const stageRef = useRef<HTMLDivElement>(null);
   const [framePosition, setFramePosition] = useState(0);
@@ -43,7 +43,7 @@ export const ScrollTvPortrait = ({
   }, []);
 
   return (
-    <div ref={stageRef} className="retro-hero-tv-stack md:col-span-5">
+    <div ref={stageRef} className="retro-hero-tv-stack order-first lg:order-last lg:col-span-5">
       <div className="retro-hero-tv">
         <div className="retro-hero-tv-screen">
           <div className="retro-hero-tv-picture">

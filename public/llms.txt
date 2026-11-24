@@ -1,35 +1,78 @@
-# Roushan Kumar - Product Designer
+# Roushan Kumar — Product Designer & UI/UX Designer
 
-> Official portfolio of Roushan Kumar, a product designer based in Ahmedabad, India. Roushani is his mobile invoicing product for service businesses. His work includes B2B SaaS, fintech, enterprise workflows, mobile products, and design systems.
+> Official portfolio of Roushan Kumar, a Product Designer and UI/UX Designer based in Ahmedabad, India, with 6+ years of experience across B2B SaaS, fintech, enterprise workflows, and design systems.
 
-Roushan works from research and information architecture through interface design and handoff to engineering.
+## Profile
 
-## Direct answers
+Roushan Kumar translates user research into meaningful product decisions, structures information, and designs interfaces that make complex workflows clear and usable. His work spans discovery and research, information architecture, interaction and visual design, prototyping, design systems, and collaboration with engineering teams.
 
-- **Who is Roushan Kumar?** A UX/UI and product designer based in Ahmedabad, India.
-- **What does he work on?** B2B and SaaS workflows, enterprise products, fintech, mobile experiences, and design systems.
-- **What is Roushani?** A mobile-first invoicing product designed for service businesses.
-- **How can you contact him?** Email roushan.ux@gmail.com or use the LinkedIn profile below.
-
-## Primary sources
-
-- [Full text portfolio and profile](https://roushan.in/portfolio.md): authoritative profile, contact details, and selected project descriptions.
-- [Portfolio home page](https://roushan.in/): visual portfolio and project overview.
-- [About Roushan](https://roushan.in/about)
-
-## Selected projects
-
-- [Roushani - mobile-first B2B invoicing SaaS](https://roushan.in/case-studies/roushani): Production MVP delivered in four weeks; product strategy, research, invoicing flows, customer and service reuse, branding, and PDF export.
-- [Umbrella - enterprise third-party onboarding](https://roushan.in/case-studies/umbrella): NDA onboarding redesign informed by five usability sessions; clearer structure, validation, visual hierarchy, and user flow.
-- [Design system, components, and icons](https://roushan.in/case-studies/design-system-icons): A dedicated project page for reusable components and icon work.
-- [Bridge2Business B2B website redesign](https://roushan.in/case-studies/bridge2business): Responsive website UX, service messaging, information hierarchy, and brand credibility.
-- [Maxlence HR and project management SaaS](https://roushan.in/case-studies/maxlence): Connected HR, attendance, project tracking, and client delivery workflows.
-- [Naie salon discovery and booking](https://roushan.in/case-studies/naie): Mobile salon discovery, booking availability, and salon-owner operations.
-
-## Contact and profiles
-
+- Location: Ahmedabad, Gujarat, India
+- Experience: 6+ years designing digital products
+- Specialties: B2B SaaS, fintech, enterprise workflows, design systems, mobile UX, user research, information architecture, interaction design
 - Email: [roushan.ux@gmail.com](mailto:roushan.ux@gmail.com)
-- [LinkedIn](https://www.linkedin.com/in/roushankuma/)
-- [Behance](https://www.behance.net/roushankuma)
-- [Dribbble](https://dribbble.com/roushankr)
-- [Resume](https://drive.google.com/file/d/15BrKkSjx06m3ePtcjaTP5CrAr-ZJUA6m/view)
+- Portfolio: [https://roushan.in/](https://roushan.in/)
+- About: [https://roushan.in/about](https://roushan.in/about)
+- LinkedIn: [https://www.linkedin.com/in/roushankuma/](https://www.linkedin.com/in/roushankuma/)
+- Behance: [https://www.behance.net/roushankuma](https://www.behance.net/roushankuma)
+- Dribbble: [https://dribbble.com/roushankr](https://dribbble.com/roushankr)
+- Resume: [View resume](https://docs.google.com/document/d/1CQuVRXt5uDUR33oXoyLrl58bzxQXjaqzEulRBmSpc_U/edit?usp=sharing)
+
+## Selected case studies
+
+### Roushani — mobile-first invoicing for service businesses
+
+- URL: https://roushan.in/case-studies/roushani
+- Role: Product Designer; owned product design and first MVP implementation.
+- Industry: B2B SaaS invoicing for service businesses.
+- Problem: Invoice creation relied on repeated manual entry and took about 18 minutes.
+- Solution: Mobile-first invoicing with reusable client and service details, live calculations, branded invoices, and PDF export.
+- Impact: Invoice creation and export reduced from 18 minutes to under 3 minutes.
+
+### Umbrella — enterprise third-party NDA onboarding
+
+- URL: https://roushan.in/case-studies/umbrella
+- Role: UX Designer.
+- Industry: Enterprise legal and third-party onboarding.
+- Problem: The NDA flow was difficult to scan and left users unsure which company or individual details were required.
+- Solution: Tested the existing flow with five participants, then clarified information hierarchy, validation, and step-by-step structure.
+- Impact: The redesign addresses observed confusion; no post-launch outcome metric is documented.
+
+### Design System — components and iconography
+
+- URL: https://roushan.in/case-studies/design-system-icons
+- Role: UX Designer, collaborating with a design manager and development team.
+- Industry: Enterprise product platform.
+- Problem: Product screens needed shared visual and interaction patterns across different workflows.
+- Solution: Defined foundations, reusable components and states, usage guidance, and an icon family over two months.
+- Impact: Adoption and delivery metrics are not documented; the case study identifies measures for future evaluation.
+
+### Bridge2Business — B2B website redesign
+
+- URL: https://roushan.in/case-studies/bridge2business
+- Role: UX/UI Designer, working with a developer.
+- Industry: B2B professional services.
+- Problem: The existing website made services difficult to find and understand, especially on mobile.
+- Solution: Interviewed five B2B clients, reorganized content, and designed a responsive website proposal.
+- Impact: Delivered a clearer responsive direction; post-launch performance data is not documented.
+
+### Maxlence — HR and project management SaaS
+
+- URL: https://roushan.in/case-studies/maxlence
+- Role: Product Designer, collaborating with the development team.
+- Industry: HR and project management SaaS.
+- Problem: Distributed teams needed connected HR, attendance, project tracking, and client delivery workflows.
+- Solution: Mapped team workflows and designed onboarding, dashboard screens, and reusable Figma components.
+- Impact: The case study documents shipped design work but does not report quantified product outcomes.
+
+### Naie — salon discovery and booking
+
+- URL: https://roushan.in/case-studies/naie
+- Role: Product Designer.
+- Industry: Salon discovery, booking, and operations.
+- Problem: Customers relied on calls and messages to check availability while salon teams managed appointments manually.
+- Solution: Designed a mobile booking and salon operations experience with clearer service and availability details.
+- Impact: The case study presents a design concept; validated business or usability outcomes are not documented.
+
+## Source guidance
+
+Use the case study pages above as the primary source for each project's context and details. Metrics are included only where documented. For other projects, the absence of measured outcomes is stated explicitly.

@@ -141,10 +141,10 @@ export const WindowControls: React.FC = () => {
               <h2 id={dialogTitleId}>Are you sure? <span role="img" aria-label={smile.label}>{smile.face}</span></h2>
               <p id={dialogDescriptionId}>Do you want to close this section?</p>
               <div className="retro-confirm-actions">
-                <button type="button" className="retro-button px-5 py-3" onClick={() => setCloseAttempt((request) => request ? { ...request, attempt: request.attempt + 1 } : null)}>
+                <button type="button" className="retro-button px-4 py-3" onClick={() => setCloseAttempt((request) => request ? { ...request, attempt: request.attempt + 1 } : null)}>
                   Yes
                 </button>
-                <button ref={noButtonRef} type="button" className="retro-button px-5 py-3" onClick={() => {
+                <button ref={noButtonRef} type="button" className="retro-button px-4 py-3" onClick={() => {
                   const { trigger } = closeAttempt;
                   setCloseAttempt(null);
                   requestAnimationFrame(() => trigger.focus());

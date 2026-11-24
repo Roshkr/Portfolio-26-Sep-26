@@ -25,7 +25,7 @@ export const CompanyLogoMark: React.FC<CompanyLogoProps> = ({
 
   const content = (
     <div
-      className={`${className} rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-xs flex items-center justify-center shrink-0 transition-all duration-300 group-hover:shadow-md group-hover:border-slate-300 relative ${resolvedFit === 'contain' ? 'p-3 sm:p-3.5' : ''}`}
+      className={`${className} rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-xs flex items-center justify-center shrink-0 transition-all duration-300 group-hover:shadow-md group-hover:border-slate-300 relative ${resolvedFit === 'contain' ? 'p-3 sm:p-4' : ''}`}
     >
       {logoUrl && !hasError ? (
         <img
@@ -63,8 +63,8 @@ export const CompanyLogoMark: React.FC<CompanyLogoProps> = ({
 // Company Logo Ribbon banner for the HomePage with full logos & website links
 export const CompanyLogoBanner: React.FC = () => {
   return (
-    <div className="py-14 border-t border-slate-200/60 bg-gradient-to-b from-white to-slate-50/70">
-      <div className="max-w-6xl mx-auto px-6">
+    <div className="py-12 border-t border-slate-200/60 bg-gradient-to-b from-white to-slate-50/70">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-[#2b35ee]">
@@ -84,7 +84,7 @@ export const CompanyLogoBanner: React.FC = () => {
           {EXPERIENCES.map((exp, idx) => {
             const cardContent = (
               <div className="flex flex-col items-center justify-between text-center p-4 rounded-2xl bg-white border border-slate-200/80 hover:border-slate-300 shadow-2xs hover:shadow-md transition-all duration-300 group h-full">
-                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-50/80 p-2.5 border border-slate-100 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-200 relative">
+                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-50/80 p-2 border border-slate-100 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-200 relative">
                   {exp.logoUrl ? (
                     <img
                       src={exp.logoUrl}
@@ -98,7 +98,7 @@ export const CompanyLogoBanner: React.FC = () => {
                     </span>
                   )}
                   {exp.websiteUrl && (
-                    <div className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-white/90 shadow-2xs border border-slate-200/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-white/90 shadow-2xs border border-slate-200/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                       <ArrowUpRight className="w-2.5 h-2.5 text-[#2b35ee]" />
                     </div>
                   )}
@@ -108,7 +108,7 @@ export const CompanyLogoBanner: React.FC = () => {
                   <p className="text-xs font-semibold text-slate-800 leading-snug group-hover:text-[#2b35ee] transition-colors truncate">
                     {exp.company}
                   </p>
-                  <p className="text-[11px] text-slate-400 mt-0.5 font-normal truncate">
+                  <p className="text-[11px] text-slate-400 mt-1 font-normal truncate">
                     {exp.role.split('(')[0].trim()}
                   </p>
                 </div>

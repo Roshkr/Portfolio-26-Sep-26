@@ -213,7 +213,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
   return (
     <article className="case-study-page roushani-case-study w-full bg-[#fbfbfb] text-slate-950">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 md:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-6">
         <button
           type="button"
           onClick={onBack}
@@ -227,13 +227,13 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </span>
       </div>
 
-      <header className="mx-auto max-w-6xl px-6 pb-12 pt-12 md:px-10 md:pb-16 md:pt-20">
+      <header className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 pb-12 pt-12 md:pb-16 md:pt-16">
         <div className="max-w-5xl">
-          <h1 className="mt-5 max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-slate-950 sm:text-6xl md:text-8xl">
+          <h1 className="mt-4 max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-slate-950 sm:text-6xl md:text-8xl">
             {caseStudy.title}
           </h1>
           <HeroSubtitle text={caseStudy.subtitle} />
-          <div className="mt-10 grid gap-x-8 gap-y-6 border-y border-slate-200 py-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-x-6 gap-y-6 border-y border-slate-200 py-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { label: 'My role', value: caseStudy.role },
               { label: 'In collaboration', value: caseStudy.team },
@@ -251,8 +251,8 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         <MediaFrame caseStudy={caseStudy} />
       </header>
 
-      <RevealSection className="bg-[#fbfbfb] py-6 md:py-10">
-        <div className="mx-auto max-w-6xl space-y-3 px-6 md:px-10">
+      <RevealSection className="bg-[#fbfbfb] py-6 md:py-8">
+        <div className="mx-auto max-w-6xl space-y-3 px-4 sm:px-6 xl:px-8">
           {[
             {
               label: 'The problem',
@@ -277,7 +277,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
           ].map(({ label, title }, index) => (
             <motion.section
               key={label}
-              className="sticky flex items-center overflow-hidden rounded-sm border border-slate-200 bg-white px-7 py-10 text-slate-950 shadow-[0_24px_80px_-48px_rgba(15,23,42,.28)] sm:px-10 md:px-14 md:py-14"
+              className="sticky flex items-center overflow-hidden rounded-sm border border-slate-200 bg-white p-4 md:p-6"
               style={{
                 zIndex: index + 1,
                 top: `calc(4rem + ${index * 12}px)`,
@@ -300,8 +300,8 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
-      <RevealSection className="flex min-h-[calc(100svh-4rem)] items-center border-y border-slate-200 bg-white py-4 sm:min-h-[calc(100svh-76px)] sm:py-6">
-        <div className="mx-auto w-full max-w-7xl px-6 py-2 md:px-10">
+      <RevealSection className="flex min-h-[calc(100svh-4rem)] items-center border-y border-slate-200 bg-white py-4 sm:min-h-[calc(100svh-4rem)] sm:py-6">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 xl:px-8 py-2">
           <div className="overflow-hidden">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -318,8 +318,8 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
               </motion.div>
             </AnimatePresence>
           </div>
-          <div className="mt-5 flex items-center justify-between gap-3 sm:mt-7 sm:gap-6 md:mt-9">
-            <div className="flex items-center gap-0.5 sm:gap-2" role="group" aria-label="Choose an image in the invoice workflow">
+          <div className="mt-4 flex items-center justify-between gap-3 sm:mt-6 sm:gap-6 md:mt-8">
+            <div className="flex items-center gap-1 sm:gap-2" role="group" aria-label="Choose an image in the invoice workflow">
               {showcaseMoments.flatMap((moment) => moment.features).map((feature, index) => (
                 <button
                   key={`${feature.title}-${index}`}
@@ -357,8 +357,8 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
-      <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
+      <RevealSection className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 py-12 md:py-16">
+        <div className="grid gap-4 md:grid-cols-[0.7fr_1.3fr] md:gap-6">
           <div className="roushani-summary-sticky md:sticky md:top-24 md:self-start">
             <SectionHeading eyebrow="The decision" title="One decision: make invoicing feel simple." />
           </div>
@@ -380,7 +380,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                   key={item.title}
                   variants={riseIn}
                   whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-                  className="rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-lg"
+                  className="rounded-xl border border-slate-200 bg-white p-4 transition-shadow hover:shadow-lg"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">0{index + 1}</p>
                   <h3 className="mt-3 text-base font-semibold text-slate-900">{item.title}</h3>
@@ -392,15 +392,15 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
-      <RevealSection className="border-y border-slate-200 bg-[#eef0f3] py-14 md:py-20">
-        <div className="mx-auto max-w-6xl px-6 md:px-10">
-          <div className="mb-10 max-w-3xl md:mb-12">
+      <RevealSection className="border-y border-slate-200 bg-[#eef0f3] py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8">
+          <div className="mb-8 max-w-3xl md:mb-12">
             <SectionHeading eyebrow="Connected moments" title="From an empty invoice to a document ready to send." />
           </div>
           <div className="relative">
             <motion.div
               aria-hidden="true"
-              className="absolute left-9 right-9 top-9 hidden h-px origin-left bg-[#2b35ee]/50 lg:block"
+              className="absolute left-8 right-8 top-6 hidden h-px origin-left bg-[#2b35ee]/50 lg:block"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true, amount: 0.45 }}
@@ -418,10 +418,10 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                 key={stage.title}
                 variants={riseIn}
                 whileHover={shouldReduceMotion ? undefined : { y: -5 }}
-                className="group relative rounded-xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-lg"
+                className="group relative rounded-xl border border-slate-200 bg-white p-4 transition-shadow hover:shadow-lg"
               >
                 <span className="relative z-10 grid h-8 w-8 place-items-center rounded-full bg-slate-950 text-xs font-semibold text-white ring-4 ring-white transition-colors group-hover:bg-[#2b35ee]">0{index + 1}</span>
-                <h3 className="mt-5 text-base font-semibold text-slate-900">{stage.title}</h3>
+                <h3 className="mt-4 text-base font-semibold text-slate-900">{stage.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{stage.detail}</p>
               </motion.li>
             ))}
@@ -431,7 +431,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
       </RevealSection>
 
       <RevealSection className="border-y border-slate-200 bg-white py-12 md:py-16">
-        <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
+        <div className="mx-auto grid max-w-6xl gap-4 px-4 sm:px-6 xl:px-8 md:grid-cols-[0.7fr_1.3fr] md:gap-6">
           <div className="roushani-summary-sticky md:sticky md:top-24 md:self-start">
             <SectionHeading eyebrow="The challenge" title={challenge?.title || 'Why this product was needed'} />
           </div>
@@ -450,7 +450,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                     key={insight.title}
                     variants={riseIn}
                     whileHover={shouldReduceMotion ? undefined : { x: 4 }}
-                    className="rounded-xl border border-slate-200 bg-[#fbfbfb] p-5 transition-colors hover:border-[#2b35ee]/40"
+                    className="rounded-xl border border-slate-200 bg-[#fbfbfb] p-4 transition-colors hover:border-[#2b35ee]/40"
                   >
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">0{index + 1} / {insight.title}</p>
                     <CharacterRevealBlock text={insight.desc} className="mt-3 text-sm leading-relaxed text-slate-600" />
@@ -462,9 +462,9 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
-      <RevealSection className="border-y border-slate-200 bg-[#fbfbfb] py-14 md:py-20">
-        <div className="mx-auto max-w-6xl px-6 md:px-10">
-          <div className="mb-10 max-w-3xl md:mb-14">
+      <RevealSection className="border-y border-slate-200 bg-[#fbfbfb] py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8">
+          <div className="mb-8 max-w-3xl md:mb-12">
             <SectionHeading eyebrow="More of the work" title="The supporting screens and behaviors." />
           </div>
           <motion.div
@@ -479,7 +479,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                 key={section.eyebrow}
                 variants={riseIn}
                 whileHover={shouldReduceMotion ? undefined : { y: -4 }}
-                className="rounded-xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-lg"
+                className="rounded-xl border border-slate-200 bg-white p-4 md:p-6 transition-shadow hover:shadow-lg"
               >
                 <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">{section.eyebrow}</p>
                 <h3 className="mt-2 text-lg font-semibold tracking-tight text-slate-900">{section.title}</h3>
@@ -493,7 +493,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
             ))}
           </motion.div>
           <motion.div
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:auto-rows-[minmax(190px,auto)] lg:gap-5"
+            className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-12 lg:auto-rows-[minmax(190px,auto)] lg:gap-6"
             initial={shouldReduceMotion ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, amount: 0.12 }}
@@ -504,10 +504,10 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                 key={screen.title}
                 variants={riseIn}
                 whileHover={shouldReduceMotion ? undefined : { y: -5, scale: 1.01 }}
-                className={`group flex min-h-[280px] flex-col overflow-hidden rounded-xl border border-slate-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-xl sm:min-h-[320px] ${index === 0 ? 'sm:col-span-2 lg:col-span-7' : index === 1 ? 'lg:col-span-5' : 'lg:col-span-4'}`}
+                className={`group flex min-h-[280px] flex-col overflow-hidden rounded-xl border border-slate-200 bg-white p-4 md:p-6 shadow-sm transition-shadow hover:shadow-xl sm:min-h-[320px] ${index === 0 ? 'sm:col-span-2 lg:col-span-7' : index === 1 ? 'lg:col-span-5' : 'lg:col-span-4'}`}
               >
                 <motion.div
-                  className="flex flex-1 items-center justify-center overflow-hidden rounded-lg bg-[#f1f2f5] p-3 sm:p-5"
+                  className="flex flex-1 items-center justify-center overflow-hidden rounded-lg bg-[#f1f2f5] p-3 sm:p-4"
                   whileHover={shouldReduceMotion ? undefined : { scale: 1.035 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
@@ -530,7 +530,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
       </RevealSection>
 
       <RevealSection className="border-y border-slate-200 bg-white py-12 md:py-16">
-        <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[0.7fr_1.3fr] md:gap-16 md:px-10">
+        <div className="mx-auto grid max-w-6xl gap-4 px-4 sm:px-6 xl:px-8 md:grid-cols-[0.7fr_1.3fr] md:gap-6">
           <div className="roushani-summary-sticky">
             <SectionHeading eyebrow="What changed" title="Less time making invoices. More time running a business." />
           </div>
@@ -544,8 +544,8 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
-      <RevealSection className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
+      <RevealSection className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 py-12 md:py-16">
+        <div className="grid gap-4 md:grid-cols-[0.7fr_1.3fr] md:gap-6">
           <div className="roushani-summary-sticky">
             <SectionHeading eyebrow="Evidence and limits" title="What the pilot measured, and what still needs validation." />
           </div>
@@ -563,7 +563,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                   key={metric.label}
                   variants={riseIn}
                   whileHover={shouldReduceMotion ? undefined : { y: -5, scale: 1.015 }}
-                  className="rounded-xl bg-[#eef0f3] p-6 transition-shadow hover:shadow-lg md:p-7"
+                  className="rounded-xl bg-[#eef0f3] p-4 md:p-6 transition-shadow hover:shadow-lg"
                 >
                   <p className="text-3xl font-medium tracking-tight text-slate-950 md:text-4xl">{metric.value}</p>
                   <h3 className="mt-3 text-sm font-semibold text-slate-700">{metric.label}</h3>
@@ -577,7 +577,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
                 variants={riseIn}
-                className="mt-5 rounded-xl border border-slate-200 bg-white p-6"
+                className="mt-4 rounded-xl border border-slate-200 bg-white p-4 md:p-6"
               >
                 <h3 className="text-sm font-semibold text-slate-900">What I would validate next</h3>
                 <CharacterRevealBlock text={reflection.body} className="mt-3 text-sm leading-relaxed text-slate-600" />
@@ -587,8 +587,8 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </div>
       </RevealSection>
 
-      <RevealSection className="border-t border-slate-200 bg-[#eef0f3] py-16 text-slate-950 md:py-24">
-        <div className="mx-auto max-w-4xl space-y-8 px-6 md:px-10">
+      <RevealSection className="border-t border-slate-200 bg-[#eef0f3] py-12 text-slate-950 md:py-16">
+        <div className="mx-auto max-w-4xl space-y-8 px-4 sm:px-6 xl:px-8">
           <div className="max-w-3xl">
             <SectionHeading eyebrow="What’s next" title="Keep making the everyday feel easier." />
           </div>
@@ -602,7 +602,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
               {caseStudy.nextSteps.slice(0, 3).map((item) => <RevealListItem key={item} text={item} />)}
             </ul>
             {caseStudy.liveUrl && (
-              <a href={caseStudy.liveUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
+              <a href={caseStudy.liveUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
                 Explore Roushani <ExternalLink className="h-4 w-4" aria-hidden="true" />
               </a>
             )}
@@ -612,7 +612,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
       {nextStudy && onSelectCaseStudy && (
         <section className="border-t border-slate-200 bg-[#fbfbfb] py-12 md:py-16">
-          <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 md:px-10">
+          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:px-6 xl:px-8">
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span>
             <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners transitionOnSelect />
           </div>
@@ -623,7 +623,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 };
 
 const MediaFrame: React.FC<{ caseStudy: CaseStudy }> = ({ caseStudy }) => (
-  <div className="mt-12 overflow-hidden rounded-xl border border-slate-200 bg-[#f2f3f6] p-3 shadow-[0_24px_80px_-44px_rgba(15,23,42,.35)] md:mt-16 md:p-6">
+  <div className="mt-12 overflow-hidden rounded-xl border border-slate-200 bg-[#f2f3f6] p-3 shadow-[0_24px_80px_-44px_rgba(15,23,42,.35)] md:mt-16">
     {caseStudy.heroVideo ? (
       <div className="mx-auto aspect-video w-full max-w-6xl max-h-[720px]">
         <LazyVideo
@@ -658,7 +658,7 @@ const BeforeAfterMedia: React.FC<{ label: string; src: string; videoSrc?: string
       viewport={{ once: true, amount: 0.18 }}
       variants={riseIn}
       whileHover={shouldReduceMotion ? undefined : { y: -5, scale: 1.01 }}
-      className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-xl"
+      className="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 md:p-6 shadow-sm transition-shadow hover:shadow-xl"
     >
       {videoSrc ? (
         <div className="mx-auto aspect-[9/16] w-full max-w-[420px] rounded-[2.5rem] bg-black p-3 shadow-xl ring-1 ring-black/15 sm:p-4">

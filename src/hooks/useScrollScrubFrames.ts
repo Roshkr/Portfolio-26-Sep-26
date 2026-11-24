@@ -18,9 +18,6 @@ export const useScrollScrubFrames = (
       return;
     }
 
-    const previousStickyTop = stage.style.getPropertyValue('--retro-tv-sticky-top');
-    stage.style.setProperty('--retro-tv-sticky-top', `${stage.getBoundingClientRect().top}px`);
-
     gsap.registerPlugin(ScrollTrigger);
     const playhead = { frame: 0 };
     const context = gsap.context(() => {
@@ -35,11 +32,13 @@ export const useScrollScrubFrames = (
             return `top top+=${stickyTop}`;
           },
           end: () => {
-            const isPhoneLayout = window.matchMedia('(max-width: 760px)').matches;
-            const stickyTravel = isPhoneLayout
-              ? Number.parseFloat(getComputedStyle(track).paddingBottom)
-              : track.clientHeight - stage.offsetTop - stage.offsetHeight;
-            return `+=${Math.max(1, stickyTravel)}`;
+            const layout = track.querySelector<HTMLElement>('.about-hero-layout');
+            const trackRect = track.getBoundingClientRect();
+            const layoutRect = layout?.getBoundingClientRect();
+            const layoutOffset = layoutRect ? layoutRect.top - trackRect.top : 0;
+            const stageOffset = layoutOffset + stage.offsetTop;
+            const trackTravel = trackRect.height - stageOffset - stage.offsetHeight;
+            return `+=${Math.max(1, trackTravel)}`;
           },
           scrub: true,
           invalidateOnRefresh: true,
@@ -48,13 +47,6 @@ export const useScrollScrubFrames = (
       });
     }, track);
 
-    return () => {
-      context.revert();
-      if (previousStickyTop) {
-        stage.style.setProperty('--retro-tv-sticky-top', previousStickyTop);
-      } else {
-        stage.style.removeProperty('--retro-tv-sticky-top');
-      }
-    };
+    return () => context.revert();
   }, [trackRef, stageRef, frameCount, setFramePosition]);
 };

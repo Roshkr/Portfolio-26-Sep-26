@@ -18,7 +18,7 @@ import { usePageMetadata } from './hooks/usePageMetadata';
 import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
 import { useContentProtection } from './hooks/useContentProtection';
 
-export default function App() {
+export default function App({ initialPath }: { initialPath?: string } = {}) {
   useEffect(() => {
     document.getElementById('home-seo-fallback')?.remove();
     document.getElementById('seo-fallback')?.remove();
@@ -30,7 +30,7 @@ export default function App() {
       .filter((study): study is CaseStudy => Boolean(study)),
   );
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const { route, navigateTo, selectCaseStudy } = usePortfolioNavigation(caseStudies);
+  const { route, navigateTo, selectCaseStudy } = usePortfolioNavigation(caseStudies, initialPath);
   const [curtainPhase, setCurtainPhase] = useState<'closing' | 'covered' | 'opening' | null>(null);
   const [pendingNextStudy, setPendingNextStudy] = useState<CaseStudy | null>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -143,7 +143,7 @@ export default function App() {
         {curtainPhase && (
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-slate-950 px-6 text-center text-white"
+            className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-slate-950 px-4 sm:px-6 text-center text-white"
             style={{ transformOrigin: curtainPhase === 'opening' ? 'bottom center' : 'top center' }}
             initial={{ scaleY: 0 }}
             animate={{ scaleY: curtainPhase === 'opening' ? 0 : 1 }}

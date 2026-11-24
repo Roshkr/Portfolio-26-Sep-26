@@ -13,7 +13,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <header className="retro-header sticky top-0 z-40 w-full border-b-2 border-black">
-      <div className="retro-header-inner flex h-16 w-full items-center justify-between gap-4 px-3 sm:h-[76px] sm:px-6">
+      <div className="retro-header-inner flex h-16 w-full items-center justify-between gap-4 px-3 sm:px-6">
         {/* Brand Wordmark */}
         <button
           onClick={() => onNavigate('home')}

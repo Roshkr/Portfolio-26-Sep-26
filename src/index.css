@@ -32,12 +32,21 @@
   --dp-typography-supporting: 15px;
   --dp-typography-label: 12px;
   --dp-typography-body-leading: 1.4;
-  --dp-spacing-pane-inset: 5px;
-  --dp-spacing-item-gap: 10px;
-  --dp-spacing-section-gap: clamp(28px, 3.5vw, 40px);
-  --dp-spacing-section-inset: clamp(24px, 3.5vw, 40px);
-  --dp-spacing-card-gap: clamp(16px, 2vw, 24px);
-  --dp-spacing-card-inset: clamp(16px, 2vw, 24px);
+  --dp-space-1: 4px;
+  --dp-space-2: 8px;
+  --dp-space-3: 12px;
+  --dp-space-4: 16px;
+  --dp-space-6: 24px;
+  --dp-space-8: 32px;
+  --dp-space-12: 48px;
+  --dp-space-16: 64px;
+  --dp-space-24: 96px;
+  --dp-spacing-pane-inset: var(--dp-space-1);
+  --dp-spacing-item-gap: var(--dp-space-2);
+  --dp-spacing-section-gap: var(--dp-space-12);
+  --dp-spacing-section-inset: var(--dp-space-12);
+  --dp-spacing-card-gap: var(--dp-space-4);
+  --dp-spacing-card-inset: var(--dp-space-4);
   --dp-radius-control: 0;
   --dp-border-frame: 2px;
   --dp-border-rule: 1px;
@@ -101,7 +110,7 @@
   min-height: 100vh;
   min-height: 100dvh;
   margin-inline: auto;
-  padding-inline: clamp(12px, 2.4vw, 36px);
+  padding-inline: 0;
   background: transparent;
 }
 
@@ -120,7 +129,7 @@
 
 .retro-brand {
   min-height: 44px;
-  padding: 6px 10px;
+  padding: var(--dp-space-1) var(--dp-space-2);
   font-family: var(--dp-typography-display);
   font-weight: 700;
 }
@@ -147,8 +156,8 @@
   min-height: 34px;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 5px 9px;
+  gap: var(--dp-space-3);
+  padding: var(--dp-space-1) var(--dp-space-2);
   background: var(--dp-color-titlebar);
   color: #fff;
   font-family: var(--dp-typography-mono);
@@ -165,7 +174,7 @@
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
-  gap: 4px;
+  gap: var(--dp-space-1);
 }
 
 .retro-window-control {
@@ -219,15 +228,15 @@
   border-bottom: 0;
   background: var(--dp-color-window);
   box-shadow: 0 -4px 0 var(--dp-color-ink);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-bottom: env(safe-area-inset-bottom, var(--dp-space-1));
 }
 
 .retro-window-dock-items {
   display: flex;
   flex-wrap: nowrap;
-  gap: 10px;
+  gap: var(--dp-space-2);
   overflow-x: auto;
-  padding: 10px 16px;
+  padding: var(--dp-space-2) var(--dp-space-4);
 }
 
 .retro-window-dock-item {
@@ -236,9 +245,9 @@
   min-height: 44px;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+  gap: var(--dp-space-2);
   max-width: min(420px, 85vw);
-  padding: 8px 12px;
+  padding: var(--dp-space-2) var(--dp-space-3);
   text-align: left;
 }
 
@@ -251,7 +260,7 @@
 .retro-window-dock-action {
   flex: 0 0 auto;
   border-left: 2px solid currentColor;
-  padding-left: 10px;
+  padding-left: var(--dp-space-2);
   font-family: var(--font-mono, monospace);
   font-size: 10px;
   font-weight: 800;
@@ -264,7 +273,7 @@
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 20px;
+  padding: var(--dp-space-4);
   background: rgb(0 0 0 / 58%);
 }
 
@@ -274,12 +283,12 @@
 }
 
 .retro-confirm-body {
-  padding: clamp(20px, 5vw, 36px);
+  padding: var(--dp-spacing-card-inset);
   background: #fff;
 }
 
 .retro-confirm-body h2 {
-  margin: 14px 0 8px;
+  margin: var(--dp-space-3) 0 var(--dp-space-2);
   color: var(--dp-color-ink);
   font-family: var(--dp-typography-display);
   font-size: clamp(28px, 7vw, 40px);
@@ -296,8 +305,8 @@
 .retro-confirm-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
+  gap: var(--dp-space-3);
+  margin-top: var(--dp-space-6);
 }
 
 @keyframes retro-dialog-enter {
@@ -318,7 +327,7 @@
   min-height: 44px;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--dp-space-2);
   border: 2px solid #404040;
   border-radius: var(--dp-radius-control);
   background: var(--dp-color-window);
@@ -369,7 +378,7 @@ button:not(.retro-contact-window > button):active {
 
 .home-hero-background {
   display: flex;
-  min-height: calc(100svh - 76px);
+  min-height: calc(100svh - 64px);
   flex-direction: column;
   overflow: visible;
   padding: var(--dp-spacing-section-gap) 0 0;
@@ -379,14 +388,14 @@ button:not(.retro-contact-window > button):active {
 .retro-home-grid {
   display: grid;
   position: sticky;
-  top: 76px;
-  min-height: calc(100svh - 76px);
+  top: var(--dp-space-16);
+  min-height: calc(100svh - 64px);
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
 }
 
 .home-hero-background {
-  height: calc(100svh - 76px + var(--dp-spacing-section-gap));
+  height: calc(100svh - 64px + var(--dp-spacing-section-gap));
   margin-bottom: 0;
 }
 
@@ -419,8 +428,8 @@ button:not(.retro-contact-window > button):active {
   flex: 1;
   min-height: 0;
   align-items: center;
-  gap: clamp(20px, 3vw, 48px);
-  padding: clamp(16px, min(3vw, 4svh), 48px);
+  gap: var(--dp-spacing-card-gap);
+  padding: var(--dp-spacing-card-inset);
   background: var(--dp-color-highlight);
 }
 
@@ -437,7 +446,7 @@ button:not(.retro-contact-window > button):active {
   flex: 0 1 42%;
   flex-direction: column;
   align-self: flex-start;
-  gap: clamp(12px, 2vw, 20px);
+  gap: var(--dp-spacing-item-gap);
 }
 
 .retro-hero-tv {
@@ -448,7 +457,7 @@ button:not(.retro-contact-window > button):active {
   flex: 0 0 auto;
   flex-direction: column;
   gap: 0;
-  padding: clamp(10px, 1.6vw, 18px);
+  padding: var(--dp-spacing-card-inset);
   overflow: hidden;
   border: 3px solid #807c74;
   border-radius: 16px 18px 13px 13px;
@@ -461,7 +470,7 @@ button:not(.retro-contact-window > button):active {
   min-width: 0;
   min-height: 0;
   flex: 1 1 auto;
-  padding: clamp(7px, 1.15vw, 12px);
+  padding: var(--dp-spacing-item-gap);
   overflow: hidden;
   border: 2px solid #494743;
   border-radius: 15px 15px 12px 12px;
@@ -523,14 +532,14 @@ button:not(.retro-contact-window > button):active {
   flex: 0 0 auto;
   grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
-  gap: clamp(8px, 1.8vw, 20px);
-  padding: 4px 3px 0;
+  gap: var(--dp-spacing-item-gap);
+  padding: var(--dp-space-1) var(--dp-space-1) 0;
 }
 
 .retro-hero-tv-lower-seam {
   position: absolute;
   right: 0;
-  bottom: 3px;
+  bottom: var(--dp-space-1);
   left: 0;
   height: 1px;
   background: rgba(76, 72, 65, .46);
@@ -540,7 +549,7 @@ button:not(.retro-contact-window > button):active {
 .retro-hero-tv-indicator {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: var(--dp-space-1);
   color: #55524d;
   font-family: var(--dp-typography-mono);
   font-size: clamp(5px, .56vw, 7px);
@@ -558,7 +567,7 @@ button:not(.retro-contact-window > button):active {
 
 .retro-hero-tv-av-inputs {
   display: inline-flex;
-  gap: 7px;
+  gap: var(--dp-space-2);
 }
 
 .retro-hero-tv-av-inputs i {
@@ -610,9 +619,9 @@ button:not(.retro-contact-window > button):active {
   display: block;
   width: fit-content;
   max-width: 100%;
-  margin-bottom: clamp(10px, 1.5svh, 20px);
+  margin-bottom: var(--dp-spacing-item-gap);
   border: 4px solid var(--dp-color-ink);
-  padding: 0.04em 0.14em 0.1em;
+  padding: var(--dp-space-1) var(--dp-space-1) var(--dp-space-1);
   box-shadow: 6px 6px 0 var(--dp-color-ink);
   overflow-wrap: normal;
 }
@@ -677,10 +686,10 @@ button:not(.retro-contact-window > button):active {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 14px;
+  gap: var(--dp-space-3);
   border-top: 0;
   border-left: 1px solid #aaa;
-  padding: 12px clamp(8px, 2vw, 22px);
+  padding: var(--dp-space-3) var(--dp-spacing-card-gap);
 }
 
 .retro-fact-row:first-child {
@@ -705,10 +714,10 @@ button:not(.retro-contact-window > button):active {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 8px 20px;
-  margin-top: 28px;
+  gap: var(--dp-space-2) var(--dp-space-4);
+  margin-top: var(--dp-space-6);
   border: 2px solid var(--dp-color-ink);
-  padding: 10px 16px;
+  padding: var(--dp-space-2) var(--dp-space-4);
   background: var(--dp-color-emphasis);
   box-shadow: 4px 4px 0 var(--dp-color-ink);
   color: var(--dp-color-ink);
@@ -732,8 +741,8 @@ button:not(.retro-contact-window > button):active {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 12px;
-  padding: 22px 12px 18px;
+  gap: var(--dp-space-3);
+  padding: var(--dp-space-6) var(--dp-space-3) var(--dp-space-4);
 }
 
 .retro-projects-heading h2 {
@@ -751,21 +760,21 @@ button:not(.retro-contact-window > button):active {
 }
 
 .retro-more-work {
-  margin-top: clamp(28px, 5vw, 56px);
+  margin-top: var(--dp-spacing-section-gap);
   border-top: 2px solid var(--dp-color-ink);
-  padding-top: 20px;
+  padding-top: var(--dp-space-4);
 }
 
 .retro-more-work-heading {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 12px;
+  gap: var(--dp-space-4);
+  margin-bottom: var(--dp-space-3);
 }
 
 .retro-more-work-heading h3 {
-  margin: 4px 0 0;
+  margin: var(--dp-space-1) 0 0;
   font-family: var(--dp-typography-display);
   font-size: clamp(22px, 3vw, 32px);
   line-height: 1.1;
@@ -794,8 +803,8 @@ button:not(.retro-contact-window > button):active {
   min-height: 64px;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 10px 4px;
+  gap: var(--dp-space-4);
+  padding: var(--dp-space-2) var(--dp-space-1);
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
@@ -804,7 +813,7 @@ button:not(.retro-contact-window > button):active {
 
 .retro-more-work-list button > span:first-child {
   display: grid;
-  gap: 2px;
+  gap: var(--dp-space-1);
 }
 
 .retro-more-work-list small {
@@ -893,14 +902,15 @@ button:not(.retro-contact-window > button):active {
 .about-page {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  padding-block: 20px 0;
+  gap: var(--dp-spacing-section-gap);
+  padding-block: var(--dp-space-4) 0;
 }
 
 .about-page > section {
   width: 100%;
   max-width: none;
   margin-block: 0;
+  padding-inline: 0;
   border: var(--dp-border-frame) solid var(--dp-color-ink);
   background: var(--dp-color-window);
   padding: 0;
@@ -916,11 +926,11 @@ button:not(.retro-contact-window > button):active {
 
 .about-page > section > :not(.retro-window-titlebar) {
   max-width: none;
-  padding-inline: 14px !important;
+  padding-inline: var(--dp-spacing-card-inset) !important;
 }
 
 .about-page > section:first-child > div:nth-child(2) {
-  padding: clamp(18px, 3vw, 38px);
+  padding: var(--dp-spacing-card-inset);
 }
 
 .about-page > .about-hero-scroll-track {
@@ -934,27 +944,66 @@ button:not(.retro-contact-window > button):active {
 .about-hero-layout .retro-hero-tv-stack {
   position: -webkit-sticky;
   position: sticky;
-  top: var(--retro-tv-sticky-top, 183px);
+  top: var(--dp-space-24);
   z-index: 7;
   align-self: start;
 }
 
+.about-hero-layout {
+  overflow: visible;
+}
+
+@media (max-width: 1023px) {
+  .about-page > .about-hero-scroll-track,
+  .about-hero-layout {
+    overflow: visible;
+  }
+
+  .about-hero-layout .retro-hero-tv-stack {
+    position: -webkit-sticky;
+    position: sticky;
+    top: var(--dp-space-16);
+    z-index: 20;
+    width: min(100%, 460px);
+    justify-self: center;
+  }
+
+  .about-hero-layout .retro-hero-tv-stack::before {
+    position: absolute;
+    z-index: -1;
+    inset: calc(-1 * var(--dp-space-2));
+    content: '';
+    background: rgb(212 212 212 / 96%);
+    backdrop-filter: blur(var(--dp-space-2));
+    pointer-events: none;
+  }
+
+  /* This runway lets the complete image sequence scrub while the TV is pinned. */
+  .about-hero-layout::after {
+    display: block;
+    grid-column: 1;
+    height: 75svh;
+    content: '';
+    pointer-events: none;
+  }
+}
+
 .about-page > section:nth-child(2) > div:nth-child(2) {
   max-width: none;
-  padding: 18px clamp(18px, 3vw, 38px);
+  padding: var(--dp-spacing-card-inset);
 }
 
 .about-page > section:nth-child(4) > div:nth-child(2) {
-  padding: clamp(22px, 3vw, 36px) clamp(18px, 3vw, 38px) 0;
+  padding: var(--dp-spacing-section-inset) var(--dp-spacing-card-inset) 0;
 }
 
 .about-page > section:nth-child(4) > div:nth-child(3) {
-  padding: 0 clamp(18px, 3vw, 38px) clamp(22px, 3vw, 36px);
+  padding: 0 var(--dp-spacing-card-inset) var(--dp-spacing-section-inset);
 }
 
 .about-page > section:nth-child(5) > div:nth-child(2),
 .about-page > section:nth-child(6) > div:nth-child(2) {
-  padding: clamp(22px, 3vw, 36px) clamp(18px, 3vw, 38px);
+  padding: var(--dp-spacing-section-inset) var(--dp-spacing-card-inset);
 }
 
 .about-personal-body {
@@ -980,7 +1029,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-personal-intro h2 {
-  margin: 10px 0 0;
+  margin: var(--dp-space-2) 0 0;
   color: var(--dp-color-ink);
   font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 1.08;
@@ -988,7 +1037,7 @@ button:not(.retro-contact-window > button):active {
 
 .about-personal-intro p {
   max-width: 70ch;
-  margin: 12px 0 0;
+  margin: var(--dp-space-3) 0 0;
   color: var(--dp-color-ink);
   font-size: clamp(1.05rem, 1.5vw, 1.3rem);
   line-height: 1.55;
@@ -1009,7 +1058,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-personal-card h3 {
-  margin: 12px 0 0;
+  margin: var(--dp-space-3) 0 0;
   font-family: var(--dp-typography-display);
   font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 700;
@@ -1018,7 +1067,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-personal-card p {
-  margin: 12px 0 0;
+  margin: var(--dp-space-3) 0 0;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   font-weight: 500;
   line-height: 1.6;
@@ -1046,7 +1095,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page > section:first-child > div:nth-child(2) > div:first-child {
-  padding: 10px;
+  padding: var(--dp-space-2);
   background: var(--dp-color-highlight);
 }
 
@@ -1056,7 +1105,7 @@ button:not(.retro-contact-window > button):active {
 
 .about-hero-copy {
   border: 2px solid var(--dp-color-ink);
-  padding: clamp(18px, 3vw, 34px);
+  padding: var(--dp-spacing-card-inset);
   box-shadow: 4px 4px 0 var(--dp-color-ink);
   color: var(--dp-color-ink);
   font-size: clamp(1.05rem, 1.6vw, 1.35rem);
@@ -1084,8 +1133,8 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page > section:nth-child(2) > div:nth-child(2) {
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: var(--dp-space-4);
+  padding-bottom: var(--dp-space-4);
 }
 
 .about-page > section:nth-child(2) > div:nth-child(2) > div {
@@ -1133,8 +1182,8 @@ button:not(.retro-contact-window > button):active {
 }
 
 .case-study-page {
-  --case-study-gutter: clamp(16px, 3vw, 40px);
-  padding-block: 20px 0;
+  --case-study-gutter: var(--dp-spacing-card-inset);
+  padding-block: var(--dp-space-4) 0;
   background: transparent;
   color: var(--dp-color-ink);
 }
@@ -1150,11 +1199,11 @@ button:not(.retro-contact-window > button):active {
 }
 
 .case-study-page.roushani-case-study > div:first-child {
-  width: min(100%, 1200px);
-  max-width: 1200px;
+  width: min(100%, 1152px);
+  max-width: 1152px;
   margin-block: 0;
   margin-inline: auto;
-  padding-block: 12px;
+  padding-block: var(--dp-space-3);
   padding-inline: var(--case-study-gutter);
 }
 
@@ -1167,13 +1216,13 @@ button:not(.retro-contact-window > button):active {
 .roushani-case-study > header > div:last-child,
 .roushani-case-study > section > div {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1152px;
   margin-inline: auto;
-  padding-inline: clamp(16px, 3vw, 40px);
+  padding-inline: var(--case-study-gutter);
 }
 
 .roushani-case-study > header > div:last-child {
-  padding: 12px;
+  padding: var(--dp-space-3);
 }
 
 .roushani-case-study > section > div > :is(article, figure, ol) {
@@ -1329,11 +1378,11 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-footer .retro-footer-titlebar {
-  margin: -4px -4px 0;
+  margin: calc(-1 * var(--dp-space-1)) calc(-1 * var(--dp-space-1)) 0;
 }
 
 .about-footer .retro-footer-body {
-  padding: clamp(16px, 3vw, 36px);
+  padding: var(--dp-spacing-card-inset);
   background: #fff;
 }
 
@@ -1346,7 +1395,7 @@ button:not(.retro-contact-window > button):active {
   position: relative;
   margin: 0 0 var(--dp-spacing-section-gap);
   border: 2px solid #000;
-  padding: clamp(18px, 2vw, 28px);
+  padding: var(--dp-spacing-card-inset);
   background: var(--dp-color-emphasis);
   box-shadow: 5px 5px 0 #000;
 }
@@ -1454,8 +1503,8 @@ button:not(.retro-contact-window > button):active {
 
 @media (max-height: 500px) {
   .retro-chat-modal {
-    padding-top: 48px !important;
-    padding-bottom: 10px !important;
+    padding-top: var(--dp-space-12) !important;
+    padding-bottom: var(--dp-space-2) !important;
   }
 
   .retro-chat-modal > header > p {
@@ -1463,18 +1512,18 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-chat-modal .retro-chat-messages {
-    margin-block: 4px;
+    margin-block: var(--dp-space-1);
     padding-block: 0;
   }
 
   .retro-chat-modal .retro-chat-animation {
     width: 64px;
     height: 64px;
-    margin-bottom: 4px;
+    margin-bottom: var(--dp-space-1);
   }
 
   .retro-chat-modal .retro-chat-empty-state > p {
-    margin-top: 4px;
+    margin-top: var(--dp-space-1);
     margin-bottom: 0;
   }
 
@@ -1483,7 +1532,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-chat-modal > div.flex.shrink-0.flex-nowrap {
-    padding-bottom: 6px;
+    padding-bottom: var(--dp-space-1);
   }
 }
 
@@ -1584,7 +1633,7 @@ button:not(.retro-contact-window > button):active {
 .next-project-content {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: var(--dp-space-8);
 }
 
 .animate-marquee {
@@ -1622,14 +1671,14 @@ button:not(.retro-contact-window > button):active {
 
 @media (max-width: 760px) {
   :root {
-    --dp-spacing-section-gap: 24px;
-    --dp-spacing-section-inset: 20px;
-    --dp-spacing-card-gap: 16px;
-    --dp-spacing-card-inset: 16px;
+    --dp-spacing-section-gap: var(--dp-space-12);
+    --dp-spacing-section-inset: var(--dp-space-12);
+    --dp-spacing-card-gap: var(--dp-space-4);
+    --dp-spacing-card-inset: var(--dp-space-4);
   }
 
   .portfolio-protected {
-    padding-inline: 12px;
+    padding-inline: 0;
   }
 
   .retro-home-grid {
@@ -1637,7 +1686,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .home-hero-background {
-    height: calc(100svh - 76px + var(--dp-spacing-section-gap));
+    height: calc(100svh - 64px + var(--dp-spacing-section-gap));
   }
 
   .retro-hero-body {
@@ -1653,11 +1702,11 @@ button:not(.retro-contact-window > button):active {
     width: min(100%, 460px);
     position: -webkit-sticky;
     position: sticky;
-    top: 76px;
-    z-index: 7;
+    top: var(--dp-space-16);
+    z-index: 20;
     align-self: start;
     justify-self: center;
-    gap: 10px;
+    gap: var(--dp-space-2);
   }
 
   .about-hero-layout .retro-hero-tv {
@@ -1675,10 +1724,10 @@ button:not(.retro-contact-window > button):active {
   .retro-fact-row {
     grid-template-columns: minmax(0, 1fr);
     align-content: start;
-    gap: 6px;
+    gap: var(--dp-space-1);
     border-top: 0;
     border-left: 1px solid #aaa;
-    padding: 8px clamp(5px, 1.5vw, 12px);
+    padding: var(--dp-space-2) var(--dp-spacing-item-gap);
   }
 
   .retro-fact-row:first-child {
@@ -1713,7 +1762,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .about-page > section:first-child > div:nth-child(2) {
-    padding: var(--dp-spacing-card-inset) var(--dp-spacing-card-inset) clamp(480px, 75svh, 720px);
+    padding: var(--dp-spacing-card-inset);
   }
 
   .about-page > .about-quick-facts-section {
@@ -1746,7 +1795,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .about-page > section:first-child > div:nth-child(2) > div:first-child {
-    padding: 6px;
+    padding: var(--dp-space-1);
   }
 
   .about-page .about-stack-card {
@@ -1765,13 +1814,27 @@ button:not(.retro-contact-window > button):active {
   }
 
   .about-footer .retro-footer-body {
-    padding: 16px;
+    padding: var(--dp-space-4);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --dp-spacing-section-inset: var(--dp-space-16);
+    --dp-spacing-card-gap: var(--dp-space-6);
+    --dp-spacing-card-inset: var(--dp-space-6);
+  }
+}
+
+@media (min-width: 1280px) {
+  .case-study-page {
+    --case-study-gutter: var(--dp-space-8);
   }
 }
 
 @media (max-width: 480px) {
   .retro-hero-body {
-    padding: clamp(12px, 4vw, 20px);
+    padding: var(--dp-spacing-card-inset);
   }
 
   .retro-hero-body h1 {
@@ -1779,7 +1842,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-hero-line {
-    margin-bottom: 7px;
+    margin-bottom: var(--dp-space-2);
     border-width: 3px;
     box-shadow: 4px 4px 0 var(--dp-color-ink);
   }
@@ -1790,7 +1853,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-project-window .retro-project-layout {
-    padding: 7px;
+    padding: var(--dp-space-2);
   }
 
   .retro-project-window .retro-project-media {
@@ -1807,13 +1870,13 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-contact-window {
-    padding: 14px 12px;
+    padding: var(--dp-space-3) var(--dp-space-3);
   }
 }
 
 @media (max-width: 639px) {
   .about-page {
-    padding-top: 8px;
+    padding-top: var(--dp-space-2);
   }
 
   .about-page > .about-hero-scroll-track {
@@ -1831,38 +1894,38 @@ button:not(.retro-contact-window > button):active {
   }
 
   .about-hero-copy {
-    padding: 16px;
+    padding: var(--dp-space-4);
     font-size: clamp(.95rem, 4vw, 1.05rem);
     line-height: 1.55;
   }
 
   .about-hero-layout {
-    gap: 20px;
+    gap: var(--dp-space-4);
   }
 
   .home-hero-background {
     height: calc(100dvh - 64px);
-    padding-top: 12px;
+    padding-top: var(--dp-space-3);
   }
 
   .retro-home-grid {
-    top: 64px;
-    min-height: calc(100dvh - 76px);
+    top: var(--dp-space-16);
+    min-height: calc(100dvh - 64px);
   }
 
   .retro-facts-section {
-    padding-top: 8px;
+    padding-top: var(--dp-space-2);
   }
 
   /* Keep phone layouts readable while letting text follow a natural left edge. */
   .portfolio-protected {
-    padding-inline: 8px;
+    padding-inline: 0;
   }
 
   .retro-header-inner {
     justify-content: space-between;
-    gap: 8px;
-    padding-inline: 8px;
+    gap: var(--dp-space-2);
+    padding-inline: var(--dp-space-2);
   }
 
   .retro-more-work-heading {
@@ -1885,8 +1948,8 @@ button:not(.retro-contact-window > button):active {
     position: relative;
     top: auto !important;
     min-height: 0 !important;
-    margin-bottom: 12px;
-    padding: 22px 18px;
+    margin-bottom: var(--dp-space-3);
+    padding: var(--dp-space-6) var(--dp-space-4);
   }
 
   .retro-more-work-list button {
@@ -1905,7 +1968,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .portfolio-protected main :is(ul, ol) {
-    padding-inline-start: 1.25rem;
+    padding-inline-start: var(--dp-space-4);
     list-style-position: outside;
   }
 
@@ -1920,7 +1983,7 @@ button:not(.retro-contact-window > button):active {
 
   .portfolio-protected main section,
   .case-study-page > :is(header, section) {
-    padding-inline: 12px;
+    padding-inline: 0;
   }
 
   .portfolio-protected main .about-page > section {
@@ -1983,7 +2046,7 @@ button:not(.retro-contact-window > button):active {
   body::after {
     content: 'Printing is disabled for this portfolio.';
     display: block;
-    padding: 2rem;
+    padding: var(--dp-space-8);
     color: #111;
     font: 14pt system-ui, sans-serif;
   }

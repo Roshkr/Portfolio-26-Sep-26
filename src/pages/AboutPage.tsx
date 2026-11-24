@@ -11,19 +11,19 @@ import { WindowControls } from '../components/WindowControls';
 import { ScrollTvPortrait } from '../components/ScrollTvPortrait';
 
 export const AboutPage: React.FC = () => {
-  const tvTrackRef = useRef<HTMLDivElement>(null);
+  const tvTrackRef = useRef<HTMLElement>(null);
 
   return (
     <div className="about-page w-full">
       {/* Hero Bio Section */}
-      <section className="about-hero-scroll-track pt-20 pb-0 md:pt-28 md:pb-0 max-w-6xl mx-auto px-6">
+      <section ref={tvTrackRef} className="about-hero-scroll-track pt-12 pb-0 md:pt-16 md:pb-0 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
         <div className="retro-window-titlebar">
           <span>PROFILE.TXT</span>
           <WindowControls />
         </div>
-        <div ref={tvTrackRef} className="about-hero-layout relative grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="about-hero-layout relative grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6 items-start">
           {/* Left Text Column */}
-          <div className="about-hero-copy-content md:col-span-7 space-y-4">
+          <div className="about-hero-copy-content order-last space-y-4 lg:order-first lg:col-span-7">
             <div className="space-y-3">
               <h1 className="text-[clamp(3rem,7vw,6.25rem)] font-extrabold tracking-[-0.06em] text-slate-950 leading-[1.02]">
                 I design clear workflows for complex products.
@@ -46,7 +46,7 @@ export const AboutPage: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit Roushan Kumar's LinkedIn profile"
-                className="retro-button inline-flex items-center gap-2.5 px-6 py-3.5 text-sm"
+                className="retro-button inline-flex items-center gap-2 px-4 sm:px-6 py-4 text-sm"
               >
                 <svg className="h-4 w-4 fill-[#0a66c2]" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM3.555 20.452h3.564V9H3.555v11.452Z" />
@@ -66,8 +66,8 @@ export const AboutPage: React.FC = () => {
           <span>AT A GLANCE</span>
           <WindowControls />
         </div>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
+          <div className="grid grid-cols-1 gap-4 text-center sm:grid-cols-3 sm:gap-6 sm:text-left">
             {DESIGNER_INFO.stats.map((stat, idx) => (
               <div key={idx} className="space-y-1 sm:pl-4 sm:border-l border-slate-200 first:border-0 first:pl-0">
                 <span className="text-4xl md:text-5xl font-light text-slate-950 tracking-tight">
@@ -119,7 +119,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Creative Toolkit Section (Exact from Framer) */}
-      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
         <div className="retro-window-titlebar">
           <span>TOOLS &amp; SKILLS</span>
           <WindowControls />
@@ -140,13 +140,8 @@ export const AboutPage: React.FC = () => {
           {CREATIVE_TOOLKIT.map((tool, idx) => (
             <div
               key={idx}
-              style={{
-                '--stack-offset': `${idx * 40}px`,
-                '--stack-offset-sm': `${idx * 40}px`,
-                '--stack-offset-md': `${idx * 40}px`,
-                zIndex: idx + 1,
-              } as React.CSSProperties}
-              className="about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-3.5 sm:p-4 md:p-4.5 flex flex-row items-center gap-3.5 sm:gap-4 md:gap-5 hover:bg-[#e7eaf0] transition-colors group/card"
+              style={{ zIndex: idx + 1 }}
+              className="about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-4 md:p-6 flex flex-row items-center gap-4 md:gap-6 hover:bg-[#e7eaf0] transition-colors group/card"
             >
               <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-slate-200/90 bg-white p-3 shadow-xs sm:h-20 sm:w-20 sm:p-4">
                 {tool.iconUrl ? (
@@ -165,7 +160,7 @@ export const AboutPage: React.FC = () => {
                 )}
                 {tool.iconUrl && <span hidden><Sparkles className="h-7 w-7 text-[#2b35ee]" aria-hidden="true" /></span>}
               </div>
-              <div className="min-w-0 flex-1 space-y-1.5">
+              <div className="min-w-0 flex-1 space-y-2">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                   {tool.category}
                 </span>
@@ -182,7 +177,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Experience Section */}
-      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200 space-y-20">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200 space-y-12">
         <div className="retro-window-titlebar">
           <span>EXPERIENCE.LOG</span>
           <WindowControls />
@@ -201,13 +196,8 @@ export const AboutPage: React.FC = () => {
             {EXPERIENCES.map((exp, idx) => (
               <div
                 key={idx}
-                style={{
-                  '--stack-offset': `${idx * 54}px`,
-                  '--stack-offset-sm': `${idx * 58}px`,
-                  '--stack-offset-md': `${idx * 61}px`,
-                  zIndex: idx + 1,
-                } as React.CSSProperties}
-                className={`about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-3.5 sm:p-4 md:p-4.5 flex flex-row items-start sm:items-center gap-3.5 sm:gap-4 md:gap-5 hover:bg-[#e7eaf0] transition-colors group/card ${exp.company === 'UID' ? 'min-h-[180px]' : ''}`}
+                style={{ zIndex: idx + 1 }}
+                className={`about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-4 md:p-6 flex flex-row items-start sm:items-center gap-4 md:gap-6 hover:bg-[#e7eaf0] transition-colors group/card ${exp.company === 'UID' ? 'min-h-[180px]' : ''}`}
               >
                 {/* Left side: Logo/Image with compact reduced height */}
                 {exp.logoUrl && (
@@ -223,7 +213,7 @@ export const AboutPage: React.FC = () => {
 
                 {/* Right side: Next to logo, all details */}
                 <div className="flex-1 min-w-0 w-full flex flex-col justify-center">
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     <div className="flex flex-col items-start justify-between gap-2 md:flex-row">
                       <div className="min-w-0">
                         <h3 className="text-base sm:text-lg md:text-xl font-medium text-slate-950">
@@ -235,7 +225,7 @@ export const AboutPage: React.FC = () => {
                               href={exp.websiteUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="retro-button mt-1 inline-flex h-8 items-center gap-1.5 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm group/link"
+                              className="retro-button mt-1 inline-flex h-8 items-center gap-2 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm group/link"
                             >
                               <span>{exp.company}</span>
                               <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
@@ -246,14 +236,14 @@ export const AboutPage: React.FC = () => {
                             </span>
                           )}
                           {exp.workMode && (
-                            <span className="retro-button mt-1 inline-flex h-8 items-center gap-1.5 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm">
+                            <span className="retro-button mt-1 inline-flex h-8 items-center gap-2 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm">
                               <span className="w-1.5 h-1.5 rounded-full bg-[#2b35ee] shrink-0"></span>
                               <span>{exp.workMode}</span>
                             </span>
                           )}
                         </div>
                       </div>
-                      <span className="whitespace-nowrap text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-white/80 rounded-lg text-slate-700 self-start shrink-0 shadow-2xs">
+                      <span className="whitespace-nowrap text-[11px] sm:text-xs font-semibold px-2 py-1 bg-white/80 rounded-lg text-slate-700 self-start shrink-0 shadow-2xs">
                         {exp.year}
                       </span>
                     </div>
@@ -272,7 +262,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Education Section */}
-      <section className="py-20 md:py-24 max-w-6xl mx-auto px-6 border-t border-slate-200 space-y-20">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200 space-y-12">
         <div className="retro-window-titlebar">
           <span>EDUCATION.LOG</span>
           <WindowControls />
@@ -291,13 +281,8 @@ export const AboutPage: React.FC = () => {
             {EDUCATIONS.map((edu, idx) => (
               <div
                 key={idx}
-                style={{
-                  '--stack-offset': `${idx * 54}px`,
-                  '--stack-offset-sm': `${idx * 58}px`,
-                  '--stack-offset-md': `${idx * 61}px`,
-                  zIndex: idx + 1,
-                } as React.CSSProperties}
-                className="about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-3.5 sm:p-4 md:p-4.5 flex flex-row items-start sm:items-center gap-3.5 sm:gap-4 md:gap-5 hover:bg-[#e7eaf0] transition-colors group/card"
+                style={{ zIndex: idx + 1 }}
+                className="about-stack-card bg-[#eef0f3] rounded-[22px] overflow-hidden p-4 md:p-6 flex flex-row items-start sm:items-center gap-4 md:gap-6 hover:bg-[#e7eaf0] transition-colors group/card"
               >
                 {/* Left side: Logo with compact reduced height */}
                 {edu.logoUrl && (
@@ -313,7 +298,7 @@ export const AboutPage: React.FC = () => {
 
                 {/* Right side: Next to logo, all details */}
                 <div className="flex-1 min-w-0 w-full flex flex-col justify-center">
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     <div className="flex flex-col items-start justify-between gap-2 md:flex-row">
                       <div className="min-w-0">
                         <h3 className="text-base sm:text-lg md:text-xl font-medium text-slate-950">
@@ -324,7 +309,7 @@ export const AboutPage: React.FC = () => {
                             href={edu.websiteUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="retro-button mt-1 inline-flex h-8 items-center gap-1.5 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm group/link"
+                            className="retro-button mt-1 inline-flex h-8 items-center gap-2 whitespace-nowrap px-3 text-xs sm:h-9 sm:text-sm group/link"
                           >
                             <span className="group-hover/link:underline">
                               {edu.institution}
@@ -332,12 +317,12 @@ export const AboutPage: React.FC = () => {
                             <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                           </a>
                         ) : (
-                          <p className="text-xs sm:text-sm font-semibold text-[#2b35ee] mt-0.5">
+                          <p className="text-xs sm:text-sm font-semibold text-[#2b35ee] mt-1">
                             {edu.institution}
                           </p>
                         )}
                       </div>
-                      <span className="whitespace-nowrap text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-white/80 rounded-lg text-slate-700 self-start shrink-0 shadow-2xs">
+                      <span className="whitespace-nowrap text-[11px] sm:text-xs font-semibold px-2 py-1 bg-white/80 rounded-lg text-slate-700 self-start shrink-0 shadow-2xs">
                         {edu.year}
                       </span>
                     </div>

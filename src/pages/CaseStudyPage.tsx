@@ -25,7 +25,7 @@ const OverviewReveal: React.FC<{ text: string }> = ({ text }) => {
 
   return (
     <motion.div
-      className="max-w-4xl space-y-5 text-xl md:text-2xl text-slate-700 font-normal leading-relaxed"
+      className="max-w-4xl space-y-4 text-xl md:text-2xl text-slate-700 font-normal leading-relaxed"
       initial={shouldReduceMotion ? false : 'hidden'}
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -111,9 +111,9 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   );
 
   return (
-    <div className="case-study-page w-full bg-[#fbfbfb]">
+    <article className="case-study-page w-full bg-[#fbfbfb]">
       {/* Top Floating Action Bar / Breadcrumb */}
-      <div className="max-w-6xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between border-b border-slate-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 pt-8 pb-4 flex items-center justify-between border-b border-slate-200">
         <button
           type="button"
           onClick={onBack}
@@ -126,8 +126,8 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </div>
 
       {/* Hero Section */}
-      <section className="pt-16 pb-20 md:pt-24 md:pb-28 max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+      <section className="pt-12 pb-12 md:pt-16 md:pb-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6 items-center">
           <div className="md:col-span-7 space-y-6">
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-3 py-1 bg-[#e8eaff] text-[#2b35ee] text-xs font-medium rounded-full">
@@ -183,8 +183,8 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       {/* Overview & Meta Section */}
       <section className={caseStudy.id === 'roushani'
         ? 'py-12 md:py-16 border-y border-[#2b35ee]/15'
-        : 'py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200'}>
-        <div className={caseStudy.id === 'roushani' ? 'max-w-6xl mx-auto px-6' : ''}>
+        : 'py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200'}>
+        <div className={caseStudy.id === 'roushani' ? 'max-w-6xl mx-auto px-4 sm:px-6 xl:px-8' : ''}>
           <div className={caseStudy.id === 'roushani' ? 'space-y-6' : 'space-y-4'}>
             <h2 className={caseStudy.id === 'roushani'
               ? 'text-3xl md:text-4xl font-medium tracking-tight text-slate-950'
@@ -204,14 +204,14 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Source Portfolio Details */}
       {(caseStudy.projectDetails || caseStudy.contributionAreas) && (
-        <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
+        <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
           <div className="space-y-12">
             {caseStudy.projectDetails && (
               <div>
                 <h2 className="text-xs uppercase tracking-wider text-slate-400">
                   Project details
                 </h2>
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6">
                   {caseStudy.projectDetails.map((detail) => (
                     <div key={detail.label} className="border-b border-slate-200 pb-4">
                       <span className="text-xs uppercase tracking-wider text-slate-400 block mb-1">
@@ -242,7 +242,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
                 <span className="text-xs uppercase tracking-wider text-slate-400">
                   My contribution
                 </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8 mt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 mt-6">
                   {caseStudy.contributionAreas.map((area) => (
                     <div key={area.title} className="space-y-2">
                       <h3 className="text-lg font-medium tracking-tight text-slate-950">
@@ -261,10 +261,10 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       )}
 
       {/* Before & After Section */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           {/* Before Mockup Card */}
-          <div className={`${caseStudy.beforeDevice === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[500px]' : 'p-8 md:p-12 min-h-[500px]'} bg-[#eef0f3] rounded-[32px] flex flex-col items-center justify-center`}>
+          <div className={`${caseStudy.beforeDevice === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-6 md:min-h-[500px]' : 'p-4 md:p-6 min-h-[500px]'} bg-[#eef0f3] rounded-[32px] flex flex-col items-center justify-center`}>
             <ProjectMockup
               imageSrc={caseStudy.beforeScreen}
               videoSrc={caseStudy.beforeVideo}
@@ -275,7 +275,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           </div>
 
           {/* After Mockup Card */}
-          <div className={`${caseStudy.afterDevice === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[500px]' : 'p-8 md:p-12 min-h-[500px]'} bg-[#eef0f3] rounded-[32px] flex flex-col items-center justify-center`}>
+          <div className={`${caseStudy.afterDevice === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-6 md:min-h-[500px]' : 'p-4 md:p-6 min-h-[500px]'} bg-[#eef0f3] rounded-[32px] flex flex-col items-center justify-center`}>
             <ProjectMockup
               imageSrc={caseStudy.afterScreen}
               videoSrc={caseStudy.afterVideo}
@@ -288,7 +288,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Process Ticker Divider */}
-      <div aria-hidden="true" className="w-full overflow-hidden py-5 bg-transparent border-y border-slate-200 select-none">
+      <div aria-hidden="true" className="w-full overflow-hidden py-4 bg-transparent border-y border-slate-200 select-none">
         <div className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex min-w-[100vw] flex-none items-center justify-around gap-12">
@@ -308,7 +308,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </div>
 
       {/* 01 - Interviews Section */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
         <div className="max-w-3xl space-y-6 mb-12">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             01 - Interviews & Discovery
@@ -325,11 +325,11 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </div>
 
         {/* 3 Key Insight Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
           {caseStudy.keyInsights.map((insight, idx) => (
             <div
               key={idx}
-              className="bg-[#eef0f3] rounded-[24px] p-6 md:p-8 space-y-4 sm:space-y-5"
+              className="bg-[#eef0f3] rounded-[24px] p-4 md:p-6 space-y-4"
             >
               <span className="block text-xs uppercase tracking-wider text-slate-400 font-medium">
                 {insight.title}
@@ -343,7 +343,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* 02 - Design Section with Interactive Device Carousel */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
         <div className="project-section-sticky max-w-3xl space-y-6 mb-12 bg-[#fbfbfb] py-4">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             02 - Design Architecture
@@ -360,7 +360,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </div>
 
         {/* Carousel Showcase Container */}
-        <div className="bg-[#eef0f3] rounded-[32px] p-8 md:p-16 flex flex-col items-center justify-center relative">
+        <div className="bg-[#eef0f3] rounded-[32px] p-4 md:p-6 flex flex-col items-center justify-center relative">
           <div className="relative w-full max-w-3xl flex items-center justify-center">
             {/* Left Nav Arrow */}
             <button
@@ -416,7 +416,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* 03 - Usability Testing Section */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
         <div className="max-w-3xl space-y-6 mb-12">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             03 - Usability Testing & Iteration
@@ -427,10 +427,10 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </div>
 
         {/* Problem 1 & Solution 1 comparison */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Problem Card */}
           <div className="space-y-6">
-            <div className={`${caseStudy.problem1.device === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[460px]' : 'p-8 md:p-12 min-h-[460px]'} bg-[#eef0f3] rounded-[32px] flex items-center justify-center`}>
+            <div className={`${caseStudy.problem1.device === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-6 md:min-h-[460px]' : 'p-4 md:p-6 min-h-[460px]'} bg-[#eef0f3] rounded-[32px] flex items-center justify-center`}>
               <ProjectMockup
                 imageSrc={caseStudy.problem1.screen}
                 videoSrc={caseStudy.problem1.videoSrc}
@@ -451,7 +451,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
           {/* Solution Card */}
           <div className="space-y-6">
-            <div className={`${caseStudy.solution1.device === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-12 md:min-h-[460px]' : 'p-8 md:p-12 min-h-[460px]'} bg-[#eef0f3] rounded-[32px] flex items-center justify-center`}>
+            <div className={`${caseStudy.solution1.device === 'phone' ? 'w-fit mx-auto p-2 min-h-0 md:w-full md:mx-0 md:p-6 md:min-h-[460px]' : 'p-4 md:p-6 min-h-[460px]'} bg-[#eef0f3] rounded-[32px] flex items-center justify-center`}>
               <ProjectMockup
                 imageSrc={caseStudy.solution1.screen}
                 videoSrc={caseStudy.solution1.videoSrc}
@@ -473,7 +473,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {caseStudy.storySections && (
-        <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
+        <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
           <div className="max-w-3xl space-y-6 mb-12">
             <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
               Project narrative
@@ -483,7 +483,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
             {caseStudy.storySections.map((section) => (
               <article key={section.title} className="space-y-4">
                 {section.eyebrow && (
@@ -513,8 +513,8 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       )}
 
       {caseStudy.visualSections?.map((visualSection) => (
-        <section key={visualSection.title} className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
-          <div className="max-w-3xl space-y-4 mb-10">
+        <section key={visualSection.title} className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
+          <div className="max-w-3xl space-y-4 mb-8">
             {visualSection.eyebrow && (
               <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
                 {visualSection.eyebrow}
@@ -529,9 +529,9 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
               </p>
             )}
           </div>
-          <div className={`grid gap-6 ${visualSection.images.length === 1 ? 'mx-auto max-w-4xl grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+          <div className={`grid gap-4 md:gap-6 ${visualSection.images.length === 1 ? 'mx-auto max-w-4xl grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
             {visualSection.images.map((image) => (
-              <figure key={image.title} className="overflow-hidden rounded-xl border border-slate-200 bg-[#eef0f3] p-3 sm:p-4">
+              <figure key={image.title} className="overflow-hidden rounded-xl border border-slate-200 bg-[#eef0f3] p-4 md:p-6">
                 <img
                   src={image.image}
                   alt={image.alt}
@@ -548,7 +548,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       ))}
 
       {/* Outcome Ticker Divider */}
-      <div aria-hidden="true" className="w-full overflow-hidden py-5 bg-transparent border-y border-slate-200 select-none">
+      <div aria-hidden="true" className="w-full overflow-hidden py-4 bg-transparent border-y border-slate-200 select-none">
         <div className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex min-w-[100vw] flex-none items-center justify-around gap-12">
@@ -564,7 +564,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </div>
 
       {/* Impact Section */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
         <div className="max-w-3xl space-y-6 mb-12">
           <h2 className="text-3xl font-normal tracking-tight text-slate-950">
             Impact
@@ -575,11 +575,11 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </div>
 
         {/* 3 Metric Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
           {caseStudy.metrics.map((metric, idx) => (
             <div
               key={idx}
-              className="bg-[#eef0f3] rounded-[24px] p-8 text-center flex flex-col items-center justify-center min-h-[160px] space-y-2"
+              className="bg-[#eef0f3] rounded-[24px] p-4 text-center flex flex-col items-center justify-center min-h-[160px] space-y-2"
             >
               <span className="text-3xl md:text-4xl font-normal text-slate-950 tracking-tight tabular-nums">
                 {metric.value}
@@ -598,14 +598,14 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Learnings & Next Steps */}
-      <section className="py-12 md:py-16 max-w-6xl mx-auto px-6 border-t border-slate-200">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           {/* Learnings Column */}
           <div className="space-y-6">
             <h3 className="text-2xl font-normal tracking-tight text-slate-950">
               Learnings
             </h3>
-            <ol className="space-y-4 text-sm md:text-base text-slate-600 list-decimal pl-5 leading-relaxed">
+            <ol className="space-y-4 text-sm md:text-base text-slate-600 list-decimal pl-4 leading-relaxed">
               {caseStudy.learnings.map((learning, idx) => (
                 <li key={idx} className="pl-1">
                   {learning}
@@ -619,7 +619,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             <h3 className="text-2xl font-normal tracking-tight text-slate-950">
               Next Steps
             </h3>
-            <ol className="space-y-4 text-sm md:text-base text-slate-600 list-decimal pl-5 leading-relaxed">
+            <ol className="space-y-4 text-sm md:text-base text-slate-600 list-decimal pl-4 leading-relaxed">
               {caseStudy.nextSteps.map((step, idx) => (
                 <li key={idx} className="pl-1">
                   {step}
@@ -631,7 +631,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </section>
 
       {/* Final Screens Gallery Showcase (5 phone mockups row) */}
-      <section className="py-20 md:py-28 max-w-6xl mx-auto px-6 border-t border-slate-200">
+      <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
             Final Flow Showcase
@@ -642,7 +642,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </div>
 
         {/* 5 Phone Screens Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start justify-center">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 md:gap-6 lg:grid-cols-3 items-start justify-center">
           {caseStudy.finalScreens.map((screen, idx) => (
             <div key={idx} className="flex flex-col items-center">
               <ProjectMockup
@@ -663,7 +663,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       {/* Next Project Teaser Footer (from Framer) */}
       {nextStudy && onSelectCaseStudy && (
         <section className="py-12 md:py-16 bg-[#fbfbfb] border-t border-slate-200">
-          <div className="max-w-6xl mx-auto px-6 next-project-content">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 next-project-content">
             <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
               Next Project
             </span>
@@ -675,6 +675,6 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           </div>
         </section>
       )}
-    </div>
+    </article>
   );
 };

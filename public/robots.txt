@@ -1,35 +1,22 @@
 User-agent: *
 Allow: /
 
-# These crawlers may use public pages for search, answers, or model discovery.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-User-agent: Google-Extended
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Perplexity-User
+User-agent: ClaudeBot
 Allow: /
 
-User-agent: xAI-Bot
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://roushan.in/sitemap.xml

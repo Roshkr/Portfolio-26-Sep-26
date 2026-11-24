@@ -109,7 +109,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-lg bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden"
+        className="relative w-full max-w-lg bg-white rounded-3xl p-4 md:p-6 shadow-2xl border border-slate-100 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -144,7 +144,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g. Vault • Automated Micro-Investing for Gen-Z"
-              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
+              className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
             />
           </div>
 
@@ -158,7 +158,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 placeholder="Fintech"
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
+                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
               />
             </div>
 
@@ -171,7 +171,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 placeholder="Lead UX Designer"
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
+                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
               />
             </div>
           </div>
@@ -185,7 +185,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
               value={subtitle}
               onChange={(e) => setSubtitle(e.target.value)}
               placeholder="A subtitle that captures the essence of the project"
-              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
+              className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
             />
           </div>
 
@@ -199,7 +199,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
                 value={metricValue}
                 onChange={(e) => setMetricValue(e.target.value)}
                 placeholder="+25%"
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
+                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
               />
             </div>
 
@@ -212,7 +212,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
                 value={metricLabel}
                 onChange={(e) => setMetricLabel(e.target.value)}
                 placeholder="important product metric"
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
+                className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee]"
               />
             </div>
           </div>
@@ -226,7 +226,7 @@ export const AddCaseStudyModal: React.FC<AddCaseStudyModalProps> = ({
               value={overview}
               onChange={(e) => setOverview(e.target.value)}
               placeholder="Context of the project, client/team goals, and your core contributions..."
-              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee] resize-none"
+              className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#2b35ee]/20 focus:border-[#2b35ee] resize-none"
             />
           </div>
 
