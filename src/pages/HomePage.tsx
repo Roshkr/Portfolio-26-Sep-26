@@ -20,6 +20,12 @@ const heroHeadlineLines = [
   headlineWords.slice(8).join(' '),
 ];
 export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
+  const leadCaseStudyIds = ['roushani', 'umbrella', 'design-system-icons'];
+  const featuredCaseStudies = leadCaseStudyIds
+    .map((id) => caseStudies.find((study) => study.id === id))
+    .filter((study): study is CaseStudy => Boolean(study));
+  const additionalCaseStudies = caseStudies.filter((study) => !leadCaseStudyIds.includes(study.id));
+
   return (
     <div className="w-full">
     <section className="home-hero-background relative w-full">
@@ -68,14 +74,14 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
     <section id="projects" className="retro-projects">
       <div className="retro-window retro-projects-window">
         <div className="retro-window-titlebar">
-          <span>SELECTED WORKS</span>
+          <span>SELECTED CASE STUDIES</span>
           <WindowControls />
         </div>
         <div className="retro-projects-heading">
-          <h2>Recent works</h2>
+          <h2>Three projects, in depth</h2>
         </div>
         <div className="retro-project-list">
-          {caseStudies.map((study, index) => (
+          {featuredCaseStudies.map((study, index) => (
             <ProjectCard
               key={study.id}
               study={study}
@@ -85,6 +91,30 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
             />
           ))}
         </div>
+        {additionalCaseStudies.length > 0 && (
+          <section className="retro-more-work" aria-labelledby="more-work-heading">
+            <div className="retro-more-work-heading">
+              <div>
+                <p className="retro-metadata">More selected work</p>
+                <h3 id="more-work-heading">Additional projects</h3>
+              </div>
+              <p>Shorter overviews of other product and service design work.</p>
+            </div>
+            <ul className="retro-more-work-list">
+              {additionalCaseStudies.map((study) => (
+                <li key={study.id}>
+                  <button type="button" onClick={() => onSelectCaseStudy(study)}>
+                    <span>
+                      <strong>{study.title}</strong>
+                      <small>{study.category}</small>
+                    </span>
+                    <span aria-hidden="true">View project</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </section>
   </div>

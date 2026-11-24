@@ -8,7 +8,7 @@ interface ContactSectionProps {
 export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenChat }) => (
   <section
     id="contact"
-    className="retro-contact-window group sticky top-0 z-10 flex w-full flex-col justify-start [container-type:inline-size]"
+    className="retro-contact-window group flex w-full flex-col justify-start [container-type:inline-size]"
   >
     <div className="pointer-events-none flex items-center justify-between gap-4">
       <h2 className="m-0 min-w-0 flex-1 whitespace-nowrap text-[clamp(2rem,13.5cqw,9.5rem)] font-black leading-none tracking-[-0.04em] text-[#111111] transition-colors duration-200 group-hover:text-neutral-800">

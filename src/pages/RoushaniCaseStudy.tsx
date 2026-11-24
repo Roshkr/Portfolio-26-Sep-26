@@ -292,7 +292,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                 <p className="mb-6 text-sm font-medium tracking-[-0.01em] text-slate-500 md:mb-8 md:text-base">{label}</p>
                 <CharacterRevealHeading
                   text={title}
-                  className="max-w-5xl text-[clamp(2.75rem,6.1vw,6.25rem)] font-medium leading-[0.98] tracking-[-0.065em] text-slate-950"
+                  className="max-w-5xl text-[clamp(1.8rem,6.1vw,6.25rem)] font-medium leading-[0.98] tracking-[-0.065em] text-slate-950"
                 />
               </div>
             </motion.section>

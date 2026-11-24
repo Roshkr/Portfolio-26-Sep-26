@@ -24,10 +24,10 @@ const approachItems = [
   ['03', 'Iconography', 'Use a coherent visual weight, grid, and metaphor style. Prefer familiar, purposeful symbols; pair icons with labels when meaning is ambiguous, and avoid decoration that competes with task information.'],
 ];
 
-const outcomeItems = [
-  ['Reusable patterns', 'Shared foundations, interface components, state guidance, and icon rules give recurring product needs a dependable starting point.'],
-  ['Less design debt', 'Teams can extend established patterns instead of recreating controls and resolving visual inconsistencies screen by screen.'],
-  ['Maintain the system', 'Document decisions, review exceptions, and update components when product workflows change.'],
+const evaluationItems = [
+  ['Adoption', 'Track how often teams use shared components and where they create one-off alternatives.'],
+  ['Consistency', 'Review interfaces across product areas for repeated patterns, variants, and accessibility gaps.'],
+  ['Maintenance', 'Pair component usage data with regular designer and developer feedback to decide what to update or retire.'],
 ];
 
 const SectionReveal: React.FC<React.PropsWithChildren<{ id?: string; className?: string }>> = ({
@@ -192,15 +192,15 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
     <SectionReveal id="outcomes" className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
       <div className="grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:gap-16">
         <div className="project-section-sticky">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Outcomes</p>
-          <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">What the system made reusable.</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Measuring impact</p>
+          <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight tracking-[-0.04em] md:text-5xl">How I would evaluate adoption.</h2>
         </div>
         <div>
           <p className="mb-8 max-w-2xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            The platform-wide system gives the design and development teams a consistent starting point for product work. Shared foundations and reusable components reduce the need to redefine patterns from one area of the platform to another.
+            The project material documents the foundations and components, but does not include adoption or delivery metrics. I would use these signals to test whether the system is helping teams and where it needs more work.
           </p>
           <div className="grid gap-4 md:grid-cols-3">
-            {outcomeItems.map(([title, description]) => (
+            {evaluationItems.map(([title, description]) => (
               <article key={title} className="rounded-2xl border border-slate-200 bg-white p-5 md:p-6">
                 <h3 className="font-semibold tracking-tight">{title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-500">{description}</p>

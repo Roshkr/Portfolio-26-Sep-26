@@ -6,7 +6,7 @@ const CASE_STUDY_HASH_PREFIX = 'case-study-';
 const getRouteFromLocation = (pathname: string, hash: string, caseStudies: CaseStudy[]): PortfolioRoute => {
   const routeHash = hash.replace(/^#/, '');
 
-  if (pathname === '/about' || routeHash === 'about') return { page: 'about' };
+  if (/^\/about\/?$/.test(pathname) || routeHash === 'about') return { page: 'about' };
 
   const pathMatch = pathname.match(/^\/case-studies\/([^/]+)\/?$/);
   const pathStudyId = pathMatch?.[1];

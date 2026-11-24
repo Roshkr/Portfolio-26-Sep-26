@@ -25,22 +25,19 @@ export const AboutPage: React.FC = () => {
           {/* Left Text Column */}
           <div className="about-hero-copy-content md:col-span-7 space-y-4">
             <div className="space-y-3">
-              <span className="inline-block border-2 border-black bg-[#ff00b8] px-3 py-1 text-sm uppercase tracking-wider text-black font-bold">
-                About Me
-              </span>
               <h1 className="text-[clamp(3rem,7vw,6.25rem)] font-extrabold tracking-[-0.06em] text-slate-950 leading-[1.02]">
-                Hi, I'm Roushan Kumar
+                I design clear workflows for complex products.
               </h1>
               <p className="inline-block border-2 border-black bg-[#000080] px-3 py-2 text-base sm:text-xl font-bold text-white">
-                UX/UI &amp; Product Designer &#8226; based in Ahmedabad, Gujarat, India
+                Product Designer &#8226; B2B SaaS &amp; enterprise
               </p>
             </div>
             <div className="about-hero-copy-list space-y-4">
               <p className="about-hero-copy about-hero-copy-primary">
-                I have 6+ years of experience designing B2B and SaaS products. I work on complex enterprise workflows and use research, information architecture, and interface design to make tasks easier to follow.
+                I'm Roushan Kumar, a product designer based in Ahmedabad with 6+ years of experience in B2B and SaaS. I use research, information architecture, and interface design to make complex workflows easier to follow.
               </p>
               <p className="about-hero-copy about-hero-copy-secondary">
-                I'm currently pursuing research on interface design ethics, dark patterns, and invisible UI, and I apply those principles when designing real products.
+                I also research interface design ethics, dark patterns, and invisible UI. That work keeps me attentive to clarity, consent, and user control in everyday product decisions.
               </p>
             </div>
             <div className="pt-2 flex flex-wrap items-center gap-4">

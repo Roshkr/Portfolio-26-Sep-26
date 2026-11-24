@@ -7,7 +7,6 @@
 *::after {
   border-radius: 0 !important;
 }
-
 @theme {
   --font-sans: "IBM Plex Sans", sans-serif;
   --font-serif: "Host Grotesk", sans-serif;
@@ -128,6 +127,10 @@
 
 .retro-header nav {
   flex: 0 0 auto;
+}
+
+.retro-header nav button[aria-current="page"] {
+  background: var(--dp-color-highlight) !important;
 }
 
 .retro-window {
@@ -751,6 +754,81 @@ button:not(.retro-contact-window > button):active {
 .retro-project-list {
   display: grid;
   gap: var(--dp-spacing-card-gap);
+}
+
+.retro-more-work {
+  margin-top: clamp(28px, 5vw, 56px);
+  border-top: 2px solid var(--dp-color-ink);
+  padding-top: 20px;
+}
+
+.retro-more-work-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.retro-more-work-heading h3 {
+  margin: 4px 0 0;
+  font-family: var(--dp-typography-display);
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.1;
+}
+
+.retro-more-work-heading > p {
+  max-width: 34ch;
+  margin: 0;
+  color: #333;
+  font-size: 13px;
+}
+
+.retro-more-work-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.retro-more-work-list li {
+  border-top: 1px solid #999;
+}
+
+.retro-more-work-list button {
+  display: flex;
+  width: 100%;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 4px;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: left;
+}
+
+.retro-more-work-list button > span:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.retro-more-work-list small {
+  color: #444;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.retro-more-work-list button > span:last-child {
+  flex: 0 0 auto;
+  font-family: var(--dp-typography-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.retro-more-work-list button:hover > span:first-child strong,
+.retro-more-work-list button:hover > span:last-child {
+  color: var(--dp-color-accent);
 }
 
 .retro-project-window {
@@ -1684,7 +1762,13 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-hero-body h1 {
-    font-size: clamp(36px, min(14vw, 8svh), 56px);
+    font-size: clamp(26px, min(8vw, 6svh), 38px);
+  }
+
+  .retro-hero-line {
+    margin-bottom: 7px;
+    border-width: 3px;
+    box-shadow: 4px 4px 0 var(--dp-color-ink);
   }
 
   .retro-projects-heading {
@@ -1719,7 +1803,7 @@ button:not(.retro-contact-window > button):active {
     height: calc(100svh - 64px + var(--dp-spacing-section-gap));
   }
 
-  /* Keep every route centered and make its content use the phone viewport. */
+  /* Keep phone layouts readable while letting text follow a natural left edge. */
   .portfolio-protected {
     padding-inline: 8px;
   }
@@ -1730,20 +1814,37 @@ button:not(.retro-contact-window > button):active {
     padding-inline: 8px;
   }
 
+  .retro-more-work-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .case-study-page section.sticky {
+    position: relative;
+    top: auto !important;
+    min-height: 0 !important;
+    margin-bottom: 12px;
+    padding: 22px 18px;
+  }
+
+  .retro-more-work-list button {
+    align-items: flex-start;
+  }
+
   .portfolio-protected main,
   .portfolio-protected #contact,
   .portfolio-protected footer {
-    text-align: center;
+    text-align: left;
   }
 
   .portfolio-protected main :is(h1, h2, h3, h4, p, li, dt, dd, label, figcaption),
   .portfolio-protected footer :is(h1, h2, h3, h4, p, li, dt, dd, label, figcaption) {
-    text-align: center;
+    text-align: left;
   }
 
   .portfolio-protected main :is(ul, ol) {
-    padding-inline: 0;
-    list-style-position: inside;
+    padding-inline-start: 1.25rem;
+    list-style-position: outside;
   }
 
   .portfolio-protected main > *,
@@ -1767,14 +1868,14 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-hero-line {
-    margin-inline: auto;
-    transform-origin: center;
+    margin-inline: 0;
+    transform-origin: left center;
   }
 
   .retro-hero-body h1,
   .retro-hero-main {
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   .portfolio-protected main :is(img, video, canvas, iframe) {
@@ -1784,8 +1885,8 @@ button:not(.retro-contact-window > button):active {
 
   .portfolio-protected footer .retro-footer-body > div:last-child,
   .portfolio-protected footer .retro-footer-body > div:last-child > div {
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 }
 

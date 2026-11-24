@@ -3,8 +3,13 @@ import { ArrowRight, ArrowUpRight, FileText } from 'lucide-react';
 import { useReducedMotion } from 'motion/react';
 import { DESIGNER_INFO } from '../data/portfolioData';
 import { WindowControls } from './WindowControls';
+import { ContactSection } from './ContactSection';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenChat: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenChat }) => {
   const shouldReduceMotion = useReducedMotion();
   const [time, setTime] = useState(() => new Date());
 
@@ -30,6 +35,8 @@ export const Footer: React.FC = () => {
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1] text-white">
             Have a project in mind? Let’s talk.
           </h2>
+
+          <ContactSection onOpenChat={onOpenChat} />
 
           <div className="flex flex-wrap items-center gap-4 pt-4">
             {/* Direct Resume Download */}

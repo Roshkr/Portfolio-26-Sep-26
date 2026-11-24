@@ -5,7 +5,6 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { RetroWindowManager } from './components/RetroWindowManager';
-import { ContactSection } from './components/ContactSection';
 import { ContactModal } from './components/ContactModal';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -129,10 +128,8 @@ export default function App() {
             </motion.main>
           </AnimatePresence>
 
-          <ContactSection onOpenChat={() => setIsContactOpen(true)} />
-
           {/* Dark Footer with Social Links & Resume */}
-          <Footer />
+          <Footer onOpenChat={() => setIsContactOpen(true)} />
         </div>
 
         <RetroWindowManager />
