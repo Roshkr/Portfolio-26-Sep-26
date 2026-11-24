@@ -34,10 +34,10 @@ export const AboutPage: React.FC = () => {
             </div>
             <div className="about-hero-copy-list space-y-4">
               <p className="about-hero-copy about-hero-copy-primary">
-                I'm Roushan Kumar, a product designer based in Ahmedabad with 6+ years of experience in B2B and SaaS. I use research, information architecture, and interface design to make complex workflows easier to follow.
+                I'm Roushan Kumar, a product designer based in Ahmedabad with 6+ years of experience in B2B and SaaS. I translate user research into meaningful design decisions, structuring information and crafting intuitive interfaces that make complex workflows simple, seamless, and easy to navigate.
               </p>
               <p className="about-hero-copy about-hero-copy-secondary">
-                I also research interface design ethics, dark patterns, and invisible UI. That work keeps me attentive to clarity, consent, and user control in everyday product decisions.
+                Beyond interfaces, I'm exploring how conversations can shape more intuitive digital experiences.
               </p>
             </div>
             <div className="pt-2 flex flex-wrap items-center gap-4">

@@ -27,20 +27,21 @@ export const useScrollScrubFrames = (
       gsap.to(playhead, {
         frame: frameCount - 1,
         ease: 'none',
-        onUpdate: () => setFramePosition(playhead.frame),
+        onUpdate: () => setFramePosition(Math.round(playhead.frame)),
         scrollTrigger: {
           trigger: stage,
           start: () => {
-            if (window.matchMedia('(max-width: 760px)').matches) return 'top bottom';
             const stickyTop = Number.parseFloat(getComputedStyle(stage).top) || 0;
             return `top top+=${stickyTop}`;
           },
           end: () => {
-            if (window.matchMedia('(max-width: 760px)').matches) return 'bottom top';
-            const stickyTravel = track.clientHeight - stage.offsetTop - stage.offsetHeight;
+            const isPhoneLayout = window.matchMedia('(max-width: 760px)').matches;
+            const stickyTravel = isPhoneLayout
+              ? Number.parseFloat(getComputedStyle(track).paddingBottom)
+              : track.clientHeight - stage.offsetTop - stage.offsetHeight;
             return `+=${Math.max(1, stickyTravel)}`;
           },
-          scrub: 0.12,
+          scrub: true,
           invalidateOnRefresh: true,
           onEnter: () => stage.classList.add('retro-tv-glitch-active'),
         },

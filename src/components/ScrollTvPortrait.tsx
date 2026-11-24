@@ -31,9 +31,7 @@ export const ScrollTvPortrait = ({
 }) => {
   const stageRef = useRef<HTMLDivElement>(null);
   const [framePosition, setFramePosition] = useState(0);
-  const frameIndex = Math.floor(framePosition);
-  const nextFrameIndex = Math.min(frameIndex + 1, portraitFrames.length - 1);
-  const frameBlend = framePosition - frameIndex;
+  const frameIndex = framePosition;
 
   useScrollScrubFrames(trackRef, stageRef, portraitFrames.length, setFramePosition);
 
@@ -52,20 +50,10 @@ export const ScrollTvPortrait = ({
             <img
               className="retro-hero-sequence-image"
               src={portraitFrames[frameIndex]}
-              alt={`Roushan Kumar portrait, animation frame ${frameIndex + 1} of ${portraitFrames.length}.`}
+              alt="Roushan Kumar's portrait sequence, changing from a side profile to a front-facing portrait."
               draggable={false}
               fetchPriority="high"
             />
-            {nextFrameIndex !== frameIndex && (
-              <img
-                className="retro-hero-sequence-image retro-hero-sequence-image-next"
-                src={portraitFrames[nextFrameIndex]}
-                alt=""
-                aria-hidden="true"
-                draggable={false}
-                style={{ opacity: frameBlend }}
-              />
-            )}
           </div>
         </div>
         <div className="retro-hero-tv-lower" aria-hidden="true">

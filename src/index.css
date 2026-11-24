@@ -491,12 +491,6 @@ button:not(.retro-contact-window > button):active {
   user-select: none;
 }
 
-.retro-hero-sequence-image-next {
-  z-index: 1;
-  pointer-events: none;
-  will-change: opacity;
-}
-
 .retro-hero-tv-picture::before,
 .retro-hero-tv-picture::after {
   position: absolute;
@@ -1649,10 +1643,17 @@ button:not(.retro-contact-window > button):active {
 
   .about-hero-layout .retro-hero-tv-stack {
     width: min(100%, 460px);
-    position: static;
-    top: auto;
+    position: -webkit-sticky;
+    position: sticky;
+    top: calc(76px + 34px + 16px);
+    z-index: 7;
+    align-self: start;
     justify-self: center;
     gap: 10px;
+  }
+
+  .about-hero-layout .retro-hero-tv {
+    aspect-ratio: 1.08;
   }
 
   .about-hero-layout .about-hero-copy-content {
@@ -1704,7 +1705,13 @@ button:not(.retro-contact-window > button):active {
   }
 
   .about-page > section:first-child > div:nth-child(2) {
-    padding: var(--dp-spacing-card-inset);
+    padding: var(--dp-spacing-card-inset) var(--dp-spacing-card-inset) clamp(480px, 75svh, 720px);
+  }
+
+  .about-page > .about-quick-facts-section {
+    position: relative;
+    z-index: 6;
+    margin-top: clamp(-720px, -75svh, -480px);
   }
 
   .about-page > section:nth-child(2) > div:nth-child(2) {
