@@ -23,7 +23,7 @@ export const AboutPage: React.FC = () => {
         </div>
         <div className="about-hero-layout relative grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6 items-start">
           {/* Left Text Column */}
-          <div className="about-hero-copy-content order-last space-y-4 lg:order-first lg:col-span-7">
+          <div className="about-hero-copy-content order-first space-y-4 lg:order-first lg:col-span-7">
             <div className="space-y-3">
               <h1 className="text-[clamp(3rem,7vw,6.25rem)] font-extrabold tracking-[-0.06em] text-slate-950 leading-[1.02]">
                 I design clear workflows for complex products.

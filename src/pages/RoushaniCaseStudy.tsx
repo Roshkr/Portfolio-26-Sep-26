@@ -213,7 +213,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
 
   return (
     <article className="case-study-page roushani-case-study w-full bg-[#fbfbfb] text-slate-950">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-6">
+      <div className="case-study-backbar mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-3">
         <button
           type="button"
           onClick={onBack}
@@ -227,7 +227,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
         </span>
       </div>
 
-      <header className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 pb-12 pt-12 md:pb-16 md:pt-16">
+      <header className="case-study-hero mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 pb-12 pt-12 md:pb-16 md:pt-16">
         <div className="max-w-5xl">
           <h1 className="mt-4 max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-slate-950 sm:text-6xl md:text-8xl">
             {caseStudy.title}
@@ -515,7 +515,7 @@ export const RoushaniCaseStudy: React.FC<RoushaniCaseStudyProps> = ({
                     imageSrc={screen.image}
                     videoSrc={screen.videoSrc}
                     device={screen.device || 'desktop'}
-                    ariaLabel={screen.title}
+                    ariaLabel={`Roushani invoicing interface: ${screen.title}`}
                     className={`mx-auto w-full ${screen.device === 'phone' ? 'max-w-[220px]' : 'max-w-[560px]'}`}
                   />
                 </motion.div>
@@ -629,14 +629,14 @@ const MediaFrame: React.FC<{ caseStudy: CaseStudy }> = ({ caseStudy }) => (
         <LazyVideo
           src={caseStudy.heroVideo}
           poster={caseStudy.heroImage}
-          ariaLabel={`${caseStudy.title} product preview`}
+          ariaLabel="Roushani mobile invoicing product interface walkthrough"
           objectFit="contain"
           eager
           frameClassName="overflow-hidden rounded-xl bg-white"
         />
       </div>
     ) : (
-      <img src={caseStudy.heroImage} alt={`${caseStudy.title} product`} className="mx-auto max-h-[720px] w-full rounded-xl object-contain" />
+      <img src={caseStudy.heroImage} alt="Roushani invoicing interface for creating and reviewing service invoices." className="mx-auto max-h-[720px] w-full rounded-xl object-contain" />
     )}
   </div>
 );
@@ -667,7 +667,7 @@ const BeforeAfterMedia: React.FC<{ label: string; src: string; videoSrc?: string
           </div>
         </div>
       ) : (
-        <img src={src} alt={label} loading="lazy" className="max-h-80 w-full rounded-lg object-contain" />
+        <img src={src} alt={`Roushani ${label.toLowerCase()} invoice workflow interface screenshot.`} loading="lazy" className="max-h-80 w-full rounded-lg object-contain" />
       )}
       <figcaption className="mt-4 px-2 pb-1 text-xs font-medium text-slate-500">{label}</figcaption>
     </motion.figure>

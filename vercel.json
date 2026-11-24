@@ -7,15 +7,21 @@
   },
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "roushan.in" }],
+      "destination": "https://www.roushan.in/:path*",
+      "permanent": true
+    },
+    {
       "source": "/",
       "has": [{ "type": "host", "value": "portfolio26sep26.vercel.app" }],
-      "destination": "https://roushan.in/",
+      "destination": "https://www.roushan.in/",
       "permanent": true
     },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "portfolio26sep26.vercel.app" }],
-      "destination": "https://roushan.in/:path*",
+      "destination": "https://www.roushan.in/:path*",
       "permanent": true
     }
   ],

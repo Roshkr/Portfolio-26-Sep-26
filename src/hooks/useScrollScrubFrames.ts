@@ -20,6 +20,7 @@ export const useScrollScrubFrames = (
 
     gsap.registerPlugin(ScrollTrigger);
     const playhead = { frame: 0 };
+    const phoneLayout = window.matchMedia('(max-width: 760px)');
     const context = gsap.context(() => {
       gsap.to(playhead, {
         frame: frameCount - 1,
@@ -28,10 +29,14 @@ export const useScrollScrubFrames = (
         scrollTrigger: {
           trigger: stage,
           start: () => {
+            // On phones, let the TV move naturally through the viewport instead
+            // of pinning it over the whole hero copy.
+            if (phoneLayout.matches) return 'top bottom';
             const stickyTop = Number.parseFloat(getComputedStyle(stage).top) || 0;
             return `top top+=${stickyTop}`;
           },
           end: () => {
+            if (phoneLayout.matches) return 'bottom top';
             const layout = track.querySelector<HTMLElement>('.about-hero-layout');
             const trackRect = track.getBoundingClientRect();
             const layoutRect = layout?.getBoundingClientRect();

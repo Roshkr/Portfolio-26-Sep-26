@@ -45,8 +45,8 @@ export const usePageMetadata = (route: PortfolioRoute) => {
     const canonicalPath = route.page === 'case-study'
       ? `/case-studies/${route.caseStudy.id}`
       : route.page === 'about' ? '/about' : '/';
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://roushan.in${canonicalPath}`);
-    document.querySelector('meta[property="og:url"]')?.setAttribute('content', `https://roushan.in${canonicalPath}`);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://www.roushan.in${canonicalPath}`);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', `https://www.roushan.in${canonicalPath}`);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', title);
@@ -54,21 +54,33 @@ export const usePageMetadata = (route: PortfolioRoute) => {
     const jsonLd = route.page === 'case-study'
       ? {
           '@context': 'https://schema.org',
-          '@type': 'CreativeWork',
+          '@type': 'Article',
           name: title,
-          url: `https://roushan.in${canonicalPath}`,
+          headline: title,
+          url: `https://www.roushan.in${canonicalPath}`,
           description,
-          creator: { '@type': 'Person', '@id': 'https://roushan.in/#person', name: 'Roushan Kumar', url: 'https://roushan.in/' },
+          abstract: [
+            `Role: ${route.caseStudy.role}.`,
+            `Industry: ${route.caseStudy.category}.`,
+            `Problem: ${route.caseStudy.overview.split(/\n\s*\n/)[0]}`,
+            `Solution: ${route.caseStudy.designText}`,
+            `Impact: ${route.caseStudy.impactText || 'No quantified outcome is documented.'}`,
+          ].join(' '),
+          mainEntityOfPage: `https://www.roushan.in${canonicalPath}`,
+          creator: { '@type': 'Person', '@id': 'https://www.roushan.in/#person', name: 'Roushan Kumar', url: 'https://www.roushan.in/' },
+          author: { '@id': 'https://www.roushan.in/#person' },
           keywords: route.caseStudy.tags?.join(', '),
         }
       : {
           '@context': 'https://schema.org',
           '@type': 'Person',
           name: 'Roushan Kumar',
-          '@id': 'https://roushan.in/#person',
-          url: 'https://roushan.in/',
-          jobTitle: 'Product Designer',
-          description,
+          '@id': 'https://www.roushan.in/#person',
+          url: 'https://www.roushan.in/',
+          jobTitle: 'Product Designer & UI/UX Designer',
+          description: route.page === 'home'
+            ? 'Product Designer and UI/UX Designer in Ahmedabad, India, with 6+ years of experience across B2B SaaS, fintech, enterprise workflows, and design systems.'
+            : description,
           address: {
             '@type': 'PostalAddress',
             addressLocality: 'Ahmedabad',
@@ -85,7 +97,24 @@ export const usePageMetadata = (route: PortfolioRoute) => {
             'Enterprise workflows', 'Mobile experiences', 'User research', 'Design systems',
           ],
         };
+    const schema = route.page === 'home'
+      ? {
+          '@context': 'https://schema.org',
+          '@graph': [
+            jsonLd,
+            {
+              '@type': 'WebSite',
+              '@id': 'https://www.roushan.in/#website',
+              url: 'https://www.roushan.in/',
+              name: 'Roushan Kumar | Product Designer & UI/UX Designer',
+              description,
+              inLanguage: 'en-IN',
+              publisher: { '@id': 'https://www.roushan.in/#person' },
+            },
+          ],
+        }
+      : jsonLd;
     const schemaTag = document.querySelector<HTMLScriptElement>('#page-jsonld');
-    if (schemaTag) schemaTag.textContent = JSON.stringify(jsonLd);
+    if (schemaTag) schemaTag.textContent = JSON.stringify(schema);
   }, [route]);
 };

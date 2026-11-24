@@ -10,8 +10,8 @@ Roushan Kumar translates user research into meaningful product decisions, struct
 - Experience: 6+ years designing digital products
 - Specialties: B2B SaaS, fintech, enterprise workflows, design systems, mobile UX, user research, information architecture, interaction design
 - Email: [roushan.ux@gmail.com](mailto:roushan.ux@gmail.com)
-- Portfolio: [https://roushan.in/](https://roushan.in/)
-- About: [https://roushan.in/about](https://roushan.in/about)
+- Portfolio: [https://www.roushan.in/](https://www.roushan.in/)
+- About: [https://www.roushan.in/about](https://www.roushan.in/about)
 - LinkedIn: [https://www.linkedin.com/in/roushankuma/](https://www.linkedin.com/in/roushankuma/)
 - Behance: [https://www.behance.net/roushankuma](https://www.behance.net/roushankuma)
 - Dribbble: [https://dribbble.com/roushankr](https://dribbble.com/roushankr)
@@ -21,7 +21,7 @@ Roushan Kumar translates user research into meaningful product decisions, struct
 
 ### Roushani — mobile-first invoicing for service businesses
 
-- URL: https://roushan.in/case-studies/roushani
+- URL: https://www.roushan.in/case-studies/roushani
 - Role: Product Designer; owned product design and first MVP implementation.
 - Industry: B2B SaaS invoicing for service businesses.
 - Problem: Invoice creation relied on repeated manual entry and took about 18 minutes.
@@ -30,7 +30,7 @@ Roushan Kumar translates user research into meaningful product decisions, struct
 
 ### Umbrella — enterprise third-party NDA onboarding
 
-- URL: https://roushan.in/case-studies/umbrella
+- URL: https://www.roushan.in/case-studies/umbrella
 - Role: UX Designer.
 - Industry: Enterprise legal and third-party onboarding.
 - Problem: The NDA flow was difficult to scan and left users unsure which company or individual details were required.
@@ -39,7 +39,7 @@ Roushan Kumar translates user research into meaningful product decisions, struct
 
 ### Design System — components and iconography
 
-- URL: https://roushan.in/case-studies/design-system-icons
+- URL: https://www.roushan.in/case-studies/design-system-icons
 - Role: UX Designer, collaborating with a design manager and development team.
 - Industry: Enterprise product platform.
 - Problem: Product screens needed shared visual and interaction patterns across different workflows.
@@ -48,7 +48,7 @@ Roushan Kumar translates user research into meaningful product decisions, struct
 
 ### Bridge2Business — B2B website redesign
 
-- URL: https://roushan.in/case-studies/bridge2business
+- URL: https://www.roushan.in/case-studies/bridge2business
 - Role: UX/UI Designer, working with a developer.
 - Industry: B2B professional services.
 - Problem: The existing website made services difficult to find and understand, especially on mobile.
@@ -57,7 +57,7 @@ Roushan Kumar translates user research into meaningful product decisions, struct
 
 ### Maxlence — HR and project management SaaS
 
-- URL: https://roushan.in/case-studies/maxlence
+- URL: https://www.roushan.in/case-studies/maxlence
 - Role: Product Designer, collaborating with the development team.
 - Industry: HR and project management SaaS.
 - Problem: Distributed teams needed connected HR, attendance, project tracking, and client delivery workflows.
@@ -66,7 +66,7 @@ Roushan Kumar translates user research into meaningful product decisions, struct
 
 ### Naie — salon discovery and booking
 
-- URL: https://roushan.in/case-studies/naie
+- URL: https://www.roushan.in/case-studies/naie
 - Role: Product Designer.
 - Industry: Salon discovery, booking, and operations.
 - Problem: Customers relied on calls and messages to check availability while salon teams managed appointments manually.

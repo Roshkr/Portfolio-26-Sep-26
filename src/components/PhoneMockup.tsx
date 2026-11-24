@@ -98,7 +98,7 @@ export const LazyVideo: React.FC<{
       {poster && !isPlaying && (
         <img
           src={poster}
-          alt={`${ariaLabel} thumbnail`}
+          alt={`${ariaLabel} interface screenshot`}
           className={`absolute inset-0 w-full h-full ${objectFitClass} rounded-[18px] sm:rounded-[22px]`}
           loading={inView ? 'eager' : 'lazy'}
           fetchPriority={inView ? 'high' : 'auto'}
@@ -132,7 +132,7 @@ export const ProjectMockup: React.FC<ProjectMockupProps> = ({
   videoSrc,
   device = 'desktop',
   className = '',
-  ariaLabel = 'Project interface preview',
+  ariaLabel = 'Product interface screenshot',
   fitHeight = false,
 }) => {
   if (device === 'phone') {

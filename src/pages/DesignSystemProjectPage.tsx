@@ -76,7 +76,7 @@ const MediaPlaceholder: React.FC<{ label: string; className?: string }> = ({ lab
 
 export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = ({ onBack, nextStudy, onSelectCaseStudy }) => (
   <article id="top" className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
-    <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-4">
+    <div className="case-study-backbar mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-3">
       <button type="button" onClick={onBack} className="retro-button inline-flex items-center gap-2 px-4 py-2 text-sm">
         <ArrowLeft className="h-4 w-4" aria-hidden="true" />
         Back
@@ -84,7 +84,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
       <span className="text-xs font-medium text-slate-400">Selected work / Design systems</span>
     </div>
 
-    <header className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 pb-12 pt-12 md:pb-16 md:pt-16">
+    <header className="case-study-hero mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 pb-12 pt-12 md:pb-16 md:pt-16">
       <div className="max-w-5xl">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Design systems / Components / Iconography</p>
         <h1 className="mt-4 max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.055em] sm:text-6xl md:text-8xl">

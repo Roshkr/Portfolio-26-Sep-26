@@ -82,6 +82,16 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   const nextStudy = currentIndex >= 0 && allCaseStudies.length > 1
     ? allCaseStudies[(currentIndex + 1) % allCaseStudies.length]
     : null;
+  const uniqueNarrativeSections = caseStudy.storySections?.filter((section) => {
+    if (caseStudy.id === 'maxlence') return section.eyebrow === 'Reflection';
+    if (caseStudy.id === 'naie') return ['Project brief', 'Reflection'].includes(section.eyebrow ?? '');
+    return true;
+  }) ?? [];
+  const narrativeEyebrow = caseStudy.id === 'maxlence'
+    ? 'Reflection'
+    : caseStudy.id === 'naie'
+      ? 'Project framing & reflection'
+      : 'Project narrative';
 
   if (caseStudy.id === 'roushani') {
     return (
@@ -113,7 +123,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   return (
     <article className="case-study-page w-full bg-[#fbfbfb]">
       {/* Top Floating Action Bar / Breadcrumb */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 pt-8 pb-4 flex items-center justify-between border-b border-slate-200">
+      <div className="case-study-backbar max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 py-3 flex items-center justify-between border-b border-slate-200">
         <button
           type="button"
           onClick={onBack}
@@ -126,7 +136,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
       </div>
 
       {/* Hero Section */}
-      <section className="pt-12 pb-12 md:pt-16 md:pb-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
+      <section className="case-study-hero pt-12 pb-12 md:pt-16 md:pb-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6 items-center">
           <div className="md:col-span-7 space-y-6">
             <div className="flex flex-wrap items-center gap-2">
@@ -162,7 +172,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
                 <LazyVideo
                   src={caseStudy.heroVideo}
                   poster={caseStudy.heroImage}
-                  ariaLabel={`${caseStudy.title} preview`}
+                  ariaLabel={`${caseStudy.title} ${caseStudy.category} product interface walkthrough`}
                   objectFit="contain"
                   frameClassName="rounded-xl sm:rounded-2xl shadow-sm sm:shadow-md border border-slate-200/80"
                 />
@@ -170,7 +180,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             ) : (
               <img
                 src={caseStudy.heroImage}
-                alt={`${caseStudy.title} ${caseStudy.category.toLowerCase()} case study hero image.`}
+                alt={`${caseStudy.title} ${caseStudy.category.toLowerCase()} product interface showing the project experience.`}
                 referrerPolicy="no-referrer"
                 className="max-w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[460px] w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-sm sm:shadow-md border border-slate-200/80"
                 loading="lazy"
@@ -269,7 +279,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
               imageSrc={caseStudy.beforeScreen}
               videoSrc={caseStudy.beforeVideo}
               device={caseStudy.beforeDevice}
-              ariaLabel={caseStudy.beforeLabel || 'Before project screen'}
+              ariaLabel={caseStudy.beforeLabel ? `${caseStudy.title}: ${caseStudy.beforeLabel} workflow interface` : `${caseStudy.title} original workflow interface`}
               className={`w-full ${caseStudy.beforeDevice === 'phone' ? 'max-w-[240px]' : 'max-w-[640px]'}`}
             />
           </div>
@@ -280,7 +290,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
               imageSrc={caseStudy.afterScreen}
               videoSrc={caseStudy.afterVideo}
               device={caseStudy.afterDevice}
-              ariaLabel={caseStudy.afterLabel || 'After project screen'}
+              ariaLabel={caseStudy.afterLabel ? `${caseStudy.title}: ${caseStudy.afterLabel} workflow interface` : `${caseStudy.title} redesigned workflow interface`}
               className={`w-full ${caseStudy.afterDevice === 'phone' ? 'max-w-[240px]' : 'max-w-[640px]'}`}
             />
           </div>
@@ -289,7 +299,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Process Ticker Divider */}
       <div aria-hidden="true" className="w-full overflow-hidden py-4 bg-transparent border-y border-slate-200 select-none">
-        <div className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">
+        <div aria-hidden="true" className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex min-w-[100vw] flex-none items-center justify-around gap-12">
               {processTickerItems.map((step, index) => (
@@ -377,7 +387,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
                 imageSrc={designScreens[activeDesignSlide]?.image}
                 videoSrc={designScreens[activeDesignSlide]?.videoSrc}
                 device={designScreens[activeDesignSlide]?.device}
-                ariaLabel={designScreens[activeDesignSlide]?.title || 'Design screen'}
+                ariaLabel={`${caseStudy.title}: ${designScreens[activeDesignSlide]?.title || 'product interface'} screen`}
                 className={`w-full ${designScreens[activeDesignSlide]?.device === 'phone' ? 'max-w-[260px]' : 'max-w-[720px]'}`}
               />
             </div>
@@ -435,7 +445,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
                 imageSrc={caseStudy.problem1.screen}
                 videoSrc={caseStudy.problem1.videoSrc}
                 device={caseStudy.problem1.device}
-                ariaLabel={caseStudy.problem1.title}
+                ariaLabel={`${caseStudy.title}: ${caseStudy.problem1.title} interface`}
                 className={`w-full ${caseStudy.problem1.device === 'phone' ? 'max-w-[240px]' : 'max-w-[640px]'}`}
               />
             </div>
@@ -456,7 +466,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
                 imageSrc={caseStudy.solution1.screen}
                 videoSrc={caseStudy.solution1.videoSrc}
                 device={caseStudy.solution1.device}
-                ariaLabel={caseStudy.solution1.title}
+                ariaLabel={`${caseStudy.title}: ${caseStudy.solution1.title} interface`}
                 className={`w-full ${caseStudy.solution1.device === 'phone' ? 'max-w-[240px]' : 'max-w-[640px]'}`}
               />
             </div>
@@ -472,19 +482,19 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         </div>
       </section>
 
-      {caseStudy.storySections && (
+      {uniqueNarrativeSections.length > 0 && (
         <section className="py-12 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 xl:px-8 border-t border-slate-200">
           <div className="max-w-3xl space-y-6 mb-12">
             <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
-              Project narrative
+              {narrativeEyebrow}
             </span>
             <h2 className="text-3xl font-normal tracking-tight text-slate-950">
-              From problem to product
+              {caseStudy.id === 'naie' ? 'Why the concept started, and what it needs next' : 'What I would validate next'}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-            {caseStudy.storySections.map((section) => (
+            {uniqueNarrativeSections.map((section) => (
               <article key={section.title} className="space-y-4">
                 {section.eyebrow && (
                   <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
@@ -549,7 +559,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
       {/* Outcome Ticker Divider */}
       <div aria-hidden="true" className="w-full overflow-hidden py-4 bg-transparent border-y border-slate-200 select-none">
-        <div className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">
+        <div aria-hidden="true" className="animate-marquee flex text-slate-800 text-xl md:text-2xl font-normal">
           {[0, 1].map((copy) => (
             <div key={copy} className="flex min-w-[100vw] flex-none items-center justify-around gap-12">
               {Array.from({ length: 8 }, (_, index) => (
@@ -649,7 +659,7 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
                 imageSrc={screen.image}
                 videoSrc={screen.videoSrc}
                 device={screen.device}
-                ariaLabel={screen.title}
+                ariaLabel={`${caseStudy.title}: ${screen.title} interface screenshot`}
                 className={`w-full ${screen.device === 'phone' ? 'max-w-[200px]' : 'max-w-[520px]'}`}
               />
               <span className="mt-3 text-xs text-slate-500 font-medium">

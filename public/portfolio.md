@@ -1,6 +1,6 @@
 # Roushan Kumar - Product Designer
 
-**Official portfolio:** https://roushan.in/
+**Official portfolio:** https://www.roushan.in/
 
 **Location:** Ahmedabad, India  
 **Positioning:** Product Designer focused on B2B/SaaS workflows and design systems. I work on complex enterprise tasks and make them easier to follow.
@@ -29,7 +29,7 @@ I help product teams make complex workflows easier to understand and use. My wor
 ## Selected Projects
 
 ### 1. Roushani - Mobile-first B2B Invoicing SaaS
-**Case study:** https://roushan.in/case-studies/roushani
+**Case study:** https://www.roushan.in/case-studies/roushani
 
 - **Status:** Production MVP (Live)
 - **Duration:** 4 weeks (Concept to Live MVP)
@@ -41,7 +41,7 @@ I help product teams make complex workflows easier to understand and use. My wor
 - **Outcome:** The pilot reduced average invoice creation and export time from 18 minutes to under 3 minutes, with reusable details, automatic calculations, and branded PDFs.
 
 ### 2. Umbrella - Enterprise Third-party Onboarding
-**Case study:** https://roushan.in/case-studies/umbrella
+**Case study:** https://www.roushan.in/case-studies/umbrella
 
 - **Status:** Final Implementation
 - **Duration:** 1 month
@@ -54,26 +54,26 @@ I help product teams make complex workflows easier to understand and use. My wor
 - **Outcome:** Grouped related fields, clarified the company and individual paths, and made required information easier to find.
 
 ### 3. Design System, Components & Iconography
-**Case study:** https://roushan.in/case-studies/design-system-icons
+**Case study:** https://www.roushan.in/case-studies/design-system-icons
 
 - **Status:** Design system foundations and guidance
 - **Focus:** Reusable components, visual consistency, and iconography
 - **Overview:** Shared visual rules, reusable components with documented states, and icons for a product platform. These patterns reduce repeated design work while leaving room for differences between workflows.
 
 ### 4. Bridge2Business - B2B Website Redesign
-**Case study:** https://roushan.in/case-studies/bridge2business
+**Case study:** https://www.roushan.in/case-studies/bridge2business
 
 - **Focus:** B2B website UX strategy, responsive design, information hierarchy, and brand credibility.
 - **Overview:** Restructured a cluttered B2B website so potential clients could understand the services and find a clear path to connect.
 
 ### 5. Maxlence - HR and Project Management SaaS
-**Case study:** https://roushan.in/case-studies/maxlence
+**Case study:** https://www.roushan.in/case-studies/maxlence
 
 - **Focus:** HR management, project tracking, attendance, client deliverables, onboarding, and reusable components.
 - **Overview:** Designed onboarding, dashboard, HR, and project workflows for a platform serving distributed teams.
 
 ### 6. Naie - Salon Discovery and Appointment Booking
-**Case study:** https://roushan.in/case-studies/naie
+**Case study:** https://www.roushan.in/case-studies/naie
 
 - **Focus:** Mobile UX, local salon discovery, appointment availability, and salon operations.
 - **Overview:** Designed a booking experience to help salon customers understand services and availability while giving salon owners clearer appointment management.

@@ -19,4 +19,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://roushan.in/sitemap.xml
+Sitemap: https://www.roushan.in/sitemap.xml

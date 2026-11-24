@@ -81,7 +81,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         />
       </div>
 
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-6">
+      <div className="case-study-backbar mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-3">
         <button
           type="button"
           onClick={onBack}
@@ -97,7 +97,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
         )}
       </div>
 
-      <header className="bg-[#eef0f3] text-slate-950">
+      <header className="case-study-hero bg-[#eef0f3] text-slate-950">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 pb-12 pt-8 md:pb-16 md:pt-16">
           <div className="max-w-4xl">
             <p className="text-sm font-medium text-slate-500">{caseStudy.category}</p>
@@ -125,7 +125,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
                 <LazyVideo
                   src={caseStudy.heroVideo}
                   poster={caseStudy.heroImage}
-                  ariaLabel={`${caseStudy.title} website redesign preview`}
+                  ariaLabel="Bridge2Business responsive B2B services website homepage and page layout"
                   objectFit="contain"
                   frameClassName="h-full w-full bg-[#e2e4e8]"
                 />
@@ -267,7 +267,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
                 <ProjectMockup
                   imageSrc={screen.image}
                   device={screen.device}
-                  ariaLabel={`${screen.label} website design`}
+                  ariaLabel={`Bridge2Business responsive B2B website: ${screen.label} page design`}
                   className="mx-auto w-full"
                 />
               </div>
@@ -332,7 +332,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
                     imageSrc={screen.image}
                     videoSrc={screen.videoSrc}
                     device={screen.device}
-                    ariaLabel={screen.title}
+                    ariaLabel={`Bridge2Business B2B website interface: ${screen.title}`}
                     className="mx-auto w-full"
                   />
                 </div>
@@ -367,7 +367,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
                   imageSrc={item.screen}
                   videoSrc={item.videoSrc}
                   device={item.device}
-                  ariaLabel={item.title}
+                  ariaLabel={`Bridge2Business website redesign: ${item.title} interface`}
                   className="mx-auto w-full"
                 />
               </div>
@@ -400,7 +400,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
                     imageSrc={screen.image}
                     videoSrc={screen.videoSrc}
                     device={screen.device}
-                    ariaLabel={screen.title}
+                    ariaLabel={`Bridge2Business responsive website interface: ${screen.title}`}
                     className="mx-auto w-full"
                   />
                 </div>

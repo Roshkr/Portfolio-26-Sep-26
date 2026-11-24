@@ -43,7 +43,7 @@ export const ScrollTvPortrait = ({
   }, []);
 
   return (
-    <div ref={stageRef} className="retro-hero-tv-stack order-first lg:order-last lg:col-span-5">
+    <div ref={stageRef} className="retro-hero-tv-stack order-last lg:order-last lg:col-span-5">
       <div className="retro-hero-tv">
         <div className="retro-hero-tv-screen">
           <div className="retro-hero-tv-picture">

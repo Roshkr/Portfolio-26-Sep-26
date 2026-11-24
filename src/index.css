@@ -43,7 +43,7 @@
   --dp-space-24: 96px;
   --dp-spacing-pane-inset: var(--dp-space-1);
   --dp-spacing-item-gap: var(--dp-space-2);
-  --dp-spacing-section-gap: var(--dp-space-12);
+  --dp-spacing-section-gap: var(--dp-space-8);
   --dp-spacing-section-inset: var(--dp-space-12);
   --dp-spacing-card-gap: var(--dp-space-4);
   --dp-spacing-card-inset: var(--dp-space-4);
@@ -157,13 +157,19 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--dp-space-3);
-  padding: var(--dp-space-1) var(--dp-space-2);
+  padding: var(--dp-space-1) var(--dp-space-3);
   background: var(--dp-color-titlebar);
   color: #fff;
   font-family: var(--dp-typography-mono);
   font-size: var(--dp-typography-label);
   font-weight: 600;
   line-height: 1.3;
+}
+
+@media (min-width: 640px) {
+  .retro-window-titlebar {
+    padding-inline: var(--dp-space-6);
+  }
 }
 
 .retro-window-titlebar span:last-child {
@@ -1194,6 +1200,19 @@ button:not(.retro-contact-window > button):active {
   padding-inline: var(--case-study-gutter);
 }
 
+.case-study-page > .case-study-backbar {
+  padding-block: var(--dp-space-3) !important;
+}
+
+.case-study-page > .case-study-backbar + .case-study-hero {
+  margin-block-start: var(--dp-space-4) !important;
+  padding-block: var(--dp-space-6) !important;
+}
+
+.case-study-page > .case-study-backbar + .case-study-hero > div:is([class~="pt-8"], [class~="pt-12"], [class~="pt-16"]) {
+  padding-block: 0 !important;
+}
+
 .case-study-page.roushani-case-study > :is(header, section) {
   padding-inline: 0;
 }
@@ -1671,7 +1690,7 @@ button:not(.retro-contact-window > button):active {
 
 @media (max-width: 760px) {
   :root {
-    --dp-spacing-section-gap: var(--dp-space-12);
+    --dp-spacing-section-gap: var(--dp-space-8);
     --dp-spacing-section-inset: var(--dp-space-12);
     --dp-spacing-card-gap: var(--dp-space-4);
     --dp-spacing-card-inset: var(--dp-space-4);
@@ -1700,13 +1719,17 @@ button:not(.retro-contact-window > button):active {
 
   .about-hero-layout .retro-hero-tv-stack {
     width: min(100%, 460px);
-    position: -webkit-sticky;
-    position: sticky;
-    top: var(--dp-space-16);
-    z-index: 20;
+    position: relative;
+    top: auto;
+    z-index: 1;
     align-self: start;
     justify-self: center;
     gap: var(--dp-space-2);
+  }
+
+  .about-hero-layout .retro-hero-tv-stack::before,
+  .about-hero-layout::after {
+    display: none;
   }
 
   .about-hero-layout .retro-hero-tv {
@@ -1823,6 +1846,10 @@ button:not(.retro-contact-window > button):active {
     --dp-spacing-section-inset: var(--dp-space-16);
     --dp-spacing-card-gap: var(--dp-space-6);
     --dp-spacing-card-inset: var(--dp-space-6);
+  }
+
+  .case-study-page > .case-study-backbar + .case-study-hero {
+    padding-block: var(--dp-space-8) !important;
   }
 }
 

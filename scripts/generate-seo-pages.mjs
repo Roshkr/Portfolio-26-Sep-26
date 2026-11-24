@@ -4,7 +4,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createServer } from 'vite';
 
-const siteUrl = 'https://roushan.in';
+const siteUrl = 'https://www.roushan.in';
 const source = await readFile(resolve('dist/index.html'), 'utf8');
 const manifest = JSON.parse(await readFile(resolve('dist/.vite/manifest.json'), 'utf8'));
 const builtAssets = Object.fromEntries(

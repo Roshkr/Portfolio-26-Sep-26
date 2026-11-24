@@ -1088,7 +1088,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
         title: "A minimal booking experience for everyday use",
         intro: "The final direction pairs a calm visual system with fast service discovery, transparent availability, and easy-to-understand booking choices.",
         images: [
-          { title: "High-fidelity product flow", image: "/naie/naie-33.png", alt: "Naie high-fidelity mobile product screens for salon discovery, appointments, and customer account tasks." },
+          { title: "High-fidelity product flow", image: "/naie/naie-33.png", alt: "Naie customer app screens showing nearby salon discovery, service selection, appointment booking, and account tasks." },
         ],
       },
     ],

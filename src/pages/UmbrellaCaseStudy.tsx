@@ -35,14 +35,14 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
 
   return (
     <article className="case-study-page w-full bg-[#fbfbfb] text-slate-950">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-6">
+      <div className="case-study-backbar mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 xl:px-8 py-3">
         <button type="button" onClick={onBack} className="retro-button inline-flex items-center gap-2 px-4 py-2 text-sm">
           <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back
         </button>
         <span className="rounded-full bg-[#eef0f3] px-3 py-1 text-xs font-medium text-slate-600">{caseStudy.status || caseStudy.category}</span>
       </div>
 
-      <header className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 pb-12 pt-12 md:pb-16 md:pt-16">
+      <header className="case-study-hero mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 pb-12 pt-12 md:pb-16 md:pt-16">
         <div className="max-w-5xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">{caseStudy.category}</p>
           <h1 className="mt-4 max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.055em] text-slate-950 sm:text-6xl md:text-8xl">{caseStudy.title}</h1>
@@ -57,7 +57,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
           </div>
         </div>
         <figure className="mt-12 overflow-hidden rounded-xl border border-slate-200 bg-[#f2f3f6] p-4 shadow-[0_24px_80px_-44px_rgba(15,23,42,.35)] md:mt-12">
-          <img src={caseStudy.heroImage} alt={`${caseStudy.title} onboarding form`} className="mx-auto max-h-[720px] w-full rounded-xl object-contain" />
+          <img src={caseStudy.heroImage} alt="Umbrella third-party NDA onboarding form with company, contact, and agreement details." className="mx-auto max-h-[720px] w-full rounded-xl object-contain" />
         </figure>
       </header>
 
@@ -93,7 +93,7 @@ export const UmbrellaCaseStudy: React.FC<UmbrellaCaseStudyProps> = ({
       <section className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8 py-12 md:py-16">
         <div className="grid gap-4 md:grid-cols-[0.7fr_1.3fr] md:gap-6">
           <div className="roushani-summary-sticky"><SectionHeading eyebrow="The approach" title="Map, test, and refine the onboarding flow." /></div>
-          <div><p className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.designText}</p><div className="divide-y divide-slate-200 border-y border-slate-200">{caseStudy.designBullets.map((item, index) => <div key={item} className="grid gap-3 py-4 sm:grid-cols-[3rem_1fr] sm:gap-4"><span className="text-xs font-medium text-slate-400">0{index + 1}</span><p className="text-sm leading-relaxed text-slate-700 md:text-base">{item}</p></div>)}</div><div className="mt-8 grid gap-4">{caseStudy.designScreens.map((screen) => <figure key={screen.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 md:p-6">{screen.fit === 'natural' ? <img src={screen.image} alt={screen.title} className="block h-auto w-full rounded-lg" loading="lazy" /> : <ProjectMockup imageSrc={screen.image} device={screen.device || 'desktop'} ariaLabel={screen.title} className="mx-auto w-full" />}<figcaption className="px-2 pb-1 pt-3"><span className="text-sm font-semibold text-slate-900">{screen.title}</span><p className="mt-1 text-sm text-slate-500">{screen.note}</p></figcaption></figure>)}</div></div>
+          <div><p className="mb-8 text-lg leading-relaxed text-slate-600 md:text-xl">{caseStudy.designText}</p><div className="divide-y divide-slate-200 border-y border-slate-200">{caseStudy.designBullets.map((item, index) => <div key={item} className="grid gap-3 py-4 sm:grid-cols-[3rem_1fr] sm:gap-4"><span className="text-xs font-medium text-slate-400">0{index + 1}</span><p className="text-sm leading-relaxed text-slate-700 md:text-base">{item}</p></div>)}</div><div className="mt-8 grid gap-4">{caseStudy.designScreens.map((screen) => <figure key={screen.title} className="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 md:p-6">{screen.fit === 'natural' ? <img src={screen.image} alt={`Umbrella ${screen.title} onboarding interface screenshot.`} className="block h-auto w-full rounded-lg" loading="lazy" /> : <ProjectMockup imageSrc={screen.image} device={screen.device || 'desktop'} ariaLabel={`Umbrella ${screen.title} onboarding interface`} className="mx-auto w-full" />}<figcaption className="px-2 pb-1 pt-3"><span className="text-sm font-semibold text-slate-900">{screen.title}</span><p className="mt-1 text-sm text-slate-500">{screen.note}</p></figcaption></figure>)}</div></div>
         </div>
       </section>
 
