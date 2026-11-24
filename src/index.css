@@ -891,13 +891,16 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   padding-block: 20px 0;
 }
 
 .about-page > section {
   width: 100%;
   max-width: none;
-  margin-block: var(--dp-spacing-section-gap);
+  margin-block: 0;
   border: var(--dp-border-frame) solid var(--dp-color-ink);
   background: var(--dp-color-window);
   padding: 0;
@@ -908,29 +911,24 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-page > section > .retro-window-titlebar {
-  margin: 4px 4px 0;
+  margin: 0;
 }
 
 .about-page > section > :not(.retro-window-titlebar) {
   max-width: none;
+  padding-inline: 14px !important;
 }
 
 .about-page > section:first-child > div:nth-child(2) {
   padding: clamp(18px, 3vw, 38px);
 }
 
-.about-hero-scroll-track > .retro-window-titlebar {
-  position: sticky;
-  top: 76px;
-  z-index: 8;
-}
-
 .about-page > .about-hero-scroll-track {
-  margin-bottom: var(--dp-spacing-section-gap);
+  margin-bottom: 0;
 }
 
 .about-page > .about-quick-facts-section {
-  margin-top: var(--dp-spacing-section-gap);
+  margin-top: 0;
 }
 
 .about-hero-layout .retro-hero-tv-stack {
@@ -1135,9 +1133,16 @@ button:not(.retro-contact-window > button):active {
 }
 
 .case-study-page {
+  --case-study-gutter: clamp(16px, 3vw, 40px);
   padding-block: 20px 0;
   background: transparent;
   color: var(--dp-color-ink);
+}
+
+.case-study-page > div:first-child {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--case-study-gutter);
 }
 
 .case-study-page.roushani-case-study > :is(header, section) {
@@ -1145,11 +1150,12 @@ button:not(.retro-contact-window > button):active {
 }
 
 .case-study-page.roushani-case-study > div:first-child {
-  width: 100%;
-  max-width: none;
+  width: min(100%, 1200px);
+  max-width: 1200px;
   margin-block: 0;
+  margin-inline: auto;
   padding-block: 12px;
-  padding-inline: clamp(12px, 1.5vw, 24px);
+  padding-inline: var(--case-study-gutter);
 }
 
 .case-study-page.roushani-case-study > header {
@@ -1181,7 +1187,8 @@ button:not(.retro-contact-window > button):active {
   max-width: none;
   margin-block: var(--dp-spacing-section-gap);
   border: var(--dp-border-frame) solid var(--dp-color-ink) !important;
-  padding: var(--dp-spacing-section-inset) clamp(16px, 2.4vw, 36px);
+  padding-block: var(--dp-spacing-section-inset);
+  padding-inline: 0;
   background-color: var(--dp-color-window) !important;
   box-shadow:
     inset 1px 1px 0 #fff,
@@ -1195,8 +1202,9 @@ button:not(.retro-contact-window > button):active {
 
 .case-study-page > header > :is(div, figure),
 .case-study-page > section > :is(div, figure) {
-  max-width: 1200px;
+  width: 100%;
   margin-inline: auto;
+  padding-inline: var(--case-study-gutter);
 }
 
 .case-study-page > section > :is(h1, h2, h3),
@@ -1645,7 +1653,7 @@ button:not(.retro-contact-window > button):active {
     width: min(100%, 460px);
     position: -webkit-sticky;
     position: sticky;
-    top: calc(76px + 34px + 16px);
+    top: 76px;
     z-index: 7;
     align-self: start;
     justify-self: center;
@@ -1701,7 +1709,7 @@ button:not(.retro-contact-window > button):active {
 
   .about-page > section {
     width: 100%;
-    margin-block: var(--dp-spacing-section-gap);
+    margin-block: 0;
   }
 
   .about-page > section:first-child > div:nth-child(2) {
@@ -1709,9 +1717,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .about-page > .about-quick-facts-section {
-    position: relative;
-    z-index: 6;
-    margin-top: clamp(-720px, -75svh, -480px);
+    margin-top: 0;
   }
 
   .about-page > section:nth-child(2) > div:nth-child(2) {
@@ -1806,13 +1812,46 @@ button:not(.retro-contact-window > button):active {
 }
 
 @media (max-width: 639px) {
+  .about-page {
+    padding-top: 8px;
+  }
+
+  .about-page > .about-hero-scroll-track {
+    margin-block: 0;
+    padding-top: 0;
+  }
+
+  .about-hero-scroll-track > .retro-window-titlebar {
+    position: static;
+  }
+
+  .about-page > .about-hero-scroll-track h1 {
+    font-size: clamp(2.15rem, 10vw, 3.3rem);
+    line-height: 1.04;
+  }
+
+  .about-hero-copy {
+    padding: 16px;
+    font-size: clamp(.95rem, 4vw, 1.05rem);
+    line-height: 1.55;
+  }
+
+  .about-hero-layout {
+    gap: 20px;
+  }
+
   .home-hero-background {
-    height: calc(100svh - 64px);
+    height: calc(100dvh - 64px);
     padding-top: 12px;
   }
 
   .retro-home-grid {
     top: 64px;
+    min-height: calc(100dvh - 76px);
+  }
+
+  .retro-facts-section {
+    padding-top: 8px;
   }
 
   /* Keep phone layouts readable while letting text follow a natural left edge. */
@@ -1882,6 +1921,14 @@ button:not(.retro-contact-window > button):active {
   .portfolio-protected main section,
   .case-study-page > :is(header, section) {
     padding-inline: 12px;
+  }
+
+  .portfolio-protected main .about-page > section {
+    padding-inline: 0;
+  }
+
+  .portfolio-protected main .case-study-page > :is(header, section) {
+    padding-inline: 0;
   }
 
   .portfolio-protected main :is(.max-w-xs, .max-w-sm, .max-w-md, .max-w-lg, .max-w-xl, .max-w-2xl, .max-w-3xl, .max-w-4xl, .max-w-5xl, .max-w-6xl),

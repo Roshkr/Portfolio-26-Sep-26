@@ -224,7 +224,7 @@ export const AboutPage: React.FC = () => {
                 {/* Right side: Next to logo, all details */}
                 <div className="flex-1 min-w-0 w-full flex flex-col justify-center">
                   <div className="space-y-1.5">
-                    <div className="flex flex-row items-start justify-between gap-2">
+                    <div className="flex flex-col items-start justify-between gap-2 md:flex-row">
                       <div className="min-w-0">
                         <h3 className="text-base sm:text-lg md:text-xl font-medium text-slate-950">
                           {exp.role}
@@ -314,7 +314,7 @@ export const AboutPage: React.FC = () => {
                 {/* Right side: Next to logo, all details */}
                 <div className="flex-1 min-w-0 w-full flex flex-col justify-center">
                   <div className="space-y-1.5">
-                    <div className="flex flex-row items-start justify-between gap-2">
+                    <div className="flex flex-col items-start justify-between gap-2 md:flex-row">
                       <div className="min-w-0">
                         <h3 className="text-base sm:text-lg md:text-xl font-medium text-slate-950">
                           {edu.degree}
