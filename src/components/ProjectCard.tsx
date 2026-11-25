@@ -83,7 +83,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 src={study.heroVideo}
                 poster={study.heroImage}
                 ariaLabel={`${study.title} project preview`}
-                objectFit={study.id === 'roushani' || study.id === 'naie' || study.id === 'maxlence' ? 'cover' : 'contain'}
+                objectFit={study.id === 'roushani' || study.id === 'umbrella' || study.id === 'naie' || study.id === 'maxlence' ? 'cover' : 'contain'}
                 frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-xl"
                 eager={study.id === 'roushani'}
               />

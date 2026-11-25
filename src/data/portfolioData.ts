@@ -4,6 +4,7 @@ import roushaniFinalVideo from '../assets/video/Roushani Final Invoice Video.mp4
 import bridge2BusinessVideo from '../assets/video/Bridge2business.mp4';
 import maxlenceVideo from '../assets/video/Maxlence.mp4';
 import naieVideo from '../assets/video/NAIE.mp4';
+import umbrellaCaseStudyVideo from '../assets/video/Umbrella case study video.mp4';
 
 export const DESIGNER_INFO = {
   name: "Roushan Kumar",
@@ -330,6 +331,7 @@ export const DEFAULT_CASE_STUDIES: CaseStudy[] = [
     category: "Enterprise UX & Workflow",
     tags: ["Usability Testing", "Enterprise UX", "Workflow Design", "User Research"],
     heroImage: "https://framerusercontent.com/images/ODQSiBSOgvzxpJFnv9I2iPjjc7s.png",
+    heroVideo: umbrellaCaseStudyVideo,
     company: "Confidential Client (NDA)",
     status: "Final Implementation",
     overview:

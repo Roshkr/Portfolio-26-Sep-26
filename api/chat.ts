@@ -70,19 +70,21 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       return res.status(503).json({ ok: false, configured: false, available: false, message: 'GEMINI_API_KEY is missing from the server environment.' });
     }
     if (req.query?.probe === '1') {
-      try {
-        const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 10_000, retryOptions: { attempts: 1 } } });
-        const result = await ai.models.generateContent({
-          model: PRIMARY_MODEL,
-          contents: 'Reply with the single word OK.',
-          config: { maxOutputTokens: 8 },
-        });
-        if (!result.text?.trim()) throw new Error('Gemini returned an empty response.');
-        return res.status(200).json({ ok: true, configured: true, available: true, model: PRIMARY_MODEL });
-      } catch (error) {
-        console.error('Gemini health probe failed:', error);
-        return res.status(503).json({ ok: false, configured: true, available: false, message: 'Gemini did not complete a test request. Check the Vercel function logs for the provider error.' });
+      const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 12_000, retryOptions: { attempts: 1 } } });
+      for (const model of [PRIMARY_MODEL, FALLBACK_MODEL]) {
+        try {
+          const result = await ai.models.generateContent({
+            model,
+            contents: 'Reply with the single word OK.',
+            config: { maxOutputTokens: 8 },
+          });
+          if (!result.text?.trim()) throw new Error('Gemini returned an empty response.');
+          return res.status(200).json({ ok: true, configured: true, available: true, model });
+        } catch (error) {
+          console.error(`Gemini health probe failed for ${model}:`, error);
+        }
       }
+      return res.status(503).json({ ok: false, configured: true, available: false, message: 'Neither Gemini model completed a test request. Check Vercel Function Logs for provider errors.' });
     }
     return res.status(200).json({
       ok: true,
@@ -123,7 +125,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 10_000, retryOptions: { attempts: 1 } } });
+    const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 12_000, retryOptions: { attempts: 1 } } });
     const systemInstruction = SYSTEM_INSTRUCTION.replace('{{NEXT_MONDAY}}', getNextMondayDate());
     let lastError: unknown;
     for (const model of [PRIMARY_MODEL, FALLBACK_MODEL]) {

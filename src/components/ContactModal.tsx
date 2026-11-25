@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUp, Expand, MessageCircle, X } from 'lucide-react';
-import { DESIGNER_INFO } from '../data/portfolioData';
+import { ArrowUp, Expand, X } from 'lucide-react';
 import { submitContactInquiry } from '../lib/contactService';
 
 interface ContactModalProps {
@@ -11,20 +10,7 @@ interface ContactModalProps {
 interface ChatMessage {
   from: 'visitor' | 'portfolio' | 'system';
   text: string;
-  showWhatsApp?: boolean;
 }
-
-const WhatsAppContactButton: React.FC = () => (
-  <a
-    href={DESIGNER_INFO.socials.whatsapp}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="retro-button mt-2 inline-flex items-center gap-2 px-4 py-3 text-sm"
-  >
-    <MessageCircle className="h-4 w-4" aria-hidden="true" />
-    <span>Contact Roushan on WhatsApp</span>
-  </a>
-);
 
 const suggestions = [
   'About Roushan',
@@ -33,44 +19,6 @@ const suggestions = [
   'Check my fit for a role',
 ];
 
-const repeatQuestionStopWords = new Set([
-  'about', 'again', 'and', 'are', 'can', 'could', 'describe', 'did', 'do', 'does', 'for',
-  'have', 'how', 'is', 'it', 'me', 'more', 'my', 'of', 'on', 'please', 'tell', 'the',
-  'to', 'what', 'when', 'where', 'which', 'who', 'why', 'with', 'would', 'you', 'your',
-]);
-
-const normalizeQuestion = (text: string) => text
-  .normalize('NFKD')
-  .toLowerCase()
-  .replace(/[\u0300-\u036f]/g, '')
-  .replace(/[^a-z0-9]+/g, ' ')
-  .trim();
-
-const areQuestionsSimilar = (first: string, second: string) => {
-  const normalizedFirst = normalizeQuestion(first);
-  const normalizedSecond = normalizeQuestion(second);
-  if (!normalizedFirst || !normalizedSecond) return false;
-  if (normalizedFirst === normalizedSecond) return true;
-
-  const getMeaningfulWords = (text: string) => new Set(
-    text.split(' ').filter((word) => word.length > 2 && !repeatQuestionStopWords.has(word)),
-  );
-  const firstWords = getMeaningfulWords(normalizedFirst);
-  const secondWords = getMeaningfulWords(normalizedSecond);
-  if (!firstWords.size || !secondWords.size) return false;
-
-  const sharedWords = [...firstWords].filter((word) => secondWords.has(word));
-  const smallerSetSize = Math.min(firstWords.size, secondWords.size);
-  const unionSize = firstWords.size + secondWords.size - sharedWords.length;
-  const oneSharedSpecificTopic = smallerSetSize === 1
-    && sharedWords.length === 1
-    && sharedWords[0].length >= 6;
-  return oneSharedSpecificTopic || (
-    sharedWords.length >= 2
-    && sharedWords.length / smallerSetSize >= 0.75
-    && sharedWords.length / unionSize >= 0.5
-  );
-};
 
 export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
   const [question, setQuestion] = useState('');
@@ -144,24 +92,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     if (!value || respondingRef.current) return;
     const conversation = [...messagesRef.current, { from: 'visitor' as const, text: value }];
 
-    const similarQuestionCount = messagesRef.current.filter((message) =>
-      message.from === 'visitor' && areQuestionsSimilar(message.text, value),
-    ).length + 1;
-    if (similarQuestionCount > 2) {
-      const nextMessages: ChatMessage[] = [
-        ...conversation,
-        {
-          from: 'system',
-          text: 'I may not have the detail you need here. Contact Roushan directly on WhatsApp for more information.',
-          showWhatsApp: true,
-        },
-      ];
-      messagesRef.current = nextMessages;
-      setMessages(nextMessages);
-      setQuestion('');
-      return;
-    }
-
     messagesRef.current = conversation;
     setMessages(conversation);
     setQuestion('');
@@ -169,7 +99,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     setIsResponding(true);
     const controller = new AbortController();
     requestControllerRef.current = controller;
-    const timeoutId = window.setTimeout(() => controller.abort(), 27_000);
+    let requestTimedOut = false;
+    const timeoutId = window.setTimeout(() => {
+      requestTimedOut = true;
+      controller.abort();
+    }, 27_000);
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -197,12 +131,15 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       }
       setMessages((current) => [...current, { from: 'portfolio', text: result.reply as string }]);
     } catch (error) {
-      if (controller.signal.aborted) return;
+      if (controller.signal.aborted && !requestTimedOut) return;
       console.error('Portfolio chat request failed:', error);
       setMessages((current) => [...current, {
         from: 'system',
-        text: 'I can’t answer in chat right now. Please contact Roushan directly for your query.',
-        showWhatsApp: true,
+        text: requestTimedOut
+          ? 'That reply is taking too long. Please try again in a moment.'
+          : error instanceof Error && error.message !== 'Failed to fetch'
+            ? error.message
+            : 'I’m having trouble connecting right now. Please try again in a moment.',
       }]);
     } finally {
       window.clearTimeout(timeoutId);
@@ -270,7 +207,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               <div className={`max-w-[90%] rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[80%] sm:text-base ${message.from === 'visitor' ? 'rounded-br-md bg-[#2b35ee] text-white' : 'rounded-bl-md border border-slate-200 bg-white text-slate-700'}`}>
                 {message.text}
               </div>
-              {message.showWhatsApp && <WhatsAppContactButton />}
             </div>
           ))}
           {isResponding && (
