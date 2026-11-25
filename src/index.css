@@ -1927,7 +1927,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .retro-project-window .retro-project-layout {
-    padding: var(--dp-space-2);
+    padding: 0 var(--dp-space-2) var(--dp-space-2);
   }
 
   .retro-project-window .retro-project-media {
