@@ -13,7 +13,6 @@ interface ProjectCardProps {
   stackIndex?: number;
   variant?: ProjectCardVariant;
   compactCorners?: boolean;
-  transitionOnSelect?: boolean;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -22,14 +21,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   stackIndex,
   variant = 'default',
   compactCorners = false,
-  transitionOnSelect = false,
 }) => {
   const shouldReduceMotion = useReducedMotion();
   const isStacked = stackIndex !== undefined;
   const stackPosition = stackIndex ?? 0;
   const handleSelect = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    onSelectCaseStudy(study, transitionOnSelect ? 'curtain' : undefined);
+    onSelectCaseStudy(study);
   };
 
   if (variant === 'editorial') {

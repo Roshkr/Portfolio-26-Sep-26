@@ -50,7 +50,7 @@ export const usePortfolioNavigation = (caseStudies: CaseStudy[], initialPath?: s
     if (window.location.pathname !== nextPath || window.location.hash) {
       window.history.pushState({}, '', nextPath);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
 
   const selectCaseStudy = useCallback((study: CaseStudy) => {

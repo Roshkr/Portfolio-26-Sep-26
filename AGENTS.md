@@ -38,7 +38,8 @@ Use only these spacing values, in pixels:
 ## Shared layout standards
 
 - **Content container:** Center primary page content in `max-w-6xl` (72rem / 1152px) with `w-full`. Use `px-4` on phones, `sm:px-6` when the viewport has room, and `xl:px-8` on wide screens. Do not create a wider one-off content container for a case study.
-- **Section separation:** Keep adjacent page sections 32px apart (`gap-8` on a page stack, or one `mb-8` between sections) across Home, About, and all case studies, at every breakpoint. Do not put a bottom margin on one section and a top margin on the next. Use the shared `--dp-spacing-section-gap` token for platform section separation so spacing stays consistent.
+- **Page and header alignment:** Keep the shared site header contents, all route content, and the shared footer within the same centered 1152px (`max-w-6xl`) page shell. Keep every section and its inner content aligned to that shell using the same responsive gutters (`px-4 sm:px-6 xl:px-8`); section backgrounds, borders, titlebars, and footer content must share the same left and right edges as the header contents.
+- **Section separation:** Keep adjacent page sections 24px apart on phones (`gap-6`) and 48px apart on desktop (`md:gap-12`) across Home, About, and all case studies. Do not put a bottom margin on one section and a top margin on the next. Use the shared `--dp-spacing-section-gap` token for platform section separation so spacing stays consistent.
 - **Section inset:** Use 48px vertical padding on compact/mobile layouts (`py-12`) and 64px on larger layouts (`md:py-16`). A page may use 32px (`py-8`) for a clearly compact band; apply that choice consistently to equivalent bands across pages.
 - **Card inset:** Use 16px on phones (`p-4`) and 24px from tablet/desktop (`sm:p-6` or `md:p-6`). Keep nested content aligned to the same container gutter.
 - **Grid and component gaps:** Use 16px (`gap-4`) for dense/mobile grids and 24px (`md:gap-6`) for roomy grids. Use 8px or 12px only for closely related controls or text groups.
@@ -52,3 +53,8 @@ Use only these spacing values, in pixels:
 ## Existing project note — preserve
 
 - Keep the portfolio's social preview image aligned with the hero section on the Home page. Whenever the Home page hero changes, update the social preview image to reflect the current hero and keep the social metadata pointing to that image.
+
+## Homepage hero and section rhythm rules
+
+- **Mobile hero height:** Below `md`, never use `min-h-screen`, `h-screen`, or `100vh` for a hero. Let mobile hero height hug its content with explicit mobile padding such as `pt-24 pb-12`; increase padding only at `md:` or `lg:` breakpoints.
+- **Homepage section rhythm:** Place every top-level homepage section in one vertical stack with a uniform gap (`flex flex-col gap-6 md:gap-12`), or use the shared section gap between adjacent sections. Use zero negative margins and do not leave adjacent sections unpadded; ensure there is visible space between every section. The gap from the global header to the first homepage section must match the stack gap at each breakpoint.

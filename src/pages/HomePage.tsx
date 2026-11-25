@@ -27,7 +27,7 @@ export const HomePage = ({ caseStudies, onSelectCaseStudy }: HomePageProps) => {
   const additionalCaseStudies = caseStudies.filter((study) => !leadCaseStudyIds.includes(study.id));
 
   return (
-    <div className="w-full">
+    <div className="home-page-stack flex w-full flex-col gap-6 pb-6 md:gap-12 md:pb-12">
     <section className="home-hero-background relative w-full">
       <div className="retro-home-grid w-full">
         <div className="retro-window retro-hero-window">

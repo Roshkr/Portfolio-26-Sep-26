@@ -238,7 +238,7 @@ export const DesignSystemProjectPage: React.FC<DesignSystemProjectPageProps> = (
       <section className="border-t border-slate-200 bg-[#fbfbfb] py-12 md:py-16">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:px-6 xl:px-8">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Next Project</span>
-          <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners transitionOnSelect />
+          <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} compactCorners />
         </div>
       </section>
     )}

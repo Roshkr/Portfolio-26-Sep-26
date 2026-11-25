@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { useEffect, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Header } from './components/Header';
@@ -10,9 +9,8 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { CaseStudyPage } from './pages/CaseStudyPage';
 import { DesignSystemProjectPage } from './pages/DesignSystemProjectPage';
-import { ProjectDetailTextMotion } from './components/ProjectDetailTextMotion';
 import { DEFAULT_CASE_STUDIES } from './data/portfolioData';
-import type { CaseStudy, CaseStudyTransition, SelectCaseStudy } from './types';
+import type { CaseStudy, SelectCaseStudy } from './types';
 import { usePortfolioNavigation } from './hooks/usePortfolioNavigation';
 import { usePageMetadata } from './hooks/usePageMetadata';
 import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
@@ -31,28 +29,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
   );
   const [isContactOpen, setIsContactOpen] = useState(false);
   const { route, navigateTo, selectCaseStudy } = usePortfolioNavigation(caseStudies, initialPath);
-  const [curtainPhase, setCurtainPhase] = useState<'closing' | 'covered' | 'opening' | null>(null);
-  const [pendingNextStudy, setPendingNextStudy] = useState<CaseStudy | null>(null);
-  const shouldReduceMotion = useReducedMotion();
-  const handleCaseStudySelect: SelectCaseStudy = useCallback((study: CaseStudy, transition?: CaseStudyTransition) => {
-    if (transition === 'curtain') {
-      if (curtainPhase) return;
-      setPendingNextStudy(study);
-      setCurtainPhase('closing');
-      return;
-    }
-
-    selectCaseStudy(study);
-  }, [curtainPhase, selectCaseStudy]);
-  const handleCurtainAnimationComplete = () => {
-    if (curtainPhase === 'closing') {
-      setCurtainPhase('covered');
-      if (pendingNextStudy) selectCaseStudy(pendingNextStudy);
-    } else if (curtainPhase === 'opening') {
-      setCurtainPhase(null);
-      setPendingNextStudy(null);
-    }
-  };
+  const handleCaseStudySelect: SelectCaseStudy = selectCaseStudy;
   const currentStudyIndex = route.page === 'case-study'
     ? caseStudies.findIndex((study) => study.id === route.caseStudy.id)
     : -1;
@@ -87,17 +64,7 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
 
         <div className="flex-1">
           {/* Main Content View */}
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.main
-              key={pageKey}
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={shouldReduceMotion ? undefined : { opacity: 0, y: -8 }}
-              transition={{ duration: shouldReduceMotion ? 0 : 0.24, ease: 'easeOut' }}
-              onAnimationComplete={() => {
-                if (curtainPhase === 'covered') setCurtainPhase('opening');
-              }}
-            >
+          <main key={pageKey}>
               {route.page === 'home' && (
                 <HomePage
                   caseStudies={caseStudies}
@@ -108,25 +75,22 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
               {route.page === 'about' && <AboutPage />}
 
               {route.page === 'case-study' && (
-                <ProjectDetailTextMotion>
-                  {route.caseStudy.id === 'design-system-icons' ? (
-                    <DesignSystemProjectPage
-                      onBack={() => navigateTo('home')}
-                      nextStudy={nextStudy}
-                      onSelectCaseStudy={handleCaseStudySelect}
-                    />
-                  ) : (
-                    <CaseStudyPage
-                      caseStudy={route.caseStudy}
-                      allCaseStudies={caseStudies}
-                      onSelectCaseStudy={handleCaseStudySelect}
-                      onBack={() => navigateTo('home')}
-                    />
-                  )}
-                </ProjectDetailTextMotion>
+                route.caseStudy.id === 'design-system-icons' ? (
+                  <DesignSystemProjectPage
+                    onBack={() => navigateTo('home')}
+                    nextStudy={nextStudy}
+                    onSelectCaseStudy={handleCaseStudySelect}
+                  />
+                ) : (
+                  <CaseStudyPage
+                    caseStudy={route.caseStudy}
+                    allCaseStudies={caseStudies}
+                    onSelectCaseStudy={handleCaseStudySelect}
+                    onBack={() => navigateTo('home')}
+                  />
+                )
               )}
-            </motion.main>
-          </AnimatePresence>
+          </main>
 
           {/* Dark Footer with Social Links & Resume */}
           <Footer onOpenChat={() => setIsContactOpen(true)} />
@@ -139,23 +103,6 @@ export default function App({ initialPath }: { initialPath?: string } = {}) {
           isOpen={isContactOpen}
           onClose={() => setIsContactOpen(false)}
         />
-
-        {curtainPhase && (
-          <motion.div
-            aria-hidden="true"
-            className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-slate-950 px-4 sm:px-6 text-center text-white"
-            style={{ transformOrigin: curtainPhase === 'opening' ? 'bottom center' : 'top center' }}
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: curtainPhase === 'opening' ? 0 : 1 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.62, ease: [0.76, 0, 0.24, 1] }}
-            onAnimationComplete={handleCurtainAnimationComplete}
-          >
-            <div className="space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/60">Next project</p>
-              <p className="text-3xl font-medium tracking-tight sm:text-5xl">{pendingNextStudy?.title}</p>
-            </div>
-          </motion.div>
-        )}
 
         {/* Vercel Analytics & Speed Insights */}
         <Analytics />

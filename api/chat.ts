@@ -67,7 +67,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (req.method === 'GET') {
     if (!apiKey) {
-      return res.status(503).json({ ok: false, configured: false, available: false, message: 'GEMINI_API_KEY is missing from this Vercel deployment.' });
+      return res.status(503).json({ ok: false, configured: false, available: false, message: 'GEMINI_API_KEY is missing from the server environment.' });
     }
     if (req.query?.probe === '1') {
       try {
@@ -97,7 +97,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
   }
 
   if (!apiKey) {
-    return res.status(503).json({ error: 'Chat is not configured yet. Add GEMINI_API_KEY to the Vercel project environment variables.' });
+    return res.status(503).json({ error: 'Chat is not configured yet. Add GEMINI_API_KEY to the server environment.' });
   }
 
   const body = req.body as { messages?: unknown } | undefined;

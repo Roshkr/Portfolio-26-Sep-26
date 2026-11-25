@@ -41,9 +41,10 @@
   --dp-space-12: 48px;
   --dp-space-16: 64px;
   --dp-space-24: 96px;
+  --dp-page-gutter: var(--dp-space-4);
   --dp-spacing-pane-inset: var(--dp-space-1);
   --dp-spacing-item-gap: var(--dp-space-2);
-  --dp-spacing-section-gap: var(--dp-space-8);
+  --dp-spacing-section-gap: var(--dp-space-12);
   --dp-spacing-section-inset: var(--dp-space-12);
   --dp-spacing-card-gap: var(--dp-space-4);
   --dp-spacing-card-inset: var(--dp-space-4);
@@ -114,6 +115,12 @@
   background: transparent;
 }
 
+.portfolio-protected > .flex-1 {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
 .retro-header {
   border-color: var(--dp-color-ink);
   background: var(--dp-color-window);
@@ -167,6 +174,10 @@
 }
 
 @media (min-width: 640px) {
+  :root {
+    --dp-page-gutter: var(--dp-space-6);
+  }
+
   .retro-window-titlebar {
     padding-inline: var(--dp-space-6);
   }
@@ -406,7 +417,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .retro-facts-section {
-  padding-block: var(--dp-spacing-section-gap);
+  padding-block: 0;
 }
 
 .home-hero-background:has(.retro-hero-window[data-retro-minimized="true"]) {
@@ -732,7 +743,7 @@ button:not(.retro-contact-window > button):active {
 .retro-projects {
   width: 100%;
   margin: 0;
-  padding: 0 0 var(--dp-spacing-section-gap);
+  padding: 0;
 }
 
 .retro-projects-window {
@@ -769,6 +780,7 @@ button:not(.retro-contact-window > button):active {
   margin-top: var(--dp-spacing-section-gap);
   border-top: 2px solid var(--dp-color-ink);
   padding-top: var(--dp-space-4);
+  padding-inline: var(--dp-spacing-card-inset);
 }
 
 .retro-more-work-heading {
@@ -909,7 +921,7 @@ button:not(.retro-contact-window > button):active {
   display: flex;
   flex-direction: column;
   gap: var(--dp-spacing-section-gap);
-  padding-block: var(--dp-space-4) 0;
+  padding-block: var(--dp-space-4) var(--dp-spacing-section-gap);
 }
 
 .about-page > section {
@@ -1188,7 +1200,10 @@ button:not(.retro-contact-window > button):active {
 }
 
 .case-study-page {
-  --case-study-gutter: var(--dp-spacing-card-inset);
+  --case-study-gutter: var(--dp-page-gutter);
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
   padding-block: var(--dp-space-4) 0;
   background: transparent;
   color: var(--dp-color-ink);
@@ -1241,7 +1256,7 @@ button:not(.retro-contact-window > button):active {
 }
 
 .roushani-case-study > header > div:last-child {
-  padding: var(--dp-space-3);
+  padding: var(--dp-space-3) var(--case-study-gutter);
 }
 
 .roushani-case-study > section > div > :is(article, figure, ol) {
@@ -1397,11 +1412,12 @@ button:not(.retro-contact-window > button):active {
 }
 
 .about-footer .retro-footer-titlebar {
-  margin: calc(-1 * var(--dp-space-1)) calc(-1 * var(--dp-space-1)) 0;
+  margin: calc(-1 * var(--dp-space-1)) 0 0;
+  padding-inline: var(--dp-page-gutter);
 }
 
 .about-footer .retro-footer-body {
-  padding: var(--dp-spacing-card-inset);
+  padding: var(--dp-page-gutter);
   background: #fff;
 }
 
@@ -1690,7 +1706,7 @@ button:not(.retro-contact-window > button):active {
 
 @media (max-width: 760px) {
   :root {
-    --dp-spacing-section-gap: var(--dp-space-8);
+    --dp-spacing-section-gap: var(--dp-space-6);
     --dp-spacing-section-inset: var(--dp-space-12);
     --dp-spacing-card-gap: var(--dp-space-4);
     --dp-spacing-card-inset: var(--dp-space-4);
@@ -1702,15 +1718,26 @@ button:not(.retro-contact-window > button):active {
 
   .retro-home-grid {
     grid-template-columns: minmax(0, 1fr);
+    position: relative;
+    top: auto;
+    min-height: 0;
   }
 
   .home-hero-background {
-    height: calc(100svh - 64px + var(--dp-spacing-section-gap));
+    height: auto;
+    min-height: 0;
+    padding: var(--dp-spacing-section-gap) 0 0;
+  }
+
+  .retro-hero-window {
+    height: auto;
   }
 
   .retro-hero-body {
     flex-direction: column;
     align-items: stretch;
+    flex: 0 0 auto;
+    min-height: auto;
   }
 
   .retro-hero-main {
@@ -1848,14 +1875,33 @@ button:not(.retro-contact-window > button):active {
     --dp-spacing-card-inset: var(--dp-space-6);
   }
 
+  .home-hero-background .retro-hero-body h1 {
+    font-size: clamp(48px, min(10vw, 14svh), 168px);
+  }
+
+  .home-hero-background {
+    height: calc(100svh - 64px + var(--dp-spacing-section-gap));
+    padding-top: var(--dp-spacing-section-gap);
+  }
+
+  .home-hero-background .retro-hero-line {
+    width: fit-content;
+    margin-bottom: var(--dp-space-3);
+    padding: var(--dp-space-2) var(--dp-space-3);
+  }
+
   .case-study-page > .case-study-backbar + .case-study-hero {
     padding-block: var(--dp-space-8) !important;
   }
 }
 
 @media (min-width: 1280px) {
+  :root {
+    --dp-page-gutter: var(--dp-space-8);
+  }
+
   .case-study-page {
-    --case-study-gutter: var(--dp-space-8);
+    --case-study-gutter: var(--dp-page-gutter);
   }
 }
 
@@ -1930,20 +1976,6 @@ button:not(.retro-contact-window > button):active {
     gap: var(--dp-space-4);
   }
 
-  .home-hero-background {
-    height: calc(100dvh - 64px);
-    padding-top: var(--dp-space-3);
-  }
-
-  .retro-home-grid {
-    top: var(--dp-space-16);
-    min-height: calc(100dvh - 64px);
-  }
-
-  .retro-facts-section {
-    padding-top: var(--dp-space-2);
-  }
-
   /* Keep phone layouts readable while letting text follow a natural left edge. */
   .portfolio-protected {
     padding-inline: 0;
@@ -1961,7 +1993,7 @@ button:not(.retro-contact-window > button):active {
   }
 
   .portfolio-protected main .retro-more-work {
-    padding-inline: 0;
+    padding-inline: var(--dp-spacing-card-inset);
     text-align: left;
   }
 

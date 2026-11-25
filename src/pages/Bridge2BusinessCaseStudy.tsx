@@ -508,7 +508,7 @@ export const Bridge2BusinessCaseStudy: React.FC<Bridge2BusinessCaseStudyProps> =
           <div className="mx-auto max-w-6xl px-4 sm:px-6 xl:px-8">
             <p className={eyebrowClass}>Next project</p>
             <div className="mt-4">
-              <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} transitionOnSelect />
+              <ProjectCard study={nextStudy} onSelectCaseStudy={onSelectCaseStudy} />
             </div>
           </div>
         </section>

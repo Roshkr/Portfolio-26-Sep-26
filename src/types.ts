@@ -69,8 +69,7 @@ export interface CaseStudy {
   coreFeatures?: Array<{ title: string; desc: string }>;
 }
 
-export type CaseStudyTransition = 'curtain';
-export type SelectCaseStudy = (caseStudy: CaseStudy, transition?: CaseStudyTransition) => void;
+export type SelectCaseStudy = (caseStudy: CaseStudy) => void;
 
 export type PortfolioRoute =
   | { page: 'home' }

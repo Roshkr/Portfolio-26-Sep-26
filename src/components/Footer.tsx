@@ -30,13 +30,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenChat }) => {
           <WindowControls />
         </div>
         <div className="retro-footer-body">
-          {/* Main CTA Heading */}
-          <div className="max-w-3xl space-y-8">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1] text-white">
-            Have a project in mind? Let’s talk.
-          </h2>
-
-          <ContactSection onOpenChat={onOpenChat} />
+          <div className="w-full space-y-8">
+            <h2 className="text-4xl font-light leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl">
+              Have a project in mind?
+            </h2>
+            <ContactSection onOpenChat={onOpenChat} />
 
           <div className="flex flex-wrap items-center gap-4 pt-4">
             {/* Direct Resume Download */}

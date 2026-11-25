@@ -680,7 +680,6 @@ export const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             <ProjectCard
               study={nextStudy}
               onSelectCaseStudy={onSelectCaseStudy}
-              transitionOnSelect
             />
           </div>
         </section>
