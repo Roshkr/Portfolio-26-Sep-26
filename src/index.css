@@ -867,7 +867,7 @@ button:not(.retro-contact-window > button):active {
 
 .retro-project-window .retro-project-layout {
   gap: var(--dp-spacing-card-gap);
-  padding: var(--dp-spacing-pane-inset);
+  padding: 0 var(--dp-spacing-pane-inset) var(--dp-spacing-pane-inset);
 }
 
 .retro-project-window .retro-project-media {

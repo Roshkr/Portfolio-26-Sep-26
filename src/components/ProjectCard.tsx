@@ -48,7 +48,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <a href={`/case-studies/${study.id}`} onClick={handleSelect} aria-label={`Read the ${study.title} case study`} className="retro-project-link group block cursor-pointer text-left text-black no-underline">
         <div className="retro-project-layout grid min-w-0 items-start gap-4 md:gap-6 lg:items-stretch lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-          <div className={`retro-project-media relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch ${study.id === 'umbrella' ? 'lg:mb-12' : ''}`}>
+          <div className="retro-project-media relative aspect-[1.28/1] min-w-0 overflow-hidden rounded-xl bg-transparent sm:aspect-[1.45/1] lg:aspect-auto lg:h-full lg:min-h-0 lg:self-stretch">
             {study.id === 'design-system-icons' && study.heroVideo ? (
               <LazyVideo src={study.heroVideo} poster={study.heroImage || undefined} ariaLabel="Design system color palette preview" objectFit="contain" frameClassName="rounded-xl bg-[#f1f2f4] transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
             ) : study.id === 'design-system-icons' ? (
@@ -78,20 +78,21 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   <span className="text-xs text-slate-500">Components & icon set</span>
                 </div>
               </div>
+            ) : study.heroVideo ? (
+              <LazyVideo
+                src={study.heroVideo}
+                poster={study.heroImage}
+                ariaLabel={`${study.title} project preview`}
+                objectFit={study.id === 'roushani' || study.id === 'naie' || study.id === 'maxlence' ? 'cover' : 'contain'}
+                frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-xl"
+                eager={study.id === 'roushani'}
+              />
             ) : study.id === 'umbrella' ? (
               <img
                 src="/projects/umbrella-third-party-form.png"
                 alt="Umbrella add a new third party form preview"
                 loading="lazy"
                 className="h-full w-full rounded-xl object-contain transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]"
-              />
-            ) : study.heroVideo ? (
-              <LazyVideo
-                src={study.heroVideo}
-                poster={study.heroImage}
-                ariaLabel={`${study.title} project preview`}
-                objectFit={study.id === 'naie' || study.id === 'maxlence' ? 'cover' : 'contain'}
-                frameClassName="bg-transparent transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02] rounded-xl"
               />
             ) : (
               <img src={study.heroImage} alt={`${study.title} project preview`} referrerPolicy="no-referrer" loading="lazy" className="h-full w-full object-contain rounded-xl transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.02]" />
