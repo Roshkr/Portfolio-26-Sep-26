@@ -23,8 +23,8 @@ const person = {
   name: 'Roushan Kumar',
   '@id': `${siteUrl}/#person`,
   url: `${siteUrl}/`,
-  jobTitle: 'Product Designer & UI/UX Designer',
-  description: 'Product Designer and UI/UX Designer in Ahmedabad, India, with 6+ years of experience across B2B SaaS, fintech, enterprise workflows, and design systems.',
+  jobTitle: 'UX/UI Designer and Product Designer',
+  description: 'UX/UI designer in Ahmedabad, India, with 6+ years designing B2B SaaS, fintech, enterprise workflows, and mobile products.',
   image: `${siteUrl}/social-preview.png`,
   hasOccupation: {
     '@type': 'Occupation',
@@ -58,7 +58,7 @@ const homeSchema = {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
       url: `${siteUrl}/`,
-      name: 'Roushan Kumar | Product Designer & UI/UX Designer',
+      name: 'Roushan Kumar | UX/UI Designer',
       description: person.description,
       inLanguage: 'en-IN',
       publisher: { '@id': `${siteUrl}/#person` },
@@ -69,17 +69,18 @@ const homeSchema = {
 const pages = [
   {
     path: '/',
-    title: 'Product Designer in Ahmedabad | B2B SaaS UX | Roushan Kumar',
-    description: 'Roushan Kumar is a product designer in Ahmedabad, India, creating clear UX for B2B SaaS, fintech, enterprise workflows, and mobile products.',
+    title: 'UX/UI Designer in Ahmedabad | Roushan Kumar',
+    description: 'Roushan Kumar is a UX/UI designer in Ahmedabad, India, with 6+ years designing B2B SaaS, fintech, enterprise workflows, and mobile products.',
+    heading: 'Roushan Kumar - UX/UI Designer in Ahmedabad',
     jsonLd: homeSchema,
   },
   {
     path: '/about',
-    title: 'About Roushan Kumar | Product Designer in Ahmedabad',
-    description: 'Meet Roushan Kumar, a product designer in Ahmedabad, India, working across B2B SaaS, fintech, enterprise workflows, and mobile UX.',
+    title: 'About Roushan Kumar | UX/UI Designer in Ahmedabad',
+    description: 'Meet Roushan Kumar, a UX/UI and product designer in Ahmedabad, India, working across B2B SaaS, fintech, enterprise workflows, and mobile UX.',
     heading: 'About Roushan Kumar',
     paragraphs: [
-      'Roushan Kumar is a product designer based in Ahmedabad, India. He designs B2B SaaS, fintech, enterprise workflows, and mobile experiences.',
+      'Roushan Kumar is a UX/UI and product designer based in Ahmedabad, India. He designs B2B SaaS, fintech, enterprise workflows, and mobile experiences.',
       'Roushani is a mobile-first invoicing product he designed for service businesses.',
       'His work includes user research, information architecture, interface design, and design systems. He is open to product design roles and freelance projects.',
     ],

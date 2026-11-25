@@ -16,6 +16,7 @@
 :root {
   color-scheme: light;
   --dp-color-window: #d4d4d4;
+  --dp-color-surface: #eef0f3;
   --dp-color-ink: #000000;
   --dp-color-bevel-dark: #808080;
   --dp-color-bevel-light: #ffffff;
@@ -1418,7 +1419,7 @@ button:not(.retro-contact-window > button):active {
 
 .about-footer .retro-footer-body {
   padding: var(--dp-page-gutter);
-  background: #fff;
+  background: var(--dp-color-surface);
 }
 
 .retro-footer-clock {
@@ -1512,8 +1513,8 @@ button:not(.retro-contact-window > button):active {
 }
 
 #root .portfolio-protected [role="dialog"].retro-chat-modal {
-  background: #fff !important;
-  background-color: #fff !important;
+  background: var(--dp-color-surface) !important;
+  background-color: var(--dp-color-surface) !important;
 }
 
 #root .portfolio-protected .retro-chat-modal textarea {
