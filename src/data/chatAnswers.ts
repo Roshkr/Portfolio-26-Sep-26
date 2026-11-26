@@ -1,9 +1,14 @@
 export interface ChatAnswer {
   keywords: string[];
+  exactMatches?: string[];
   answer: string;
 }
 
 export const chatAnswers: ChatAnswer[] = [
+  { keywords: [], exactMatches: ['hello'], answer: 'Hello, May I know your name?' },
+  { keywords: [], exactMatches: ['yes', 'no'], answer: 'Ok. What do you want to know.' },
+  { keywords: ['available for full time', 'available for a full time', 'full time role', 'full time job'], answer: "Yes. I’m wrapping something up and will be available for a full-time role in a week. Please let me know about your requirements." },
+  { keywords: ['salary expectation', 'salary range', 'expected salary', 'compensation', 'salary', 'lpa', 'package expectation'], answer: 'My salary expectation is 14 to 20 LPA.' },
   { keywords: ['about yourself', 'tell me about yourself', 'who are you', 'introduce yourself', 'about roushan'], answer: 'I simplify complex user experiences, solve usability challenges, and empower design teams to build better digital products.' },
   { keywords: ['looking for', 'what roles', 'type of role', 'next role', 'career goal', 'role are you'], answer: 'I am looking for roles that combine UX strategy, hands-on experience design, and team leadership. I enjoy solving complex problems, simplifying workflows, validating solutions through user testing, and helping teams deliver better products.' },
   { keywords: ['strong fit', 'why hire', 'why should', 'what makes you', 'good fit', 'role fit'], answer: "I don't just design interfaces; I identify experience problems, simplify complexity, and help teams build products that work better for people." },
@@ -16,8 +21,11 @@ export const chatAnswers: ChatAnswer[] = [
 
 export const findChatAnswer = (question: string) => {
   const normalizedQuestion = question.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
-  return chatAnswers.find(({ keywords }) => keywords.some((keyword) => {
+  return chatAnswers.find(({ keywords, exactMatches }) => {
+    if (exactMatches?.includes(normalizedQuestion)) return true;
+    return keywords.some((keyword) => {
     const normalizedKeyword = keyword.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
     return normalizedQuestion.includes(normalizedKeyword);
-  }))?.answer;
+    });
+  })?.answer;
 };
