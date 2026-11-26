@@ -1,5 +1,6 @@
 import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 import process from 'node:process';
+import { chatAnswers } from '../src/data/chatAnswers';
 
 interface ChatMessage {
   role: 'user' | 'model';
@@ -126,7 +127,10 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
 
   try {
     const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 12_000, retryOptions: { attempts: 1 } } });
-    const systemInstruction = SYSTEM_INSTRUCTION.replace('{{NEXT_MONDAY}}', getNextMondayDate());
+    const approvedAnswers = chatAnswers
+      .map(({ keywords, answer }) => `Question topics: ${keywords.join(', ')}\nApproved answer: ${answer}`)
+      .join('\n\n');
+    const systemInstruction = `${SYSTEM_INSTRUCTION.replace('{{NEXT_MONDAY}}', getNextMondayDate())}\n\nAPPROVED CUSTOM ANSWERS: When a visitor asks about one of these topics, answer consistently with the supplied answer and do not contradict or embellish it.\n\n${approvedAnswers}`;
     let lastError: unknown;
     for (const model of [PRIMARY_MODEL, FALLBACK_MODEL]) {
       try {

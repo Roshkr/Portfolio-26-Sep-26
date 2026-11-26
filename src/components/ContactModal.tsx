@@ -32,6 +32,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<ChatMessage[]>(messages);
   const respondingRef = useRef(false);
+  const requestControllerRef = useRef<AbortController | null>(null);
   const closedSessionRef = useRef(false);
   const closeChatRef = useRef<() => void>(() => undefined);
   messagesRef.current = messages;
@@ -41,6 +42,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     closedSessionRef.current = true;
 
     const transcript = messagesRef.current;
+    requestControllerRef.current?.abort();
+    requestControllerRef.current = null;
     respondingRef.current = false;
     setIsResponding(false);
     onClose();
@@ -87,7 +90,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   if (!isOpen) return null;
 
-  const submitQuestion = (text: string) => {
+  const submitQuestion = async (text: string) => {
     const value = text.trim();
     if (!value || respondingRef.current) return;
     const conversation = [...messagesRef.current, { from: 'visitor' as const, text: value }];
@@ -97,21 +100,45 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     setQuestion('');
     respondingRef.current = true;
     setIsResponding(true);
-    const answer = findChatAnswer(value);
-    const reply: ChatMessage = answer
-      ? { from: 'portfolio', text: answer }
-      : {
-          from: 'portfolio',
-          text: "I don't have an approved answer for that yet. You can ask Roushan directly on WhatsApp.",
-          whatsappUrl: `${DESIGNER_INFO.whatsappUrl.split('?')[0]}?text=${encodeURIComponent(`Hi Roushan, I have a question from your portfolio: ${value}`)}`,
-        };
-    window.setTimeout(() => {
-      setMessages((current) => [...current, reply]);
-      respondingRef.current = false;
-      setIsResponding(false);
-    }, 300);
-  };
+    const controller = new AbortController();
+    requestControllerRef.current = controller;
+    const timeoutId = window.setTimeout(() => controller.abort(), 22_000);
 
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify({
+          messages: conversation
+            .filter(({ from }) => from !== 'system')
+            .map(({ from, text }) => ({ role: from === 'visitor' ? 'user' : 'model', text })),
+        }),
+      });
+      const result = await response.json() as { reply?: unknown };
+      if (!response.ok || typeof result.reply !== 'string') throw new Error('The AI reply was unavailable.');
+      setMessages((current) => [...current, { from: 'portfolio', text: result.reply as string }]);
+    } catch (error) {
+      if (requestControllerRef.current !== controller) return;
+      console.warn('AI chat unavailable; using the approved local answer fallback.', error);
+      const approvedAnswer = findChatAnswer(value);
+      const fallbackReply: ChatMessage = approvedAnswer
+        ? { from: 'portfolio', text: approvedAnswer }
+        : {
+            from: 'portfolio',
+            text: "I don't have an approved answer for that yet. You can ask Roushan directly on WhatsApp.",
+            whatsappUrl: `${DESIGNER_INFO.whatsappUrl.split('?')[0]}?text=${encodeURIComponent(`Hi Roushan, I have a question from your portfolio: ${value}`)}`,
+          };
+      setMessages((current) => [...current, fallbackReply]);
+    } finally {
+      window.clearTimeout(timeoutId);
+      if (requestControllerRef.current === controller) {
+        requestControllerRef.current = null;
+        respondingRef.current = false;
+        setIsResponding(false);
+      }
+    }
+  };
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-2 backdrop-blur-md sm:p-4"

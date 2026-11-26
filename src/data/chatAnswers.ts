@@ -15,9 +15,9 @@ export const chatAnswers: ChatAnswer[] = [
 ];
 
 export const findChatAnswer = (question: string) => {
-  const normalizedQuestion = question.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  const normalizedQuestion = question.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
   return chatAnswers.find(({ keywords }) => keywords.some((keyword) => {
-    const normalizedKeyword = keyword.toLowerCase().replace(/[’']/g, '');
+    const normalizedKeyword = keyword.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
     return normalizedQuestion.includes(normalizedKeyword);
   }))?.answer;
 };
