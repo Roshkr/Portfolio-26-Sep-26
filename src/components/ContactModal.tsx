@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUp, Expand, X } from 'lucide-react';
+import { ArrowUp, Expand, MessageCircle, X } from 'lucide-react';
 import { submitContactInquiry } from '../lib/contactService';
+import { findChatAnswer } from '../data/chatAnswers';
+import { DESIGNER_INFO } from '../data/portfolioData';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -10,13 +12,14 @@ interface ContactModalProps {
 interface ChatMessage {
   from: 'visitor' | 'portfolio' | 'system';
   text: string;
+  whatsappUrl?: string;
 }
 
 const suggestions = [
-  'About Roushan',
-  'Career & experience',
-  'Where should I start?',
-  'Check my fit for a role',
+  'Tell me about yourself',
+  'What roles are you looking for?',
+  'How do you approach design?',
+  'How do you test your designs?',
 ];
 
 
@@ -29,7 +32,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<ChatMessage[]>(messages);
   const respondingRef = useRef(false);
-  const requestControllerRef = useRef<AbortController | null>(null);
   const closedSessionRef = useRef(false);
   const closeChatRef = useRef<() => void>(() => undefined);
   messagesRef.current = messages;
@@ -39,8 +41,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     closedSessionRef.current = true;
 
     const transcript = messagesRef.current;
-    requestControllerRef.current?.abort();
-    requestControllerRef.current = null;
     respondingRef.current = false;
     setIsResponding(false);
     onClose();
@@ -87,7 +87,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
   if (!isOpen) return null;
 
-  const submitQuestion = async (text: string) => {
+  const submitQuestion = (text: string) => {
     const value = text.trim();
     if (!value || respondingRef.current) return;
     const conversation = [...messagesRef.current, { from: 'visitor' as const, text: value }];
@@ -97,58 +97,19 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     setQuestion('');
     respondingRef.current = true;
     setIsResponding(true);
-    const controller = new AbortController();
-    requestControllerRef.current = controller;
-    let requestTimedOut = false;
-    const timeoutId = window.setTimeout(() => {
-      requestTimedOut = true;
-      controller.abort();
-    }, 27_000);
-    try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        signal: controller.signal,
-        body: JSON.stringify({
-          messages: conversation
-            .filter(({ from }) => from !== 'system')
-            .map(({ from, text }) => ({ role: from === 'visitor' ? 'user' : 'model', text })),
-        }),
-      });
-      let result: { reply?: unknown; error?: unknown };
-      try {
-        result = await response.json() as { reply?: unknown; error?: unknown };
-      } catch {
-        if (response.status === 404) {
-          throw new Error('The chat service is missing from this deployment. Please try again later.');
-        }
-        throw new Error(response.status >= 500
-          ? 'The chat service failed before returning a reply. Please try again in a moment.'
-          : 'The chat service returned an unreadable response. Please try again.');
-      }
-      if (!response.ok || typeof result.reply !== 'string') {
-        throw new Error(typeof result.error === 'string' ? result.error : 'Roushan could not reply just now. Please try again.');
-      }
-      setMessages((current) => [...current, { from: 'portfolio', text: result.reply as string }]);
-    } catch (error) {
-      if (controller.signal.aborted && !requestTimedOut) return;
-      console.error('Portfolio chat request failed:', error);
-      setMessages((current) => [...current, {
-        from: 'system',
-        text: requestTimedOut
-          ? 'That reply is taking too long. Please try again in a moment.'
-          : error instanceof Error && error.message !== 'Failed to fetch'
-            ? error.message
-            : 'I’m having trouble connecting right now. Please try again in a moment.',
-      }]);
-    } finally {
-      window.clearTimeout(timeoutId);
-      if (requestControllerRef.current === controller) {
-        requestControllerRef.current = null;
-        respondingRef.current = false;
-        setIsResponding(false);
-      }
-    }
+    const answer = findChatAnswer(value);
+    const reply: ChatMessage = answer
+      ? { from: 'portfolio', text: answer }
+      : {
+          from: 'portfolio',
+          text: "I don't have an approved answer for that yet. You can ask Roushan directly on WhatsApp.",
+          whatsappUrl: `${DESIGNER_INFO.whatsappUrl.split('?')[0]}?text=${encodeURIComponent(`Hi Roushan, I have a question from your portfolio: ${value}`)}`,
+        };
+    window.setTimeout(() => {
+      setMessages((current) => [...current, reply]);
+      respondingRef.current = false;
+      setIsResponding(false);
+    }, 300);
   };
 
   return (
@@ -207,6 +168,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               <div className={`max-w-[90%] rounded-2xl px-4 py-3 text-sm leading-relaxed sm:max-w-[80%] sm:text-base ${message.from === 'visitor' ? 'rounded-br-md bg-[#2b35ee] text-white' : 'rounded-bl-md border border-slate-200 bg-white text-slate-700'}`}>
                 {message.text}
               </div>
+              {message.whatsappUrl && (
+                <a href={message.whatsappUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1fb958]">
+                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                  Message Roushan on WhatsApp
+                </a>
+              )}
             </div>
           ))}
           {isResponding && (
